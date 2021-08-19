@@ -1,10 +1,10 @@
 var annotated_dup =
 [
-    [ "font_s", "a00087.html", "a00087" ],
-    [ "hV_Colours565", "a00075.html", "a00075" ],
-    [ "hV_Font_Terminal", "a00091.html", "a00091" ],
-    [ "hV_Screen_Buffer", "a00095.html", "a00095" ],
-    [ "pins_t", "a00079.html", "a00079" ],
-    [ "Screen_EPD_EXT3", "a00099.html", "a00099" ],
-    [ "width_s", "a00083.html", "a00083" ]
+    [ "font_s", "a00195.html", "a00195" ],
+    [ "hV_Colours565", "a00183.html", "a00183" ],
+    [ "hV_Font_Terminal", "a00199.html", "a00199" ],
+    [ "hV_Screen_Buffer", "a00203.html", "a00203" ],
+    [ "pins_t", "a00187.html", "a00187" ],
+    [ "Screen_EPD_EXT3", "a00207.html", "a00207" ],
+    [ "width_s", "a00191.html", "a00191" ]
 ];

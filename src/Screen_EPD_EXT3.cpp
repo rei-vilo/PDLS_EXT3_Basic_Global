@@ -10,6 +10,8 @@
 // Copyright © Rei Vilo, 2010-2021
 // Licence Creative Commons Attribution-NonCommercial-ShareAlike 4.0 Unported (CC BY-NC-SA 4.0)
 //
+// Release 508: Added support for E2969CS0B and E2B98CS0B  
+//
 
 // Library header
 #include "SPI.h"
@@ -47,12 +49,15 @@ Screen_EPD_EXT3::Screen_EPD_EXT3(eScreen_EPD_EXT3_t eScreen_EPD_EXT3, pins_t boa
 {
     _pin = board;
     _newImage = nullptr;
-    _codeSize = (eScreen_EPD_EXT3 >> 8) & 0xff;
-    _codeType = eScreen_EPD_EXT3 & 0xff;
+    _eScreen_EPD_EXT3 = eScreen_EPD_EXT3;
 }
 
 void Screen_EPD_EXT3::begin()
 {
+    _codeExtra = (_eScreen_EPD_EXT3 >> 16) & 0xff;
+    _codeSize = (_eScreen_EPD_EXT3 >> 8) & 0xff;
+    _codeType = _eScreen_EPD_EXT3 & 0xff;
+
     _screenColourBits = 2; // BWR
 
     switch (_codeSize)
@@ -145,7 +150,7 @@ void Screen_EPD_EXT3::begin()
             _refreshTime = 32;
             break;
 
-        case 0x97: // 9.70"
+        case 0x96: // 9.69"
 
             _widthScreen = 672; // x = wide size
             _heightScreen = 960; // Actually, 960 = 480 x 2, y = small size
@@ -178,7 +183,7 @@ void Screen_EPD_EXT3::begin()
     // 9.70 and 12.20 combine two half-screens, hence two frames with adjusted size
     switch (_codeSize)
     {
-        case 0x97: // 9.70"
+        case 0x96: // 9.69"
         case 0xB9: // 11.98"
 
             _sizeFrame = _sizePageColour / 2;
@@ -287,7 +292,7 @@ void Screen_EPD_EXT3::begin()
             _reset(200, 20, 200, 50, 5);
             break;
 
-        case 0x97: // 9.70"
+        case 0x96: // 9.69"
         case 0xB9: // 11.98"
 
             _reset(200, 20, 200, 200, 5);
@@ -376,7 +381,7 @@ void Screen_EPD_EXT3::flush()
     // Three groups:
     // + small: up to 4.37
     // + medium: 5.65, 5.81 and 7.4
-    // + large: 9.7 and 12.2
+    // + large: 9.69 and 11,98
     // switch..case doesn't allow variable declarations
     //
     if ((_codeSize == 0x56) or (_codeSize == 0x58) or (_codeSize == 0x74))
@@ -586,7 +591,7 @@ void Screen_EPD_EXT3::flush()
         _reset(200, 20, 200, 200, 5);
 
         // Send image data
-        if (_codeSize == 0x97)
+        if (_codeSize == 0x96)
         {
             uint8_t data1_970[] = {0x00, 0x3b, 0x00, 0x00, 0x9f, 0x02}; // DUW
             _sendIndexData(0x13, data1_970, 6); // DUW for Both Master and Slave
@@ -644,8 +649,8 @@ void Screen_EPD_EXT3::flush()
         delay_ms(100);
         _sendIndexData(0xa7, data5_970, 1);
         delay_ms(100);
-        // uint8_t data10_970[] = {0x00, 0x11}; // --- 9.7 specific
-        if (_codeSize == 0x97)
+        // uint8_t data10_970[] = {0x00, 0x11}; // --- 9.69 specific
+        if (_codeSize == 0x96)
         {
             uint8_t data10_970[] = {0x00, 0x11}; // OSC
             _sendIndexData(0x03, data10_970, 2); // OSC
@@ -772,10 +777,10 @@ void Screen_EPD_EXT3::flush()
 
         if (_pin.panelCSS != NOT_CONNECTED)
         {
-            digitalWrite(_pin.panelCSS, HIGH);    // CSS# = 1
+            digitalWrite(_pin.panelCSS, HIGH); // CSS# = 1
         }
     }
-    else // including 420 and 437
+    else // small, including 420 and 437
     {
         _reset(5, 5, 10, 5, 5);
 
@@ -1022,7 +1027,7 @@ bool Screen_EPD_EXT3::_orientCoordinates(uint16_t & x, uint16_t & y)
 uint32_t Screen_EPD_EXT3::_getZ(uint16_t x1, uint16_t y1)
 {
     uint32_t z1 = 0;
-    // According to 12.2 inch Spectra Application Note
+    // According to 11,98 inch Spectra Application Note
     // at http:// www.pervasivedisplays.com/LiteratureRetrieve.aspx?ID=245146
     if ((_codeSize == 0x96) or (_codeSize == 0xB9))
     {
@@ -1054,7 +1059,7 @@ uint16_t Screen_EPD_EXT3::_getPoint(uint16_t x1, uint16_t y1)
 
     uint32_t z1 = _getZ(x1, y1);
 
-    // // iTC 9.70" and 12.20" BWR series B: reversed bits in byte
+    // // iTC 9.69" and 11,98" BWR series B: reversed bits in byte
 
     value = bitRead(_newImage[z1], 7 - (y1 % 8));
     value <<= 4;
@@ -1137,7 +1142,7 @@ void Screen_EPD_EXT3::_sendIndexData(uint8_t index, const uint8_t * data, uint32
     {
         if (_pin.panelCSS != NOT_CONNECTED)
         {
-            delayMicroseconds(450);    // 450 + 50 = 500
+            delayMicroseconds(450); // 450 + 50 = 500
             digitalWrite(_pin.panelCSS, HIGH);
         }
     }
@@ -1176,7 +1181,7 @@ void Screen_EPD_EXT3::_sendIndexDataSlave(uint8_t index, const uint8_t * data, u
     digitalWrite(_pin.panelDC, LOW); // DC Low= Command
     if (_pin.panelCSS != NOT_CONNECTED)
     {
-        digitalWrite(_pin.panelCSS, LOW);    // CS slave LOW
+        digitalWrite(_pin.panelCSS, LOW); // CS slave LOW
     }
 
     delayMicroseconds(500);
@@ -1185,14 +1190,14 @@ void Screen_EPD_EXT3::_sendIndexDataSlave(uint8_t index, const uint8_t * data, u
 
     if (_pin.panelCSS != NOT_CONNECTED)
     {
-        digitalWrite(_pin.panelCSS, HIGH);    // CS slave HIGH
+        digitalWrite(_pin.panelCSS, HIGH); // CS slave HIGH
     }
 
     digitalWrite(_pin.panelDC, HIGH); // DC High= Data
 
     if (_pin.panelCSS != NOT_CONNECTED)
     {
-        digitalWrite(_pin.panelCSS, LOW);    // CS slave LOW
+        digitalWrite(_pin.panelCSS, LOW); // CS slave LOW
     }
 
     delayMicroseconds(500);

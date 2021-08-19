@@ -3,7 +3,7 @@
 /// @brief Driver for Pervasive Displays iTC monochrome and colour screens with EXT3
 ///
 /// @details Project Pervasive Displays Library Suite
-/// @n Based on highView technology 
+/// @n Based on highView technology
 ///
 /// @n @b B-SML-G
 /// * Edition: Basic
@@ -13,7 +13,7 @@
 ///
 /// @author Rei Vilo
 /// @date 02 Aug 2021
-/// @version 507
+/// @version 508
 ///
 /// @copyright (c) Rei Vilo, 2010-2021
 /// @copyright Creative Commons Attribution-NonCommercial-ShareAlike 4.0 Unported (CC BY-NC-SA 4.0)
@@ -46,7 +46,7 @@
 ///
 /// @brief Library release number
 ///
-#define SCREEN_EPD_EXT3_RELEASE 507
+#define SCREEN_EPD_EXT3_RELEASE 508
 
 // Other libraries
 #include "SPI.h"
@@ -251,6 +251,8 @@ class Screen_EPD_EXT3 final : public hV_Screen_Buffer
 
     // Screen dependent variables
     pins_t _pin;
+    eScreen_EPD_EXT3_t _eScreen_EPD_EXT3;
+    uint8_t _codeExtra;
     uint8_t _codeSize;
     uint8_t _codeType;
     uint16_t _widthBuffer, _heightBuffer, _depthBuffer, _numberBuffer;
