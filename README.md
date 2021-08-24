@@ -1,6 +1,6 @@
 # Pervasive Displays Library Suite - Basic Edition
 
-Library for Pervasive Displays [EPD Extension Kit Gen 3 (EXT3)](https://www.pervasivedisplays.com/product/epd-extension-kit-gen-3-EXT3/) and iTC [monchrome](https://www.pervasivedisplays.com/products/?_sft_etc_itc=itc&_sft_product_colour=black-white) or [colour](https://www.pervasivedisplays.com/products/?_sft_etc_itc=itc&_sft_product_colour=black-white-red) screens with basic features
+Library for Pervasive Displays [EPD Extension Kit Gen 3 (EXT3)](https://www.pervasivedisplays.com/product/epd-extension-kit-gen-3-EXT3/) and iTC [monchrome](https://www.pervasivedisplays.com/products/?_sft_etc_itc=itc&_sft_product_colour=black-white) and [colour](https://www.pervasivedisplays.com/products/?_sft_etc_itc=itc&_sft_product_colour=black-white-red) screens with basic features
 
 ## Features
 
