@@ -6,8 +6,8 @@
 /// @n Based on highView technology 
 ///
 /// @author Rei Vilo
-/// @date 02 Aug 2021
-/// @version 507
+/// @date 16 Aug 2021
+/// @version 508
 ///
 /// @copyright (c) Rei Vilo, 2010-2021
 /// @copyright CC = BY SA NC
@@ -109,7 +109,7 @@ void setup()
 
     Serial.print("White... ");
     myScreen.clear();
-    flush_ms();
+    myScreen.flush();
 
     Serial.println("=== ");
     Serial.println();

@@ -18,8 +18,8 @@
 /// 11. Set SD-card mode, not implemented
 ///
 /// @author Rei Vilo
-/// @date 02 Aug 2021
-/// @version 507
+/// @date 16 Aug 2021
+/// @version 508
 ///
 /// @copyright (c) Rei Vilo, 2010-2021
 /// @copyright Creative Commons Attribution-NonCommercial-ShareAlike 4.0 Unported (CC BY-NC-SA 4.0)
@@ -429,15 +429,16 @@ const pins_t boardRedBearDuo = boardParticulePhoton;
 /// @}
 
 ///
-/// @brief 11- Set SD card
-/// * Basic edition: no SD card
-/// * Advanced edition: no SD card
-/// * Commercial edition: 
+/// @brief 11- Storage mode
+/// * Basic edition: none
+/// * Advanced edition: none
+/// * Commercial edition: option
 ///
 /// @{
-#define USE_SD_NONE 0 ///< No SD card
+#define USE_NONE 0 ///< No storage
 
-#define SD_CARD_MODE USE_SD_NONE ///< Selected option
+
+#define STORAGE_MODE USE_NONE ///< Selected option
 /// @}
 
 #endif // hV_CONFIGURATION_RELEASE
