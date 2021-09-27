@@ -9,7 +9,7 @@
 /// * Edition: Basic
 /// * Family: Small, Medium, Large
 /// * Update: Global
-/// * Feature: None
+/// * Feature: none
 ///
 /// @author Rei Vilo
 /// @date 02 Aug 2021
@@ -59,15 +59,12 @@
 
 // Objects
 //
-
 ///
 /// @brief Class for Pervasive Displays iTC BWR screens
 /// @details Screen controllers
 /// * LCD: propietary, SPI
 /// * touch: no touch
 /// * fonts: no fonts
-///
-/// @note Contrary to eTC, only one frame-buffer is required for iTC BWR.
 ///
 /// @n All commands work on the frame-buffer,
 /// to be displayed on screen with flush()
@@ -193,7 +190,7 @@ class Screen_EPD_EXT3 final : public hV_Screen_Buffer
     /// @brief Set orientation
     /// @param orientation 1..3, 6, 7
     ///
-    void _setOrientation(uint8_t orientation) ; // compulsory
+    void _setOrientation(uint8_t orientation); // compulsory
 
     ///
     /// @brief Check and orient coordinates, logical coordinates
@@ -232,18 +229,15 @@ class Screen_EPD_EXT3 final : public hV_Screen_Buffer
 
     ///
     /// @brief Wait for ready
-    /// @details PANEL_BUSY_PIN low
+    /// @details Wait for _pin.panelBusy low
     ///
     void _waitBusy();
-
-    // Touch
-    // No touch
+    void _sendCommand8(uint8_t command);
 
     // Energy
     // No energy
 
     // * Other functions specific to the screen
-
     // Screen independent variables
     uint8_t * _newImage;
     bool _invert;
@@ -258,6 +252,10 @@ class Screen_EPD_EXT3 final : public hV_Screen_Buffer
     uint16_t _widthBuffer, _heightBuffer, _depthBuffer, _numberBuffer;
     uint32_t _sizePageColour, _sizeFrame;
     uint8_t _refreshTime;
+
+    // === Touch
+    // No touch
+
     /// @endcond
 };
 

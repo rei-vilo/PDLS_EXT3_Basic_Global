@@ -29,7 +29,7 @@
 #include "Arduino.h"
 #endif // end IDE
 
-#ifndef EPAPER_EXT3_BASIC_LIBRARY
-#define EPAPER_EXT3_BASIC_LIBRARY 507
+#ifndef PDLS_EXT3_BASIC_RELEASE
+#define PDLS_EXT3_BASIC_RELEASE 507
 #include "Screen_EPD_EXT3.h"
-#endif // EPAPER_EXT3_BASIC_LIBRARY
+#endif // PDLS_EXT3_BASIC_RELEASE

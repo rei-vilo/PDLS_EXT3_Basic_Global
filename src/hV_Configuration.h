@@ -18,8 +18,8 @@
 /// 11. Set SD-card mode, not implemented
 ///
 /// @author Rei Vilo
-/// @date 16 Aug 2021
-/// @version 508
+/// @date 15 Sep 2021
+/// @version 509
 ///
 /// @copyright (c) Rei Vilo, 2010-2021
 /// @copyright Creative Commons Attribution-NonCommercial-ShareAlike 4.0 Unported (CC BY-NC-SA 4.0)
@@ -51,7 +51,7 @@
 ///
 /// @brief Release
 ///
-#define hV_CONFIGURATION_RELEASE 507
+#define hV_CONFIGURATION_RELEASE 509
 
 ///
 /// @name 1- List of supported Pervasive Displays screens
@@ -65,7 +65,6 @@
 #define eScreen_EPD_EXT3_213 (uint32_t)0x2100 ///< reference xE2213CSxxx
 #define eScreen_EPD_EXT3_266 (uint32_t)0x2600 ///< reference xE2266CSxxx
 #define eScreen_EPD_EXT3_271 (uint32_t)0x2700 ///< reference xE2271CSxxx
-#define eScreen_EPD_EXT3_271_Partial (uint32_t)0x012709 ///< reference xE2271PS09x
 #define eScreen_EPD_EXT3_287 (uint32_t)0x2800 ///< reference xE2287CSxxx
 #define eScreen_EPD_EXT3_290 (uint32_t)0x2900 ///< reference xE2290CSxxx
 #define eScreen_EPD_EXT3_370 (uint32_t)0x3700 ///< reference xE2370CSxxx
@@ -96,6 +95,7 @@
 #define eScreen_EPD_EXT3_266_09 (uint32_t)0x2609 ///< reference xE2266xS09x
 #define eScreen_EPD_EXT3_266_0C (uint32_t)0x260C ///< reference xE2266CS0Cx
 #define eScreen_EPD_EXT3_271_09 (uint32_t)0x2709 ///< reference xE2271CS09x
+#define eScreen_EPD_EXT3_271_Fast (uint32_t)0x012709 ///< reference xE2271PS09x
 #define eScreen_EPD_EXT3_287_09 (uint32_t)0x2809 ///< reference xE2287CS09x
 #define eScreen_EPD_EXT3_370_0C (uint32_t)0x370C ///< reference xE2370CS0Cx
 #define eScreen_EPD_EXT3_417_05 (uint32_t)0x4105 ///< reference xE2417CS05x
@@ -436,7 +436,6 @@ const pins_t boardRedBearDuo = boardParticulePhoton;
 ///
 /// @{
 #define USE_NONE 0 ///< No storage
-
 
 #define STORAGE_MODE USE_NONE ///< Selected option
 /// @}

@@ -3,7 +3,8 @@
 // Library C++ code
 // ----------------------------------
 //
-// Project highView Library Suite
+// Project Pervasive Displays Library Suite
+// Based on highView technology
 //
 // Created by Rei Vilo, 28 Jun 2016
 //
@@ -57,7 +58,6 @@ void Screen_EPD_EXT3::begin()
     _codeExtra = (_eScreen_EPD_EXT3 >> 16) & 0xff;
     _codeSize = (_eScreen_EPD_EXT3 >> 8) & 0xff;
     _codeType = _eScreen_EPD_EXT3 & 0xff;
-
     _screenColourBits = 2; // BWR
 
     switch (_codeSize)
@@ -205,6 +205,7 @@ void Screen_EPD_EXT3::begin()
     // Check FRAM
     bool flag = true;
     uint8_t count = 8;
+
     _newImage[1] = 0x00;
     while (flag)
     {
@@ -216,7 +217,7 @@ void Screen_EPD_EXT3::begin()
         }
         count--;
     }
-    memset(_newImage, 0x00, _sizePageColour);
+    memset(_newImage, 0x00, _sizePageColour * _depthBuffer);
 
     // Initialise the /CS pins
     pinMode(_pin.panelCS, OUTPUT);
@@ -353,19 +354,22 @@ String Screen_EPD_EXT3::WhoAmI()
     text += String(_screenDiagonal / 100);
     text += ".";
     text += String(_screenDiagonal % 100);
-    text += "\" BWR";
+    text += "\" -";
 
-    text += " -";
 #if (FONT_MODE == USE_FONT_HEADER)
+
     text += "H";
 
 #elif (FONT_MODE == USE_FONT_FLASH)
+
     text += "F";
 
 #elif (FONT_MODE == USE_FONT_TERMINAL)
+
     text += "T";
 
 #else
+
     text += "?";
 
 #endif // FONT_MODE
@@ -945,12 +949,6 @@ void Screen_EPD_EXT3::_setPoint(uint16_t x1, uint16_t y1, uint16_t colour)
         }
     }
 
-    // iTC 9.70" and 12.20" BWR series B: reversed bits in byte
-    // if (USE_DRIVER_IC == USE_DRIVER_IST7136)
-    // {
-    //     y1 = 7 - (y1 % 8);
-    // }
-
     // Basic colours
     if (colour == myColours.red)
     {
@@ -1048,7 +1046,7 @@ uint32_t Screen_EPD_EXT3::_getZ(uint16_t x1, uint16_t y1)
 uint16_t Screen_EPD_EXT3::_getPoint(uint16_t x1, uint16_t y1)
 {
     // Orient and check coordinates are within screen
-    // _orientCoordinates() returns false=success, true=error
+    // _orientCoordinates() returns false = success, true = error
     if (_orientCoordinates(x1, y1))
     {
         return 0;
@@ -1058,8 +1056,6 @@ uint16_t Screen_EPD_EXT3::_getPoint(uint16_t x1, uint16_t y1)
     uint8_t value = 0;
 
     uint32_t z1 = _getZ(x1, y1);
-
-    // // iTC 9.69" and 11,98" BWR series B: reversed bits in byte
 
     value = bitRead(_newImage[z1], 7 - (y1 % 8));
     value <<= 4;
