@@ -179,8 +179,8 @@ void Screen_EPD_EXT3::begin()
     // Actually for 1 colour; BWR requires 2 pages.
     _sizePageColour = (uint32_t)_widthBuffer * (uint32_t)_heightBuffer;
 
-    // _sizeFrame = _sizePageColour, except for 9.70 and 12.20
-    // 9.70 and 12.20 combine two half-screens, hence two frames with adjusted size
+    // _sizeFrame = _sizePageColour, except for 9.69 and 11.98
+    // 9.69 and 11.98 combine two half-screens, hence two frames with adjusted size
     switch (_codeSize)
     {
         case 0x96: // 9.69"
@@ -1152,14 +1152,14 @@ void Screen_EPD_EXT3::_sendIndexDataMaster(uint8_t index, const uint8_t * data, 
     {
         digitalWrite(_pin.panelCSS, HIGH); // CS slave HIGH
     }
-    digitalWrite(_pin.panelDC, LOW); // DC Low= Command
-    digitalWrite(_pin.panelCS, LOW); // CS Low= Select
+    digitalWrite(_pin.panelDC, LOW); // DC Low = Command
+    digitalWrite(_pin.panelCS, LOW); // CS Low = Select
     delayMicroseconds(500);
     SPI.transfer(index);
     delayMicroseconds(500);
-    digitalWrite(_pin.panelCS, HIGH); // CS High= Unselect
-    digitalWrite(_pin.panelDC, HIGH); // DC High= Data
-    digitalWrite(_pin.panelCS, LOW); // CS Low= Select
+    digitalWrite(_pin.panelCS, HIGH); // CS High = Unselect
+    digitalWrite(_pin.panelDC, HIGH); // DC High = Data
+    digitalWrite(_pin.panelCS, LOW); // CS Low = Select
     delayMicroseconds(500);
 
     for (uint32_t i = 0; i < size; i++)
@@ -1189,7 +1189,7 @@ void Screen_EPD_EXT3::_sendIndexDataSlave(uint8_t index, const uint8_t * data, u
         digitalWrite(_pin.panelCSS, HIGH); // CS slave HIGH
     }
 
-    digitalWrite(_pin.panelDC, HIGH); // DC High= Data
+    digitalWrite(_pin.panelDC, HIGH); // DC High = Data
 
     if (_pin.panelCSS != NOT_CONNECTED)
     {
@@ -1214,7 +1214,3 @@ uint8_t Screen_EPD_EXT3::getRefreshTime()
     return _refreshTime;
 }
 
-font_s Screen_EPD_EXT3::getFontDetails()
-{
-    return _f_font;
-}

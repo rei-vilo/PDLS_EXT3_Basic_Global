@@ -60,7 +60,7 @@
 // Objects
 //
 ///
-/// @brief Class for Pervasive Displays iTC BWR screens
+/// @brief Class for Pervasive Displays iTC monochome and colour screens
 /// @details Screen controllers
 /// * LCD: propietary, SPI
 /// * touch: no touch
@@ -137,12 +137,6 @@ class Screen_EPD_EXT3 final : public hV_Screen_Buffer
     /// @return Estimated refresh time in seconds
     ///
     uint8_t getRefreshTime();
-
-    ///
-    /// @brief Get the details of the selected font
-    /// @return font_s structure
-    ///
-    font_s getFontDetails();
 
   protected:
     /// @cond

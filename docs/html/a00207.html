@@ -91,7 +91,7 @@ $(document).ready(function(){initNavTree('a00207.html',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 
-<p>Class for Pervasive Displays iTC BWR screens.  
+<p>Class for Pervasive Displays iTC monochome and colour screens.  
  <a href="a00207.html#details">More...</a></p>
 
 <p><code>#include &lt;Screen_EPD_EXT3.h&gt;</code></p>
@@ -100,7 +100,7 @@ Inheritance diagram for Screen_EPD_EXT3:</div>
 <div class="dyncontent">
 <div class="center"><img src="a00206.png" border="0" usemap="#aScreen__EPD__EXT3_inherit__map" alt="Inheritance graph"/></div>
 <map name="aScreen__EPD__EXT3_inherit__map" id="aScreen__EPD__EXT3_inherit__map">
-<area shape="rect" title="Class for Pervasive Displays iTC BWR screens." alt="" coords="5,155,144,181"/>
+<area shape="rect" title="Class for Pervasive Displays iTC monochome and colour screens." alt="" coords="5,155,144,181"/>
 <area shape="rect" href="a00203.html" title="Generic class for buffered LCD." alt="" coords="6,80,143,107"/>
 <area shape="rect" href="a00199.html" title="Class for font as header file." alt="" coords="6,5,143,32"/>
 </map>
@@ -110,7 +110,7 @@ Collaboration diagram for Screen_EPD_EXT3:</div>
 <div class="dyncontent">
 <div class="center"><img src="a00205.png" border="0" usemap="#aScreen__EPD__EXT3_coll__map" alt="Collaboration graph"/></div>
 <map name="aScreen__EPD__EXT3_coll__map" id="aScreen__EPD__EXT3_coll__map">
-<area shape="rect" title="Class for Pervasive Displays iTC BWR screens." alt="" coords="5,247,144,273"/>
+<area shape="rect" title="Class for Pervasive Displays iTC monochome and colour screens." alt="" coords="5,247,144,273"/>
 <area shape="rect" href="a00203.html" title="Generic class for buffered LCD." alt="" coords="6,171,143,197"/>
 <area shape="rect" href="a00199.html" title="Class for font as header file." alt="" coords="6,95,143,121"/>
 <area shape="rect" href="a00195.html" title="Structure for font." alt="" coords="43,5,106,32"/>
@@ -146,9 +146,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a44a5cff6b6fee665798deea12cc1a58e"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00207.html#a44a5cff6b6fee665798deea12cc1a58e">getRefreshTime</a> ()</td></tr>
 <tr class="memdesc:a44a5cff6b6fee665798deea12cc1a58e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Screen refresh time for the BWR screens.  <a href="a00207.html#a44a5cff6b6fee665798deea12cc1a58e">More...</a><br /></td></tr>
 <tr class="separator:a44a5cff6b6fee665798deea12cc1a58e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab3b08921adaf14bd153963dc72f81e13"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00195.html">font_s</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00207.html#ab3b08921adaf14bd153963dc72f81e13">getFontDetails</a> ()</td></tr>
-<tr class="memdesc:ab3b08921adaf14bd153963dc72f81e13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the details of the selected font.  <a href="a00207.html#ab3b08921adaf14bd153963dc72f81e13">More...</a><br /></td></tr>
-<tr class="separator:ab3b08921adaf14bd153963dc72f81e13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_a00203"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_a00203')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="a00203.html">hV_Screen_Buffer</a></td></tr>
 <tr class="memitem:a556e473029b0a519ba7c3818fbc45023 inherit pub_methods_a00203"><td class="memItemLeft" align="right" valign="top"><a id="a556e473029b0a519ba7c3818fbc45023"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00203.html#a556e473029b0a519ba7c3818fbc45023">hV_Screen_Buffer</a> ()</td></tr>
@@ -303,7 +300,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a001
 <tr class="separator:a18f256bd304432efaa158d24eb0a0651 inherit pro_attribs_a00199"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Class for Pervasive Displays iTC BWR screens. </p>
+<div class="textblock"><p>Class for Pervasive Displays iTC monochome and colour screens. </p>
 <p>Screen controllers</p><ul>
 <li>LCD: propietary, SPI</li>
 <li>touch: no touch</li>
@@ -446,26 +443,6 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a001
 <dl class="section note"><dt>Note</dt><dd>Send the frame-buffer to the screen and refresh the screen </dd></dl>
 
 <p>Implements <a class="el" href="a00203.html#ae12eb3335304819c9eb94386371d995e">hV_Screen_Buffer</a>.</p>
-
-</div>
-</div>
-<a id="ab3b08921adaf14bd153963dc72f81e13"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab3b08921adaf14bd153963dc72f81e13">&#9670;&nbsp;</a></span>getFontDetails()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00195.html">font_s</a> Screen_EPD_EXT3::getFontDetails </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get the details of the selected font. </p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="a00195.html" title="Structure for font.">font_s</a> structure </dd></dl>
 
 </div>
 </div>

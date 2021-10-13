@@ -32,7 +32,7 @@
 ///
 /// * This **Reference manual** lists all the objects and functions, with details for their parameters and returned results.
 ///
-/// * The **[User guide](http://pdls.pervasivedisplays.com/userguide/)** focuses on how to use the different libraries, with commented examples;
+/// * The [User guide](http://pdls.pervasivedisplays.com/userguide/index.html) focuses on how to use the different libraries, with commented examples;
 ///
 /// @page Examples Examples 
 ///
