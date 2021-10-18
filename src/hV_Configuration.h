@@ -18,8 +18,8 @@
 /// 11. Set SD-card mode, not implemented
 ///
 /// @author Rei Vilo
-/// @date 15 Sep 2021
-/// @version 509
+/// @date 18 Oct 2021
+/// @version 512
 ///
 /// @copyright (c) Rei Vilo, 2010-2021
 /// @copyright Creative Commons Attribution-NonCommercial-ShareAlike 4.0 Unported (CC BY-NC-SA 4.0)
@@ -51,7 +51,7 @@
 ///
 /// @brief Release
 ///
-#define hV_CONFIGURATION_RELEASE 509
+#define hV_CONFIGURATION_RELEASE 512
 
 ///
 /// @name 1- List of supported Pervasive Displays screens
@@ -94,6 +94,7 @@
 #define eScreen_EPD_EXT3_213_0C (uint32_t)0x210C ///< reference xE2213CS0Cx
 #define eScreen_EPD_EXT3_266_09 (uint32_t)0x2609 ///< reference xE2266xS09x
 #define eScreen_EPD_EXT3_266_0C (uint32_t)0x260C ///< reference xE2266CS0Cx
+#define eScreen_EPD_EXT3_266_Armor (uint32_t)0x032609 ///< reference xE2266CS0Cx
 #define eScreen_EPD_EXT3_271_09 (uint32_t)0x2709 ///< reference xE2271CS09x
 #define eScreen_EPD_EXT3_271_Fast (uint32_t)0x012709 ///< reference xE2271PS09x
 #define eScreen_EPD_EXT3_287_09 (uint32_t)0x2809 ///< reference xE2287CS09x
@@ -214,9 +215,9 @@ const pins_t boardLaunchPadGCU =
 };
 
 ///
-/// @brief Raspberry Pi B configuration, tested
+/// @brief Raspberry Pi Zero, 2B, 3B, 4B configuration, tested
 ///
-const pins_t boardRaspberryPiB =
+const pins_t boardRaspberryPiZero =
 {
     .panelBusy = 7, ///< EXT3 pin 3 Red -> GPIO7 pin 6
     .panelDC = 8, ///< EXT3 pin 4 Orange -> GPIO8 pin 24
@@ -232,15 +233,34 @@ const pins_t boardRaspberryPiB =
 };
 
 ///
-/// @brief Raspberry Pi Pico configuration, tested
+/// @brief Raspberry Pi Pico Arduino configuration, tested
 ///
-const pins_t boardRaspberryPiPico =
+const pins_t boardRaspberryPiPico_Arduino =
 {
     .panelBusy = 13, ///< EXT3 pin 3 Red -> GP13
     .panelDC = 12, ///< EXT3 pin 4 Orange -> GP12
     .panelReset = 11, ///< EXT3 pin 5 Yellow -> GP11
     .flashCS = 10, ///< EXT3 pin 8 Violet -> GP10
     .panelCS = 5, ///< EXT3 pin 9 Grey -> GP5
+    .panelCSS = 14, ///< EXT3 pin 12 Grey2 -> GP14
+    .flashCSS = 15, ///< EXT3 pin 20 Black2 -> GP15
+    .touchReset = NOT_CONNECTED, ///< Separate touch board -> GP8
+    .touchInt = NOT_CONNECTED, ///< Separate touch board -> GP9
+    .cardCS = NOT_CONNECTED, ///< Separate SD-card board
+    .cardDetect = NOT_CONNECTED, ///< Separate SD-card board
+};
+
+///
+/// @brief Raspberry Pi Pico with default RP2040 configuration, tested
+/// @note Numbers refer to GPIOs, not pins
+///
+const pins_t boardRaspberryPiPico_RP2040 =
+{
+    .panelBusy = 13, ///< EXT3 pin 3 Red -> GP13
+    .panelDC = 12, ///< EXT3 pin 4 Orange -> GP12
+    .panelReset = 11, ///< EXT3 pin 5 Yellow -> GP11
+    .flashCS = 10, ///< EXT3 pin 8 Violet -> GP10
+    .panelCS = 17, ///< EXT3 pin 9 Grey -> GP17
     .panelCSS = 14, ///< EXT3 pin 12 Grey2 -> GP14
     .flashCSS = 15, ///< EXT3 pin 20 Black2 -> GP15
     .touchReset = NOT_CONNECTED, ///< Separate touch board -> GP8
@@ -318,6 +338,25 @@ const pins_t boardRedBearDuo = boardParticulePhoton;
 #endif
 
 /// @}
+
+///
+/// @brief Espressif ESP32-DevKitC
+/// @note Numbers refer to GPIOs not pins
+///
+const pins_t boardESP32DevKitC =
+{
+    .panelBusy = 27, ///< EXT3 pin 3 Red -> GPIO27
+    .panelDC = 26, ///< EXT3 pin 4 Orange -> GPIO26
+    .panelReset = 25, ///< EXT3 pin 5 Yellow -> GPIO25
+    .flashCS =33, ///< EXT3 pin 8 Violet -> GPIO33
+    .panelCS = 32, ///< EXT3 pin 9 Grey -> GPIO32
+    .panelCSS = 4, ///< EXT3 pin 12 Grey2 -> GPIO4
+    .flashCSS = 0, ///< EXT3 pin 20 Black2 -> GPIO0
+    .touchReset = NOT_CONNECTED, ///< Separate touch board
+    .touchInt = NOT_CONNECTED, ///< Separate touch board
+    .cardCS = NOT_CONNECTED, ///< Separate SD-card board
+    .cardDetect = NOT_CONNECTED, ///< Separate SD-card board
+};
 
 ///
 /// @name 3- Set font mode
