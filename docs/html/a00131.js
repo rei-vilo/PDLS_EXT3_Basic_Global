@@ -9,6 +9,7 @@ var a00131 =
     [ "eScreen_EPD_EXT3_266", "a00131.html#ab7b26f1cbbe68e729b06e22911e17861", null ],
     [ "eScreen_EPD_EXT3_266_09", "a00131.html#a8c1d3f225773b83c80621fd8228ec2b8", null ],
     [ "eScreen_EPD_EXT3_266_0C", "a00131.html#a18af0cdbf004c500b51c579ac2df51ff", null ],
+    [ "eScreen_EPD_EXT3_266_Armor", "a00131.html#a5319eb95c1b1b1c52d0da61bbd325765", null ],
     [ "eScreen_EPD_EXT3_271", "a00131.html#af6476a5a59f827856644b2771ff92dde", null ],
     [ "eScreen_EPD_EXT3_271_09", "a00131.html#adbbe45f58cc2d47e3a56bde2756625d6", null ],
     [ "eScreen_EPD_EXT3_271_Fast", "a00131.html#ab3fd4c7a01dbbfeec6ced76d26ceec11", null ],
@@ -71,10 +72,12 @@ var a00131 =
     [ "USE_TOUCH_NONE", "a00131.html#ac0b08ef537f6a6c42bceab5c3b8da75c", null ],
     [ "boardArduinoZero", "a00131.html#a47cc4f37c263fb4355a5da27de205511", null ],
     [ "boardCC1352", "a00131.html#a87edfbded5d6f32d1854a1ee879ef87d", null ],
+    [ "boardESP32DevKitC", "a00131.html#ad900dca7592c68bce6641a7fa5cae41f", null ],
     [ "boardFeatherM0", "a00131.html#a451ebb9f23e11c2e9ae8473041a1873f", null ],
     [ "boardLaunchPad", "a00131.html#a18504c4b88869b52971ed406679d794e", null ],
     [ "boardLaunchPadGCU", "a00131.html#a2597adfeb71941d30510db3c36c547d7", null ],
     [ "boardNucleo64", "a00131.html#afad37f2188fa8b28b3b9806de35e2fd7", null ],
-    [ "boardRaspberryPiB", "a00131.html#ade918a742a4ee926b6beae2c7bc22860", null ],
-    [ "boardRaspberryPiPico", "a00131.html#a6a9033fa133bc3043eac468c86cb9e4c", null ]
+    [ "boardRaspberryPiPico_Arduino", "a00131.html#a3d2067293296d6d5d4aeebc8e56d90bc", null ],
+    [ "boardRaspberryPiPico_RP2040", "a00131.html#a894b0bb2d9979d677cae8a66db5ca563", null ],
+    [ "boardRaspberryPiZero", "a00131.html#a75d7b3e97ec1aa7135eb3bf7d9b4330a", null ]
 ];

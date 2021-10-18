@@ -5,12 +5,14 @@ var searchData=
   ['blue_23',['blue',['../a00183.html#af00f72504fd2397a01a4c18ea4a07011',1,'hV_Colours565']]],
   ['boardarduinozero_24',['boardArduinoZero',['../a00131.html#a47cc4f37c263fb4355a5da27de205511',1,'hV_Configuration.h']]],
   ['boardcc1352_25',['boardCC1352',['../a00131.html#a87edfbded5d6f32d1854a1ee879ef87d',1,'hV_Configuration.h']]],
-  ['boardfeatherm0_26',['boardFeatherM0',['../a00131.html#a451ebb9f23e11c2e9ae8473041a1873f',1,'hV_Configuration.h']]],
-  ['boardlaunchpad_27',['boardLaunchPad',['../a00131.html#a18504c4b88869b52971ed406679d794e',1,'hV_Configuration.h']]],
-  ['boardlaunchpadgcu_28',['boardLaunchPadGCU',['../a00131.html#a2597adfeb71941d30510db3c36c547d7',1,'hV_Configuration.h']]],
-  ['boardnucleo64_29',['boardNucleo64',['../a00131.html#afad37f2188fa8b28b3b9806de35e2fd7',1,'hV_Configuration.h']]],
-  ['boardraspberrypib_30',['boardRaspberryPiB',['../a00131.html#ade918a742a4ee926b6beae2c7bc22860',1,'hV_Configuration.h']]],
-  ['boardraspberrypipico_31',['boardRaspberryPiPico',['../a00131.html#a6a9033fa133bc3043eac468c86cb9e4c',1,'hV_Configuration.h']]],
-  ['brown_32',['brown',['../a00183.html#af609c9a4563f05df95d16889ccde8106',1,'hV_Colours565']]],
-  ['btoa_33',['btoa',['../a00155.html#a1b93260a872fc5c6e935d12005d74c84',1,'hV_Utilities.cpp']]]
+  ['boardesp32devkitc_26',['boardESP32DevKitC',['../a00131.html#ad900dca7592c68bce6641a7fa5cae41f',1,'hV_Configuration.h']]],
+  ['boardfeatherm0_27',['boardFeatherM0',['../a00131.html#a451ebb9f23e11c2e9ae8473041a1873f',1,'hV_Configuration.h']]],
+  ['boardlaunchpad_28',['boardLaunchPad',['../a00131.html#a18504c4b88869b52971ed406679d794e',1,'hV_Configuration.h']]],
+  ['boardlaunchpadgcu_29',['boardLaunchPadGCU',['../a00131.html#a2597adfeb71941d30510db3c36c547d7',1,'hV_Configuration.h']]],
+  ['boardnucleo64_30',['boardNucleo64',['../a00131.html#afad37f2188fa8b28b3b9806de35e2fd7',1,'hV_Configuration.h']]],
+  ['boardraspberrypipico_5farduino_31',['boardRaspberryPiPico_Arduino',['../a00131.html#a3d2067293296d6d5d4aeebc8e56d90bc',1,'hV_Configuration.h']]],
+  ['boardraspberrypipico_5frp2040_32',['boardRaspberryPiPico_RP2040',['../a00131.html#a894b0bb2d9979d677cae8a66db5ca563',1,'hV_Configuration.h']]],
+  ['boardraspberrypizero_33',['boardRaspberryPiZero',['../a00131.html#a75d7b3e97ec1aa7135eb3bf7d9b4330a',1,'hV_Configuration.h']]],
+  ['brown_34',['brown',['../a00183.html#af609c9a4563f05df95d16889ccde8106',1,'hV_Colours565']]],
+  ['btoa_35',['btoa',['../a00155.html#a1b93260a872fc5c6e935d12005d74c84',1,'hV_Utilities.cpp']]]
 ];

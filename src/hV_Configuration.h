@@ -337,8 +337,6 @@ const pins_t boardParticlePhoton =
 const pins_t boardRedBearDuo = boardParticulePhoton;
 #endif
 
-/// @}
-
 ///
 /// @brief Espressif ESP32-DevKitC
 /// @note Numbers refer to GPIOs not pins
@@ -357,6 +355,8 @@ const pins_t boardESP32DevKitC =
     .cardCS = NOT_CONNECTED, ///< Separate SD-card board
     .cardDetect = NOT_CONNECTED, ///< Separate SD-card board
 };
+
+/// @}
 
 ///
 /// @name 3- Set font mode

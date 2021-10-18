@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Pervasive Displays Library Suite - Basic edition
-   &#160;<span id="projectnumber">5.0.9</span>
+   &#160;<span id="projectnumber">5.1.2</span>
    </div>
    <div id="projectbrief">Library for Pervasive Displays e-paper screens and EXT3 extension board</div>
   </td>
@@ -127,7 +127,7 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a3bcfa67129cf269c0672a66e4705cc21"><td class="memItemLeft" align="right" valign="top"><a id="a3bcfa67129cf269c0672a66e4705cc21"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00131.html#a3bcfa67129cf269c0672a66e4705cc21">hV_CONFIGURATION_RELEASE</a>&#160;&#160;&#160;509</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00131.html#a3bcfa67129cf269c0672a66e4705cc21">hV_CONFIGURATION_RELEASE</a>&#160;&#160;&#160;512</td></tr>
 <tr class="memdesc:a3bcfa67129cf269c0672a66e4705cc21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Release. <br /></td></tr>
 <tr class="separator:a3bcfa67129cf269c0672a66e4705cc21"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a66b2ce216c9fb1c332b3f3a4dbc0882b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00131.html#a66b2ce216c9fb1c332b3f3a4dbc0882b">MAX_FONT_SIZE</a>&#160;&#160;&#160;4</td></tr>
@@ -242,6 +242,10 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00131.html#a18af0cdbf004c500b51c579ac2df51ff">eScreen_EPD_EXT3_266_0C</a>&#160;&#160;&#160;(uint32_t)0x260C</td></tr>
 <tr class="memdesc:a18af0cdbf004c500b51c579ac2df51ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">reference xE2266CS0Cx <br /></td></tr>
 <tr class="separator:a18af0cdbf004c500b51c579ac2df51ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5319eb95c1b1b1c52d0da61bbd325765"><td class="memItemLeft" align="right" valign="top"><a id="a5319eb95c1b1b1c52d0da61bbd325765"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00131.html#a5319eb95c1b1b1c52d0da61bbd325765">eScreen_EPD_EXT3_266_Armor</a>&#160;&#160;&#160;(uint32_t)0x032609</td></tr>
+<tr class="memdesc:a5319eb95c1b1b1c52d0da61bbd325765"><td class="mdescLeft">&#160;</td><td class="mdescRight">reference xE2266CS0Cx <br /></td></tr>
+<tr class="separator:a5319eb95c1b1b1c52d0da61bbd325765"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adbbe45f58cc2d47e3a56bde2756625d6"><td class="memItemLeft" align="right" valign="top"><a id="adbbe45f58cc2d47e3a56bde2756625d6"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00131.html#adbbe45f58cc2d47e3a56bde2756625d6">eScreen_EPD_EXT3_271_09</a>&#160;&#160;&#160;(uint32_t)0x2709</td></tr>
 <tr class="memdesc:adbbe45f58cc2d47e3a56bde2756625d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">reference xE2271CS09x <br /></td></tr>
@@ -317,8 +321,7 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>frameSize_EPD_EXT3_B98</b>&#160;&#160;&#160;(uint32_t)(184320)</td></tr>
 <tr class="separator:af4e3457ef45822cf7ce61b8af5074a7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">3- Set font mode</div></td></tr>
-<tr><td colspan="2"><div class="groupText"><p>RedBear Duo configuration, tested</p>
-<p>From header files or from external flash</p><ul>
+<tr><td colspan="2"><div class="groupText"><p>From header files or from external flash</p><ul>
 <li>Basic edition: Terminal font</li>
 <li>Advanced edition: DejaVu font as header</li>
 <li>Commercial edition: DejaVu font as either header or external SPI Flash <dl class="section note"><dt>Note</dt><dd>USE_FONT_HEADER requires addFont() </dd>
@@ -433,12 +436,15 @@ Recommended: USE_hV_SCREEN_VIRTUAL </dd></dl>
 <tr class="memitem:a2597adfeb71941d30510db3c36c547d7"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="a00187.html">pins_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00131.html#a2597adfeb71941d30510db3c36c547d7">boardLaunchPadGCU</a></td></tr>
 <tr class="memdesc:a2597adfeb71941d30510db3c36c547d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">MSP5430FR5994 as GCU configuration, tested.  <a href="a00131.html#a2597adfeb71941d30510db3c36c547d7">More...</a><br /></td></tr>
 <tr class="separator:a2597adfeb71941d30510db3c36c547d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ade918a742a4ee926b6beae2c7bc22860"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="a00187.html">pins_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00131.html#ade918a742a4ee926b6beae2c7bc22860">boardRaspberryPiB</a></td></tr>
-<tr class="memdesc:ade918a742a4ee926b6beae2c7bc22860"><td class="mdescLeft">&#160;</td><td class="mdescRight">Raspberry Pi B configuration, tested.  <a href="a00131.html#ade918a742a4ee926b6beae2c7bc22860">More...</a><br /></td></tr>
-<tr class="separator:ade918a742a4ee926b6beae2c7bc22860"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a9033fa133bc3043eac468c86cb9e4c"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="a00187.html">pins_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00131.html#a6a9033fa133bc3043eac468c86cb9e4c">boardRaspberryPiPico</a></td></tr>
-<tr class="memdesc:a6a9033fa133bc3043eac468c86cb9e4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Raspberry Pi Pico configuration, tested.  <a href="a00131.html#a6a9033fa133bc3043eac468c86cb9e4c">More...</a><br /></td></tr>
-<tr class="separator:a6a9033fa133bc3043eac468c86cb9e4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75d7b3e97ec1aa7135eb3bf7d9b4330a"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="a00187.html">pins_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00131.html#a75d7b3e97ec1aa7135eb3bf7d9b4330a">boardRaspberryPiZero</a></td></tr>
+<tr class="memdesc:a75d7b3e97ec1aa7135eb3bf7d9b4330a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Raspberry Pi Zero, 2B, 3B, 4B configuration, tested.  <a href="a00131.html#a75d7b3e97ec1aa7135eb3bf7d9b4330a">More...</a><br /></td></tr>
+<tr class="separator:a75d7b3e97ec1aa7135eb3bf7d9b4330a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d2067293296d6d5d4aeebc8e56d90bc"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="a00187.html">pins_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00131.html#a3d2067293296d6d5d4aeebc8e56d90bc">boardRaspberryPiPico_Arduino</a></td></tr>
+<tr class="memdesc:a3d2067293296d6d5d4aeebc8e56d90bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Raspberry Pi Pico Arduino configuration, tested.  <a href="a00131.html#a3d2067293296d6d5d4aeebc8e56d90bc">More...</a><br /></td></tr>
+<tr class="separator:a3d2067293296d6d5d4aeebc8e56d90bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a894b0bb2d9979d677cae8a66db5ca563"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="a00187.html">pins_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00131.html#a894b0bb2d9979d677cae8a66db5ca563">boardRaspberryPiPico_RP2040</a></td></tr>
+<tr class="memdesc:a894b0bb2d9979d677cae8a66db5ca563"><td class="mdescLeft">&#160;</td><td class="mdescRight">Raspberry Pi Pico with default RP2040 configuration, tested.  <a href="a00131.html#a894b0bb2d9979d677cae8a66db5ca563">More...</a><br /></td></tr>
+<tr class="separator:a894b0bb2d9979d677cae8a66db5ca563"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a451ebb9f23e11c2e9ae8473041a1873f"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="a00187.html">pins_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00131.html#a451ebb9f23e11c2e9ae8473041a1873f">boardFeatherM0</a></td></tr>
 <tr class="memdesc:a451ebb9f23e11c2e9ae8473041a1873f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Feather M0 configuration, tested.  <a href="a00131.html#a451ebb9f23e11c2e9ae8473041a1873f">More...</a><br /></td></tr>
 <tr class="separator:a451ebb9f23e11c2e9ae8473041a1873f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -449,6 +455,9 @@ Recommended: USE_hV_SCREEN_VIRTUAL </dd></dl>
 const <a class="el" href="a00187.html">pins_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00131.html#afad37f2188fa8b28b3b9806de35e2fd7">boardNucleo64</a> = <a class="el" href="a00131.html#a47cc4f37c263fb4355a5da27de205511">boardArduinoZero</a></td></tr>
 <tr class="memdesc:afad37f2188fa8b28b3b9806de35e2fd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">ST Nucleo 64, tested. <br /></td></tr>
 <tr class="separator:afad37f2188fa8b28b3b9806de35e2fd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad900dca7592c68bce6641a7fa5cae41f"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="a00187.html">pins_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00131.html#ad900dca7592c68bce6641a7fa5cae41f">boardESP32DevKitC</a></td></tr>
+<tr class="memdesc:ad900dca7592c68bce6641a7fa5cae41f"><td class="mdescLeft">&#160;</td><td class="mdescRight">RedBear Duo configuration, tested.  <a href="a00131.html#ad900dca7592c68bce6641a7fa5cae41f">More...</a><br /></td></tr>
+<tr class="separator:ad900dca7592c68bce6641a7fa5cae41f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Configuration of the options for Pervasive Displays Library Suite. </p>
@@ -460,8 +469,8 @@ const <a class="el" href="a00187.html">pins_t</a>&#160;</td><td class="memItemRi
 <li>Set SD-card mode, not implemented</li>
 </ol>
 <dl class="section author"><dt>Author</dt><dd>Rei Vilo </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>15 Sep 2021 </dd></dl>
-<dl class="section version"><dt>Version</dt><dd>509</dd></dl>
+<dl class="section date"><dt>Date</dt><dd>18 Oct 2021 </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>512</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>(c) Rei Vilo, 2010-2021 </dd>
 <dd>
 Creative Commons Attribution-NonCommercial-ShareAlike 4.0 Unported (CC BY-NC-SA 4.0)</dd></dl>
@@ -745,7 +754,7 @@ Creative Commons Attribution-NonCommercial-ShareAlike 4.0 Unported (CC BY-NC-SA 
 <div class="line">    .cardCS = <a class="code" href="a00131.html#a0e9795e3bb758850785e6ebc676ab01b">NOT_CONNECTED</a>, </div>
 <div class="line">    .cardDetect = <a class="code" href="a00131.html#a0e9795e3bb758850785e6ebc676ab01b">NOT_CONNECTED</a>, </div>
 <div class="line">}</div>
-<div class="ttc" id="aa00131_html_a0e9795e3bb758850785e6ebc676ab01b"><div class="ttname"><a href="a00131.html#a0e9795e3bb758850785e6ebc676ab01b">NOT_CONNECTED</a></div><div class="ttdeci">#define NOT_CONNECTED</div><div class="ttdoc">Not connected pin.</div><div class="ttdef"><b>Definition:</b> hV_Configuration.h:135</div></div>
+<div class="ttc" id="aa00131_html_a0e9795e3bb758850785e6ebc676ab01b"><div class="ttname"><a href="a00131.html#a0e9795e3bb758850785e6ebc676ab01b">NOT_CONNECTED</a></div><div class="ttdeci">#define NOT_CONNECTED</div><div class="ttdoc">Not connected pin.</div><div class="ttdef"><b>Definition:</b> hV_Configuration.h:136</div></div>
 </div><!-- fragment -->
 <p>Arduino Zero configuration, tested. </p>
 
@@ -778,6 +787,37 @@ Creative Commons Attribution-NonCommercial-ShareAlike 4.0 Unported (CC BY-NC-SA 
 <div class="line">}</div>
 </div><!-- fragment -->
 <p>CC1352 configuration, tested. </p>
+
+</div>
+</div>
+<a id="ad900dca7592c68bce6641a7fa5cae41f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad900dca7592c68bce6641a7fa5cae41f">&#9670;&nbsp;</a></span>boardESP32DevKitC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="a00187.html">pins_t</a> boardESP32DevKitC</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">{</div>
+<div class="line">    .panelBusy = 27, </div>
+<div class="line">    .panelDC = 26, </div>
+<div class="line">    .panelReset = 25, </div>
+<div class="line">    .flashCS =33, </div>
+<div class="line">    .panelCS = 32, </div>
+<div class="line">    .panelCSS = 4, </div>
+<div class="line">    .flashCSS = 0, </div>
+<div class="line">    .touchReset = <a class="code" href="a00131.html#a0e9795e3bb758850785e6ebc676ab01b">NOT_CONNECTED</a>, </div>
+<div class="line">    .touchInt = <a class="code" href="a00131.html#a0e9795e3bb758850785e6ebc676ab01b">NOT_CONNECTED</a>, </div>
+<div class="line">    .cardCS = <a class="code" href="a00131.html#a0e9795e3bb758850785e6ebc676ab01b">NOT_CONNECTED</a>, </div>
+<div class="line">    .cardDetect = <a class="code" href="a00131.html#a0e9795e3bb758850785e6ebc676ab01b">NOT_CONNECTED</a>, </div>
+<div class="line">}</div>
+</div><!-- fragment -->
+<p>RedBear Duo configuration, tested. </p>
+<p>Espressif ESP32-DevKitC </p><dl class="section note"><dt>Note</dt><dd>Numbers refer to GPIOs not pins </dd></dl>
 
 </div>
 </div>
@@ -871,44 +911,14 @@ Creative Commons Attribution-NonCommercial-ShareAlike 4.0 Unported (CC BY-NC-SA 
 
 </div>
 </div>
-<a id="ade918a742a4ee926b6beae2c7bc22860"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ade918a742a4ee926b6beae2c7bc22860">&#9670;&nbsp;</a></span>boardRaspberryPiB</h2>
+<a id="a3d2067293296d6d5d4aeebc8e56d90bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d2067293296d6d5d4aeebc8e56d90bc">&#9670;&nbsp;</a></span>boardRaspberryPiPico_Arduino</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="a00187.html">pins_t</a> boardRaspberryPiB</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">{</div>
-<div class="line">    .panelBusy = 7, </div>
-<div class="line">    .panelDC = 8, </div>
-<div class="line">    .panelReset = 25, </div>
-<div class="line">    .flashCS = 22, </div>
-<div class="line">    .panelCS = 27, </div>
-<div class="line">    .panelCSS = 23, </div>
-<div class="line">    .flashCSS = 24, </div>
-<div class="line">    .touchReset = <a class="code" href="a00131.html#a0e9795e3bb758850785e6ebc676ab01b">NOT_CONNECTED</a>, </div>
-<div class="line">    .touchInt = <a class="code" href="a00131.html#a0e9795e3bb758850785e6ebc676ab01b">NOT_CONNECTED</a>, </div>
-<div class="line">    .cardCS = <a class="code" href="a00131.html#a0e9795e3bb758850785e6ebc676ab01b">NOT_CONNECTED</a>, </div>
-<div class="line">    .cardDetect = <a class="code" href="a00131.html#a0e9795e3bb758850785e6ebc676ab01b">NOT_CONNECTED</a>, </div>
-<div class="line">}</div>
-</div><!-- fragment -->
-<p>Raspberry Pi B configuration, tested. </p>
-
-</div>
-</div>
-<a id="a6a9033fa133bc3043eac468c86cb9e4c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6a9033fa133bc3043eac468c86cb9e4c">&#9670;&nbsp;</a></span>boardRaspberryPiPico</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const <a class="el" href="a00187.html">pins_t</a> boardRaspberryPiPico</td>
+          <td class="memname">const <a class="el" href="a00187.html">pins_t</a> boardRaspberryPiPico_Arduino</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -927,7 +937,68 @@ Creative Commons Attribution-NonCommercial-ShareAlike 4.0 Unported (CC BY-NC-SA 
 <div class="line">    .cardDetect = <a class="code" href="a00131.html#a0e9795e3bb758850785e6ebc676ab01b">NOT_CONNECTED</a>, </div>
 <div class="line">}</div>
 </div><!-- fragment -->
-<p>Raspberry Pi Pico configuration, tested. </p>
+<p>Raspberry Pi Pico Arduino configuration, tested. </p>
+
+</div>
+</div>
+<a id="a894b0bb2d9979d677cae8a66db5ca563"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a894b0bb2d9979d677cae8a66db5ca563">&#9670;&nbsp;</a></span>boardRaspberryPiPico_RP2040</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="a00187.html">pins_t</a> boardRaspberryPiPico_RP2040</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">{</div>
+<div class="line">    .panelBusy = 13, </div>
+<div class="line">    .panelDC = 12, </div>
+<div class="line">    .panelReset = 11, </div>
+<div class="line">    .flashCS = 10, </div>
+<div class="line">    .panelCS = 17, </div>
+<div class="line">    .panelCSS = 14, </div>
+<div class="line">    .flashCSS = 15, </div>
+<div class="line">    .touchReset = <a class="code" href="a00131.html#a0e9795e3bb758850785e6ebc676ab01b">NOT_CONNECTED</a>, </div>
+<div class="line">    .touchInt = <a class="code" href="a00131.html#a0e9795e3bb758850785e6ebc676ab01b">NOT_CONNECTED</a>, </div>
+<div class="line">    .cardCS = <a class="code" href="a00131.html#a0e9795e3bb758850785e6ebc676ab01b">NOT_CONNECTED</a>, </div>
+<div class="line">    .cardDetect = <a class="code" href="a00131.html#a0e9795e3bb758850785e6ebc676ab01b">NOT_CONNECTED</a>, </div>
+<div class="line">}</div>
+</div><!-- fragment -->
+<p>Raspberry Pi Pico with default RP2040 configuration, tested. </p>
+<dl class="section note"><dt>Note</dt><dd>Numbers refer to GPIOs, not pins </dd></dl>
+
+</div>
+</div>
+<a id="a75d7b3e97ec1aa7135eb3bf7d9b4330a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75d7b3e97ec1aa7135eb3bf7d9b4330a">&#9670;&nbsp;</a></span>boardRaspberryPiZero</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="a00187.html">pins_t</a> boardRaspberryPiZero</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">{</div>
+<div class="line">    .panelBusy = 7, </div>
+<div class="line">    .panelDC = 8, </div>
+<div class="line">    .panelReset = 25, </div>
+<div class="line">    .flashCS = 22, </div>
+<div class="line">    .panelCS = 27, </div>
+<div class="line">    .panelCSS = 23, </div>
+<div class="line">    .flashCSS = 24, </div>
+<div class="line">    .touchReset = <a class="code" href="a00131.html#a0e9795e3bb758850785e6ebc676ab01b">NOT_CONNECTED</a>, </div>
+<div class="line">    .touchInt = <a class="code" href="a00131.html#a0e9795e3bb758850785e6ebc676ab01b">NOT_CONNECTED</a>, </div>
+<div class="line">    .cardCS = <a class="code" href="a00131.html#a0e9795e3bb758850785e6ebc676ab01b">NOT_CONNECTED</a>, </div>
+<div class="line">    .cardDetect = <a class="code" href="a00131.html#a0e9795e3bb758850785e6ebc676ab01b">NOT_CONNECTED</a>, </div>
+<div class="line">}</div>
+</div><!-- fragment -->
+<p>Raspberry Pi Zero, 2B, 3B, 4B configuration, tested. </p>
 
 </div>
 </div>
