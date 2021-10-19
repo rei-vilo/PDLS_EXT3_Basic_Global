@@ -19,6 +19,9 @@ Software
 
 + [Installing Additional Arduino Libraries](https://www.arduino.cc/en/guide/libraries)
 
+    + Using the Library Manager
+    + Importing a .zip Library
+
 Hardware
 
 * [Connecting the Pervasive Displays e-Paper EPD Extension Kit Gen 3](https://embeddedcomputing.weebly.com/connecting-the-e-paper-epd-extension-kit-gen-3.html)
