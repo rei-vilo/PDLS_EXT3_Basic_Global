@@ -11,13 +11,17 @@
 ///
 /// It provides a high-level interface to drive the e-paper screens with global, fast and partial update, supports capacitive touch and haptic feed-back.
 ///
-/// @page Documentation Documentation
+/// @b Documentation
 /// 
 /// The documentation includes two documents:
 ///
 /// * This **Reference manual** lists all the objects and functions, with details for their parameters and returned results.
 ///
 /// * The [User guide](http://pdls.pervasivedisplays.com/userguide/index.html) focuses on how to use the different libraries, with commented examples;
+///	
+/// @author Rei Vilo
+/// @date 25 Sep 2021
+/// @version 520
 ///
 /// @copyright (c) Rei Vilo, 2010-2021
 /// @copyright All rights reserved

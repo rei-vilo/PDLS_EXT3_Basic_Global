@@ -15,11 +15,11 @@
 /// 8- Haptic feedback mode, not implemented
 /// 9. Set GPIO expander mode, not implemented
 /// 10. String object for basic edition
-/// 11. Set SD-card mode, not implemented
+/// 11. Set storage mode, not implemented
 ///
 /// @author Rei Vilo
-/// @date 18 Oct 2021
-/// @version 512
+/// @date 25 Oct 2021
+/// @version 520
 ///
 /// @copyright (c) Rei Vilo, 2010-2021
 /// @copyright Creative Commons Attribution-NonCommercial-ShareAlike 4.0 Unported (CC BY-NC-SA 4.0)
@@ -60,7 +60,7 @@
 ///
 #define eScreen_EPD_EXT3_t uint32_t ///< screen type
 ///
-/// * Monochrome screens and default colour screens
+/// * Monochrome screens and default colour screens, global update
 #define eScreen_EPD_EXT3_154 (uint32_t)0x1500 ///< reference xE2154CSxxx
 #define eScreen_EPD_EXT3_213 (uint32_t)0x2100 ///< reference xE2213CSxxx
 #define eScreen_EPD_EXT3_266 (uint32_t)0x2600 ///< reference xE2266CSxxx
@@ -76,19 +76,15 @@
 #define eScreen_EPD_EXT3_969 (uint32_t)0x960B ///< reference xE2969CS0Bx, same as eScreen_EPD_EXT3_969_0B
 #define eScreen_EPD_EXT3_B98 (uint32_t)0xB90B ///< reference xE2B98CS0Bx, same as eScreen_EPD_EXT3_B98_0B
 
-/// * Specific medium screens
-#define eScreen_EPD_EXT3_581_0B (uint32_t)0x580B ///< reference xE2581CS0Bx
-#define eScreen_EPD_EXT3_741_0B (uint32_t)0x740B ///< reference xE2741CS0Bx
+/// * Specific medium screens, previous type, global update
 #define eScreen_EPD_EXT3_581_08 (uint32_t)0x5808 ///< reference xE2581CS08x, previous type
 #define eScreen_EPD_EXT3_741_08 (uint32_t)0x7408 ///< reference xE2741CS08x, previous type
 
-/// * Specific large screens
-#define eScreen_EPD_EXT3_969_0B (uint32_t)0x960B ///< reference xE2969CS0Bx
-#define eScreen_EPD_EXT3_B98_0B (uint32_t)0xB90B ///< reference xE2B98CS0Bx
+/// * Specific large screens, previous type, global update
 #define eScreen_EPD_EXT3_969_08 (uint32_t)0x9608 ///< reference xE2969CS08x, previous type
 #define eScreen_EPD_EXT3_B98_08 (uint32_t)0xB908 ///< reference xE2B98CS08x, previous type
 
-/// * Specific fast update for monochrome screens
+/// * Specific monochrome screens, fast and partial update
 #define eScreen_EPD_EXT3_154_0C (uint32_t)0x150C ///< reference xE2154CS0Cx
 #define eScreen_EPD_EXT3_213_09 (uint32_t)0x2109 ///< reference xE2213xS09x
 #define eScreen_EPD_EXT3_213_0C (uint32_t)0x210C ///< reference xE2213CS0Cx
@@ -102,6 +98,10 @@
 #define eScreen_EPD_EXT3_417_05 (uint32_t)0x4105 ///< reference xE2417CS05x
 #define eScreen_EPD_EXT3_417_0D (uint32_t)0x410D ///< reference xE2417CS0Dx
 #define eScreen_EPD_EXT3_437_0C (uint32_t)0x430C ///< reference xE2437CS0Cx
+#define eScreen_EPD_EXT3_581_0B (uint32_t)0x580B ///< reference xE2581CS0Bx
+#define eScreen_EPD_EXT3_741_0B (uint32_t)0x740B ///< reference xE2741CS0Bx
+#define eScreen_EPD_EXT3_969_0B (uint32_t)0x960B ///< reference xE2969CS0Bx
+#define eScreen_EPD_EXT3_B98_0B (uint32_t)0xB90B ///< reference xE2B98CS0Bx
 
 /// * Specific monochrome screens, previous type with fast update only
 #define eScreen_EPD_EXT3_437_08 (uint32_t)0x4308 ///< reference xE2437CS08x, previous type
@@ -219,9 +219,9 @@ const pins_t boardLaunchPadGCU =
 ///
 const pins_t boardRaspberryPiZero =
 {
-    .panelBusy = 7, ///< EXT3 pin 3 Red -> GPIO7 pin 6
+    .panelBusy = 7, ///< EXT3 pin 3 Red -> GPIO7 pin 26
     .panelDC = 8, ///< EXT3 pin 4 Orange -> GPIO8 pin 24
-    .panelReset = 25, ///< EXT3 pin 5 Yellow -> GPIO25 pin 8
+    .panelReset = 25, ///< EXT3 pin 5 Yellow -> GPIO25 pin 22
     .flashCS = 22, ///< EXT3 pin 8 Violet -> GPIO22 pin 15
     .panelCS = 27, ///< EXT3 pin 9 Grey -> GPIO27 pin 13
     .panelCSS = 23, ///< EXT3 pin 12 Grey2 -> GPIO23 pin 16
@@ -408,7 +408,7 @@ const pins_t boardESP32DevKitC =
 /// @note Declare additional variables if USE_hV_SCREEN_SELF
 /// @n Virtual object requires ~1 kB bytes.
 /// * Basic edition: self option
-/// * Advanced edition: virtual options
+/// * Advanced edition: virtual option
 /// * Commercial edition: self and virtual options
 /// @note Recommended: USE_hV_SCREEN_VIRTUAL
 /// @warning Issues with virtual function on arm-none-eabi-g++ 4.9.3: use USE_hV_SCREEN_SELF instead.

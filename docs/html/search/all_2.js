@@ -13,6 +13,5 @@ var searchData=
   ['boardraspberrypipico_5farduino_31',['boardRaspberryPiPico_Arduino',['../a00131.html#a3d2067293296d6d5d4aeebc8e56d90bc',1,'hV_Configuration.h']]],
   ['boardraspberrypipico_5frp2040_32',['boardRaspberryPiPico_RP2040',['../a00131.html#a894b0bb2d9979d677cae8a66db5ca563',1,'hV_Configuration.h']]],
   ['boardraspberrypizero_33',['boardRaspberryPiZero',['../a00131.html#a75d7b3e97ec1aa7135eb3bf7d9b4330a',1,'hV_Configuration.h']]],
-  ['brown_34',['brown',['../a00183.html#af609c9a4563f05df95d16889ccde8106',1,'hV_Colours565']]],
-  ['btoa_35',['btoa',['../a00155.html#a1b93260a872fc5c6e935d12005d74c84',1,'hV_Utilities.cpp']]]
+  ['brown_34',['brown',['../a00183.html#af609c9a4563f05df95d16889ccde8106',1,'hV_Colours565']]]
 ];

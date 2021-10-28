@@ -25,8 +25,7 @@
 var NAVTREE =
 [
   [ "Pervasive Displays Library Suite - Basic edition", "index.html", [
-    [ "Documentation", "a00208.html", null ],
-    [ "Examples", "a00209.html", null ],
+    [ "Examples", "a00208.html", null ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],

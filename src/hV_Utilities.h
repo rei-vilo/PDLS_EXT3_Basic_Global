@@ -6,8 +6,8 @@
 /// @n Based on highView technology 
 ///
 /// @author Rei Vilo
-/// @date 11 Jan 2021
-/// @version 507
+/// @date 25 Oct 2021
+/// @version 520
 ///
 /// @copyright (c) Rei Vilo, 2010-2021
 /// @copyright Creative Commons Attribution-NonCommercial-ShareAlike 4.0 Unported (CC BY-NC-SA 4.0)
@@ -132,47 +132,9 @@ String trimString(String text);
 /// @}
 
 ///
-/// @name Format
-/// @brief Utilities to format float, 64-bit unsigned integer, hexadecimal and period into string
+/// @name Range
+/// @brief Utilities to check range, set min and max
 /// @{
-
-///
-/// @brief Convert hexadecimal to string
-/// @param number hexadecimal value
-/// @param size total number of digits, default=0=no check
-/// @return formated string
-///
-String htoa(uint32_t number, uint8_t size = 0);
-
-///
-/// @brief Convert binary to string
-/// @param number binary value
-/// @param size total number of digits, default=0=no check
-/// @return formated string
-///
-String btoa(uint32_t number, uint8_t size = 8);
-
-///
-/// @brief Convert time is ms to string
-/// @param number ms
-/// @param size total number of digits, default=0=free size, no check
-/// @return formated string with time unit, ms, s, mn, h
-/// @note Automatic selection of the time unit: ms, s, mn, h
-/// @note In case of insufficient place or overflow, # is returned
-///
-String ttoa(uint32_t number, uint8_t size = 0);
-
-///
-/// @brief Convert int32_t to string
-/// @param number value, int32_t, already multiplied by unit
-/// @param unit default=1, 10 or 100
-/// @param decimal number of decimal digits, default=0
-/// @param size total number of digits, default=0=free size, no check
-/// @note size >= integer digits + 1 for decimal separator . + decimal=decimal digits
-/// @return formated string
-/// @note In case of insufficient place or overflow, # is returned
-///
-String i32toa(int32_t number, int32_t unit = 1, uint8_t decimal = 0, uint8_t size = 0);
 
 ///
 /// @brief Check value in range

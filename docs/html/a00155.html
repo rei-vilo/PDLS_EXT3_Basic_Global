@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Pervasive Displays Library Suite - Basic edition
-   &#160;<span id="projectnumber">5.1.2</span>
+   &#160;<span id="projectnumber">5.2.0</span>
    </div>
    <div id="projectbrief">Library for Pervasive Displays e-paper screens and EXT3 extension board</div>
   </td>
@@ -165,21 +165,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a311c694a8a5722683dd6739c55323036"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00155.html#a311c694a8a5722683dd6739c55323036">trimString</a> (String text)</td></tr>
 <tr class="memdesc:a311c694a8a5722683dd6739c55323036"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove leading and ending characters.  <a href="a00155.html#a311c694a8a5722683dd6739c55323036">More...</a><br /></td></tr>
 <tr class="separator:a311c694a8a5722683dd6739c55323036"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr><td colspan="2"><div class="groupHeader">Format</div></td></tr>
-<tr><td colspan="2"><div class="groupText"><p>Utilities to format float, 64-bit unsigned integer, hexadecimal and period into string </p>
+<tr><td colspan="2"><div class="groupHeader">Range</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>Utilities to check range, set min and max </p>
 </div></td></tr>
-<tr class="memitem:af2f01edcced90e4c300bb33eba20aea5"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00155.html#af2f01edcced90e4c300bb33eba20aea5">htoa</a> (uint32_t number, uint8_t size=0)</td></tr>
-<tr class="memdesc:af2f01edcced90e4c300bb33eba20aea5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert hexadecimal to string.  <a href="a00155.html#af2f01edcced90e4c300bb33eba20aea5">More...</a><br /></td></tr>
-<tr class="separator:af2f01edcced90e4c300bb33eba20aea5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1b93260a872fc5c6e935d12005d74c84"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00155.html#a1b93260a872fc5c6e935d12005d74c84">btoa</a> (uint32_t number, uint8_t size=8)</td></tr>
-<tr class="memdesc:a1b93260a872fc5c6e935d12005d74c84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert binary to string.  <a href="a00155.html#a1b93260a872fc5c6e935d12005d74c84">More...</a><br /></td></tr>
-<tr class="separator:a1b93260a872fc5c6e935d12005d74c84"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abbd2f8903c7737617f955b1b5f26c029"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00155.html#abbd2f8903c7737617f955b1b5f26c029">ttoa</a> (uint32_t number, uint8_t size=0)</td></tr>
-<tr class="memdesc:abbd2f8903c7737617f955b1b5f26c029"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert time is ms to string.  <a href="a00155.html#abbd2f8903c7737617f955b1b5f26c029">More...</a><br /></td></tr>
-<tr class="separator:abbd2f8903c7737617f955b1b5f26c029"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a91deca93e099609e0f6ecb70be79ec7c"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00155.html#a91deca93e099609e0f6ecb70be79ec7c">i32toa</a> (int32_t number, int32_t unit=1, uint8_t decimal=0, uint8_t size=0)</td></tr>
-<tr class="memdesc:a91deca93e099609e0f6ecb70be79ec7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert int32_t to string.  <a href="a00155.html#a91deca93e099609e0f6ecb70be79ec7c">More...</a><br /></td></tr>
-<tr class="separator:a91deca93e099609e0f6ecb70be79ec7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86af3529c58c3ba135667030a75a5917"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00155.html#a86af3529c58c3ba135667030a75a5917">checkRange</a> (uint16_t value, uint16_t valueMin, uint16_t valueMax)</td></tr>
 <tr class="memdesc:a86af3529c58c3ba135667030a75a5917"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check value in range.  <a href="a00155.html#a86af3529c58c3ba135667030a75a5917">More...</a><br /></td></tr>
 <tr class="separator:a86af3529c58c3ba135667030a75a5917"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -204,8 +192,8 @@ Functions</h2></td></tr>
 <p>Project Pervasive Displays Library Suite <br  />
  Based on highView technology</p>
 <dl class="section author"><dt>Author</dt><dd>Rei Vilo </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>11 Jan 2021 </dd></dl>
-<dl class="section version"><dt>Version</dt><dd>507</dd></dl>
+<dl class="section date"><dt>Date</dt><dd>25 Oct 2021 </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>520</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>(c) Rei Vilo, 2010-2021 </dd>
 <dd>
 Creative Commons Attribution-NonCommercial-ShareAlike 4.0 Unported (CC BY-NC-SA 4.0)</dd></dl>
@@ -218,44 +206,6 @@ Creative Commons Attribution-NonCommercial-ShareAlike 4.0 Unported (CC BY-NC-SA 
 <p><br  />
  Consider the advanced or commercial editions for professionals or organisations and for commercial usage </p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="a1b93260a872fc5c6e935d12005d74c84"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1b93260a872fc5c6e935d12005d74c84">&#9670;&nbsp;</a></span>btoa()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">String btoa </td>
-          <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>number</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>size</em> = <code>8</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Convert binary to string. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">number</td><td>binary value </td></tr>
-    <tr><td class="paramname">size</td><td>total number of digits, default=0=no check </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>formated string </dd></dl>
-
-</div>
-</div>
 <a id="a86af3529c58c3ba135667030a75a5917"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a86af3529c58c3ba135667030a75a5917">&#9670;&nbsp;</a></span>checkRange()</h2>
 
@@ -530,98 +480,6 @@ Creative Commons Attribution-NonCommercial-ShareAlike 4.0 Unported (CC BY-NC-SA 
 
 </div>
 </div>
-<a id="af2f01edcced90e4c300bb33eba20aea5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af2f01edcced90e4c300bb33eba20aea5">&#9670;&nbsp;</a></span>htoa()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">String htoa </td>
-          <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>number</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>size</em> = <code>0</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Convert hexadecimal to string. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">number</td><td>hexadecimal value </td></tr>
-    <tr><td class="paramname">size</td><td>total number of digits, default=0=no check </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>formated string </dd></dl>
-
-</div>
-</div>
-<a id="a91deca93e099609e0f6ecb70be79ec7c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a91deca93e099609e0f6ecb70be79ec7c">&#9670;&nbsp;</a></span>i32toa()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">String i32toa </td>
-          <td>(</td>
-          <td class="paramtype">int32_t&#160;</td>
-          <td class="paramname"><em>number</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int32_t&#160;</td>
-          <td class="paramname"><em>unit</em> = <code>1</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>decimal</em> = <code>0</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>size</em> = <code>0</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Convert int32_t to string. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">number</td><td>value, int32_t, already multiplied by unit </td></tr>
-    <tr><td class="paramname">unit</td><td>default=1, 10 or 100 </td></tr>
-    <tr><td class="paramname">decimal</td><td>number of decimal digits, default=0 </td></tr>
-    <tr><td class="paramname">size</td><td>total number of digits, default=0=free size, no check </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section note"><dt>Note</dt><dd>size &gt;= integer digits + 1 for decimal separator . + decimal=decimal digits </dd></dl>
-<dl class="section return"><dt>Returns</dt><dd>formated string </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>In case of insufficient place or overflow, # is returned </dd></dl>
-
-</div>
-</div>
 <a id="a9e10a8bc35f3b1ae121655e335de4513"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9e10a8bc35f3b1ae121655e335de4513">&#9670;&nbsp;</a></span>roundUp()</h2>
 
@@ -875,47 +733,6 @@ Creative Commons Attribution-NonCommercial-ShareAlike 4.0 Unported (CC BY-NC-SA 
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>trimmed text </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Removed characters are LF CR TAB SPACE ' </dd></dl>
-
-</div>
-</div>
-<a id="abbd2f8903c7737617f955b1b5f26c029"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abbd2f8903c7737617f955b1b5f26c029">&#9670;&nbsp;</a></span>ttoa()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">String ttoa </td>
-          <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>number</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>size</em> = <code>0</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Convert time is ms to string. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">number</td><td>ms </td></tr>
-    <tr><td class="paramname">size</td><td>total number of digits, default=0=free size, no check </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>formated string with time unit, ms, s, mn, h </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>Automatic selection of the time unit: ms, s, mn, h </dd>
-<dd>
-In case of insufficient place or overflow, # is returned </dd></dl>
 
 </div>
 </div>
