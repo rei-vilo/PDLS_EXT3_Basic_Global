@@ -2,3 +2,5 @@ Doxyfile
 .builds/
 latex/
 xml/
+Doxyfile.dox
+footer.html
