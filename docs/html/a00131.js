@@ -73,11 +73,12 @@ var a00131 =
     [ "boardArduinoZero", "a00131.html#a47cc4f37c263fb4355a5da27de205511", null ],
     [ "boardCC1352", "a00131.html#a87edfbded5d6f32d1854a1ee879ef87d", null ],
     [ "boardESP32DevKitC", "a00131.html#ad900dca7592c68bce6641a7fa5cae41f", null ],
-    [ "boardFeatherM0", "a00131.html#a451ebb9f23e11c2e9ae8473041a1873f", null ],
+    [ "boardFeatherM0M4", "a00131.html#a8d1357629d2b81eb7e9e0c3469b46c5e", null ],
     [ "boardLaunchPad", "a00131.html#a18504c4b88869b52971ed406679d794e", null ],
     [ "boardLaunchPadGCU", "a00131.html#a2597adfeb71941d30510db3c36c547d7", null ],
+    [ "boardMSP430FR5994", "a00131.html#ab0c34bc6b39ca5dd09835a0ee5a3a41a", null ],
     [ "boardNucleo64", "a00131.html#afad37f2188fa8b28b3b9806de35e2fd7", null ],
     [ "boardRaspberryPiPico_Arduino", "a00131.html#a3d2067293296d6d5d4aeebc8e56d90bc", null ],
     [ "boardRaspberryPiPico_RP2040", "a00131.html#a894b0bb2d9979d677cae8a66db5ca563", null ],
-    [ "boardRaspberryPiZero", "a00131.html#a75d7b3e97ec1aa7135eb3bf7d9b4330a", null ]
+    [ "boardRaspberryPiZeroB_RasPiArduino", "a00131.html#abacdc5c8e1313cf3a7a716cf1ace4741", null ]
 ];

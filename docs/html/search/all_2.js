@@ -6,12 +6,13 @@ var searchData=
   ['boardarduinozero_24',['boardArduinoZero',['../a00131.html#a47cc4f37c263fb4355a5da27de205511',1,'hV_Configuration.h']]],
   ['boardcc1352_25',['boardCC1352',['../a00131.html#a87edfbded5d6f32d1854a1ee879ef87d',1,'hV_Configuration.h']]],
   ['boardesp32devkitc_26',['boardESP32DevKitC',['../a00131.html#ad900dca7592c68bce6641a7fa5cae41f',1,'hV_Configuration.h']]],
-  ['boardfeatherm0_27',['boardFeatherM0',['../a00131.html#a451ebb9f23e11c2e9ae8473041a1873f',1,'hV_Configuration.h']]],
+  ['boardfeatherm0m4_27',['boardFeatherM0M4',['../a00131.html#a8d1357629d2b81eb7e9e0c3469b46c5e',1,'hV_Configuration.h']]],
   ['boardlaunchpad_28',['boardLaunchPad',['../a00131.html#a18504c4b88869b52971ed406679d794e',1,'hV_Configuration.h']]],
   ['boardlaunchpadgcu_29',['boardLaunchPadGCU',['../a00131.html#a2597adfeb71941d30510db3c36c547d7',1,'hV_Configuration.h']]],
-  ['boardnucleo64_30',['boardNucleo64',['../a00131.html#afad37f2188fa8b28b3b9806de35e2fd7',1,'hV_Configuration.h']]],
-  ['boardraspberrypipico_5farduino_31',['boardRaspberryPiPico_Arduino',['../a00131.html#a3d2067293296d6d5d4aeebc8e56d90bc',1,'hV_Configuration.h']]],
-  ['boardraspberrypipico_5frp2040_32',['boardRaspberryPiPico_RP2040',['../a00131.html#a894b0bb2d9979d677cae8a66db5ca563',1,'hV_Configuration.h']]],
-  ['boardraspberrypizero_33',['boardRaspberryPiZero',['../a00131.html#a75d7b3e97ec1aa7135eb3bf7d9b4330a',1,'hV_Configuration.h']]],
-  ['brown_34',['brown',['../a00183.html#af609c9a4563f05df95d16889ccde8106',1,'hV_Colours565']]]
+  ['boardmsp430fr5994_30',['boardMSP430FR5994',['../a00131.html#ab0c34bc6b39ca5dd09835a0ee5a3a41a',1,'hV_Configuration.h']]],
+  ['boardnucleo64_31',['boardNucleo64',['../a00131.html#afad37f2188fa8b28b3b9806de35e2fd7',1,'hV_Configuration.h']]],
+  ['boardraspberrypipico_5farduino_32',['boardRaspberryPiPico_Arduino',['../a00131.html#a3d2067293296d6d5d4aeebc8e56d90bc',1,'hV_Configuration.h']]],
+  ['boardraspberrypipico_5frp2040_33',['boardRaspberryPiPico_RP2040',['../a00131.html#a894b0bb2d9979d677cae8a66db5ca563',1,'hV_Configuration.h']]],
+  ['boardraspberrypizerob_5fraspiarduino_34',['boardRaspberryPiZeroB_RasPiArduino',['../a00131.html#abacdc5c8e1313cf3a7a716cf1ace4741',1,'hV_Configuration.h']]],
+  ['brown_35',['brown',['../a00183.html#af609c9a4563f05df95d16889ccde8106',1,'hV_Colours565']]]
 ];

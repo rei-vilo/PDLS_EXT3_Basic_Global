@@ -6,8 +6,6 @@ var a00155 =
     [ "ORIENTATION_LANDSCAPE", "a00155.html#accc06995e9834c793d2cc9e96ded0560", null ],
     [ "ORIENTATION_PORTRAIT", "a00155.html#a0f166aa542c69097847cfc189cd48057", null ],
     [ "checkRange", "a00155.html#a86af3529c58c3ba135667030a75a5917", null ],
-    [ "convertPolar2Rectangle", "a00155.html#adfcce25f5bed41e2c35b238837f0b30c", null ],
-    [ "convertRectangle2Polar", "a00155.html#aeb10091247b3ba79b8ccf1f103b3caf5", null ],
     [ "cos32x100", "a00155.html#ae5fee0ae2d4737a35b38f31aa48ece9f", null ],
     [ "delay_ms", "a00155.html#ab7cce8122024d7ba47bf10f434956de4", null ],
     [ "formatString", "a00155.html#aa405c9a5b808e428554e540028085dd3", null ],

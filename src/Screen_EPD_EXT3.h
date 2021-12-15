@@ -12,8 +12,8 @@
 /// * Feature: none
 ///
 /// @author Rei Vilo
-/// @date 02 Aug 2021
-/// @version 508
+/// @date 08 Dec 2021
+/// @version 524
 ///
 /// @copyright (c) Rei Vilo, 2010-2021
 /// @copyright Creative Commons Attribution-NonCommercial-ShareAlike 4.0 Unported (CC BY-NC-SA 4.0)
@@ -190,7 +190,7 @@ class Screen_EPD_EXT3 final : public hV_Screen_Buffer
     /// @brief Check and orient coordinates, logical coordinates
     /// @param x x-axis coordinate, modified
     /// @param y y-axis coordinate, modified
-    /// @return false=success, true=error
+    /// @return false = success, true = error
     ///
     bool _orientCoordinates(uint16_t & x, uint16_t & y); // compulsory
 

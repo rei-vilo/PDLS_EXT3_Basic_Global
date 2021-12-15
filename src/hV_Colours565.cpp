@@ -3,7 +3,8 @@
 // Class library C++ code
 // ----------------------------------
 //
-// Project highView Library Suite
+// Project Pervasive Displays Library Suite
+// Based on highView technology 
 //
 // Created by Rei Vilo, 31 Dec 2013
 //

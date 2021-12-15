@@ -3,7 +3,7 @@
 /// @brief Example of features for basic edition
 ///
 /// @details Project Pervasive Displays Library Suite
-/// @n Based on highView technology 
+/// @n Based on highView technology
 ///
 /// @author Rei Vilo
 /// @date 16 Aug 2021
@@ -63,7 +63,6 @@ void wait(uint8_t second)
     Serial.print("         \r");
 }
 
-
 // Functions
 ///
 /// @brief Who am i? test screen
@@ -97,6 +96,8 @@ void setup()
     Serial.println(formatString("%s %ix%i", myScreen.WhoAmI().c_str(), myScreen.screenSizeX(), myScreen.screenSizeY()));
 
     Serial.print("Who Am I... ");
+ 
+    myScreen.begin();
     myScreen.clear();
     displayWhoAmI();
     wait(8);

@@ -146,7 +146,7 @@ void Screen_EPD_EXT3::begin()
 
             _widthScreen = 800; // x = wide size
             _heightScreen = 480; // y = small size
-            _screenDiagonal = 740;
+            _screenDiagonal = 741;
             _refreshTime = 32;
             break;
 

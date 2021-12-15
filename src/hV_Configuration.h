@@ -18,8 +18,8 @@
 /// 11. Set storage mode, not implemented
 ///
 /// @author Rei Vilo
-/// @date 25 Oct 2021
-/// @version 520
+/// @date 08 Dec 2021
+/// @version 524
 ///
 /// @copyright (c) Rei Vilo, 2010-2021
 /// @copyright Creative Commons Attribution-NonCommercial-ShareAlike 4.0 Unported (CC BY-NC-SA 4.0)
@@ -51,7 +51,7 @@
 ///
 /// @brief Release
 ///
-#define hV_CONFIGURATION_RELEASE 512
+#define hV_CONFIGURATION_RELEASE 523
 
 ///
 /// @name 1- List of supported Pervasive Displays screens
@@ -90,7 +90,7 @@
 #define eScreen_EPD_EXT3_213_0C (uint32_t)0x210C ///< reference xE2213CS0Cx
 #define eScreen_EPD_EXT3_266_09 (uint32_t)0x2609 ///< reference xE2266xS09x
 #define eScreen_EPD_EXT3_266_0C (uint32_t)0x260C ///< reference xE2266CS0Cx
-#define eScreen_EPD_EXT3_266_Armor (uint32_t)0x032609 ///< reference xE2266CS0Cx
+#define eScreen_EPD_EXT3_266_Armor (uint32_t)0x042609 ///< reference xE2266CS0Cx
 #define eScreen_EPD_EXT3_271_09 (uint32_t)0x2709 ///< reference xE2271CS09x
 #define eScreen_EPD_EXT3_271_Fast (uint32_t)0x012709 ///< reference xE2271PS09x
 #define eScreen_EPD_EXT3_287_09 (uint32_t)0x2809 ///< reference xE2287CS09x
@@ -127,6 +127,7 @@
 #define frameSize_EPD_EXT3_969 (uint32_t)(161280)
 #define frameSize_EPD_EXT3_B98 (uint32_t)(184320)
 
+///
 /// @name 2- List of pre-configured boards
 /// @{
 
@@ -179,6 +180,24 @@ const pins_t boardLaunchPad =
 };
 
 ///
+/// @brief MSP430FR5994 LaunchPad with SD-card configuration, tested
+///
+const pins_t boardMSP430FR5994 =
+{
+    .panelBusy = 11, ///< EXT3 pin 3 Red
+    .panelDC = 12, ///< EXT3 pin 4 Orange
+    .panelReset = 13, ///< EXT3 pin 5 Yellow
+    .flashCS = 18, ///< EXT3 pin 8 Violet
+    .panelCS = 19, ///< EXT3 pin 9 Grey
+    .panelCSS = 39, ///< EXT3 pin 12 Grey2
+    .flashCSS = 38, ///< EXT3 pin 20 Black2
+    .touchReset = NOT_CONNECTED, ///< Separate touch board
+    .touchInt = NOT_CONNECTED, ///< Separate touch board
+    .cardCS = 47, ///< Included SD-card
+    .cardDetect = 51 ///< Included SD-card
+};
+
+///
 /// @brief CC1352 configuration, tested
 ///
 const pins_t boardCC1352 =
@@ -215,9 +234,10 @@ const pins_t boardLaunchPadGCU =
 };
 
 ///
-/// @brief Raspberry Pi Zero, 2B, 3B, 4B configuration, tested
+/// @brief Raspberry Pi Zero, 2B, 3B, 4B configuration with RasPiArduino, tested
+/// @see https://github.com/me-no-dev/RasPiArduino
 ///
-const pins_t boardRaspberryPiZero =
+const pins_t boardRaspberryPiZeroB_RasPiArduino =
 {
     .panelBusy = 7, ///< EXT3 pin 3 Red -> GPIO7 pin 26
     .panelDC = 8, ///< EXT3 pin 4 Orange -> GPIO8 pin 24
@@ -233,7 +253,9 @@ const pins_t boardRaspberryPiZero =
 };
 
 ///
-/// @brief Raspberry Pi Pico Arduino configuration, tested
+/// @brief Raspberry Pi Pico Arduino mbed configuration, tested
+/// @warning Not recommended
+/// @see https://github.com/arduino/ArduinoCore-mbed
 ///
 const pins_t boardRaspberryPiPico_Arduino =
 {
@@ -253,6 +275,7 @@ const pins_t boardRaspberryPiPico_Arduino =
 ///
 /// @brief Raspberry Pi Pico with default RP2040 configuration, tested
 /// @note Numbers refer to GPIOs, not pins
+/// @see https://github.com/earlephilhower/arduino-pico
 ///
 const pins_t boardRaspberryPiPico_RP2040 =
 {
@@ -270,9 +293,9 @@ const pins_t boardRaspberryPiPico_RP2040 =
 };
 
 ///
-/// @brief Feather M0 configuration, tested
+/// @brief Feather M0 and M4 configuration, tested
 ///
-const pins_t boardFeatherM0 =
+const pins_t boardFeatherM0M4 =
 {
     .panelBusy = 13, ///< EXT3 pin 3 Red
     .panelDC = 12, ///< EXT3 pin 4 Orange
@@ -289,6 +312,12 @@ const pins_t boardFeatherM0 =
 
 ///
 /// @brief Arduino Zero configuration, tested
+/// @note In case of use of SERCOM
+/// @code {.language-id}
+/// #define SPI_CLOCK_PIN 13 ///< EXT3 pin 2 -> 13
+/// #define SPI_CLOCK_MISO 11 ///< EXT3 pin 6 -> 11
+/// #define SPI_CLOCK_MOSI 12 ///< EXT3 pin 7 -> 12
+/// @endcode
 ///
 const pins_t boardArduinoZero =
 {
@@ -305,20 +334,17 @@ const pins_t boardArduinoZero =
     .cardCS = NOT_CONNECTED, ///< Separate SD-card board
     .cardDetect = NOT_CONNECTED, ///< Separate SD-card board
 };
-// // In case of use of SERCOM
-// #define SPI_CLOCK_PIN 13 ///< EXT3 pin 2 -> 13
-// #define SPI_CLOCK_MISO 11 ///< EXT3 pin 6 -> 11
-// #define SPI_CLOCK_MOSI 12 ///< EXT3 pin 7 -> 12
 
 ///
 /// @brief ST Nucleo 64, tested
 ///
 const pins_t boardNucleo64 = boardArduinoZero;
 
+#if (PARTICLE == 1)
+
 ///
-/// @brief RedBear Duo configuration, tested
+/// @brief Particule Photon configuration, tested
 ///
-#if defined(ARDUINO_RedBear_Duo)
 const pins_t boardParticlePhoton =
 {
     .panelBusy = D5, ///< EXT3 pin 3 Red
@@ -334,8 +360,12 @@ const pins_t boardParticlePhoton =
     .cardDetect = NOT_CONNECTED, ///< Separate SD-card board
 };
 
+///
+/// @brief RedBear Duo configuration, tested
+///
 const pins_t boardRedBearDuo = boardParticulePhoton;
-#endif
+
+#endif // PARTICLE
 
 ///
 /// @brief Espressif ESP32-DevKitC
@@ -476,7 +506,7 @@ const pins_t boardESP32DevKitC =
 /// @{
 #define USE_NONE 0 ///< No storage
 
-#define STORAGE_MODE USE_NONE ///< Selected option
+#define STORAGE_MODE USE_NONE ///< Selected options
 /// @}
 
 #endif // hV_CONFIGURATION_RELEASE

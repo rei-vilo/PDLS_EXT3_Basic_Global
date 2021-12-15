@@ -20,8 +20,8 @@
 /// * The [User guide](http://pdls.pervasivedisplays.com/userguide/index.html) focuses on how to use the different libraries, with commented examples;
 ///	
 /// @author Rei Vilo
-/// @date 28 oct 2021
-/// @version 521
+/// @date 08 Dec 2021
+/// @version 524
 ///
 /// @copyright (c) Rei Vilo, 2010-2021
 /// @copyright All rights reserved
@@ -37,6 +37,10 @@
 ///
 /// * Documentation
 /// @n All rights reserved
+///
+/// @b Disclaimer
+///
+/// The software, including the related documentation, is provided to you "as is," and we make no express or implied warranties whatsoever with respect to its functionality, operability, or use, including, without limitation, any implied warranties of merchantability, fitness for a particular purpose, or infringement. We expressly disclaim any liability whatsoever for any direct, indirect, consequential, incidental or special damages, including, without limitation, lost revenues, lost profits, losses resulting from business interruption or loss of data, regardless of the form of action or legal theory under which the liability may be asserted, even if advised of the possibility or likelihood of such damages.
 ///
 /// @page Examples Examples 
 ///

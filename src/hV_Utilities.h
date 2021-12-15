@@ -1,13 +1,13 @@
 ///
 /// @file hV_Utilities.h
-/// @brief Utilities 
+/// @brief Utilities for highView Library Suite
 ///
 /// @details Project Pervasive Displays Library Suite
-/// @n Based on highView technology 
+/// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 25 Oct 2021
-/// @version 520
+/// @date 02 Nov 2021
+/// @version 521
 ///
 /// @copyright (c) Rei Vilo, 2010-2021
 /// @copyright Creative Commons Attribution-NonCommercial-ShareAlike 4.0 Unported (CC BY-NC-SA 4.0)
@@ -79,6 +79,7 @@ int32_t cos32x100(int32_t degreesX100);
 ///
 int32_t sin32x100(int32_t degreesX100);
 
+/*
 ///
 /// @brief Convert polar to rectangle coordinates
 /// @param[in] centerX circle center, x coordinate
@@ -87,6 +88,7 @@ int32_t sin32x100(int32_t degreesX100);
 /// @param[in] radius radius, pixels
 /// @param[out] rectangularX x rectangular coordinate
 /// @param[out] rectangularY y rectangular coordinate
+/// @note This function uses floats.
 ///
 void convertPolar2Rectangle(uint16_t centerX, uint16_t centerY, uint16_t angle, uint16_t radius, uint16_t & rectangularX, uint16_t & rectangularY);
 
@@ -97,8 +99,10 @@ void convertPolar2Rectangle(uint16_t centerX, uint16_t centerY, uint16_t angle, 
 /// @param[in] rectangularY y rectangular coordinate
 /// @param[out] angle angle in degrees 0..360°
 /// @param[out] radius radius in pixels
+/// @note This function uses floats.
 ///
 void convertRectangle2Polar(uint16_t centerX, uint16_t centerY, uint16_t rectangularX, uint16_t rectangularY, uint16_t & angle, uint16_t & radius);
+*/
 
 ///
 /// @brief UTF-8 to ISO-8859-1 Converter
