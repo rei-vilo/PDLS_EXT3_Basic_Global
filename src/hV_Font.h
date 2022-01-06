@@ -9,7 +9,7 @@
 /// @date 02 Aug 2021
 /// @version 507
 ///
-/// @copyright (c) Rei Vilo, 2010-2021
+/// @copyright (c) Rei Vilo, 2010-2022
 /// @copyright All rights reserved
 ///
 /// * Basic edition: for hobbyists and for personal usage
@@ -52,7 +52,7 @@
 ///
 /// @brief hV_Font release number
 ///
-#define hV_FONT_HEADER_STRUCTURE_RELEASE 401
+#define hV_FONT_HEADER_STRUCTURE_RELEASE 507
 
 ///
 /// @brief Structure for character width

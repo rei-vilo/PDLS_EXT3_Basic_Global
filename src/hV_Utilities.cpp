@@ -7,7 +7,7 @@
 //
 // Created by   Rei Vilo, 01 Jun 2013
 //
-// Copyright    © Rei Vilo, 2010-2021
+// Copyright    © Rei Vilo, 2010-2022
 // Licence      Attribution-NonCommercial-ShareAlike 4.0 Unported (CC BY-NC-SA 4.0)
 //
 // See          hV_Utilities.h for references

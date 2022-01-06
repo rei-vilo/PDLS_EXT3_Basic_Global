@@ -8,7 +8,7 @@
 //
 // Created by Rei Vilo, 28 Jun 2016
 //
-// Copyright © Rei Vilo, 2010-2021
+// Copyright © Rei Vilo, 2010-2022
 // Licence Creative Commons Attribution-NonCommercial-ShareAlike 4.0 Unported (CC BY-NC-SA 4.0)
 //
 // Release 508: Added support for E2969CS0B and E2B98CS0B  

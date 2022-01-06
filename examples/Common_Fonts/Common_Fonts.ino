@@ -9,7 +9,7 @@
 /// @date 16 Aug 2021
 /// @version 508
 ///
-/// @copyright (c) Rei Vilo, 2010-2021
+/// @copyright (c) Rei Vilo, 2010-2022
 /// @copyright CC = BY SA NC
 ///
 /// @see ReadMe.txt for references
