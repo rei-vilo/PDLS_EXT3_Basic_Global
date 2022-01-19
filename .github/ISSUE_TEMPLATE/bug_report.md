@@ -25,14 +25,14 @@ If applicable, add screenshots to help explain your problem.
 
 **Desktop (please complete the following information):**
  - OS: [e.g. iOS]
- - Browser [e.g. chrome, safari]
- - Version [e.g. 22]
+ - IDE [e.g. Arduino IDE]
+ - Version [e.g. 1.8.6]
 
-**Smartphone (please complete the following information):**
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
- - Browser [e.g. stock browser, safari]
- - Version [e.g. 22]
+**Boards (please complete the following information):**
+ - Controller: [e.g. Raspberry Pi Pico RP2040]
+ - Extension board: [e.g. EXT3]
+ - EPD panel [e.g. iTC 2.71 BW]
+ - Reference [e.g. CE2271CS094]
 
 **Additional context**
 Add any other context about the problem here.
