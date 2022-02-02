@@ -18,10 +18,10 @@
 /// 11. Set storage mode, not implemented
 ///
 /// @author Rei Vilo
-/// @date 06 Jan 2022
-/// @version 525
+/// @date 02 Feb 2022
+/// @version 526
 ///
-/// @copyright (c) Rei Vilo, 2010-2021
+/// @copyright (c) Rei Vilo, 2010-2022
 /// @copyright All rights reserved
 ///
 /// * Basic edition: for hobbyists and for personal usage
@@ -374,7 +374,7 @@ const pins_t boardESP32DevKitC =
     .panelBusy = 27, ///< EXT3 pin 3 Red -> GPIO27
     .panelDC = 26, ///< EXT3 pin 4 Orange -> GPIO26
     .panelReset = 25, ///< EXT3 pin 5 Yellow -> GPIO25
-    .flashCS =33, ///< EXT3 pin 8 Violet -> GPIO33
+    .flashCS = 33, ///< EXT3 pin 8 Violet -> GPIO33
     .panelCS = 32, ///< EXT3 pin 9 Grey -> GPIO32
     .panelCSS = 4, ///< EXT3 pin 12 Grey2 -> GPIO4
     .flashCSS = 0, ///< EXT3 pin 20 Black2 -> GPIO0

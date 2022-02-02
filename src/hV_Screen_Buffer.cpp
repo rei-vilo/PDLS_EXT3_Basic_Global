@@ -578,9 +578,9 @@ uint8_t hV_Screen_Buffer::_getCharacter(uint8_t character, uint8_t index)
 }
 
 void hV_Screen_Buffer::gText(uint16_t x0, uint16_t y0,
-                              String text,
-                              uint16_t textColour,
-                              uint16_t backColour)
+                             String text,
+                             uint16_t textColour,
+                             uint16_t backColour)
 #if (FONT_MODE == USE_FONT_TERMINAL)
 {
     uint8_t c;

@@ -3,7 +3,7 @@
 /// @brief Example of features for basic edition
 ///
 /// @details Project Pervasive Displays Library Suite
-/// @n Based on highView technology 
+/// @n Based on highView technology
 ///
 /// @author Rei Vilo
 /// @date 16 Aug 2021

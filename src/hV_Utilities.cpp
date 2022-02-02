@@ -152,13 +152,13 @@ int32_t sin32x100(int32_t degreesX100)
     return cos32x100(degreesX100 + 27000);
 }
 
-void convertPolar2Rectangle(uint16_t centerX, uint16_t centerY, uint16_t angle, uint16_t radius, uint16_t &rectangularX, uint16_t &rectangularY)
+void convertPolar2Rectangle(uint16_t centerX, uint16_t centerY, uint16_t angle, uint16_t radius, uint16_t & rectangularX, uint16_t & rectangularY)
 {
     rectangularX = (uint16_t)(centerX + radius * sin32x100(angle * 100) / 100);
     rectangularY = (uint16_t)(centerY - radius * cos32x100(angle * 100) / 100);
 }
 
-void convertRectangle2Polar(uint16_t centerX, uint16_t centerY, uint16_t rectangularX, uint16_t rectangularY, uint16_t &angle, uint16_t &radius)
+void convertRectangle2Polar(uint16_t centerX, uint16_t centerY, uint16_t rectangularX, uint16_t rectangularY, uint16_t & angle, uint16_t & radius)
 {
     float fX = (float)rectangularX - centerX;
     float fY = (float)rectangularY - centerY;
@@ -255,7 +255,7 @@ uint16_t checkRange(uint16_t value, uint16_t valueMin, uint16_t valueMax)
     return min(max(localMin, value), localMax);
 }
 
-void setMinMax(uint16_t value, uint16_t &valueMin, uint16_t &valueMax)
+void setMinMax(uint16_t value, uint16_t & valueMin, uint16_t & valueMax)
 {
     if (value < valueMin)
     {
@@ -278,19 +278,19 @@ uint32_t roundUp(uint32_t value, uint16_t modulo)
 }
 
 // Utilities
-void swap(uint16_t &a, uint16_t &b)
+void swap(uint16_t & a, uint16_t & b)
 {
     uint16_t w = a;
     a = b;
     b = w;
 }
-void swap(int16_t &a, int16_t &b)
+void swap(int16_t & a, int16_t & b)
 {
     int16_t w = a;
     a = b;
     b = w;
 }
-void swap(uint8_t &a, uint8_t &b)
+void swap(uint8_t & a, uint8_t & b)
 {
     uint8_t w = a;
     a = b;

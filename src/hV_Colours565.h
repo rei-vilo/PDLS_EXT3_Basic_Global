@@ -3,7 +3,7 @@
 /// @brief Class Library for 5-6-5 coded colours
 ///
 /// @details Project Pervasive Displays Library Suite
-/// @n Based on highView technology 
+/// @n Based on highView technology
 ///
 /// @author Rei Vilo
 /// @date 11 Jan 2021

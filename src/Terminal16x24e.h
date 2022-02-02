@@ -3,7 +3,7 @@
 /// @brief Font Terminal 16 x 24
 ///
 /// @details Project Pervasive Displays Library Suite
-/// @n Based on highView technology 
+/// @n Based on highView technology
 ///
 /// @author Rei Vilo
 /// @date 02 Aug 2021
@@ -28,7 +28,7 @@
 // ----------------------------------
 //
 // Project Pervasive Displays Library Suite
-// Based on highView technology 
+// Based on highView technology
 //  Created by Rei Vilo on 26 May 2012
 //  Copyright Rei Vilo
 //  Licence All rights reserved

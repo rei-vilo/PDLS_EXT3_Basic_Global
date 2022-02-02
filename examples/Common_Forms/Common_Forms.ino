@@ -3,11 +3,11 @@
 /// @brief Example of features for basic edition
 ///
 /// @details Project Pervasive Displays Library Suite
-/// @n Based on highView technology 
+/// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 16 Aug 2021
-/// @version 508
+/// @date 02 Feb 2022
+/// @version 526
 ///
 /// @copyright (c) Rei Vilo, 2010-2022
 /// @copyright CC = BY SA NC
@@ -112,7 +112,7 @@ void setup()
 
     Serial.print("Palettes... ");
     myScreen.clear();
-    displayPalette();
+    displayForms();
     wait(8);
 
     Serial.print("White... ");

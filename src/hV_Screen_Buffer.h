@@ -3,7 +3,7 @@
 /// @brief Class Generic LCD with buffer class library
 ///
 /// @details Project Pervasive Displays Library Suite
-/// @n Based on highView technology 
+/// @n Based on highView technology
 ///
 /// @author Rei Vilo
 /// @date 24 Nov 2021

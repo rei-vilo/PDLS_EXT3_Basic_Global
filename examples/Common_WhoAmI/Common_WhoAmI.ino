@@ -6,8 +6,8 @@
 /// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 16 Aug 2021
-/// @version 508
+/// @date 02 Feb 2022
+/// @version 526
 ///
 /// @copyright (c) Rei Vilo, 2010-2022
 /// @copyright CC = BY SA NC
@@ -70,7 +70,7 @@ void wait(uint8_t second)
 /// @image html T2_WHOAMI.jpg
 /// @image latex T2_WHOAMI.PDF width=10cm
 ///
-void displayWhoAmI())
+void displayWhoAmI()
 {
     myScreen.setOrientation(7);
     myScreen.selectFont(Font_Terminal8x12);
@@ -96,7 +96,7 @@ void setup()
     Serial.println(formatString("%s %ix%i", myScreen.WhoAmI().c_str(), myScreen.screenSizeX(), myScreen.screenSizeY()));
 
     Serial.print("Who Am I... ");
- 
+
     myScreen.begin();
     myScreen.clear();
     displayWhoAmI();

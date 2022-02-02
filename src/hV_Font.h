@@ -3,7 +3,7 @@
 /// @brief Font structure
 ///
 /// @details Project Pervasive Displays Library Suite
-/// @n Based on highView technology 
+/// @n Based on highView technology
 ///
 /// @author Rei Vilo
 /// @date 02 Aug 2021
@@ -24,16 +24,16 @@
 /// @warning 8- and 16-bit limitations
 ///
 /// Some 8- and 16-bit platforms limit arrays to 16 KB. Some header fonts require higher arrays.
-/// 
+///
 /// - Use a 32-bit platform in that case (USE_FONT_HEADER).
 /// - Use small fonts on a 8- and 16-bit platform (USE_FONT_HEADER).
 /// - Save the fonts to the external SPI Flash memory (USE_FONT_FLASH).
-/// 
-/// For the last option, 
-/// 
+///
+/// For the last option,
+///
 /// - Use hV_Fonts_Manager on a 32-bit platform to save the fonts on the external SPI Flash memory.
 /// - Flash the compiled Fonts_3.hex on the external SPI Flash with Segger J-Flash or similar
-/// 
+///
 
 // SDK
 #if defined(ENERGIA) // LaunchPad specific
