@@ -17,11 +17,11 @@
 ///
 /// * This **Reference manual** lists all the objects and functions, with details for their parameters and returned results.
 ///
-/// * The [User guide](http://pdls.pervasivedisplays.com/userguide/index.html) focuses on how to use the different libraries, with commented examples;
+/// * The [User guide](https://pdls.pervasivedisplays.com/userguide/index.html) focuses on how to use the different libraries, with commented examples;
 ///
 /// @author Rei Vilo
-/// @date 02 Feb 2022
-/// @version 526
+/// @date 09 Feb 2022
+/// @version 527
 ///
 /// @copyright (c) Rei Vilo, 2010-2022
 /// @copyright All rights reserved
