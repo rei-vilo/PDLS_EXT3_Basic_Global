@@ -20,7 +20,7 @@
 /// * The [User guide](https://pdls.pervasivedisplays.com/userguide/index.html) focuses on how to use the different libraries, with commented examples;
 ///
 /// @author Rei Vilo
-/// @date 09 Feb 2022
+/// @date 10 Feb 2022
 /// @version 527
 ///
 /// @copyright (c) Rei Vilo, 2010-2022
