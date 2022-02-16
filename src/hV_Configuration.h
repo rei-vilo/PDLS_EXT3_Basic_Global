@@ -18,16 +18,16 @@
 /// 11. Set storage mode, not implemented
 ///
 /// @author Rei Vilo
-/// @date 02 Feb 2022
-/// @version 526
+/// @date 16 Feb 2022
+/// @version 528
 ///
 /// @copyright (c) Rei Vilo, 2010-2022
 /// @copyright All rights reserved
 ///
-/// * Basic edition: for hobbyists and for personal usage
-/// @n Creative Commons Attribution-NonCommercial-ShareAlike 4.0 Unported (CC BY-NC-SA 4.0)
+/// * Basic edition: for hobbyists and for basic usage
+/// @n Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
 ///
-/// @see https://creativecommons.org/licenses/by-nc-sa/4.0/
+/// @see https://creativecommons.org/licenses/by-sa/4.0/
 ///
 /// @n Consider the advanced or commercial editions for professionals or organisations and for commercial usage
 ///
@@ -49,7 +49,7 @@
 ///
 /// @brief Release
 ///
-#define hV_CONFIGURATION_RELEASE 525
+#define hV_CONFIGURATION_RELEASE 528
 
 ///
 /// @name 1- List of supported Pervasive Displays screens
@@ -338,20 +338,19 @@ const pins_t boardArduinoZero =
 ///
 const pins_t boardNucleo64 = boardArduinoZero;
 
-#if (PARTICLE == 1)
-
 ///
-/// @brief Particule Photon configuration, tested
+/// @brief Particle Photon configuration, tested
+/// @note D6 also CLK/SWCLK with D7 SWD/SWDIO
 ///
 const pins_t boardParticlePhoton =
 {
-    .panelBusy = D5, ///< EXT3 pin 3 Red
-    .panelDC = D4, ///< EXT3 pin 4 Orange
-    .panelReset = D3, ///< EXT3 pin 5 Yellow
-    .flashCS = D2, ///< EXT3 pin 8 Violet
-    .panelCS = D1, ///< EXT3 pin 9 Grey
-    .panelCSS = D6, ///< EXT3 pin 12 Grey2
-    .flashCSS = D0, ///< EXT3 pin 20 Black2
+    .panelBusy = 5, ///< EXT3 pin 3 Red -> D5
+    .panelDC = 4, ///< EXT3 pin 4 Orange -> D4
+    .panelReset = 3, ///< EXT3 pin 5 Yellow -> D3
+    .flashCS = 2, ///< EXT3 pin 8 Violet -> D2
+    .panelCS = 1, ///< EXT3 pin 9 Grey -> D1
+    .panelCSS = NOT_CONNECTED, ///< EXT3 pin 12 Grey2 -> D6
+    .flashCSS = 0, ///< EXT3 pin 20 Black2 -> D0
     .touchReset = NOT_CONNECTED, ///< Separate touch board
     .touchInt = NOT_CONNECTED, ///< Separate touch board
     .cardCS = NOT_CONNECTED, ///< Separate SD-card board
@@ -361,9 +360,7 @@ const pins_t boardParticlePhoton =
 ///
 /// @brief RedBear Duo configuration, tested
 ///
-const pins_t boardRedBearDuo = boardParticulePhoton;
-
-#endif // PARTICLE
+const pins_t boardRedBearDuo = boardParticlePhoton;
 
 ///
 /// @brief Espressif ESP32-DevKitC

@@ -10,14 +10,14 @@
 /// @version 523
 ///
 /// @copyright (c) Rei Vilo, 2010-2022
-/// @copyright Creative Commons Attribution-NonCommercial-ShareAlike 4.0 Unported (CC BY-NC-SA 4.0)
+/// @copyright Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
 ///
-/// The highView Library Suite is shared under the Creative Commons licence Attribution-NonCommercial-ShareAlike 4.0 Unported (CC BY-NC-SA 4.0).
+/// The highView Library Suite is shared under the Creative Commons licence Attribution-ShareAlike 4.0 International (CC BY-SA 4.0).
 ///
-/// * Basic edition: for hobbyists and for personal usage
-/// @n Creative Commons Attribution-NonCommercial-ShareAlike 4.0 Unported (CC BY-NC-SA 4.0)
+/// * Basic edition: for hobbyists and for basic usage
+/// @n Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
 ///
-/// @see https://creativecommons.org/licenses/by-nc-sa/4.0/
+/// @see https://creativecommons.org/licenses/by-sa/4.0/
 ///
 /// @n Consider the advanced or commercial editions for professionals or organisations and for commercial usage
 ///

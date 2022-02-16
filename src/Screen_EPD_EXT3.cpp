@@ -9,7 +9,7 @@
 // Created by Rei Vilo, 28 Jun 2016
 //
 // Copyright © Rei Vilo, 2010-2022
-// Licence Creative Commons Attribution-NonCommercial-ShareAlike 4.0 Unported (CC BY-NC-SA 4.0)
+// Licence Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
 //
 // Release 508: Added support for E2969CS0B and E2B98CS0B
 // Release 527: Added support for ESP32 PSRAM

@@ -78,7 +78,9 @@ var a00131 =
     [ "boardLaunchPadGCU", "a00131.html#a2597adfeb71941d30510db3c36c547d7", null ],
     [ "boardMSP430FR5994", "a00131.html#ab0c34bc6b39ca5dd09835a0ee5a3a41a", null ],
     [ "boardNucleo64", "a00131.html#afad37f2188fa8b28b3b9806de35e2fd7", null ],
+    [ "boardParticlePhoton", "a00131.html#ad33d22d1addf1e28379474443ebde2c7", null ],
     [ "boardRaspberryPiPico_Arduino", "a00131.html#a3d2067293296d6d5d4aeebc8e56d90bc", null ],
     [ "boardRaspberryPiPico_RP2040", "a00131.html#a894b0bb2d9979d677cae8a66db5ca563", null ],
-    [ "boardRaspberryPiZeroB_RasPiArduino", "a00131.html#abacdc5c8e1313cf3a7a716cf1ace4741", null ]
+    [ "boardRaspberryPiZeroB_RasPiArduino", "a00131.html#abacdc5c8e1313cf3a7a716cf1ace4741", null ],
+    [ "boardRedBearDuo", "a00131.html#acfebc28da306dfd986d08d1a31fc7fe2", null ]
 ];

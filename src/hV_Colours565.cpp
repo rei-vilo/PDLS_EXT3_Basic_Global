@@ -9,7 +9,7 @@
 // Created by Rei Vilo, 31 Dec 2013
 //
 // Copyright © Rei Vilo, 2010-2022
-// Licence Attribution-NonCommercial-ShareAlike 4.0 Unported (CC BY-NC-SA 4.0)
+// Licence Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
 //
 // See hV_Colours565.h for references
 //

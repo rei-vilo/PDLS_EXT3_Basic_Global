@@ -10,8 +10,8 @@
 // Copyright (c) Rei Vilo, 2010-2022
 // Licence All rights reserved
 //
-// * Basic edition: for hobbyists and for personal usage
-// Creative Commons Attribution-NonCommercial-ShareAlike 4.0 Unported (CC BY-NC-SA 4.0)
+// * Basic edition: for hobbyists and for basic usage
+// Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
 //
 // * Advanced edition: for professionals or organisations, no commercial usage
 // All rights reserved

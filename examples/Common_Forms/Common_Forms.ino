@@ -10,7 +10,7 @@
 /// @version 526
 ///
 /// @copyright (c) Rei Vilo, 2010-2022
-/// @copyright CC = BY SA NC
+/// @copyright Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
 ///
 /// @see ReadMe.txt for references
 /// @n

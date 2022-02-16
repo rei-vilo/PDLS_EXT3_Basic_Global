@@ -40,4 +40,4 @@ Hardware
 
 ## Licence
 
-[Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)](./LICENSE.md)
+[Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](./LICENSE.md)

@@ -12,8 +12,8 @@
 /// @copyright (c) Rei Vilo, 2010-2022
 /// @copyright All rights reserved
 ///
-/// * Basic edition: for hobbyists and for personal usage
-/// @n Creative Commons Attribution-NonCommercial-ShareAlike 4.0 Unported (CC BY-NC-SA 4.0)
+/// * Basic edition: for hobbyists and for basic usage
+/// @n Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
 ///
 /// * Advanced edition: for professionals or organisations
 /// @n All rights reserved, no commercial usage
