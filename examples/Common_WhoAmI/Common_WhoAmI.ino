@@ -97,7 +97,6 @@ void setup()
 
     Serial.print("Who Am I... ");
 
-    myScreen.begin();
     myScreen.clear();
     displayWhoAmI();
     wait(8);
