@@ -1,5 +1,0 @@
-<map id="Screen_EPD_EXT3" name="Screen_EPD_EXT3">
-<area shape="rect" id="node1" title="Class for Pervasive Displays iTC monochome and colour screens." alt="" coords="5,155,144,181"/>
-<area shape="rect" id="node2" href="$a00203.html" title="Generic class for buffered LCD." alt="" coords="6,80,143,107"/>
-<area shape="rect" id="node3" href="$a00199.html" title="Class for font as header file." alt="" coords="6,5,143,32"/>
-</map>

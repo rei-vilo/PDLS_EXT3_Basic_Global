@@ -1,9 +1,0 @@
-<map id="hV_Configuration.h" name="hV_Configuration.h">
-<area shape="rect" id="node1" title="Configuration of the options for Pervasive Displays Library Suite." alt="" coords="93,5,240,32"/>
-<area shape="rect" id="node2" href="$a00137.html" title="Font structure." alt="" coords="17,80,103,107"/>
-<area shape="rect" id="node3" href="$a00143.html" title="hV_Font_Terminal" alt="" coords="5,155,155,181"/>
-<area shape="rect" id="node4" href="$a00149.html" title="Class Generic LCD with buffer class library." alt="" coords="56,229,205,256"/>
-<area shape="rect" id="node5" href="$a00164.html" title="Driver for Pervasive Displays iTC monochrome and colour screens with EXT3." alt="" coords="111,304,262,331"/>
-<area shape="rect" id="node6" href="$a00158.html" title="Driver for Pervasive Displays iTC screens and EXT3 extension board." alt="" coords="112,379,261,405"/>
-<area shape="rect" id="node7" href="$a00122.html" title="Example of features for basic edition." alt="" coords="103,453,270,480"/>
-</map>

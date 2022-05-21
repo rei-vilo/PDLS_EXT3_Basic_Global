@@ -1,8 +1,0 @@
-<map id="hV_Font.h" name="hV_Font.h">
-<area shape="rect" id="node1" title="Font structure." alt="" coords="45,5,132,32"/>
-<area shape="rect" id="node2" href="$a00143.html" title="hV_Font_Terminal" alt="" coords="14,80,163,107"/>
-<area shape="rect" id="node3" href="$a00149.html" title="Class Generic LCD with buffer class library." alt="" coords="14,155,163,181"/>
-<area shape="rect" id="node4" href="$a00164.html" title="Driver for Pervasive Displays iTC monochrome and colour screens with EXT3." alt="" coords="13,229,164,256"/>
-<area shape="rect" id="node5" href="$a00158.html" title="Driver for Pervasive Displays iTC screens and EXT3 extension board." alt="" coords="14,304,163,331"/>
-<area shape="rect" id="node6" href="$a00122.html" title="Example of features for basic edition." alt="" coords="5,379,172,405"/>
-</map>
