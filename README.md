@@ -11,7 +11,7 @@ Please refer to [PDLS_EXT3_Basic](https://github.com/rei-vilo/PDLS_EXT3_Basic/is
 + Graphics routines
 + Text routines
 + Four extended fonts
-+ Go to the [documentation](https://rei-vilo.github.io/PDLS_EXT3_Basic/index.html) 
++ Go to the [documentation](https://rei-vilo.github.io/PDLS_EXT3_Basic_Documentation/index.html) 
 
 ## Installation
 
