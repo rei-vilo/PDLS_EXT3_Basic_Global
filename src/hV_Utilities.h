@@ -27,7 +27,7 @@
 #include "Energia.h"
 #else // Arduino general
 #include "Arduino.h"
-#endif // end IDE
+#endif // SDK
 
 #ifndef hV_UTILITIES_RELEASE
 ///

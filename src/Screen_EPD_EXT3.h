@@ -33,7 +33,7 @@
 #include "Energia.h"
 #else // Arduino general
 #include "Arduino.h"
-#endif // end IDE
+#endif // IDE
 
 // Configuration
 #include "hV_Configuration.h"
@@ -66,7 +66,7 @@
 /// * touch: no touch
 /// * fonts: no fonts
 ///
-/// @n All commands work on the frame-buffer,
+/// @note All commands work on the frame-buffer,
 /// to be displayed on screen with flush()
 ///
 class Screen_EPD_EXT3 final : public hV_Screen_Buffer
