@@ -246,8 +246,8 @@ const pins_t boardRaspberryPiPico_Arduino =
     .panelCS = 5, ///< EXT3 and EXT3-1 pin 9 Grey -> GP5
     .panelCSS = 14, ///< EXT3 and EXT3-1 pin 12 Grey2 -> GP14
     .flashCSS = 15, ///< EXT3 pin 20 or EXT3-1 pin 11 Black2 -> GP15
-    .touchReset = NOT_CONNECTED, ///< Separate touch board -> GP8
     .touchInt = NOT_CONNECTED, ///< Separate touch board -> GP9
+    .touchReset = NOT_CONNECTED, ///< Separate touch board -> GP8
     .cardCS = NOT_CONNECTED, ///< Separate SD-card board
     .cardDetect = NOT_CONNECTED, ///< Separate SD-card board
 };
@@ -266,8 +266,8 @@ const pins_t boardRaspberryPiPico_RP2040 =
     .panelCS = 17, ///< EXT3 and EXT3-1 pin 9 Grey -> GP17
     .panelCSS = 14, ///< EXT3 and EXT3-1 pin 12 Grey2 -> GP14
     .flashCSS = 15, ///< EXT3 pin 20 or EXT3-1 pin 11 Black2 -> GP15
-    .touchReset = NOT_CONNECTED, ///< Separate touch board -> GP8
     .touchInt = NOT_CONNECTED, ///< Separate touch board -> GP9
+    .touchReset = NOT_CONNECTED, ///< Separate touch board -> GP8
     .cardCS = NOT_CONNECTED, ///< Separate SD-card board
     .cardDetect = NOT_CONNECTED, ///< Separate SD-card board
 };
