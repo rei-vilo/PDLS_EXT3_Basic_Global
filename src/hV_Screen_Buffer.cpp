@@ -3,14 +3,19 @@
 // Class library C++ code
 // ----------------------------------
 //
-// Project      highView Library Suite
+// Project Pervasive Displays Library Suite
+// Based on highView technology
 //
-// Created by   Rei Vilo, 28 Jun 2016
+// Created by Rei Vilo, 28 Jun 2016
 //
-// Copyright    © Rei Vilo, 2010-2022
-// Licence      Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+// Copyright © Rei Vilo, 2010-2022
+// Licence Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
 //
-// See          hV_Screen_Buffer.h for references
+// See hV_Screen_Buffer.h for references
+//
+// Release 520: Added use of hV_HAL_Peripherals
+// Release 523: Fixed rounded rectangles
+// Release 526: Improved touch management
 //
 
 // Library header
@@ -535,7 +540,7 @@ uint8_t hV_Screen_Buffer::fontMax()
 uint16_t hV_Screen_Buffer::characterSizeX(uint8_t character)
 {
     uint16_t result = 0;
-    if ((_f_font.kind & 0x40) == 0x40)
+    if ((_f_font.kind & 0x40) == 0x40) // Monospaced font
     {
         result = _f_font.maxWidth + _f_fontSpaceX;
     }

@@ -130,6 +130,7 @@ class hV_Screen_Buffer : protected hV_Font_Terminal
     virtual uint16_t screenDiagonal();
     ///
 
+    ///
     /// @brief Screen colour depth
     /// @return colour depth, in bits
     /// @note Examples: BW=1, BWR=2, RGB565=16

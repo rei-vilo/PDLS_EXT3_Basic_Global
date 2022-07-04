@@ -1,6 +1,6 @@
 ///
 /// @file Screen_EPD_EXT3.h
-/// @brief Driver for Pervasive Displays iTC monochrome and colour screens with EXT3
+/// @brief Driver for Pervasive Displays iTC monochrome and colour screens and EXT3 board
 ///
 /// @details Project Pervasive Displays Library Suite
 /// @n Based on highView technology
@@ -12,8 +12,8 @@
 /// * Feature: none
 ///
 /// @author Rei Vilo
-/// @date 10 Feb 2021
-/// @version 527
+/// @date 14 Mar 2022
+/// @version 530
 ///
 /// @copyright (c) Rei Vilo, 2010-2022
 /// @copyright Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
@@ -33,20 +33,20 @@
 #include "Energia.h"
 #else // Arduino general
 #include "Arduino.h"
-#endif // IDE
+#endif // SDK
 
 // Configuration
 #include "hV_Configuration.h"
 
-#if (hV_CONFIGURATION_RELEASE < 507)
-#error Required hV_CONFIGURATION_RELEASE 507
+#if (hV_CONFIGURATION_RELEASE < 530)
+#error Required hV_CONFIGURATION_RELEASE 530
 #endif // hV_CONFIGURATION_RELEASE
 
 #ifndef SCREEN_EPD_EXT3_RELEASE
 ///
 /// @brief Library release number
 ///
-#define SCREEN_EPD_EXT3_RELEASE 527
+#define SCREEN_EPD_EXT3_RELEASE 530
 
 // Other libraries
 #include "SPI.h"
@@ -62,7 +62,7 @@
 ///
 /// @brief Class for Pervasive Displays iTC monochome and colour screens
 /// @details Screen controllers
-/// * LCD: propietary, SPI
+/// * LCD: proprietary, SPI
 /// * touch: no touch
 /// * fonts: no fonts
 ///
