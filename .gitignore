@@ -1,5 +1,6 @@
 Doxyfile
 .builds/
+docs/
 latex/
 xml/
 Doxyfile.dox

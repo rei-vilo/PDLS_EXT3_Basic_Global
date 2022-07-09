@@ -11,17 +11,30 @@
 ///
 /// It provides a high-level interface to drive the e-paper screens with global, fast and partial update, supports capacitive touch and haptic feed-back.
 ///
+/// @b Variants
+///
+/// The basic edition includes different variants:
+///
+/// * **PDLS_EXT3_Basic** drives all the screens, monochrome and colour, with global update;
+///
+/// * **PDLS_EXT3_Basic_Fast** drives the screens with embedded fast update;
+///
+/// * **PDLS_EXT3_Basic_Touch** drives the screens with embedded fast update and capacitive touch.
+///
 /// @b Documentation
 ///
 /// The documentation includes two documents:
 ///
 /// * This **Reference manual** lists all the objects and functions, with details for their parameters and returned results.
 ///
-/// * The [User guide](https://pdls.pervasivedisplays.com/userguide/index.html) focuses on how to use the different libraries, with commented examples;
+/// * The [User guide](https://pdls.pervasivedisplays.com/userguide/index.html) focuses on how to use the different libraries, with commented examples.
+///
+/// Additionally, the **[Wiki](https://docs.pervasivedisplays.com/)** provides a gradual introduction to the e-paper technology and how to use it.
+///
 ///
 /// @author Rei Vilo
-/// @date 16 Feb 2022
-/// @version 528
+/// @date 07 Jun 2022
+/// @version 533
 ///
 /// @copyright (c) Rei Vilo, 2010-2022
 /// @copyright All rights reserved

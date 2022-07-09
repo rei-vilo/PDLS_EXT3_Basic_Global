@@ -918,7 +918,7 @@ void Screen_EPD_EXT3::invert(bool flag)
 void Screen_EPD_EXT3::_setPoint(uint16_t x1, uint16_t y1, uint16_t colour)
 {
     // Orient and check coordinates are within screen
-    // _orientCoordinates() returns false=success, true=error
+    // _orientCoordinates() returns false = success, true = error
     if (_orientCoordinates(x1, y1))
     {
         return;

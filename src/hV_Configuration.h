@@ -11,15 +11,15 @@
 /// 4- Maximum number of fonts
 /// 5- SRAM memory, internal MCU for basic edition
 /// 6- Use self for basic edition
-/// 7- Touch mode, not implemented
+/// 7- Touch mode, activated or not
 /// 8- Haptic feedback mode, not implemented
 /// 9. Set GPIO expander mode, not implemented
 /// 10. String object for basic edition
 /// 11. Set storage mode, not implemented
 ///
 /// @author Rei Vilo
-/// @date 16 Feb 2022
-/// @version 528
+/// @date 07 Jun 2022
+/// @version 533
 ///
 /// @copyright (c) Rei Vilo, 2010-2022
 /// @copyright All rights reserved
@@ -49,7 +49,7 @@
 ///
 /// @brief Release
 ///
-#define hV_CONFIGURATION_RELEASE 528
+#define hV_CONFIGURATION_RELEASE 533
 
 ///
 /// @name 1- List of supported Pervasive Displays screens
@@ -82,7 +82,11 @@
 #define eScreen_EPD_EXT3_969_08 (uint32_t)0x9608 ///< reference xE2969CS08x, previous type
 #define eScreen_EPD_EXT3_B98_08 (uint32_t)0xB908 ///< reference xE2B98CS08x, previous type
 
-/// * Specific monochrome screens, fast and partial update
+/// * Specific monochrome touch screens
+#define eScreen_EPD_EXT3_270_Touch (uint32_t)0x0127f0 ///< reference xTP270PGH0x with embedded fast update
+#define eScreen_EPD_EXT3_370_Touch (uint32_t)0x0137f0 ///< reference xTP370PGH0x with embedded fast update
+
+/// * Specific small monochrome screens, fast and partial update
 #define eScreen_EPD_EXT3_154_0C (uint32_t)0x150C ///< reference xE2154CS0Cx
 #define eScreen_EPD_EXT3_213_09 (uint32_t)0x2109 ///< reference xE2213xS09x
 #define eScreen_EPD_EXT3_213_0C (uint32_t)0x210C ///< reference xE2213CS0Cx
@@ -96,8 +100,12 @@
 #define eScreen_EPD_EXT3_417_05 (uint32_t)0x4105 ///< reference xE2417CS05x
 #define eScreen_EPD_EXT3_417_0D (uint32_t)0x410D ///< reference xE2417CS0Dx
 #define eScreen_EPD_EXT3_437_0C (uint32_t)0x430C ///< reference xE2437CS0Cx
+
+/// * Specific medium monochrome screens, fast and partial update
 #define eScreen_EPD_EXT3_581_0B (uint32_t)0x580B ///< reference xE2581CS0Bx
 #define eScreen_EPD_EXT3_741_0B (uint32_t)0x740B ///< reference xE2741CS0Bx
+
+/// * Specific large monochrome screens, fast and partial update
 #define eScreen_EPD_EXT3_969_0B (uint32_t)0x960B ///< reference xE2969CS0Bx
 #define eScreen_EPD_EXT3_B98_0B (uint32_t)0xB90B ///< reference xE2B98CS0Bx
 
@@ -169,11 +177,11 @@ const pins_t boardLaunchPad =
     .panelReset = 13, ///< EXT3 and EXT3-1 pin 5 Yellow
     .flashCS = 18, ///< EXT3 and EXT3-1 pin 8 Violet
     .panelCS = 19, ///< EXT3 and EXT3-1 pin 9 Grey
-    .panelCSS = 39, ///< EXT3 and EXT3-1 pin 12 Grey2
-    .flashCSS = 38, ///< EXT3 pin 20 or EXT3-1 pin 11 Black2
-    .touchInt = NOT_CONNECTED, ///< Separate touch board
-    .touchReset = NOT_CONNECTED, ///< Separate touch board
-    .cardCS = NOT_CONNECTED, ///< Separate SD-card board
+    .panelCSS = 39, ///< EXT3 and EXT3-1 pin 12 Grey2 -> 39
+    .flashCSS = 38, ///< EXT3 pin 20 or EXT3-1 pin 11 Black2 -> 38
+    .touchInt = 8, ///< EXT3-Touch pin 3 Red -> 8
+    .touchReset = 6, ///< EXT3-Touch pin 4 Orange -> 6
+    .cardCS = NOT_CONNECTED, ///< Separate SD-card board -> 5
     .cardDetect = NOT_CONNECTED, ///< Separate SD-card board
 };
 
@@ -189,8 +197,8 @@ const pins_t boardMSP430FR5994 =
     .panelCS = 19, ///< EXT3 and EXT3-1 pin 9 Grey
     .panelCSS = 39, ///< EXT3 and EXT3-1 pin 12 Grey2
     .flashCSS = 38, ///< EXT3 pin 20 or EXT3-1 pin 11 Black2
-    .touchInt = NOT_CONNECTED, ///< Separate touch board
-    .touchReset = NOT_CONNECTED, ///< Separate touch board
+    .touchInt = NOT_CONNECTED, ///< EXT3-Touch pin 3 Red
+    .touchReset = NOT_CONNECTED, ///< EXT3-Touch pin 4 Orange
     .cardCS = 47, ///< Included SD-card
     .cardDetect = 51 ///< Included SD-card
 };
@@ -205,10 +213,10 @@ const pins_t boardCC1352 =
     .panelReset = 19, ///< EXT3 and EXT3-1 pin 5 Yellow
     .flashCS = 24, ///< EXT3 and EXT3-1 pin 8 Violet
     .panelCS = 26, ///< EXT3 and EXT3-1 pin 9 Grey
-    .panelCSS = 37, ///< EXT3 and EXT3-1 pin 12 Grey2
-    .flashCSS = 27, ///< EXT3 pin 20 or EXT3-1 pin 11 Black2
-    .touchInt = NOT_CONNECTED, ///< Separate touch board
-    .touchReset = NOT_CONNECTED, ///< Separate touch board
+    .panelCSS = 37, ///< EXT3 and EXT3-1 pin 12 Grey2 -> 37
+    .flashCSS = 27, ///< EXT3 pin 20 or EXT3-1 pin 11 Black2 -> 27
+    .touchInt = NOT_CONNECTED, ///< EXT3-Touch pin 3 Red
+    .touchReset = NOT_CONNECTED, ///< EXT3-Touch pin 4 Orange
     .cardCS = NOT_CONNECTED, ///< Separate SD-card board
     .cardDetect = NOT_CONNECTED, ///< Separate SD-card board
 };
@@ -226,8 +234,8 @@ const pins_t boardRaspberryPiZeroB_RasPiArduino =
     .panelCS = 27, ///< EXT3 and EXT3-1 pin 9 Grey -> GPIO27 pin 13
     .panelCSS = 23, ///< EXT3 and EXT3-1 pin 12 Grey2 -> GPIO23 pin 16
     .flashCSS = 24, ///< EXT3 pin 20 or EXT3-1 pin 11 Black2 -> GPIO24 pin 18
-    .touchInt = NOT_CONNECTED, ///< Separate touch board
-    .touchReset = NOT_CONNECTED, ///< Separate touch board
+    .touchInt = NOT_CONNECTED, ///< EXT3-Touch pin 3 Red
+    .touchReset = NOT_CONNECTED, ///< EXT3-Touch pin 4 Orange
     .cardCS = NOT_CONNECTED, ///< Separate SD-card board
     .cardDetect = NOT_CONNECTED, ///< Separate SD-card board
 };
@@ -284,8 +292,8 @@ const pins_t boardFeatherM0M4 =
     .panelCS = 9, ///< EXT3 and EXT3-1 pin 9 Grey
     .panelCSS = NOT_CONNECTED, ///< EXT3 and EXT3-1 pin 12 Grey2
     .flashCSS = NOT_CONNECTED, ///< EXT3 pin 20 or EXT3-1 pin 11 Black2
-    .touchInt = NOT_CONNECTED, ///< Separate touch board
-    .touchReset = NOT_CONNECTED, ///< Separate touch board
+    .touchInt = NOT_CONNECTED, ///< EXT3-Touch pin 3 Red
+    .touchReset = NOT_CONNECTED, ///< EXT3-Touch pin 4 Orange
     .cardCS = NOT_CONNECTED, ///< Separate SD-card board
     .cardDetect = NOT_CONNECTED, ///< Separate SD-card board
 };
@@ -309,8 +317,8 @@ const pins_t boardArduinoZero =
     .panelCS = 8, ///< EXT3 and EXT3-1 pin 9 Grey
     .panelCSS = 9, ///< EXT3 and EXT3-1 pin 12 Grey2
     .flashCSS = 10, ///< EXT3 pin 20 or EXT3-1 pin 11 Black2
-    .touchInt = NOT_CONNECTED, ///< Separate touch board
-    .touchReset = NOT_CONNECTED, ///< Separate touch board
+    .touchInt = NOT_CONNECTED, ///< EXT3-Touch pin 3 Red
+    .touchReset = NOT_CONNECTED, ///< EXT3-Touch pin 4 Orange
     .cardCS = NOT_CONNECTED, ///< Separate SD-card board
     .cardDetect = NOT_CONNECTED, ///< Separate SD-card board
 };
@@ -333,8 +341,8 @@ const pins_t boardParticlePhoton =
     .panelCS = 1, ///< EXT3 and EXT3-1 pin 9 Grey -> D1
     .panelCSS = NOT_CONNECTED, ///< EXT3 and EXT3-1 pin 12 Grey2 -> D6
     .flashCSS = 0, ///< EXT3 pin 20 or EXT3-1 pin 11 Black2 -> D0
-    .touchInt = NOT_CONNECTED, ///< Separate touch board
-    .touchReset = NOT_CONNECTED, ///< Separate touch board
+    .touchInt = NOT_CONNECTED, ///< EXT3-Touch pin 3 Red
+    .touchReset = NOT_CONNECTED, ///< EXT3-Touch pin 4 Orange
     .cardCS = NOT_CONNECTED, ///< Separate SD-card board
     .cardDetect = NOT_CONNECTED, ///< Separate SD-card board
 };
@@ -357,8 +365,83 @@ const pins_t boardESP32DevKitC =
     .panelCS = 32, ///< EXT3 and EXT3-1 pin 9 Grey -> GPIO32
     .panelCSS = 4, ///< EXT3 and EXT3-1 pin 12 Grey2 -> GPIO4
     .flashCSS = 0, ///< EXT3 pin 20 or EXT3-1 pin 11 Black2 -> GPIO0
-    .touchInt = NOT_CONNECTED, ///< Separate touch board
-    .touchReset = NOT_CONNECTED, ///< Separate touch board
+    .touchInt = 10, ///< EXT3-Touch pin 3 Red -> GPIO10
+    .touchReset = 9, ///< EXT3-Touch pin 4 Orange -> GPIO9
+    .cardCS = NOT_CONNECTED, ///< Separate SD-card board
+    .cardDetect = NOT_CONNECTED, ///< Separate SD-card board
+};
+
+///
+/// @brief Espressif ESP32-Pico-v4
+/// @note Numbers refer to GPIOs not pins
+///
+const pins_t boardESP32PicoKitV4 =
+{
+    .panelBusy = 27, ///< EXT3 and EXT3-1 pin 3 Red -> GPIO27
+    .panelDC = 26, ///< EXT3 and EXT3-1 pin 4 Orange -> GPIO26
+    .panelReset = 25, ///< EXT3 and EXT3-1 pin 5 Yellow -> GPIO25
+    .flashCS = 33, ///< EXT3 and EXT3-1 pin 8 Violet -> GPIO33
+    .panelCS = 32, ///< EXT3 and EXT3-1 pin 9 Grey -> GPIO32
+    .panelCSS = 4, ///< EXT3 and EXT3-1 pin 12 Grey2 -> GPIO4
+    .flashCSS = 0, ///< EXT3 pin 20 or EXT3-1 pin 11 Black2 -> GPIO0
+    .touchInt = 10, ///< EXT3-Touch pin 3 Red -> GPIO10
+    .touchReset = 9, ///< EXT3-Touch pin 4 Orange -> GPIO9
+    .cardCS = NOT_CONNECTED, ///< Separate SD-card board
+    .cardDetect = NOT_CONNECTED, ///< Separate SD-card board
+};
+
+///
+/// @brief Espressif ESP32-Pico-DevKitM-2
+/// @note Numbers refer to GPIOs not pins
+///
+const pins_t boardESP32PicoDevKitM2 =
+{
+    .panelBusy = 25, ///< EXT3 and EXT3-1 pin 3 Red -> GPIO25
+    .panelDC = 26, ///< EXT3 and EXT3-1 pin 4 Orange -> GPIO26
+    .panelReset = 32, ///< EXT3 and EXT3-1 pin 5 Yellow -> GPIO32
+    .flashCS = 33, ///< EXT3 and EXT3-1 pin 8 Violet -> GPIO33
+    .panelCS = 27, ///< EXT3 and EXT3-1 pin 9 Grey -> GPIO27
+    .panelCSS = NOT_CONNECTED, ///< EXT3 and EXT3-1 pin 12 Grey2 -> GPIO33
+    .flashCSS = NOT_CONNECTED, ///< EXT3 pin 20 or EXT3-1 pin 11 Black2 -> GPIO27
+    .touchInt = 19, ///< EXT3-Touch pin 3 Orange -> GPIO19
+    .touchReset = 8, ///< EXT3-Touch pin 4 Red -> GPIO8
+    .cardCS = NOT_CONNECTED, ///< Separate SD-card board
+    .cardDetect = NOT_CONNECTED, ///< Separate SD-card board
+};
+
+//
+/// @brief Seeed Xiao RP240
+/// @note Numbers refer to GPIOs not pins
+///
+const pins_t boardXiaoRP2040
+{
+    .panelBusy = 26, ///< EXT3 and EXT3-1 pin 3 Red -> D0 GPIO26
+    .panelDC = 27, ///< EXT3 and EXT3-1 pin 4 Orange -> D1 GPIO27
+    .panelReset = 28, ///< EXT3 and EXT3-1 pin 5 Yellow -> D2 GPIO28
+    .flashCS = 6, ///< EXT3 and EXT3-1 pin 8 Violet -> D4 GPIO6
+    .panelCS = 29, ///< EXT3 and EXT3-1 pin 9 Grey -> D3 GPIO29
+    .panelCSS = 7, ///< EXT3 and EXT3-1 pin 12 Grey2 -> D5 GPIO7
+    .flashCSS = NOT_CONNECTED, ///< EXT3 pin 20 or EXT3-1 pin 11 Black2 -> N/A
+    .touchInt = NOT_CONNECTED, ///< EXT3-Touch pin 3 Orange -> D6 GPIO0
+    .touchReset = NOT_CONNECTED, ///< EXT3-Touch pin 4 Red -> D7 GPIO1
+    .cardCS = NOT_CONNECTED, ///< Separate SD-card board
+    .cardDetect = NOT_CONNECTED, ///< Separate SD-card board
+};
+
+///
+/// @brief Teensy 3.x configuration, tested
+///
+const pins_t boardTeensy3x =
+{
+    .panelBusy = 14, ///< EXT3 and EXT3-1 pin 3 Red
+    .panelDC = 15, ///< EXT3 and EXT3-1 pin 4 Orange
+    .panelReset = 16, ///< EXT3 and EXT3-1 pin 5 Yellow
+    .flashCS = 17, ///< EXT3 and EXT3-1 pin 8 Violet
+    .panelCS = 18, ///< EXT3 and EXT3-1 pin 9 Grey
+    .panelCSS = NOT_CONNECTED, ///< EXT3 and EXT3-1 pin 12 Grey2
+    .flashCSS = NOT_CONNECTED, ///< EXT3 and EXT3-1 pin 20 Black2
+    .touchInt = NOT_CONNECTED, ///< EXT3-Touch pin 3 Orange
+    .touchReset = NOT_CONNECTED, ///< EXT3-Touch pin 4 Red
     .cardCS = NOT_CONNECTED, ///< Separate SD-card board
     .cardDetect = NOT_CONNECTED, ///< Separate SD-card board
 };
@@ -428,12 +511,13 @@ const pins_t boardESP32DevKitC =
 ///
 /// @name 7- Set touch mode
 /// @details Only two screens are ready for touch
-/// * Basic edition: no touch
-/// * Advanced edition: iTC 2.71 BW and iTC 4.2 BW
-/// * Commercial edition: iTC 2.71 BW and iTC 4.2 BW
+/// * Basic edition: iTC 2.70 BW and iTC 3.70 BW
+/// * Advanced edition: iTC 2.70 BW and iTC 3.70 BW
+/// * Commercial edition: iTC 2.70 BW and iTC 3.70 BW
 /// @note Touch uses I2C and polling over interrupt
 /// @{
 #define USE_TOUCH_NONE 0 ///< Do not use touch
+#define USE_TOUCH_YES 1 ///< Use touch
 
 #define TOUCH_MODE USE_TOUCH_NONE ///< Selected option
 /// @}
