@@ -4,6 +4,8 @@
 
 The Pervasive Displays Library Suite is specifically designed for the [Pervasive Displays](https://www.pervasivedisplays.com) e-paper screens and EXT3 extension board.
 
+![](https://pdls.pervasivedisplays.com/userguide/img/Logo_PDI_text_320.png)
+
 The **PDLS_EXT3_Basic** provides a high-level interface to drive the e-paper screens with global update:
 
 + [EPD Extension Kit Gen 3 (EXT3 or EXT3-1)](https://www.pervasivedisplays.com/product/epd-extension-kit-gen-3-EXT3/); and 
