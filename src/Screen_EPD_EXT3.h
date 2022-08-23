@@ -12,8 +12,8 @@
 /// * Feature: none
 ///
 /// @author Rei Vilo
-/// @date 14 Mar 2022
-/// @version 530
+/// @date 22 Aug 2022
+/// @version 541
 ///
 /// @copyright (c) Rei Vilo, 2010-2022
 /// @copyright Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
@@ -46,7 +46,7 @@
 ///
 /// @brief Library release number
 ///
-#define SCREEN_EPD_EXT3_RELEASE 530
+#define SCREEN_EPD_EXT3_RELEASE 541
 
 // Other libraries
 #include "SPI.h"
@@ -55,7 +55,6 @@
 #if (hV_SCREEN_BUFFER_RELEASE < 507)
 #error Required hV_SCREEN_BUFFER_RELEASE 507
 #endif // hV_SCREEN_BUFFER_RELEASE
-
 
 // Objects
 //

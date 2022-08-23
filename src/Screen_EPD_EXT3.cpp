@@ -13,6 +13,7 @@
 //
 // Release 508: Added support for E2969CS0B and E2B98CS0B
 // Release 527: Added support for ESP32 PSRAM
+// Release 541: Improved support for ESP32
 //
 
 // Library header
@@ -283,10 +284,17 @@ void Screen_EPD_EXT3::begin()
 
 #else
 
-    // SPI.setBitOrder(MSBFIRST);
-    // SPI.setDataMode(SPI_MODE0);
-    // SPI.setClockDivider(SPI_CLOCK_DIV32);
+#if defined(ARDUINO_ARCH_ESP32)
+
+    // Board ESP32-Pico-DevKitM-2 crashes if pins are not specified.
+    SPI.begin(14, 12, 13); // SCK MISO MOSI
+
+#else
+
     SPI.begin();
+
+#endif // ARDUINO_ARCH_ESP32
+
     SPI.beginTransaction(_settingScreen);
 
 #endif // ENERGIA

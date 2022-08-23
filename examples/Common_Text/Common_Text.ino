@@ -63,7 +63,6 @@ void wait(uint8_t second)
     Serial.print("         \r");
 }
 
-
 // Functions
 ///
 /// @brief Characters test screen
