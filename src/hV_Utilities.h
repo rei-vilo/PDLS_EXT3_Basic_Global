@@ -19,7 +19,7 @@
 ///
 /// @see https://creativecommons.org/licenses/by-sa/4.0/
 ///
-/// @n Consider the advanced or commercial editions for professionals or organisations and for commercial usage
+/// @n Consider the Evaluation or Commercial editions for professionals or organisations and for commercial usage
 ///
 
 // SDK

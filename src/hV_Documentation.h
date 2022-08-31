@@ -36,8 +36,8 @@
 ///
 ///
 /// @author Rei Vilo
-/// @date 22 Aug 2022
-/// @version 541
+/// @date 31 Aug 2022
+/// @version 542
 ///
 /// @copyright (c) Rei Vilo, 2010-2022
 /// @copyright All rights reserved
@@ -45,7 +45,7 @@
 /// * Basic edition: for hobbyists and for basic usage
 /// @n Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
 ///
-/// * Advanced edition: for professionals or organisations, no commercial usage
+/// * Evaluation edition: for professionals or organisations, evaluation only, no commercial usage 
 /// @n All rights reserved
 ///
 /// * Commercial edition: for professionals or organisations, commercial usage

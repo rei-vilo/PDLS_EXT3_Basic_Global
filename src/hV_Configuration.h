@@ -18,8 +18,8 @@
 /// 11. Set storage mode, not implemented
 ///
 /// @author Rei Vilo
-/// @date 07 Jun 2022
-/// @version 533
+/// @date 31 Aug 2022
+/// @version 542
 ///
 /// @copyright (c) Rei Vilo, 2010-2022
 /// @copyright All rights reserved
@@ -29,9 +29,9 @@
 ///
 /// @see https://creativecommons.org/licenses/by-sa/4.0/
 ///
-/// @n Consider the advanced or commercial editions for professionals or organisations and for commercial usage
+/// @n Consider the Evaluation or Commercial editions for professionals or organisations and for commercial usage
 ///
-/// * Advanced edition: for professionals or organisations, no commercial usage
+/// * Evaluation edition: for professionals or organisations, evaluation only, no commercial usage 
 /// @n All rights reserved
 ///
 /// * Commercial edition: for professionals or organisations, commercial usage
@@ -49,7 +49,7 @@
 ///
 /// @brief Release
 ///
-#define hV_CONFIGURATION_RELEASE 533
+#define hV_CONFIGURATION_RELEASE 542
 
 ///
 /// @name 1- List of supported Pervasive Displays screens
@@ -452,7 +452,7 @@ const pins_t boardTeensy3x =
 /// @name 3- Set font mode
 /// @details From header files or from external flash
 /// * Basic edition: Terminal font
-/// * Advanced edition: DejaVu font as header
+/// * Evaluation edition: DejaVu font as header
 /// * Commercial edition: DejaVu font as either header or external SPI Flash
 /// @note USE_FONT_HEADER requires addFont()
 /// @note Font Manager requires USE_FONT_HEADER
@@ -484,7 +484,7 @@ const pins_t boardTeensy3x =
 /// @details From internal MCU or external SPI
 /// * Basic edition: MCU internal SRAM
 /// * Commercial edition: MCU internal SRAM
-/// * Advanced edition: MCU internal or SPI external SRAM
+/// * Evaluation edition: MCU internal or SPI external SRAM
 ///
 /// @{
 #define USE_INTERNAL_MCU 1 ///< Use MCU internal
@@ -498,7 +498,7 @@ const pins_t boardTeensy3x =
 /// @note Declare additional variables if USE_hV_SCREEN_SELF
 /// @n Virtual object requires ~1 kB bytes.
 /// * Basic edition: self option
-/// * Advanced edition: virtual option
+/// * Evaluation edition: virtual option
 /// * Commercial edition: self and virtual options
 /// @note Recommended: USE_hV_SCREEN_VIRTUAL
 /// @warning Issues with virtual function on arm-none-eabi-g++ 4.9.3: use USE_hV_SCREEN_SELF instead.
@@ -512,7 +512,7 @@ const pins_t boardTeensy3x =
 /// @name 7- Set touch mode
 /// @details Only two screens are ready for touch
 /// * Basic edition: iTC 2.70 BW and iTC 3.70 BW
-/// * Advanced edition: iTC 2.70 BW and iTC 3.70 BW
+/// * Evaluation edition: iTC 2.70 BW and iTC 3.70 BW
 /// * Commercial edition: iTC 2.70 BW and iTC 3.70 BW
 /// @note Touch uses I2C and polling over interrupt
 /// @{
@@ -525,7 +525,7 @@ const pins_t boardTeensy3x =
 ///
 /// @brief 8- Set haptic feedback mode
 /// * Basic edition: no haptic feedback
-/// * Advanced edition: ERM or LRA
+/// * Evaluation edition: ERM or LRA
 /// * Commercial edition: ERM or LRA
 ///
 /// @{
@@ -537,7 +537,7 @@ const pins_t boardTeensy3x =
 ///
 /// @brief 9- Set GPIO expander mode
 /// * Basic edition: no expander
-/// * Advanced edition: PCF8574 or PCA9536
+/// * Evaluation edition: PCF8574 or PCA9536
 /// * Commercial edition: PCF8574 or PCA9536
 ///
 /// @{
@@ -549,7 +549,7 @@ const pins_t boardTeensy3x =
 ///
 /// @brief 10- Set string mode
 /// * Basic edition: String object
-/// * Advanced edition: char array
+/// * Evaluation edition: char array
 /// * Commercial edition: String object or char array
 ///
 /// @{
@@ -561,7 +561,7 @@ const pins_t boardTeensy3x =
 ///
 /// @brief 11- Storage mode
 /// * Basic edition: none
-/// * Advanced edition: none
+/// * Evaluation edition: none
 /// * Commercial edition: option
 ///
 /// @{
