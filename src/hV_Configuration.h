@@ -18,8 +18,8 @@
 /// 11. Set storage mode, not implemented
 ///
 /// @author Rei Vilo
-/// @date 31 Aug 2022
-/// @version 542
+/// @date 03 Oct 2022
+/// @version 544
 ///
 /// @copyright (c) Rei Vilo, 2010-2022
 /// @copyright All rights reserved
@@ -49,7 +49,7 @@
 ///
 /// @brief Release
 ///
-#define hV_CONFIGURATION_RELEASE 542
+#define hV_CONFIGURATION_RELEASE 544
 
 ///
 /// @name 1- List of supported Pervasive Displays screens
@@ -264,16 +264,24 @@ const pins_t boardRaspberryPiPico_Arduino =
 /// @brief Raspberry Pi Pico with default RP2040 configuration, tested
 /// @note Numbers refer to GPIOs, not pins
 /// @see https://github.com/earlephilhower/arduino-pico
+/// @note Recommended board
 ///
 const pins_t boardRaspberryPiPico_RP2040 =
 {
+    ///< EXT3 and EXT3-1 pin 1 Black -> +3.3V
+    ///< EXT3 and EXT3-1 pin 2 Brown -> SPI SCK GP18
     .panelBusy = 13, ///< EXT3 and EXT3-1 pin 3 Red -> GP13
     .panelDC = 12, ///< EXT3 and EXT3-1 pin 4 Orange -> GP12
     .panelReset = 11, ///< EXT3 and EXT3-1 pin 5 Yellow -> GP11
+    ///< EXT3 and EXT3-1 pin 6 Green -> SPI MISO GP16
+    ///< EXT3 and EXT3-1 pin 7 Blue -> SPI MOSI GP19
     .flashCS = 10, ///< EXT3 and EXT3-1 pin 8 Violet -> GP10
     .panelCS = 17, ///< EXT3 and EXT3-1 pin 9 Grey -> GP17
     .panelCSS = 14, ///< EXT3 and EXT3-1 pin 12 Grey2 -> GP14
     .flashCSS = 15, ///< EXT3 pin 20 or EXT3-1 pin 11 Black2 -> GP15
+    ///< EXT3 and EXT3-1 pin 10 White -> GROUND
+    ///< EXT3-Touch pin 1 Brown -> I2C SDA GP5
+    ///< EXT3-Touch pin 2 Black -> I2C SCL GP4
     .touchInt = 2, ///< EXT3-Touch pin 3 Red -> GP2
     .touchReset = 3, ///< EXT3-Touch pin 4 Orange -> GP3
     .cardCS = NOT_CONNECTED, ///< Separate SD-card board
@@ -282,18 +290,55 @@ const pins_t boardRaspberryPiPico_RP2040 =
 
 ///
 /// @brief Feather M0 and M4 configuration, tested
+/// @note Recommended board
 ///
 const pins_t boardFeatherM0M4 =
 {
-    .panelBusy = 13, ///< EXT3 and EXT3-1 pin 3 Red
-    .panelDC = 12, ///< EXT3 and EXT3-1 pin 4 Orange
-    .panelReset = 11, ///< EXT3 and EXT3-1 pin 5 Yellow
-    .flashCS = 10, ///< EXT3 and EXT3-1 pin 8 Violet
-    .panelCS = 9, ///< EXT3 and EXT3-1 pin 9 Grey
+    .panelBusy = 13, ///< EXT3 and EXT3-1 pin 3 Red -> D13 GPIO13
+    .panelDC = 12, ///< EXT3 and EXT3-1 pin 4 Orange -> D12 GPIO12
+    .panelReset = 11, ///< EXT3 and EXT3-1 pin 5 Yellow -> D11 GPIO11
+    .flashCS = 10, ///< EXT3 and EXT3-1 pin 8 Violet -> D10 GPIO10
+    .panelCS = 9, ///< EXT3 and EXT3-1 pin 9 Grey -> D9 GPIO9
     .panelCSS = NOT_CONNECTED, ///< EXT3 and EXT3-1 pin 12 Grey2
     .flashCSS = NOT_CONNECTED, ///< EXT3 pin 20 or EXT3-1 pin 11 Black2
-    .touchInt = NOT_CONNECTED, ///< EXT3-Touch pin 3 Red
-    .touchReset = NOT_CONNECTED, ///< EXT3-Touch pin 4 Orange
+    .touchInt = NOT_CONNECTED, ///< EXT3-Touch pin 3 Red -> D5 GPIO5
+    .touchReset = NOT_CONNECTED, ///< EXT3-Touch pin 4 Orange -> D6 GPIO6
+    .cardCS = NOT_CONNECTED, ///< Separate SD-card board
+    .cardDetect = NOT_CONNECTED, ///< Separate SD-card board
+};
+
+///
+/// @brief Feather nRF52831 configuration, tested
+///
+const pins_t boardFeatherNRF52831 =
+{
+    .panelBusy = 16, ///< EXT3 and EXT3-1 pin 3 Red -> D13 GPIO16
+    .panelDC = 15, ///< EXT3 and EXT3-1 pin 4 Orange -> D12 GPIO15
+    .panelReset = 7, ///< EXT3 and EXT3-1 pin 5 Yellow -> D11 GPIO7
+    .flashCS = 11, ///< EXT3 and EXT3-1 pin 8 Violet -> D10 GPI011
+    .panelCS = 31, ///< EXT3 and EXT3-1 pin 9 Grey -> D9 GPIO31
+    .panelCSS = NOT_CONNECTED, ///< EXT3 and EXT3-1 pin 12 Grey2
+    .flashCSS = NOT_CONNECTED, ///< EXT3 pin 20 or EXT3-1 pin 11 Black2
+    .touchInt = 27, ///< EXT3-Touch pin 3 Red -> D5 GPIO27
+    .touchReset = 30, ///< EXT3-Touch pin 4 Orange -> D6 GPIO30
+    .cardCS = NOT_CONNECTED, ///< Separate SD-card board
+    .cardDetect = NOT_CONNECTED, ///< Separate SD-card board
+};
+
+///
+/// @brief Feather nRF52840 configuration, tested
+///
+const pins_t boardFeatherNRF52840 =
+{
+    .panelBusy = 13, ///< EXT3 and EXT3-1 pin 3 Red -> D13 GPIO13
+    .panelDC = 12, ///< EXT3 and EXT3-1 pin 4 Orange -> D12 GPIO12
+    .panelReset = 11, ///< EXT3 and EXT3-1 pin 5 Yellow -> D11 GPIO11
+    .flashCS = 10, ///< EXT3 and EXT3-1 pin 8 Violet -> D10 GPIO10
+    .panelCS = 9, ///< EXT3 and EXT3-1 pin 9 Grey -> D9 GPIO9
+    .panelCSS = NOT_CONNECTED, ///< EXT3 and EXT3-1 pin 12 Grey2
+    .flashCSS = NOT_CONNECTED, ///< EXT3 pin 20 or EXT3-1 pin 11 Black2
+    .touchInt = 5, ///< EXT3-Touch pin 3 Red -> D5 GPIO5
+    .touchReset = 6, ///< EXT3-Touch pin 4 Orange -> D6 GPIO6
     .cardCS = NOT_CONNECTED, ///< Separate SD-card board
     .cardDetect = NOT_CONNECTED, ///< Separate SD-card board
 };
@@ -301,7 +346,7 @@ const pins_t boardFeatherM0M4 =
 ///
 /// @brief Arduino Zero configuration, tested
 /// @note In case of use of SERCOM
-/// @code {.language-id}
+/// @code {.cpp}
 /// #define SPI_CLOCK_PIN 13 ///< EXT3 and EXT3-1 pin 2 -> 13
 /// #define SPI_CLOCK_MISO 11 ///< EXT3 and EXT3-1 pin 6 -> 11
 /// #define SPI_CLOCK_MOSI 12 ///< EXT3 and EXT3-1 pin 7 -> 12
@@ -355,16 +400,24 @@ const pins_t boardRedBearDuo = boardParticlePhoton;
 ///
 /// @brief Espressif ESP32-DevKitC
 /// @note Numbers refer to GPIOs not pins
+/// @note Recommended board
 ///
 const pins_t boardESP32DevKitC =
 {
+    ///< EXT3 and EXT3-1 pin 1 Black -> +3.3V
+    ///< EXT3 and EXT3-1 pin 2 Brown -> SPI SCK GPIO14
     .panelBusy = 27, ///< EXT3 and EXT3-1 pin 3 Red -> GPIO27
     .panelDC = 26, ///< EXT3 and EXT3-1 pin 4 Orange -> GPIO26
     .panelReset = 25, ///< EXT3 and EXT3-1 pin 5 Yellow -> GPIO25
+    ///< EXT3 and EXT3-1 pin 6 Green -> SPI MISO GPIO12
+    ///< EXT3 and EXT3-1 pin 7 Blue -> SPI MOSI GPIO13
     .flashCS = 33, ///< EXT3 and EXT3-1 pin 8 Violet -> GPIO33
     .panelCS = 32, ///< EXT3 and EXT3-1 pin 9 Grey -> GPIO32
     .panelCSS = 4, ///< EXT3 and EXT3-1 pin 12 Grey2 -> GPIO4
     .flashCSS = 0, ///< EXT3 pin 20 or EXT3-1 pin 11 Black2 -> GPIO0
+    ///< EXT3 and EXT3-1 pin 10 White -> GROUND
+    ///< EXT3-Touch pin 1 Brown -> I2C SDA GPIO21
+    ///< EXT3-Touch pin 2 Black -> I2C SCL GPIO22
     .touchInt = 10, ///< EXT3-Touch pin 3 Red -> GPIO10
     .touchReset = 9, ///< EXT3-Touch pin 4 Orange -> GPIO9
     .cardCS = NOT_CONNECTED, ///< Separate SD-card board
