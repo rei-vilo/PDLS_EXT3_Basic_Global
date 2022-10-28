@@ -18,8 +18,8 @@
 /// 11. Set storage mode, not implemented
 ///
 /// @author Rei Vilo
-/// @date 03 Oct 2022
-/// @version 544
+/// @date 31 Oct 2022
+/// @version 550
 ///
 /// @copyright (c) Rei Vilo, 2010-2022
 /// @copyright All rights reserved
@@ -49,7 +49,7 @@
 ///
 /// @brief Release
 ///
-#define hV_CONFIGURATION_RELEASE 544
+#define hV_CONFIGURATION_RELEASE 550
 
 ///
 /// @name 1- List of supported Pervasive Displays screens
@@ -308,9 +308,9 @@ const pins_t boardFeatherM0M4 =
 };
 
 ///
-/// @brief Feather nRF52831 configuration, tested
+/// @brief Feather nRF52832 configuration, tested
 ///
-const pins_t boardFeatherNRF52831 =
+const pins_t boardFeatherNRF52832 =
 {
     .panelBusy = 16, ///< EXT3 and EXT3-1 pin 3 Red -> D13 GPIO16
     .panelDC = 15, ///< EXT3 and EXT3-1 pin 4 Orange -> D12 GPIO15

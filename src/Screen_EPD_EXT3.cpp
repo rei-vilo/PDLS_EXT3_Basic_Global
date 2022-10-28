@@ -14,7 +14,7 @@
 // Release 508: Added support for E2969CS0B and E2B98CS0B
 // Release 527: Added support for ESP32 PSRAM
 // Release 541: Improved support for ESP32
-//
+// Release 550: Tested Xiao ESP32-C3 with SPI exception
 
 // Library header
 #include "SPI.h"
@@ -284,7 +284,12 @@ void Screen_EPD_EXT3::begin()
 
 #else
 
-#if defined(ARDUINO_ARCH_ESP32)
+#if defined(ARDUINO_XIAO_ESP32C3)
+
+    // Board Xiao ESP32-C3 crashes if pins are specified.
+    SPI.begin(8, 9, 10); // SCK MISO MOSI
+
+#elif defined(ARDUINO_ARCH_ESP32)
 
     // Board ESP32-Pico-DevKitM-2 crashes if pins are not specified.
     SPI.begin(14, 12, 13); // SCK MISO MOSI
