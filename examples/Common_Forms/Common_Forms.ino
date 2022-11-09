@@ -1,5 +1,5 @@
 ///
-/// @file Common_Palette.ino
+/// @file Common_Forms.ino
 /// @brief Example of features for basic edition
 ///
 /// @details Project Pervasive Displays Library Suite
@@ -21,7 +21,7 @@
 #include "Energia.h"
 #else // Arduino general
 #include "Arduino.h"
-#endif // end IDE
+#endif // SDK
 
 // Set parameters
 
