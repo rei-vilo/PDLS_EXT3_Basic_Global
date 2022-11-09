@@ -12,8 +12,8 @@
 /// * Feature: none
 ///
 /// @author Rei Vilo
-/// @date 31 Oct 2022
-/// @version 550
+/// @date 12 Nov 2022
+/// @version 601
 ///
 /// @copyright (c) Rei Vilo, 2010-2022
 /// @copyright Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
@@ -38,22 +38,22 @@
 // Configuration
 #include "hV_Configuration.h"
 
-#if (hV_CONFIGURATION_RELEASE < 530)
-#error Required hV_CONFIGURATION_RELEASE 530
+#if (hV_CONFIGURATION_RELEASE < 600)
+#error Required hV_CONFIGURATION_RELEASE 600
 #endif // hV_CONFIGURATION_RELEASE
 
 #ifndef SCREEN_EPD_EXT3_RELEASE
 ///
 /// @brief Library release number
 ///
-#define SCREEN_EPD_EXT3_RELEASE 550
+#define SCREEN_EPD_EXT3_RELEASE 601
 
 // Other libraries
 #include "SPI.h"
 #include "hV_Screen_Buffer.h"
 
-#if (hV_SCREEN_BUFFER_RELEASE < 507)
-#error Required hV_SCREEN_BUFFER_RELEASE 507
+#if (hV_SCREEN_BUFFER_RELEASE < 523)
+#error Required hV_SCREEN_BUFFER_RELEASE 523
 #endif // hV_SCREEN_BUFFER_RELEASE
 
 // Objects
@@ -63,7 +63,7 @@
 /// @details Screen controllers
 /// * LCD: proprietary, SPI
 /// * touch: no touch
-/// * fonts: no fonts
+/// * fonts: no external fonts
 ///
 /// @note All commands work on the frame-buffer,
 /// to be displayed on screen with flush()
@@ -112,6 +112,12 @@ class Screen_EPD_EXT3 final : public hV_Screen_Buffer
     void flush();
 
     ///
+    /// @brief Regenerate the panel
+    /// @details White-to-black-to-white cycle to reduce ghosting
+    ///
+    void regenerate();
+
+    ///
     /// @brief Draw pixel
     /// @param x1 point coordinate, x-axis
     /// @param y1 point coordinate, y-axis
@@ -130,12 +136,6 @@ class Screen_EPD_EXT3 final : public hV_Screen_Buffer
     /// @n @b More: @ref Coordinate, @ref Colour
     ///
     uint16_t readPixel(uint16_t x1, uint16_t y1);
-
-    ///
-    /// @brief Screen refresh time for the BWR screens
-    /// @return Estimated refresh time in seconds
-    ///
-    uint8_t getRefreshTime();
 
   protected:
     /// @cond
@@ -231,10 +231,11 @@ class Screen_EPD_EXT3 final : public hV_Screen_Buffer
     // No energy
 
     // * Other functions specific to the screen
+
     // Screen independent variables
     uint8_t * _newImage;
     bool _invert;
-    uint16_t _widthScreen, _heightScreen;
+    uint16_t _screenSizeV, _screenSizeH;
 
     // Screen dependent variables
     pins_t _pin;
@@ -242,9 +243,8 @@ class Screen_EPD_EXT3 final : public hV_Screen_Buffer
     uint8_t _codeExtra;
     uint8_t _codeSize;
     uint8_t _codeType;
-    uint16_t _widthBuffer, _heightBuffer, _depthBuffer, _numberBuffer;
-    uint32_t _sizePageColour, _sizeFrame;
-    uint8_t _refreshTime;
+    uint16_t _bufferSizeV, _bufferSizeH, _bufferDepth;
+    uint32_t _pageColourSize, _frameSize;
 
     // === Touch
     // No touch

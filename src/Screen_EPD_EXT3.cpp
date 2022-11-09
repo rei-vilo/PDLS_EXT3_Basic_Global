@@ -15,6 +15,8 @@
 // Release 527: Added support for ESP32 PSRAM
 // Release 541: Improved support for ESP32
 // Release 550: Tested Xiao ESP32-C3 with SPI exception
+// Release 601: Added support for screens with embedded fast update
+//
 
 // Library header
 #include "SPI.h"
@@ -50,9 +52,9 @@ SPISettings _settingScreen;
 // Class
 Screen_EPD_EXT3::Screen_EPD_EXT3(eScreen_EPD_EXT3_t eScreen_EPD_EXT3, pins_t board)
 {
-    _pin = board;
-    _newImage = nullptr;
     _eScreen_EPD_EXT3 = eScreen_EPD_EXT3;
+    _pin = board;
+    _newImage = 0; // nullptr
 }
 
 void Screen_EPD_EXT3::begin()
@@ -66,134 +68,121 @@ void Screen_EPD_EXT3::begin()
     {
         case 0x15: // 1.54"
 
-            _widthScreen = 152; // x = wide size
-            _heightScreen = 152; // y = small size
+            _screenSizeV = 152; // vertical = wide size
+            _screenSizeH = 152; // horizontal = small size
             _screenDiagonal = 154;
-            _refreshTime = 16;
             break;
 
         case 0x21: // 2.13"
 
-            _widthScreen = 212; // x = wide size
-            _heightScreen = 104; // y = small size
+            _screenSizeV = 212; // vertical = wide size
+            _screenSizeH = 104; // horizontal = small size
             _screenDiagonal = 213;
-            _refreshTime = 15;
             break;
 
         case 0x26: // 2.66"
 
-            _widthScreen = 296; // x = wide size
-            _heightScreen = 152; // y = small size
+            _screenSizeV = 296; // vertical = wide size
+            _screenSizeH = 152; // horizontal = small size
             _screenDiagonal = 266;
-            _refreshTime = 15;
             break;
 
         case 0x27: // 2.71"
 
-            _widthScreen = 264; // x = wide size
-            _heightScreen = 176; // y = small size
+            _screenSizeV = 264; // vertical = wide size
+            _screenSizeH = 176; // horizontal = small size
             _screenDiagonal = 271;
-            _refreshTime = 19;
             break;
 
         case 0x28: // 2.87"
 
-            _widthScreen = 296; // x = wide size
-            _heightScreen = 128; // y = small size
+            _screenSizeV = 296; // vertical = wide size
+            _screenSizeH = 128; // horizontal = small size
             _screenDiagonal = 287;
-            _refreshTime = 14;
             break;
 
         case 0x37: // 3.70"
 
-            _widthScreen = 416; // x = wide size
-            _heightScreen = 240; // y = small size
+            _screenSizeV = 416; // vertical = wide size
+            _screenSizeH = 240; // horizontal = small size
             _screenDiagonal = 370;
-            _refreshTime = 15; // ?
             break;
 
         case 0x41: // 4.17"
 
-            _widthScreen = 300; // x = wide size
-            _heightScreen = 400; // y = small size
-            _screenDiagonal = 420;
-            _refreshTime = 19;
+            _screenSizeV = 300; // vertical = wide size
+            _screenSizeH = 400; // horizontal = small size
+            _screenDiagonal = 417;
             break;
 
         case 0x43: // 4.37"
 
-            _widthScreen = 480; // x = wide size
-            _heightScreen = 176; // y = small size
+            _screenSizeV = 480; // vertical = wide size
+            _screenSizeH = 176; // horizontal = small size
             _screenDiagonal = 437;
-            _refreshTime = 21;
             break;
 
         case 0x56: // 5.65"
 
-            _widthScreen = 600; // x = wide size
-            _heightScreen = 448; // y = small size
+            _screenSizeV = 600; // v = wide size
+            _screenSizeH = 448; // h = small size
             _screenDiagonal = 565;
-            _refreshTime = 32;
             break;
 
         case 0x58: // 5.81"
 
-            _widthScreen = 720; // x = wide size
-            _heightScreen = 256; // y = small size
+            _screenSizeV = 720; // v = wide size
+            _screenSizeH = 256; // h = small size
             _screenDiagonal = 581;
-            _refreshTime = 32;
             break;
 
         case 0x74: // 7.40"
 
-            _widthScreen = 800; // x = wide size
-            _heightScreen = 480; // y = small size
+            _screenSizeV = 800; // v = wide size
+            _screenSizeH = 480; // h = small size
             _screenDiagonal = 741;
-            _refreshTime = 32;
             break;
 
         case 0x96: // 9.69"
 
-            _widthScreen = 672; // x = wide size
-            _heightScreen = 960; // Actually, 960 = 480 x 2, y = small size
-            _screenDiagonal = 970;
-            _refreshTime = 45;
+            _screenSizeV = 672; // v = wide size
+            _screenSizeH = 960; // Actually, 960 = 480 x 2, h = small size
+            _screenDiagonal = 969;
             break;
 
         case 0xB9: // 11.98"
 
-            _widthScreen = 768; // x = wide size
-            _heightScreen = 960; // Actually, 960 = 480 x 2, y = small size
-            _screenDiagonal = 1220;
-            _refreshTime = 45;
+            _screenSizeV = 768; // v = wide size
+            _screenSizeH = 960; // Actually, 960 = 480 x 2, h = small size
+            _screenDiagonal = 1198;
             break;
 
         default:
 
             break;
-    }
+    } // _codeSize
 
-    _depthBuffer = _screenColourBits; // 2 colours
-    _widthBuffer = _widthScreen; // x = wide size
-    _heightBuffer = _heightScreen / 8; // small size 112 / 8;
+    _bufferDepth = _screenColourBits; // 2 colours
+    _bufferSizeV = _screenSizeV; // vertical = wide size
+    _bufferSizeH = _screenSizeH / 8; // horizontal = small size 112 / 8;
 
     // Force conversion for two unit16_t multiplication into uint32_t.
     // Actually for 1 colour; BWR requires 2 pages.
-    _sizePageColour = (uint32_t)_widthBuffer * (uint32_t)_heightBuffer;
+    _pageColourSize = (uint32_t)_bufferSizeV * (uint32_t)_bufferSizeH;
 
-    // _sizeFrame = _sizePageColour, except for 9.69 and 11.98
+    // _frameSize = _pageColourSize, except for 9.69 and 11.98
     // 9.69 and 11.98 combine two half-screens, hence two frames with adjusted size
     switch (_codeSize)
     {
         case 0x96: // 9.69"
         case 0xB9: // 11.98"
 
-            _sizeFrame = _sizePageColour / 2;
+            _frameSize = _pageColourSize / 2;
             break;
 
         default:
 
-            _sizeFrame = _sizePageColour;
+            _frameSize = _pageColourSize;
             break;
     }
 
@@ -202,7 +191,7 @@ void Screen_EPD_EXT3::begin()
     if (_newImage == 0)
     {
         static uint8_t * _newFrameBuffer;
-        _newFrameBuffer = (uint8_t *) ps_malloc(_sizePageColour * _depthBuffer);
+        _newFrameBuffer = (uint8_t *) ps_malloc(_pageColourSize * _bufferDepth);
         _newImage = (uint8_t *) _newFrameBuffer;
     }
 
@@ -211,7 +200,7 @@ void Screen_EPD_EXT3::begin()
     if (_newImage == 0)
     {
         static uint8_t * _newFrameBuffer;
-        _newFrameBuffer = new uint8_t[_sizePageColour * _depthBuffer];
+        _newFrameBuffer = new uint8_t[_pageColourSize * _bufferDepth];
         _newImage = (uint8_t *) _newFrameBuffer;
     }
 
@@ -232,7 +221,7 @@ void Screen_EPD_EXT3::begin()
         }
         count--;
     }
-    memset(_newImage, 0x00, _sizePageColour * _depthBuffer);
+    memset(_newImage, 0x00, _pageColourSize * _bufferDepth);
 
     // Initialise the /CS pins
     pinMode(_pin.panelCS, OUTPUT);
@@ -273,7 +262,6 @@ void Screen_EPD_EXT3::begin()
 
     // Initialise SPI
     _settingScreen = {4000000, MSBFIRST, SPI_MODE0};
-    // _settingScreen = {1000000, MSBFIRST, SPI_MODE0 };
 
 #if defined(ENERGIA)
 
@@ -307,12 +295,6 @@ void Screen_EPD_EXT3::begin()
     // Reset
     switch (_codeSize)
     {
-        case 0x41: // 4.17"
-        case 0x43: // 4.37"
-
-            _reset(5, 5, 10, 5, 5);
-            break;
-
         case 0x56: // 5.65"
         case 0x58: // 5.81"
         case 0x74: // 7.40"
@@ -330,10 +312,10 @@ void Screen_EPD_EXT3::begin()
 
             _reset(5, 5, 10, 5, 5);
             break;
-    }
+    } // _codeSize
 
-    _screenWidth = _heightScreen;
-    _screenHeigth = _widthScreen;
+    _screenWidth = _screenSizeH;
+    _screenHeigth = _screenSizeV;
 
     // Standard
     hV_Screen_Buffer::begin();
@@ -353,7 +335,6 @@ void Screen_EPD_EXT3::begin()
 
 void Screen_EPD_EXT3::_reset(uint32_t ms1, uint32_t ms2, uint32_t ms3, uint32_t ms4, uint32_t ms5)
 {
-    // digitalWrite(PNLON_PIN, HIGH); // PANEL_ON# = 1
     delay_ms(ms1); // delay_ms 5ms
     digitalWrite(_pin.panelReset, HIGH); // RES# = 1
     delay_ms(ms2); // delay_ms 5ms
@@ -364,12 +345,12 @@ void Screen_EPD_EXT3::_reset(uint32_t ms1, uint32_t ms2, uint32_t ms3, uint32_t 
 
     digitalWrite(_pin.panelCS, HIGH); // CS# = 1
 
-    // For 9.7 and 12.2 panels
+    // For 9.69 and 11.98 panels
     if ((_codeSize == 0x96) or (_codeSize == 0xB9))
     {
         if (_pin.panelCSS != NOT_CONNECTED)
         {
-            digitalWrite(_pin.panelCSS, HIGH);    // CSS# = 1
+            digitalWrite(_pin.panelCSS, HIGH); // CSS# = 1
         }
     }
     delay_ms(ms5);
@@ -407,13 +388,13 @@ String Screen_EPD_EXT3::WhoAmI()
 void Screen_EPD_EXT3::flush()
 {
     uint8_t * blackBuffer = _newImage;
-    uint8_t * redBuffer = _newImage + _sizePageColour;
+    uint8_t * redBuffer = _newImage + _pageColourSize;
 
     // Three groups:
     // + small: up to 4.37
     // + medium: 5.65, 5.81 and 7.4
     // + large: 9.69 and 11,98
-    // switch..case doesn't allow variable declarations
+    // switch..case does not allow variable declarations
     //
     if ((_codeSize == 0x56) or (_codeSize == 0x58) or (_codeSize == 0x74))
     {
@@ -452,10 +433,10 @@ void Screen_EPD_EXT3::flush()
         {
             // y1 = 7 - (y1 % 8);
             uint8_t dtcl = 0x08; // 0=IST, 8=IST
-            _sendIndexData(0x01, &dtcl, 1); //DCTL 0x10 of MTP
+            _sendIndexData(0x01, &dtcl, 1); // DCTL 0x10 of MTP
         }
 
-        _sendIndexData(0x10, blackBuffer, _sizeFrame); // First frame
+        _sendIndexData(0x10, blackBuffer, _frameSize); // First frame
 
         if (_codeSize == 0x56)
         {
@@ -472,7 +453,7 @@ void Screen_EPD_EXT3::flush()
             uint8_t data3_565[] = {0x3b, 0x00, 0x14}; // RAM_RW
             _sendIndexData(0x12, data3_565, 3); // RAM_RW
         }
-        _sendIndexData(0x11, redBuffer, _sizeFrame); // Second frame
+        _sendIndexData(0x11, redBuffer, _frameSize); // Second frame
 
         // Initial COG
         uint8_t data4_565[] = {0x7d};
@@ -648,18 +629,18 @@ void Screen_EPD_EXT3::flush()
         // Master
         _sendIndexDataMaster(0x12, data3_970, 3); // RAM_RW
 
-        _sendIndexDataMaster(0x10, blackBuffer, _sizeFrame); // First frame
+        _sendIndexDataMaster(0x10, blackBuffer, _frameSize); // First frame
 
         _sendIndexDataMaster(0x12, data3_970, 3); // RAM_RW
 
-        _sendIndexDataMaster(0x11, redBuffer, _sizeFrame); // Second frame
+        _sendIndexDataMaster(0x11, redBuffer, _frameSize); // Second frame
 
         // Slave
         _sendIndexDataSlave(0x12, data3_970, 3); // RAM_RW
-        _sendIndexDataSlave(0x10, blackBuffer + _sizeFrame, _sizeFrame); // First frame
+        _sendIndexDataSlave(0x10, blackBuffer + _frameSize, _frameSize); // First frame
 
         _sendIndexDataSlave(0x12, data3_970, 3); // RAM_RW
-        _sendIndexDataSlave(0x11, redBuffer + _sizeFrame, _sizeFrame); // Second frame
+        _sendIndexDataSlave(0x11, redBuffer + _frameSize, _frameSize); // Second frame
 
         // Initial COG
         uint8_t data4_970[] = {0x7d};
@@ -680,7 +661,8 @@ void Screen_EPD_EXT3::flush()
         delay_ms(100);
         _sendIndexData(0xa7, data5_970, 1);
         delay_ms(100);
-        // uint8_t data10_970[] = {0x00, 0x11}; // --- 9.69 specific
+        
+        // --- 9.69 and 11.9 specific
         if (_codeSize == 0x96)
         {
             uint8_t data10_970[] = {0x00, 0x11}; // OSC
@@ -826,8 +808,8 @@ void Screen_EPD_EXT3::flush()
         _sendIndexData(0xe0, data6, 1); // Active Temperature
 
         // Send image data
-        _sendIndexData(0x10, blackBuffer, _sizeFrame); // First frame
-        _sendIndexData(0x13, redBuffer, _sizeFrame);   // Second frame
+        _sendIndexData(0x10, blackBuffer, _frameSize); // First frame
+        _sendIndexData(0x13, redBuffer, _frameSize); // Second frame
 
         delay_ms(50);
         uint8_t data8[] = {0x00};
@@ -866,60 +848,60 @@ void Screen_EPD_EXT3::clear(uint16_t colour)
     if (colour == myColours.red)
     {
         // physical red 01
-        memset(_newImage, 0x00, _sizePageColour);
-        memset(_newImage + _sizePageColour, 0xff, _sizePageColour);
+        memset(_newImage, 0x00, _pageColourSize);
+        memset(_newImage + _pageColourSize, 0xff, _pageColourSize);
     }
     else if (colour == myColours.grey)
     {
-        for (uint16_t i = 0; i < _widthBuffer; i++)
+        for (uint16_t i = 0; i < _bufferSizeV; i++)
         {
             uint16_t pattern = (i % 2) ? 0b10101010 : 0b01010101;
-            for (uint16_t j = 0; j < _heightBuffer; j++)
+            for (uint16_t j = 0; j < _bufferSizeH; j++)
             {
-                _newImage[i * _heightBuffer + j] = pattern;
+                _newImage[i * _bufferSizeH + j] = pattern;
             }
         }
-        memset(_newImage + _sizePageColour, 0x00, _sizePageColour);
+        memset(_newImage + _pageColourSize, 0x00, _pageColourSize);
     }
     else if (colour == myColours.darkRed)
     {
         // red = 0-1, black = 1-0, white 0-0
-        for (uint16_t i = 0; i < _widthBuffer; i++)
+        for (uint16_t i = 0; i < _bufferSizeV; i++)
         {
             uint16_t pattern1 = (i % 2) ? 0b10101010 : 0b01010101; // black
             uint16_t pattern2 = (i % 2) ? 0b01010101 : 0b10101010; // red
-            for (uint16_t j = 0; j < _heightBuffer; j++)
+            for (uint16_t j = 0; j < _bufferSizeH; j++)
             {
-                _newImage[i * _heightBuffer + j] = pattern1;
-                _newImage[i * _heightBuffer + j + _sizePageColour] = pattern2;
+                _newImage[i * _bufferSizeH + j] = pattern1;
+                _newImage[i * _bufferSizeH + j + _pageColourSize] = pattern2;
             }
         }
     }
     else if (colour == myColours.lightRed)
     {
         // red = 0-1, black = 1-0, white 0-0
-        for (uint16_t i = 0; i < _widthBuffer; i++)
+        for (uint16_t i = 0; i < _bufferSizeV; i++)
         {
             uint16_t pattern1 = (i % 2) ? 0b00000000 : 0b00000000; // white
             uint16_t pattern2 = (i % 2) ? 0b01010101 : 0b10101010; // red
-            for (uint16_t j = 0; j < _heightBuffer; j++)
+            for (uint16_t j = 0; j < _bufferSizeH; j++)
             {
-                _newImage[i * _heightBuffer + j] = pattern1;
-                _newImage[i * _heightBuffer + j + _sizePageColour] = pattern2;
+                _newImage[i * _bufferSizeH + j] = pattern1;
+                _newImage[i * _bufferSizeH + j + _pageColourSize] = pattern2;
             }
         }
     }
     else if ((colour == myColours.white) xor _invert)
     {
         // physical black 00
-        memset(_newImage, 0x00, _sizePageColour);
-        memset(_newImage + _sizePageColour, 0x00, _sizePageColour);
+        memset(_newImage, 0x00, _pageColourSize);
+        memset(_newImage + _pageColourSize, 0x00, _pageColourSize);
     }
     else
     {
         // physical white 10
-        memset(_newImage, 0xff, _sizePageColour);
-        memset(_newImage + _sizePageColour, 0x00, _sizePageColour);
+        memset(_newImage, 0xff, _pageColourSize);
+        memset(_newImage + _pageColourSize, 0x00, _pageColourSize);
     }
 }
 
@@ -981,19 +963,19 @@ void Screen_EPD_EXT3::_setPoint(uint16_t x1, uint16_t y1, uint16_t colour)
     {
         // physical red 01
         bitClear(_newImage[z1], 7 - (y1 % 8));
-        bitSet(_newImage[_sizePageColour + z1], 7 - (y1 % 8));
+        bitSet(_newImage[_pageColourSize + z1], 7 - (y1 % 8));
     }
     else if ((colour == myColours.white) xor _invert)
     {
         // physical black 00
         bitClear(_newImage[z1], 7 - (y1 % 8));
-        bitClear(_newImage[_sizePageColour + z1], 7 - (y1 % 8));
+        bitClear(_newImage[_pageColourSize + z1], 7 - (y1 % 8));
     }
     else if ((colour == myColours.black) xor _invert)
     {
         // physical white 10
         bitSet(_newImage[z1], 7 - (y1 % 8));
-        bitClear(_newImage[_sizePageColour + z1], 7 - (y1 % 8));
+        bitClear(_newImage[_pageColourSize + z1], 7 - (y1 % 8));
     }
 }
 
@@ -1004,24 +986,24 @@ void Screen_EPD_EXT3::_setOrientation(uint8_t orientation)
 
 bool Screen_EPD_EXT3::_orientCoordinates(uint16_t & x, uint16_t & y)
 {
-    bool flag = true; // false=success, true=error
+    bool flag = true; // false = success, true = error
     switch (_orientation)
     {
         case 3: // checked, previously 1
 
-            if ((x < _widthScreen) and (y < _heightScreen))
+            if ((x < _screenSizeV) and (y < _screenSizeH))
             {
-                x = _widthScreen - 1 - x;
+                x = _screenSizeV - 1 - x;
                 flag = false;
             }
             break;
 
         case 2: // checked
 
-            if ((x < _heightScreen) and (y < _widthScreen))
+            if ((x < _screenSizeH) and (y < _screenSizeV))
             {
-                x = _heightScreen - 1 - x;
-                y = _widthScreen - 1 - y;
+                x = _screenSizeH - 1 - x;
+                y = _screenSizeV - 1 - y;
                 swap(x, y);
                 flag = false;
             }
@@ -1029,16 +1011,16 @@ bool Screen_EPD_EXT3::_orientCoordinates(uint16_t & x, uint16_t & y)
 
         case 1: // checked, previously 3
 
-            if ((x < _widthScreen) and (y < _heightScreen))
+            if ((x < _screenSizeV) and (y < _screenSizeH))
             {
-                y = _heightScreen - 1 - y;
+                y = _screenSizeH - 1 - y;
                 flag = false;
             }
             break;
 
         default: // checked
 
-            if ((x < _heightScreen) and (y < _widthScreen))
+            if ((x < _screenSizeH) and (y < _screenSizeV))
             {
                 swap(x, y);
                 flag = false;
@@ -1052,20 +1034,20 @@ bool Screen_EPD_EXT3::_orientCoordinates(uint16_t & x, uint16_t & y)
 uint32_t Screen_EPD_EXT3::_getZ(uint16_t x1, uint16_t y1)
 {
     uint32_t z1 = 0;
-    // According to 11,98 inch Spectra Application Note
+    // According to 11.98 inch Spectra Application Note
     // at http:// www.pervasivedisplays.com/LiteratureRetrieve.aspx?ID=245146
     if ((_codeSize == 0x96) or (_codeSize == 0xB9))
     {
-        if (y1 >= (_heightScreen >> 1))
+        if (y1 >= (_screenSizeH >> 1))
         {
-            y1 -= (_heightScreen >> 1); // rebase y1
-            z1 += (_sizePageColour >> 1); // buffer second half
+            y1 -= (_screenSizeH >> 1); // rebase y1
+            z1 += (_pageColourSize >> 1); // buffer second half
         }
-        z1 += (uint32_t)x1 * (_heightBuffer >> 1) + (y1 >> 3);
+        z1 += (uint32_t)x1 * (_bufferSizeH >> 1) + (y1 >> 3);
     }
     else
     {
-        z1 = (uint32_t)x1 * _heightBuffer + (y1 >> 3);
+        z1 = (uint32_t)x1 * _bufferSizeH + (y1 >> 3);
     }
     return z1;
 }
@@ -1086,7 +1068,7 @@ uint16_t Screen_EPD_EXT3::_getPoint(uint16_t x1, uint16_t y1)
 
     value = bitRead(_newImage[z1], 7 - (y1 % 8));
     value <<= 4;
-    value |= bitRead(_newImage[_sizePageColour + z1], 7 - (y1 % 8));
+    value |= bitRead(_newImage[_pageColourSize + z1], 7 - (y1 % 8));
 
     // red = 0-1, black = 1-0, white 0-0
     switch (value)
@@ -1172,6 +1154,17 @@ void Screen_EPD_EXT3::_sendIndexData(uint8_t index, const uint8_t * data, uint32
     digitalWrite(_pin.panelCS, HIGH); // CS High
 }
 
+void Screen_EPD_EXT3::regenerate()
+{
+    clear(myColours.black);
+    flush();
+
+    delay(100);
+
+    clear(myColours.white);
+    flush();
+}
+
 // Software SPI Master protocol setup
 void Screen_EPD_EXT3::_sendIndexDataMaster(uint8_t index, const uint8_t * data, uint32_t size)
 {
@@ -1234,10 +1227,5 @@ void Screen_EPD_EXT3::_sendIndexDataSlave(uint8_t index, const uint8_t * data, u
     {
         digitalWrite(_pin.panelCSS, HIGH); // CS slave HIGH
     }
-}
-
-uint8_t Screen_EPD_EXT3::getRefreshTime()
-{
-    return _refreshTime;
 }
 
