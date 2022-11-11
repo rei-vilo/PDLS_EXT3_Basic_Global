@@ -6,8 +6,8 @@
 /// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 02 Feb 2022
-/// @version 526
+/// @date 12 Nov 2022
+/// @version 601
 ///
 /// @copyright (c) Rei Vilo, 2010-2022
 /// @copyright Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
@@ -21,7 +21,7 @@
 #include "Energia.h"
 #else // Arduino general
 #include "Arduino.h"
-#endif // SDK
+#endif // end IDE
 
 // Set parameters
 
@@ -32,19 +32,19 @@
 // Define structures and classes
 
 // Define variables and constants
-// Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_154, boardLaunchPad);
-// Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_213, boardLaunchPad);
-// Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_266, boardLaunchPad);
-// Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_271, boardLaunchPad);
-// Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_287, boardLaunchPad);
-Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_370, boardLaunchPad);
-// Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_417, boardLaunchPad);
-// Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_437, boardLaunchPad);
-// Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_565, boardLaunchPad);
-// Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_581, boardLaunchPad);
-// Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_741, boardLaunchPad);
-// Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_969, boardLaunchPad);
-// Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_B98, boardLaunchPad);
+// Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_154, boardRaspberryPiPico_RP2040);
+// Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_213, boardRaspberryPiPico_RP2040);
+// Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_266, boardRaspberryPiPico_RP2040);
+// Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_271, boardRaspberryPiPico_RP2040);
+// Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_287, boardRaspberryPiPico_RP2040);
+Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_370, boardRaspberryPiPico_RP2040);
+// Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_417, boardRaspberryPiPico_RP2040);
+// Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_437, boardRaspberryPiPico_RP2040);
+// Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_565, boardRaspberryPiPico_RP2040);
+// Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_581, boardRaspberryPiPico_RP2040);
+// Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_741, boardRaspberryPiPico_RP2040);
+// Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_969, boardRaspberryPiPico_RP2040);
+// Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_B98, boardRaspberryPiPico_RP2040);
 
 // Prototypes
 
