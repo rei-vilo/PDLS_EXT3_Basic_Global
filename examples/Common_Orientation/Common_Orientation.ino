@@ -1,13 +1,13 @@
 ///
-/// @file Common_Palette.ino
+/// @file Common_Orientation.ino
 /// @brief Example of features for basic edition
 ///
 /// @details Project Pervasive Displays Library Suite
 /// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 12 Nov 2022
-/// @version 601
+/// @date 21 Nov 2022
+/// @version 602
 ///
 /// @copyright (c) Rei Vilo, 2010-2022
 /// @copyright Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
@@ -21,7 +21,7 @@
 #include "Energia.h"
 #else // Arduino general
 #include "Arduino.h"
-#endif // end IDE
+#endif // SDK
 
 // Set parameters
 

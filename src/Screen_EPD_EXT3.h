@@ -12,8 +12,8 @@
 /// * Feature: none
 ///
 /// @author Rei Vilo
-/// @date 12 Nov 2022
-/// @version 601
+/// @date 21 Nov 2022
+/// @version 602
 ///
 /// @copyright (c) Rei Vilo, 2010-2022
 /// @copyright Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
@@ -46,7 +46,7 @@
 ///
 /// @brief Library release number
 ///
-#define SCREEN_EPD_EXT3_RELEASE 601
+#define SCREEN_EPD_EXT3_RELEASE 602
 
 // Other libraries
 #include "SPI.h"
