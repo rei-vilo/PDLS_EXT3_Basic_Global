@@ -6,8 +6,8 @@
 /// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 02 Aug 2021
-/// @version 507
+/// @date 01 Dec 2022
+/// @version 603
 ///
 /// @copyright (c) Rei Vilo, 2010-2022
 /// @copyright All rights reserved
@@ -27,10 +27,10 @@
 #include "Energia.h"
 #else // Arduino general
 #include "Arduino.h"
-#endif // end IDE
+#endif // end SDK
 
 #ifndef PDLS_EXT3_BASIC_RELEASE
-#define PDLS_EXT3_BASIC_RELEASE 507
+#define PDLS_EXT3_BASIC_RELEASE 603
 #include "Screen_EPD_EXT3.h"
 #endif // PDLS_EXT3_BASIC_RELEASE
 

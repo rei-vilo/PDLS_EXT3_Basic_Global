@@ -6,8 +6,9 @@
 /// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 12 Nov 2022
-/// @version 601
+/// @date 01 Dec 2022
+/// @version 603
+
 ///
 /// @copyright (c) Rei Vilo, 2010-2022
 /// @copyright All rights reserved
@@ -30,7 +31,7 @@
 ///
 /// @brief Release
 ///
-#define hV_CONSTANTS_RELEASE 601
+#define hV_CONSTANTS_RELEASE 603
 #endif // hV_CONSTANTS_RELEASE
 
 ///
@@ -57,7 +58,7 @@
 
 /// @brief Large screens sub-panels selection
 /// @{
-#define PANEL_CS_FIRST 0x01 ///< Large screens sub-panels: first panel only
+#define PANEL_CS_MAIN 0x01 ///< Large screens sub-panels: first panel only
 #define PANEL_CS_SECOND 0x02 ///< Large screens sub-panels: second panel only
 #define PANEL_CS_BOTH 0x03 ///< Large screens sub-panels: both panels
 /// @}

@@ -19,8 +19,8 @@
 /// * 11. Set storage mode, not implemented
 ///
 /// @author Rei Vilo
-/// @date 21 Nov 2022
-/// @version 602
+/// @date 01 Dec 2022
+/// @version 603
 ///
 /// @copyright (c) Rei Vilo, 2010-2022
 /// @copyright All rights reserved
@@ -56,7 +56,7 @@
 ///
 /// @brief Release
 ///
-#define hV_CONFIGURATION_RELEASE 602
+#define hV_CONFIGURATION_RELEASE 603
 
 ///
 /// @name 1- List of supported Pervasive Displays screens
