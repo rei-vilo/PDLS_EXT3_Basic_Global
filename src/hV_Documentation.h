@@ -38,7 +38,7 @@
 /// @date 01 Dec 2022
 /// @version 603
 ///
-/// @copyright (c) Rei Vilo, 2010-2022
+/// @copyright (c) Rei Vilo, 2010-2023
 /// @copyright All rights reserved
 ///
 /// * Basic edition: for hobbyists and for basic usage
@@ -61,23 +61,23 @@
 ///
 /// Examples are under the examples folder.
 ///
-///	* Common
-///	    * Common_Colours
+/// * Common
+///     * Common_Colours
 /// @image html T2_PALET.jpg
 /// @image latex T2_PALET.PDF width=10cm
-///	    * Common_Fonts
+///     * Common_Fonts
 /// @image html T2_FONTS.jpg
 /// @image latex T2_FONTS.PDF width=10cm
-///	    * Common_Orientation
+///     * Common_Orientation
 /// @image html T2_ORIEN.jpg
 /// @image latex T2_ORIEN.PDF width=10cm
-///	    * Common_Forms
+///     * Common_Forms
 /// @image html T2_FORMS.jpg
 /// @image latex T2_FORMS.PDF width=10cm
-///	    * Common_Text
+///     * Common_Text
 /// @image html T2_CHARA.jpg
 /// @image latex T2_CHARA.PDF width=10cm
-///	    * Common_WhoAmI
+///     * Common_WhoAmI
 /// @image html T2_WHOAMI.jpg
 /// @image latex T2_WHOAMI.PDF width=10cm
 ///

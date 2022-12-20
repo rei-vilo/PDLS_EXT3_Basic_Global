@@ -6,11 +6,11 @@
 /// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 01 Dec 2022
-/// @version 603
+/// @date 21 Dec 2022
+/// @version 604
 
 ///
-/// @copyright (c) Rei Vilo, 2010-2022
+/// @copyright (c) Rei Vilo, 2010-2023
 /// @copyright All rights reserved
 ///
 /// * Basic edition: for hobbyists and for basic usage
@@ -31,7 +31,7 @@
 ///
 /// @brief Release
 ///
-#define hV_CONSTANTS_RELEASE 603
+#define hV_CONSTANTS_RELEASE 604
 #endif // hV_CONSTANTS_RELEASE
 
 ///
@@ -74,6 +74,6 @@
 /// @{
 #define PARTIAL_OFF 0x00 ///< non-activated
 #define PARTIAL_ON 0x01 ///< activated but not populated
-#define PARTIAL_VALUES 0x02 ///< activated and populated
+#define PARTIAL_READY 0x02 ///< activated and populated
 /// @}
 

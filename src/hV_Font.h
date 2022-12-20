@@ -9,7 +9,7 @@
 /// @date 02 Aug 2021
 /// @version 507
 ///
-/// @copyright (c) Rei Vilo, 2010-2022
+/// @copyright (c) Rei Vilo, 2010-2023
 /// @copyright All rights reserved
 ///
 /// * Basic edition: for hobbyists and for basic usage

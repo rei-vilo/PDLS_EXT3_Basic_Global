@@ -3,14 +3,14 @@
 // Library C++ code
 // ----------------------------------
 //
-// Project      highView Library Suite
+// Project highView Library Suite
 //
-// Created by   Rei Vilo, 01 Jun 2013
+// Created by Rei Vilo, 01 Jun 2013
 //
-// Copyright    © Rei Vilo, 2010-2022
-// Licence      Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+// Copyright (c) Rei Vilo, 2010-2023
+// Licence Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
 //
-// See          hV_Utilities.h for references
+// See hV_Utilities.h for references
 //
 
 // Library header

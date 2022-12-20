@@ -8,7 +8,7 @@
 //
 // Created by Rei Vilo, 28 Jun 2016
 //
-// Copyright © Rei Vilo, 2010-2022
+// Copyright (c) Rei Vilo, 2010-2023
 // Licence Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
 //
 // Release 508: Added support for E2969CS0B and E2B98CS0B
@@ -16,7 +16,7 @@
 // Release 541: Improved support for ESP32
 // Release 550: Tested Xiao ESP32-C3 with SPI exception
 // Release 601: Added support for screens with embedded fast update
-// Release 602: Improve functions structure
+// Release 602: Improved functions structure
 //
 
 // Library header

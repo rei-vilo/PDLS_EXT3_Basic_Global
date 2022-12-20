@@ -7,7 +7,7 @@
 //
 // Created by Rei Vilo, 31 Dec 2013
 //
-// Copyright (c) Rei Vilo, 2010-2022
+// Copyright (c) Rei Vilo, 2010-2023
 // Licence All rights reserved
 //
 // * Basic edition: for hobbyists and for basic usage
