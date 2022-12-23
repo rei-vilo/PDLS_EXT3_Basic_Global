@@ -87,6 +87,7 @@
 /// @see https://www.pervasivedisplays.com/products/?_sft_etc_itc=tp
 ///
 #define eScreen_EPD_EXT3_270_Touch (uint32_t)0x032709 ///< reference xTP270PGH0x
+#define eScreen_EPD_EXT3_271_Touch (uint32_t)0x032709 ///< reference xTP271PGH0x
 #define eScreen_EPD_EXT3_370_Touch (uint32_t)0x03370C ///< reference xTP370PGH0x
 
 /// * Monochrome screens with embedded fast update, fast and partial update
