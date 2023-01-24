@@ -35,8 +35,8 @@
 /// Additionally, the **[Wiki](https://docs.pervasivedisplays.com/)** provides a gradual introduction to the e-paper technology and how to use it.
 ///
 /// @author Rei Vilo
-/// @date 01 Dec 2022
-/// @version 603
+/// @date 25 Jan 2023
+/// @version 605
 ///
 /// @copyright (c) Rei Vilo, 2010-2023
 /// @copyright All rights reserved
@@ -80,5 +80,11 @@
 ///     * Common_WhoAmI
 /// @image html T2_WHOAMI.jpg
 /// @image latex T2_WHOAMI.PDF width=10cm
+///     * Example_Global_Speed
+/// @image html Global.jpeg
+/// @image latex Global.jpeg width=10cm
+///     * Example_Fast_Speed
+/// @image html Fast.jpeg
+/// @image latex Fast.jpeg width=10cm
 ///
 

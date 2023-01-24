@@ -50,88 +50,91 @@ uint8_t myOrientation = ORIENTATION_LANDSCAPE;
 /// @brief Wait with countdown
 /// @param second duration, s
 ///
-void wait(uint8_t second) {
-  for (uint8_t i = second; i > 0; i--) {
-    Serial.print(formatString(" > %i  \r", i));
-    delay(1000);
-  }
-  Serial.print("         \r");
+void wait(uint8_t second)
+{
+    for (uint8_t i = second; i > 0; i--)
+    {
+        Serial.print(formatString(" > %i  \r", i));
+        delay(1000);
+    }
+    Serial.print("         \r");
 }
 
 // Functions
 /// @brief Perform the speed test
-void performTest() {
-  uint32_t chrono;
+void performTest()
+{
+    uint32_t chrono;
 
-  myScreen.clear();
-  myScreen.setOrientation(myOrientation);  // ORIENTATION_LANDSCAPE);
+    myScreen.clear();
+    myScreen.setOrientation(myOrientation);  // ORIENTATION_LANDSCAPE);
 
-  uint16_t x = myScreen.screenSizeX();
-  uint16_t y = myScreen.screenSizeY();
-  uint16_t dx = 0;
-  uint16_t dy = 0;
-  uint16_t dz = y / 2;
-  String text = "";
-  String release = "";
+    uint16_t x = myScreen.screenSizeX();
+    uint16_t y = myScreen.screenSizeY();
+    uint16_t dx = 0;
+    uint16_t dy = 0;
+    uint16_t dz = y / 2;
+    String text = "";
+    String release = "";
 
-  myScreen.selectFont(fontLarge);
+    myScreen.selectFont(fontLarge);
 
-  // 0
-  dy = (dz - myScreen.characterSizeY()) / 2;
-  text = myScreen.WhoAmI() + " - " + String(SCREEN_EPD_EXT3_RELEASE);
-  Serial.println(text);
-  dx = (x - myScreen.stringSizeX(text)) / 2;
-  myScreen.gText(dx, dy, text);
-  myScreen.dRectangle(0, dz * 0, x, dz, myColours.black);
+    // 0
+    dy = (dz - myScreen.characterSizeY()) / 2;
+    text = myScreen.WhoAmI() + " - " + String(SCREEN_EPD_EXT3_RELEASE);
+    Serial.println(text);
+    dx = (x - myScreen.stringSizeX(text)) / 2;
+    myScreen.gText(dx, dy, text);
+    myScreen.dRectangle(0, dz * 0, x, dz, myColours.black);
 
-  chrono = millis();
-  myScreen.flush();
-  chrono = millis() - chrono;
+    chrono = millis();
+    myScreen.flush();
+    chrono = millis() - chrono;
 
-  // 1
-  dy += dz;
-  text = formatString("Global update= %i ms", chrono);
-  // text = formatString("Fast update= %i ms", chrono);
-  Serial.println(text);
-  dx = (x - myScreen.stringSizeX(text)) / 2;
-  myScreen.gText(dx, dy, text);
-  myScreen.dRectangle(0, dz * 1, x, dz, myColours.black);
+    // 1
+    dy += dz;
+    text = formatString("Global update= %i ms", chrono);
+    Serial.println(text);
+    dx = (x - myScreen.stringSizeX(text)) / 2;
+    myScreen.gText(dx, dy, text);
+    myScreen.dRectangle(0, dz * 1, x, dz, myColours.black);
 
-  myScreen.flush();
+    myScreen.flush();
 }
 
 // Add setup code
 ///
 /// @brief Setup
 ///
-void setup() {
-  Serial.begin(115200);
-  delay(500);
-  Serial.println();
-  Serial.println("=== " __FILE__);
-  Serial.println("=== " __DATE__ " " __TIME__);
-  Serial.println();
+void setup()
+{
+    Serial.begin(115200);
+    delay(500);
+    Serial.println();
+    Serial.println("=== " __FILE__);
+    Serial.println("=== " __DATE__ " " __TIME__);
+    Serial.println();
 
-  Serial.print("begin... ");
-  myScreen.begin();
-  Serial.println(formatString("%s %ix%i", myScreen.WhoAmI().c_str(), myScreen.screenSizeX(), myScreen.screenSizeY()));
+    Serial.print("begin... ");
+    myScreen.begin();
+    Serial.println(formatString("%s %ix%i", myScreen.WhoAmI().c_str(), myScreen.screenSizeX(), myScreen.screenSizeY()));
 
-  fontLarge = Font_Terminal12x16;
-  Serial.println("Speed... ");
+    fontLarge = Font_Terminal12x16;
+    Serial.println("Speed... ");
 
-  myScreen.clear();
-  performTest();
-  wait(8);
+    myScreen.clear();
+    performTest();
+    wait(8);
 
-  Serial.println("White... ");
-  myScreen.clear();
-  myScreen.flush();
+    Serial.println("White... ");
+    myScreen.clear();
+    myScreen.flush();
 
-  Serial.println("=== ");
-  Serial.println();
+    Serial.println("=== ");
+    Serial.println();
 
 #if defined(ARDUINO_ARCH_PIDUINO)
-  exit(0);
+    exit(0);
 #endif
 }
 
@@ -139,6 +142,7 @@ void setup() {
 ///
 /// @brief Loop, empty
 ///
-void loop() {
-  delay(1000);
+void loop()
+{
+    delay(1000);
 }

@@ -6,9 +6,8 @@
 /// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 21 Dec 2022
-/// @version 604
-
+/// @date 25 Jan 2023
+/// @version 605
 ///
 /// @copyright (c) Rei Vilo, 2010-2023
 /// @copyright All rights reserved
@@ -24,14 +23,13 @@
 ///
 
 // SDK
-// #include "hV_HAL_Peripherals.h"
 #include "stdint.h"
 
 #ifndef hV_CONSTANTS_RELEASE
 ///
 /// @brief Release
 ///
-#define hV_CONSTANTS_RELEASE 604
+#define hV_CONSTANTS_RELEASE 605
 #endif // hV_CONSTANTS_RELEASE
 
 ///
@@ -44,11 +42,12 @@
 ///
 /// @brief Specific features
 /// @{
-#define FEATURE_FAST 0x01 ///< with capacitive touch panel
-#define FEATURE_TOUCH 0x02 ///< with embedded fast update 
-#define FEATURE_ARMOR 0x04 ///< with protection
+#define FEATURE_FAST 0x01 ///< With capacitive touch panel
+#define FEATURE_TOUCH 0x02 ///< With embedded fast update
+#define FEATURE_ARMOR 0x04 ///< With protection
 /// @}
 
+///
 /// @brief Update mode
 /// @{
 #define UPDATE_GLOBAL 0x00 ///< Global update, default
@@ -56,6 +55,7 @@
 #define UPDATE_PARTIAL 0x02 ///< Partial update
 /// @}
 
+///
 /// @brief Large screens sub-panels selection
 /// @{
 #define PANEL_CS_MAIN 0x01 ///< Large screens sub-panels: first panel only
@@ -63,6 +63,7 @@
 #define PANEL_CS_BOTH 0x03 ///< Large screens sub-panels: both panels
 /// @}
 
+///
 /// @brief Power state
 /// @{
 #define FSM_POWER_UNKNOWN 0x00 ///< Unknown
@@ -70,10 +71,20 @@
 #define FSM_POWER_SLEEP 0x02 ///< Off or sleep
 /// @}
 
+///
 /// @brief Partial update state
 /// @{
-#define PARTIAL_OFF 0x00 ///< non-activated
-#define PARTIAL_ON 0x01 ///< activated but not populated
-#define PARTIAL_READY 0x02 ///< activated and populated
+#define PARTIAL_OFF 0x00 ///< Non-activated
+#define PARTIAL_ON 0x01 ///< Activated but not populated
+#define PARTIAL_READY 0x02 ///< Activated and populated
 /// @}
 
+///
+/// @brief Touch events
+/// @{
+#define TOUCH_EVENT_NONE 0 ///< No touch event
+#define TOUCH_EVENT_PRESS 1 ///< Touch press event
+#define TOUCH_EVENT_RELEASE 2 ///< Touch release event
+#define TOUCH_EVENT_MOVE 3 ///< Touch move event
+/// @}
+///
