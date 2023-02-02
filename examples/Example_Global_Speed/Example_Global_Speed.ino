@@ -75,7 +75,6 @@ void performTest()
     uint16_t dy = 0;
     uint16_t dz = y / 2;
     String text = "";
-    String release = "";
 
     myScreen.selectFont(fontLarge);
 
