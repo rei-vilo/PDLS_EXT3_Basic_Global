@@ -86,17 +86,21 @@
 /// * Monochrome touch screens with embedded fast update
 /// @see https://www.pervasivedisplays.com/products/?_sft_etc_itc=tp
 ///
-#define eScreen_EPD_EXT3_270_Touch (uint32_t)0x032709 ///< reference xTP270PGH0x
-#define eScreen_EPD_EXT3_271_Touch (uint32_t)0x032709 ///< reference xTP271PGH0x
-#define eScreen_EPD_EXT3_370_Touch (uint32_t)0x03370C ///< reference xTP370PGH0x
+#define eScreen_EPD_EXT3_270_09_Touch (uint32_t)0x032709 ///< reference xTP270PGH0x
+#define eScreen_EPD_EXT3_271_09_Touch (uint32_t)0x032709 ///< reference xTP271PGH0x
+#define eScreen_EPD_EXT3_370_0C_Touch (uint32_t)0x03370C ///< reference xTP370PGH0x
+#define eScreen_EPD_EXT3_270_Touch (uint32_t)0x032709 ///< reference xTP270PGH0x, legacy name
+#define eScreen_EPD_EXT3_271_Touch (uint32_t)0x032709 ///< reference xTP271PGH0x, legacy name
+#define eScreen_EPD_EXT3_370_Touch (uint32_t)0x03370C ///< reference xTP370PGH0x, legacy name
 
 /// * Monochrome screens with embedded fast update, fast and partial update
 /// @see https://www.pervasivedisplays.com/products/?_sft_etc_itc=pu
 ///
-#define eScreen_EPD_EXT3_154_0C_Fast (uint32_t)0x01150C ///< reference xE2154PS0Cx 
+#define eScreen_EPD_EXT3_154_0C_Fast (uint32_t)0x01150C ///< reference xE2154PS0Cx
 #define eScreen_EPD_EXT3_213_0E_Fast (uint32_t)0x01210E ///< reference xE2213PS0Ex
 #define eScreen_EPD_EXT3_266_0C_Fast (uint32_t)0x01260C ///< reference xE2266PS0Cx, not tested
 #define eScreen_EPD_EXT3_271_09_Fast (uint32_t)0x012709 ///< reference xE2271PS09x
+#define eScreen_EPD_EXT3_270_09_Fast (uint32_t)0x012709 ///< reference xE2271PS09x, legacy name
 #define eScreen_EPD_EXT3_287_09_Fast (uint32_t)0x012809 ///< reference xE2287PS09x
 #define eScreen_EPD_EXT3_370_0C_Fast (uint32_t)0x01370C ///< reference xE2370PS0Cx
 #define eScreen_EPD_EXT3_417_0D_Fast (uint32_t)0x01410D ///< reference xE2417PS0Dx, not tested
@@ -115,6 +119,7 @@
 #define frameSize_EPD_EXT3_154 (uint32_t)(5776)
 #define frameSize_EPD_EXT3_213 (uint32_t)(5512)
 #define frameSize_EPD_EXT3_266 (uint32_t)(11248)
+#define frameSize_EPD_EXT3_270 (uint32_t)(11616) ///< legacy name
 #define frameSize_EPD_EXT3_271 (uint32_t)(11616)
 #define frameSize_EPD_EXT3_287 (uint32_t)(9472)
 #define frameSize_EPD_EXT3_370 (uint32_t)(24960)
@@ -303,6 +308,7 @@ const pins_t boardCC1352 =
 
 ///
 /// @brief Raspberry Pi Zero, 2B, 3B, 4B configuration with RasPiArduino, tested
+/// @warning Not recommended
 /// @see https://github.com/me-no-dev/RasPiArduino
 ///
 const pins_t boardRaspberryPiZeroB_RasPiArduino =
