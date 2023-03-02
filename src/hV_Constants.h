@@ -6,8 +6,8 @@
 /// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 25 Jan 2023
-/// @version 605
+/// @date 22 Feb 2023
+/// @version 606
 ///
 /// @copyright (c) Rei Vilo, 2010-2023
 /// @copyright All rights reserved
@@ -29,7 +29,7 @@
 ///
 /// @brief Release
 ///
-#define hV_CONSTANTS_RELEASE 605
+#define hV_CONSTANTS_RELEASE 606
 #endif // hV_CONSTANTS_RELEASE
 
 ///

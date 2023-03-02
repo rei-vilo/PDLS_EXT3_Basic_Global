@@ -26,7 +26,6 @@ void delay_ms(uint32_t ms)
 
 char bufferIn[128];
 char bufferOut[128];
-char bufferFormat[32];
 
 // Code
 // Utilities
