@@ -17,6 +17,8 @@
 // Release 550: Tested Xiao ESP32-C3 with SPI exception
 // Release 601: Added support for screens with embedded fast update
 // Release 602: Improved functions structure
+// Release 604: Improved stability
+// Release 607: Improved screens names consistency 
 //
 
 // Library header

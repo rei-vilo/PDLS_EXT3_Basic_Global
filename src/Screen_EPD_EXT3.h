@@ -12,8 +12,8 @@
 /// * Feature: none
 ///
 /// @author Rei Vilo
-/// @date 21 Nov 2022
-/// @version 602
+/// @date 20 Mar 2023
+/// @version 607
 ///
 /// @copyright (c) Rei Vilo, 2010-2023
 /// @copyright Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
@@ -46,7 +46,7 @@
 ///
 /// @brief Library release number
 ///
-#define SCREEN_EPD_EXT3_RELEASE 602
+#define SCREEN_EPD_EXT3_RELEASE 607
 
 // Other libraries
 #include "SPI.h"
@@ -63,7 +63,7 @@
 /// @details Screen controllers
 /// * LCD: proprietary, SPI
 /// * touch: no touch
-/// * fonts: no external fonts
+/// * fonts: no external Flash
 ///
 /// @note All commands work on the frame-buffer,
 /// to be displayed on screen with flush()

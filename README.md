@@ -48,6 +48,8 @@ Hardware
 
 ## Licence
 
-[Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](./LICENCE.md)
+Copyright &copy; Rei Vilo, 2010-2023
+
+Licence [Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](./LICENCE.md)
 
 ![](./by-sa.svg)

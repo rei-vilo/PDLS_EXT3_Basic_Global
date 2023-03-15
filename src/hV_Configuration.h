@@ -19,8 +19,8 @@
 /// * 11. Set storage mode, not implemented
 ///
 /// @author Rei Vilo
-/// @date 22 Feb 2023
-/// @version 606
+/// @date 20 Mar 2023
+/// @version 607
 ///
 /// @copyright (c) Rei Vilo, 2010-2023
 /// @copyright All rights reserved
@@ -56,7 +56,7 @@
 ///
 /// @brief Release
 ///
-#define hV_CONFIGURATION_RELEASE 606
+#define hV_CONFIGURATION_RELEASE 607
 
 ///
 /// @name 1- List of supported Pervasive Displays screens
@@ -199,7 +199,7 @@ const pins_t boardRaspberryPiPico_RP2040 =
 };
 
 ///
-/// @brief Feather nRF52840 configuration, tested
+/// @brief Adafruit Feather nRF52840 configuration, tested
 /// @note Recommended board
 ///
 const pins_t boardFeatherNRF52840 =
@@ -250,7 +250,7 @@ const pins_t boardESP32DevKitC =
 /// * Other boards
 
 ///
-/// @brief MSP430 and MSP432 LaunchPad configuration, tested
+/// @brief Texas Instruments LaunchPad MSP430 and MSP432 LaunchPad configuration, tested
 ///
 const pins_t boardLaunchPad =
 {
@@ -269,7 +269,7 @@ const pins_t boardLaunchPad =
 };
 
 ///
-/// @brief MSP430FR5994 LaunchPad with SD-card configuration, tested
+/// @brief Texas Instruments LaunchPad MSP430FR5994 LaunchPad with SD-card configuration, tested
 ///
 const pins_t boardMSP430FR5994 =
 {
@@ -288,7 +288,7 @@ const pins_t boardMSP430FR5994 =
 };
 
 ///
-/// @brief CC1352 configuration, tested
+/// @brief Texas Instruments LaunchPad  CC1352 configuration, tested
 ///
 const pins_t boardCC1352 =
 {
@@ -349,7 +349,7 @@ const pins_t boardRaspberryPiPico_Arduino =
 };
 
 ///
-/// @brief Feather M0 and M4 configuration, tested
+/// @brief Adafruit Feather M0 and M4 configuration, tested
 ///
 const pins_t boardFeatherM0M4 =
 {
@@ -368,7 +368,7 @@ const pins_t boardFeatherM0M4 =
 };
 
 ///
-/// @brief Feather nRF52832 configuration, tested
+/// @brief Adafruit Feather nRF52832 configuration, tested
 ///
 const pins_t boardFeatherNRF52832 =
 {
