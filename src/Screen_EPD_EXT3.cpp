@@ -18,7 +18,8 @@
 // Release 601: Added support for screens with embedded fast update
 // Release 602: Improved functions structure
 // Release 604: Improved stability
-// Release 607: Improved screens names consistency 
+// Release 607: Improved screens names consistency
+// Release 608: Added screen report
 //
 
 // Library header
@@ -333,6 +334,10 @@ void Screen_EPD_EXT3::begin()
     _penSolid = false;
     _invert = false;
 
+    // Report
+    Serial.println("= Screen %s %ix%i", WhoAmI(), screenSizeX(), screenSizeY());
+    Serial.println("= PDLS v%i", SCREEN_EPD_EXT3_RELEASE);
+
     clear();
 }
 
@@ -345,7 +350,6 @@ void Screen_EPD_EXT3::_reset(uint32_t ms1, uint32_t ms2, uint32_t ms3, uint32_t 
     delay_ms(ms3);
     digitalWrite(_pin.panelReset, HIGH);
     delay_ms(ms4);
-
     digitalWrite(_pin.panelCS, HIGH); // CS# = 1
 
     // For 9.69 and 11.98 panels

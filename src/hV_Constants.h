@@ -6,8 +6,8 @@
 /// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 22 Feb 2023
-/// @version 606
+/// @date 20 Apr 2023
+/// @version 608
 ///
 /// @copyright (c) Rei Vilo, 2010-2023
 /// @copyright All rights reserved
@@ -29,7 +29,7 @@
 ///
 /// @brief Release
 ///
-#define hV_CONSTANTS_RELEASE 606
+#define hV_CONSTANTS_RELEASE 608
 #endif // hV_CONSTANTS_RELEASE
 
 ///
@@ -45,6 +45,7 @@
 #define FEATURE_FAST 0x01 ///< With capacitive touch panel
 #define FEATURE_TOUCH 0x02 ///< With embedded fast update
 #define FEATURE_ARMOR 0x04 ///< With protection
+#define FEATURE_WIDE_TEMPERATURE 0x08 ///< With wide operating temperature
 /// @}
 
 ///
@@ -86,5 +87,13 @@
 #define TOUCH_EVENT_PRESS 1 ///< Touch press event
 #define TOUCH_EVENT_RELEASE 2 ///< Touch release event
 #define TOUCH_EVENT_MOVE 3 ///< Touch move event
+/// @}
+///
+
+///
+/// @brief Results
+/// @{
+#define RESULT_SUCCESS 0 ///< Success
+#define RESULT_ERROR 1 ///< Error
 /// @}
 ///
