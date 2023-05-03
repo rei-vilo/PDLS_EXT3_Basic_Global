@@ -40,8 +40,8 @@
 /// Additionally, the **[Wiki](https://docs.pervasivedisplays.com/)** provides a gradual introduction to the e-paper technology and how to use it.
 ///
 /// @author Rei Vilo
-/// @date 20 Apr 2023
-/// @version 608
+/// @date 02 May 2023
+/// @version 609
 ///
 /// @copyright (c) Rei Vilo, 2010-2023
 /// @copyright All rights reserved

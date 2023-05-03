@@ -20,6 +20,7 @@
 // Release 604: Improved stability
 // Release 607: Improved screens names consistency
 // Release 608: Added screen report
+// Release 609: Added temperature management
 //
 
 // Library header
@@ -394,11 +395,16 @@ String Screen_EPD_EXT3::WhoAmI()
 
 void Screen_EPD_EXT3::flush()
 {
+    flushMode(UPDATE_GLOBAL);
+}
+
+void Screen_EPD_EXT3::_flushGlobal()
+{
     uint8_t * blackBuffer = _newImage;
     uint8_t * redBuffer = _newImage + _pageColourSize;
 
     // Three groups:
-    // + small: up to 4.37
+    // + small: up to 4.37 included
     // + medium: 5.65, 5.81 and 7.4
     // + large: 9.69 and 11,98
     // switch..case does not allow variable declarations
@@ -507,6 +513,7 @@ void Screen_EPD_EXT3::flush()
         uint8_t data12_565[] = {0x06};
         _sendIndexData(0x44, data12_565, 1);
         uint8_t data13_565[] = {0x82};
+        data13_565[0] = _temperature * 2 + 0x50; // _temperature
         _sendIndexData(0x45, data13_565, 1); // Temperature 0x82@25C
         _sendIndexData(0xa7, data9_565, 1);
         delay_ms(100);
@@ -668,7 +675,7 @@ void Screen_EPD_EXT3::flush()
         delay_ms(100);
         _sendIndexData(0xa7, data5_970, 1);
         delay_ms(100);
-        
+
         // --- 9.69 and 11.9 specific
         if (_codeSize == 0x96)
         {
@@ -692,6 +699,7 @@ void Screen_EPD_EXT3::flush()
         _sendIndexDataMaster(0x44, data12_970, 1); // Master
         uint8_t data13_970[] = {0x82};
         // uint8_t data13_970[] = {getTemperature(0x50, 0x82) };
+        data13_970[0] = _temperature * 2 + 0x50; // _temperature
         _sendIndexDataMaster(0x45, data13_970, 1); // Temperature 0x82@25C   0°C = 0x50, 25°C = 0x82
         _sendIndexDataMaster(0xa7, data9_970, 1); // Master
         delay_ms(100);
@@ -809,7 +817,7 @@ void Screen_EPD_EXT3::flush()
         delay_ms(5);
 
         uint8_t data7[] = {0x19};
-        // uint8_t data7[] = {getTemperature() };
+        data7[0] = _temperature; // _temperature
         _sendIndexData(0xe5, data7, 1); // Input Temperature 0°C = 0x00, 22°C = 0x16, 25°C = 0x19
         uint8_t data6[] = {0x02};
         _sendIndexData(0xe0, data6, 1); // Active Temperature
@@ -1235,4 +1243,116 @@ void Screen_EPD_EXT3::_sendIndexDataSlave(uint8_t index, const uint8_t * data, u
         digitalWrite(_pin.panelCSS, HIGH); // CS slave HIGH
     }
 }
+
+//
+// === Temperature section
+//
+void Screen_EPD_EXT3::setTemperatureC(int8_t temperatureC)
+{
+    _temperature = temperatureC;
+
+    uint8_t _temperature2;
+    if (_temperature < 0)
+    {
+        _temperature2 = -_temperature;
+        _temperature2 = (uint8_t)(~_temperature2) + 1; // 2's complement
+    }
+    else
+    {
+        _temperature2 = _temperature;
+    }
+    // indexE5_data[0] = _temperature2;
+}
+
+void Screen_EPD_EXT3::setTemperatureF(int16_t temperatureF)
+{
+    int8_t temperatureC = ((temperatureF - 32) * 5) / 9; // C = (F - 32) * 5 / 9
+    setTemperatureC(temperatureC);
+}
+
+uint8_t Screen_EPD_EXT3::checkTemperatureMode(uint8_t updateMode)
+{
+    // #define FEATURE_FAST 0x01 ///< With embedded fast update
+    // #define FEATURE_TOUCH 0x02 ///< With capacitive touch panel
+    // #define FEATURE_OTHER 0x04 ///< With other feature
+    // #define FEATURE_WIDE_TEMPERATURE 0x08 ///< With wide operating temperature
+    // #define FEATURE_RED 0x10 ///< With red colour
+    updateMode = UPDATE_GLOBAL;
+
+    switch (_codeExtra & 0x19)
+    {
+        case FEATURE_FAST: // PS series
+        
+            // Fast 	PS 	Embedded fast update 	FU: +15 to +30 °C 	GU: 0 to +50 °C
+            if ((_temperature < 0) or (_temperature > 50))
+            {
+                updateMode = UPDATE_NONE;
+            }
+            break;
+
+        case (FEATURE_FAST | FEATURE_WIDE_TEMPERATURE): // KS series
+
+            // Wide 	KS 	Wide temperature and embedded fast update 	FU: 0 to +50 °C 	GU: -15 to +60 °C
+            if ((_temperature < -15) or (_temperature > 60))
+            {
+                updateMode = UPDATE_NONE;
+            }
+            break;
+
+        case FEATURE_WIDE_TEMPERATURE: // HS series
+
+            // Freezer 	HS 	Global update below 0 °C 	FU: - 	GU: -25 to +30 °C
+            if ((_temperature < -25) or (_temperature > 30))
+            {
+                updateMode = UPDATE_NONE;
+            }
+            break;
+
+        case FEATURE_RED: // JS series
+
+            // Red      JS 	Red colour 	FU: - 	GU: 0 to +40 °C
+            if ((_temperature < 0) or (_temperature > 40))
+            {
+                updateMode = UPDATE_NONE;
+            }
+            break;
+
+        default: // CS series
+
+            // Normal 	CS 	Global update above 0 °C 	FU: - 	GU: 0 to +50 °C
+            updateMode = UPDATE_GLOBAL;
+            if ((_temperature < 0) or (_temperature > 50))
+            {
+                updateMode = UPDATE_NONE;
+            }
+            break;
+    }
+
+    return updateMode;
+}
+
+uint8_t Screen_EPD_EXT3::flushMode(uint8_t updateMode)
+{
+    updateMode = checkTemperatureMode(updateMode);
+
+    switch (updateMode)
+    {
+        case UPDATE_FAST:
+        case UPDATE_PARTIAL:
+        case UPDATE_GLOBAL:
+
+            _flushGlobal();
+            break;
+
+        default:
+
+            hV_HAL_log(LEVEL_ERROR, "UPDATE_NONE invoked");
+            break;
+    }
+
+    return updateMode;
+}
+//
+// === End of Temperature section
+//
 

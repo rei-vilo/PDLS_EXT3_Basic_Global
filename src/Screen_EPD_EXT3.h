@@ -10,10 +10,11 @@
 /// * Family: Small, Medium, Large
 /// * Update: Global
 /// * Feature: none
+/// * Temperature: monochrome = 0 to 50 °C, red = 0 to 40 °C
 ///
 /// @author Rei Vilo
-/// @date 20 Apr 2023
-/// @version 608
+/// @date 02 May 2023
+/// @version 609
 ///
 /// @copyright (c) Rei Vilo, 2010-2023
 /// @copyright Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
@@ -46,7 +47,7 @@
 ///
 /// @brief Library release number
 ///
-#define SCREEN_EPD_EXT3_RELEASE 608
+#define SCREEN_EPD_EXT3_RELEASE 609
 
 // Other libraries
 #include "SPI.h"
@@ -116,6 +117,41 @@ class Screen_EPD_EXT3 final : public hV_Screen_Buffer
     /// @details White-to-black-to-white cycle to reduce ghosting
     ///
     void regenerate();
+
+    ///
+    /// @brief Set temperature in Celsius
+    /// @details Set the temperature for update
+    /// @param temperatureC temperature in °C, default = 25 °C
+    /// @note Refer to data-sheets for authorised operating temperatures
+    ///
+    void setTemperatureC(int8_t temperatureC = 25);
+
+    ///
+    /// @brief Set temperature in Fahrenheit
+    /// @details Set the temperature for update
+    /// @param temperatureF temperature in °F, default = 77 °F = 25 °C
+    /// @note Refer to data-sheets for authorised operating temperatures
+    ///
+    void setTemperatureF(int16_t temperatureF = 77);
+
+    ///
+    /// @brief Check the mode against the temperature
+    ///
+    /// @param updateMode expected update mode
+    /// @return uint8_t recommended mode
+    /// @note If required, defaulting to UPDATE_NONE
+    /// @warning Default temperature is 25 °C, otherwise set by setTemperatureC() or setTemperatureF()
+    ///
+    uint8_t checkTemperatureMode(uint8_t updateMode = UPDATE_GLOBAL);
+
+    ///
+    /// @brief Update the display
+    /// @details Display next frame-buffer on screen and copy next frame-buffer into old frame-buffer
+    /// @param updateMode expected update mode
+    /// @return uint8_t recommended mode
+    /// @note Mode checked with checkTemperatureMode()
+    ///
+    uint8_t flushMode(uint8_t updateMode = UPDATE_GLOBAL);
 
     ///
     /// @brief Draw pixel
@@ -231,11 +267,14 @@ class Screen_EPD_EXT3 final : public hV_Screen_Buffer
     // No energy
 
     // * Other functions specific to the screen
+    // * Flush
+    void _flushGlobal();
 
     // Screen independent variables
     uint8_t * _newImage;
     bool _invert;
     uint16_t _screenSizeV, _screenSizeH;
+    int8_t _temperature = 25;
 
     // Screen dependent variables
     pins_t _pin;

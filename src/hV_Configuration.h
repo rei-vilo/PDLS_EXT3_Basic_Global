@@ -19,8 +19,8 @@
 /// * 11. Set storage mode, not implemented
 ///
 /// @author Rei Vilo
-/// @date 20 Mar 2023
-/// @version 607
+/// @date 02 May 2023
+/// @version 609
 ///
 /// @copyright (c) Rei Vilo, 2010-2023
 /// @copyright All rights reserved
@@ -56,16 +56,19 @@
 ///
 /// @brief Release
 ///
-#define hV_CONFIGURATION_RELEASE 607
+#define hV_CONFIGURATION_RELEASE 609
 
 ///
 /// @name 1- List of supported Pervasive Displays screens
+///
+/// @note Legacy screens are listed in the corresponding screen libraries
 /// @{
 ///
 #define eScreen_EPD_EXT3_t uint32_t ///< screen type
 
 ///
-/// * Monochrome and colour screens, global update
+/// * Monochrome and colour screens
+/// @note Update: global
 /// @see https://www.pervasivedisplays.com/products/
 ///
 #define eScreen_EPD_EXT3_154 (uint32_t)0x1500 ///< reference xE2154CSxxx
@@ -83,32 +86,81 @@
 #define eScreen_EPD_EXT3_969 (uint32_t)0x960B ///< reference xE2969CS0Bx
 #define eScreen_EPD_EXT3_B98 (uint32_t)0xB90B ///< reference xE2B98CS0Bx
 
+///
+/// * Colour screens
+/// @note Update: global
+/// @see https://www.pervasivedisplays.com/products/
+///
+#define eScreen_EPD_EXT3_154_Red (uint32_t)0x101500 ///< reference xE2154CSxxx
+#define eScreen_EPD_EXT3_213_Red (uint32_t)0x102100 ///< reference xE2213CSxxx
+#define eScreen_EPD_EXT3_266_Red (uint32_t)0x102600 ///< reference xE2266CSxxx
+#define eScreen_EPD_EXT3_271_Red (uint32_t)0x102700 ///< reference xE2271CSxxx
+#define eScreen_EPD_EXT3_287_Red (uint32_t)0x102800 ///< reference xE2287CSxxx
+#define eScreen_EPD_EXT3_290_Red (uint32_t)0x102900 ///< reference xE2290CSxxx
+#define eScreen_EPD_EXT3_370_Red (uint32_t)0x103700 ///< reference xE2370CSxxx
+#define eScreen_EPD_EXT3_417_Red (uint32_t)0x104100 ///< reference xE2417CSxxx
+#define eScreen_EPD_EXT3_437_Red (uint32_t)0x104300 ///< reference xE2437CSxxx
+#define eScreen_EPD_EXT3_565_Red (uint32_t)0x105600 ///< reference xE2565CSxxx
+#define eScreen_EPD_EXT3_581_0B_Red (uint32_t)0x10580B ///< reference xE2581CS0Bx
+#define eScreen_EPD_EXT3_741_0B_Red (uint32_t)0x10740B ///< reference xE2741CS0Bx
+#define eScreen_EPD_EXT3_969_0B_Red (uint32_t)0x10960B ///< reference xE2969CS0Bx
+#define eScreen_EPD_EXT3_B98_0B_Red (uint32_t)0x10B90B ///< reference xE2B98CS0Bx
+
 /// * Monochrome touch screens with embedded fast update
+/// @note Update: fast update
+/// @deprecated Partial update is deprecated. Use fast update instead.
 /// @see https://www.pervasivedisplays.com/products/?_sft_etc_itc=tp
 ///
-#define eScreen_EPD_EXT3_270_09_Touch (uint32_t)0x032709 ///< reference xTP270PGH0x
 #define eScreen_EPD_EXT3_271_09_Touch (uint32_t)0x032709 ///< reference xTP271PGH0x
+#define eScreen_EPD_EXT3_270_09_Touch (uint32_t)0x032709 ///< reference xTP270PGH0x, legacy name
 #define eScreen_EPD_EXT3_370_0C_Touch (uint32_t)0x03370C ///< reference xTP370PGH0x
 #define eScreen_EPD_EXT3_270_Touch (uint32_t)0x032709 ///< reference xTP270PGH0x, legacy name
 #define eScreen_EPD_EXT3_271_Touch (uint32_t)0x032709 ///< reference xTP271PGH0x, legacy name
 #define eScreen_EPD_EXT3_370_Touch (uint32_t)0x03370C ///< reference xTP370PGH0x, legacy name
 
-/// * Monochrome screens with embedded fast update, fast and partial update
+/// * Monochrome screens with embedded fast update
+/// @note Update: fast update
 /// @see https://www.pervasivedisplays.com/products/?_sft_etc_itc=pu
 ///
 #define eScreen_EPD_EXT3_154_0C_Fast (uint32_t)0x01150C ///< reference xE2154PS0Cx
 #define eScreen_EPD_EXT3_213_0E_Fast (uint32_t)0x01210E ///< reference xE2213PS0Ex
-#define eScreen_EPD_EXT3_266_0C_Fast (uint32_t)0x01260C ///< reference xE2266PS0Cx, not tested
+#define eScreen_EPD_EXT3_266_0C_Fast (uint32_t)0x01260C ///< reference xE2266PS0Cx
 #define eScreen_EPD_EXT3_271_09_Fast (uint32_t)0x012709 ///< reference xE2271PS09x
 #define eScreen_EPD_EXT3_270_09_Fast (uint32_t)0x012709 ///< reference xE2271PS09x, legacy name
 #define eScreen_EPD_EXT3_287_09_Fast (uint32_t)0x012809 ///< reference xE2287PS09x
 #define eScreen_EPD_EXT3_370_0C_Fast (uint32_t)0x01370C ///< reference xE2370PS0Cx
-#define eScreen_EPD_EXT3_417_0D_Fast (uint32_t)0x01410D ///< reference xE2417PS0Dx, not tested
+#define eScreen_EPD_EXT3_417_0D_Fast (uint32_t)0x01410D ///< reference xE2417PS0Dx
 #define eScreen_EPD_EXT3_437_0C_Fast (uint32_t)0x01430C ///< reference xE2437PS0Cx
+/// @todo eScreen_EPD_EXT3_581_0B_Fast not tested
 #define eScreen_EPD_EXT3_581_0B_Fast (uint32_t)0x01580B ///< reference xE2581PS0Bx, not tested
+/// @todo eScreen_EPD_EXT3_741_0B_Fast not tested
 #define eScreen_EPD_EXT3_741_0B_Fast (uint32_t)0x01740B ///< reference xE2741PS0Bx, not tested
+/// @todo eScreen_EPD_EXT3_969_0B_Fast not tested
 #define eScreen_EPD_EXT3_969_0B_Fast (uint32_t)0x01960B ///< reference xE2969PS0Bx, not tested
+/// @todo eScreen_EPD_EXT3_B98_0B_Fast not tested
 #define eScreen_EPD_EXT3_B98_0B_Fast (uint32_t)0x01B90B ///< reference xE2B98PS0Bx, not tested
+
+/// * Monochrome screens with embedded fast update and wide temperature
+/// @note Update: global, fast and partial update
+/// @see https://www.pervasivedisplays.com/products/?_sft_temperature_range=m15c-to-p60c
+///
+#define eScreen_EPD_EXT3_154_0C_Wide (uint32_t)0x09150C ///< reference xE2154KS0Cx
+#define eScreen_EPD_EXT3_213_0E_Wide (uint32_t)0x09210E ///< reference xE2213KS0Ex
+#define eScreen_EPD_EXT3_266_0C_Wide (uint32_t)0x09260C ///< reference xE2266KS0Cx
+#define eScreen_EPD_EXT3_271_09_Wide (uint32_t)0x092709 ///< reference xE2271KS09x
+/// @todo eScreen_EPD_EXT3_287_09_Wide not tested
+#define eScreen_EPD_EXT3_287_09_Wide (uint32_t)0x092809 ///< reference xE2287PS09x, not tested
+#define eScreen_EPD_EXT3_370_0C_Wide (uint32_t)0x09370C ///< reference xE2370KS0Cx
+#define eScreen_EPD_EXT3_417_0D_Wide (uint32_t)0x09410D ///< reference xE2417KS0Dx
+/// @todo eScreen_EPD_EXT3_437_0C_Wide not tested
+#define eScreen_EPD_EXT3_437_0C_Wide (uint32_t)0x09430C ///< reference xE2437KS0Cx, not tested
+#define eScreen_EPD_EXT3_581_06_Wide (uint32_t)0x09580B ///< reference xE2581KS0Bx
+/// @todo eScreen_EPD_EXT3_741_0B_Wide not tested
+#define eScreen_EPD_EXT3_741_0B_Wide (uint32_t)0x09740B ///< reference xE2741KS0Bx, not tested
+/// @todo eScreen_EPD_EXT3_969_0B_Wide not tested
+#define eScreen_EPD_EXT3_969_0B_Wide (uint32_t)0x09960B ///< reference xE2969KS0Bx, not tested
+/// @todo eScreen_EPD_EXT3_B98_0B_Wide not tested
+#define eScreen_EPD_EXT3_B98_0B_Wide (uint32_t)0x09B90B ///< reference xE2B98KS0Bx, not tested
 
 ///
 /// @brief Frame Frame-buffer sizes
@@ -288,7 +340,7 @@ const pins_t boardMSP430FR5994 =
 };
 
 ///
-/// @brief Texas Instruments LaunchPad  CC1352 configuration, tested
+/// @brief Texas Instruments LaunchPad CC1352 configuration, tested
 ///
 const pins_t boardCC1352 =
 {

@@ -44,7 +44,7 @@
 /// @{
 #define FEATURE_FAST 0x01 ///< With capacitive touch panel
 #define FEATURE_TOUCH 0x02 ///< With embedded fast update
-#define FEATURE_ARMOR 0x04 ///< With protection
+#define FEATURE_OTHER 0x04 ///< With other feature
 #define FEATURE_WIDE_TEMPERATURE 0x08 ///< With wide operating temperature
 /// @}
 
