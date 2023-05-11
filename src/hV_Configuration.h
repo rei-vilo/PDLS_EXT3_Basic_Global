@@ -48,8 +48,8 @@
 // Constants
 #include "hV_Constants.h"
 
-#if (hV_CONSTANTS_RELEASE < 601)
-#error Required hV_CONSTANTS_RELEASE 601
+#if (hV_CONSTANTS_RELEASE < 607)
+#error Required hV_CONSTANTS_RELEASE 607
 #endif // hV_CONSTANTS_RELEASE
 
 #ifndef hV_CONFIGURATION_RELEASE
@@ -640,9 +640,9 @@ const pins_t boardTeensy3x =
 ///
 /// @name 7- Set touch mode
 /// @details Only two screens are ready for touch
-/// * Basic edition: iTC 2.70 BW and iTC 3.70 BW
-/// * Evaluation edition: iTC 2.70 BW and iTC 3.70 BW
-/// * Commercial edition: iTC 2.70 BW and iTC 3.70 BW
+/// * Basic edition: iTC 2.71 BW and iTC 3.70 BW
+/// * Evaluation edition: iTC 2.71 BW and iTC 3.70 BW
+/// * Commercial edition: iTC 2.71 BW and iTC 3.70 BW
 /// @note Touch uses I2C and polling over interrupt
 /// @{
 #define USE_TOUCH_NONE 0 ///< Do not use touch

@@ -336,8 +336,8 @@ void Screen_EPD_EXT3::begin()
     _invert = false;
 
     // Report
-    Serial.println("= Screen %s %ix%i", WhoAmI(), screenSizeX(), screenSizeY());
-    Serial.println("= PDLS v%i", SCREEN_EPD_EXT3_RELEASE);
+    Serial.println(formatString("= Screen %s %ix%i", WhoAmI(), screenSizeX(), screenSizeY()));
+    Serial.println(formatString("= PDLS v%i", SCREEN_EPD_EXT3_RELEASE));
 
     clear();
 }
@@ -1346,7 +1346,7 @@ uint8_t Screen_EPD_EXT3::flushMode(uint8_t updateMode)
 
         default:
 
-            hV_HAL_log(LEVEL_ERROR, "UPDATE_NONE invoked");
+            Serial.println("* PDLS - UPDATE_NONE invoked");
             break;
     }
 

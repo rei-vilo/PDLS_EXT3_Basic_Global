@@ -272,7 +272,7 @@ class Screen_EPD_EXT3 final : public hV_Screen_Buffer
 
     // Screen independent variables
     uint8_t * _newImage;
-    bool _invert;
+    bool _invert = false;
     uint16_t _screenSizeV, _screenSizeH;
     int8_t _temperature = 25;
 
