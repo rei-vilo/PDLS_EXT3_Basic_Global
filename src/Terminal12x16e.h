@@ -15,7 +15,7 @@
 /// * Basic edition: for hobbyists and for basic usage
 /// @n Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
 ///
-/// * Evaluation edition: for professionals or organisations, evaluation only, no commercial usage 
+/// * Evaluation edition: for professionals or organisations, evaluation only, no commercial usage
 /// @n All rights reserved
 ///
 /// * Commercial edition: for professionals or organisations, commercial usage

@@ -1277,12 +1277,13 @@ uint8_t Screen_EPD_EXT3::checkTemperatureMode(uint8_t updateMode)
     // #define FEATURE_OTHER 0x04 ///< With other feature
     // #define FEATURE_WIDE_TEMPERATURE 0x08 ///< With wide operating temperature
     // #define FEATURE_RED 0x10 ///< With red colour
+
     updateMode = UPDATE_GLOBAL;
 
     switch (_codeExtra & 0x19)
     {
         case FEATURE_FAST: // PS series
-        
+
             // Fast 	PS 	Embedded fast update 	FU: +15 to +30 °C 	GU: 0 to +50 °C
             if ((_temperature < 0) or (_temperature > 50))
             {

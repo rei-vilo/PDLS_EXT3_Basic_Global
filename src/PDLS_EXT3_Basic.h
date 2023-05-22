@@ -16,7 +16,7 @@
 /// @n Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
 ///
 /// * Evaluation edition: for professionals or organisations
-/// @n All rights reserved, evaluation only, no commercial usage 
+/// @n All rights reserved, evaluation only, no commercial usage
 ///
 /// * Commercial edition: for professionals or organisations, for commercial usage
 /// @n All rights reserved

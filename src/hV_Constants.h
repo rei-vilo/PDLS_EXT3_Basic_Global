@@ -6,8 +6,8 @@
 /// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 02 May 2023
-/// @version 609
+/// @date 22 May 2023
+/// @version 610
 ///
 /// @copyright (c) Rei Vilo, 2010-2023
 /// @copyright All rights reserved
@@ -29,8 +29,7 @@
 ///
 /// @brief Release
 ///
-#define hV_CONSTANTS_RELEASE 609
-#endif // hV_CONSTANTS_RELEASE
+#define hV_CONSTANTS_RELEASE 610
 
 ///
 /// @name 1- List of supported Pervasive Displays screens
@@ -53,6 +52,7 @@
 ///
 /// @brief Update mode
 /// @note Numbers are sequential and exclusive
+/// @deprecated Partial update is deprecated. Use fast update instead.
 /// @{
 #define UPDATE_NONE 0x00 ///< No update
 #define UPDATE_GLOBAL 0x01 ///< Global update, default
@@ -62,7 +62,7 @@
 
 ///
 /// @brief Large screens sub-panels selection
-/// @note Numbers are sequential and exclusive 
+/// @note Numbers are sequential and exclusive
 /// @{
 #define PANEL_CS_MAIN 0x01 ///< Large screens sub-panels: first panel only
 #define PANEL_CS_SECOND 0x02 ///< Large screens sub-panels: second panel only
@@ -71,7 +71,7 @@
 
 ///
 /// @brief Power state
-/// @note Numbers are sequential and exclusive 
+/// @note Numbers are sequential and exclusive
 /// @{
 #define FSM_POWER_UNKNOWN 0x00 ///< Unknown
 #define FSM_POWER_ON 0x01 ///< On
@@ -80,7 +80,8 @@
 
 ///
 /// @brief Partial update state
-/// @note Numbers are sequential and exclusive 
+/// @deprecated Use fast update instead.
+/// @note Numbers are sequential and exclusive
 /// @{
 #define PARTIAL_OFF 0x00 ///< Non-activated
 #define PARTIAL_ON 0x01 ///< Activated but not populated
@@ -89,7 +90,7 @@
 
 ///
 /// @brief Continuity mode state
-/// @note Numbers are sequential and exclusive 
+/// @note Numbers are sequential and exclusive
 /// @{
 #define CONTINUITY_OFF 0x00 ///< Non-activated
 #define CONTINUITY_ON 0x01 ///< Activated but not initialised
@@ -98,7 +99,7 @@
 
 ///
 /// @brief Touch events
-/// @note Numbers are sequential and exclusive 
+/// @note Numbers are sequential and exclusive
 /// @{
 #define TOUCH_EVENT_NONE 0 ///< No touch event
 #define TOUCH_EVENT_PRESS 1 ///< Touch press event
@@ -109,7 +110,7 @@
 
 ///
 /// @brief Results
-/// @note Numbers are sequential and exclusive 
+/// @note Numbers are sequential and exclusive
 /// @{
 #define RESULT_SUCCESS 0 ///< Success
 #define RESULT_ERROR 1 ///< Error
@@ -124,3 +125,6 @@
 #define ORIENTATION_LANDSCAPE 7 ///< Landscape or horizontal, larger than high
 /// @}
 ///
+
+#endif // hV_CONSTANTS_RELEASE
+
