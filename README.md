@@ -1,6 +1,8 @@
 # Pervasive Displays Library Suite - Basic Edition
 
-[![Release](https://img.shields.io/github/v/release/rei-vilo/PDLS_EXT3_Basic)](https://github.com/rei-vilo/PDLS_EXT3_Basic/releases) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/77ecc9fa99834e299505f5f2a7c83e53)](https://www.codacy.com/gh/rei-vilo/PDLS_EXT3_Basic/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=rei-vilo/PDLS_EXT3_Basic&amp;utm_campaign=Badge_Grade) ![Arduino lint](https://github.com/rei-vilo/PDLS_EXT3_Basic/actions/workflows/main.yml/badge.svg) [![GitHub issues](https://img.shields.io/github/issues/rei-vilo/PDLS_EXT3_Basic)](https://github.com/rei-vilo/PDLS_EXT3_Basic/issues) [![](https://img.shields.io/badge/-Documentation-blue)](https://rei-vilo.github.io/PDLS_EXT3_Basic_Documentation/html/index.html) 
+[![Release](https://img.shields.io/github/v/release/rei-vilo/PDLS_EXT3_Basic)](https://github.com/rei-vilo/PDLS_EXT3_Basic/releases) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/77ecc9fa99834e299505f5f2a7c83e53)](https://www.codacy.com/gh/rei-vilo/PDLS_EXT3_Basic/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=rei-vilo/PDLS_EXT3_Basic&amp;utm_campaign=Badge_Grade) ![Arduino lint](https://github.com/rei-vilo/PDLS_EXT3_Basic/actions/workflows/main.yml/badge.svg) 
+[![GitHub issues](https://img.shields.io/github/issues-raw/rei-vilo/PDLS_EXT3_Basic?style=plastic)](https://img.shields.io/github/issues-raw/rei-vilo/PDLS_EXT3_Basic?style=plastic)
+[![GitHub issues](https://img.shields.io/github/issues/rei-vilo/PDLS_EXT3_Basic)](https://github.com/rei-vilo/PDLS_EXT3_Basic/issues) [![](https://img.shields.io/badge/-Documentation-blue)](https://rei-vilo.github.io/PDLS_EXT3_Basic_Documentation/html/index.html) 
 
 The Pervasive Displays Library Suite is specifically designed for the [Pervasive Displays](https://www.pervasivedisplays.com) e-paper screens and EXT3 extension board.
 
@@ -52,4 +54,4 @@ Copyright &copy; Rei Vilo, 2010-2023
 
 Licence [Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](./LICENCE.md)
 
-![](./by-sa.svg)
+![](img/by-sa.svg)

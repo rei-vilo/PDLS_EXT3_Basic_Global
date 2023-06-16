@@ -12,7 +12,7 @@
 /// @image html Logo-PDI-text-320.jpeg
 /// @image latex Logo-PDI-text-320.pdf width=10cm
 ///
-/// It provides a high-level interface to drive the e-paper screens with global, fast and partial update, supports capacitive touch and haptic feed-back.
+/// It provides a high-level interface to drive the e-paper screens with global and fast update, supports capacitive touch and haptic feed-back.
 ///
 /// @b Variants
 ///
@@ -21,6 +21,7 @@
 /// * **PDLS_EXT3_Basic** for [monochrome](https://www.pervasivedisplays.com/products/?_sft_product_colour=black-white) and [colour (black-white-red)](https://www.pervasivedisplays.com/products/?_sft_product_colour=black-white-red) screens;
 /// * **PDLS_EXT3_Basic_Fast** for [monochrome screens with embedded fast update](https://www.pervasivedisplays.com/product/2-71-e-ink-display-aurora-mb-v231/);
 /// * **PDLS_EXT3_Basic_Touch** for [monochrome screens with capacitive touch](https://www.pervasivedisplays.com/product/2-71-e-ink-display-aurora-mb-v231/).
+/// * **PDLS_EXT3_Basic_BWRY** for [black-white-red-yellow screens](https://www.pervasivedisplays.com/product/).
 ///
 /// The screens are connected to the [EPD Extension Kit Gen 3 (EXT3 or EXT3-1)](https://www.pervasivedisplays.com/product/epd-extension-kit-gen-3-EXT3/) and [Touch Expansion Board for EXT3 (EXT3-Touch)](https://www.pervasivedisplays.com/product/touch-expansion-board-ext3-touch/).
 ///
@@ -40,8 +41,8 @@
 /// Additionally, the **[Wiki](https://docs.pervasivedisplays.com/)** provides a gradual introduction to the e-paper technology and how to use it.
 ///
 /// @author Rei Vilo
-/// @date 22 May 2023
-/// @version 610
+/// @date 21 Jun 2023
+/// @version 611
 ///
 /// @copyright (c) Rei Vilo, 2010-2023
 /// @copyright All rights reserved

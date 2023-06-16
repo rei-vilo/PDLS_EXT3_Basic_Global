@@ -169,7 +169,7 @@ void Screen_EPD_EXT3::begin()
 
     _bufferDepth = _screenColourBits; // 2 colours
     _bufferSizeV = _screenSizeV; // vertical = wide size
-    _bufferSizeH = _screenSizeH / 8; // horizontal = small size 112 / 8;
+    _bufferSizeH = _screenSizeH / 8; // horizontal = small size 112 / 8; 1 bit per pixel
 
     // Force conversion for two unit16_t multiplication into uint32_t.
     // Actually for 1 colour; BWR requires 2 pages.
@@ -211,21 +211,6 @@ void Screen_EPD_EXT3::begin()
 
 #endif // ESP32 BOARD_HAS_PSRAM
 
-    // Check FRAM
-    bool flag = true;
-    uint8_t count = 8;
-
-    _newImage[1] = 0x00;
-    while (flag)
-    {
-        _newImage[1] = 0xaa;
-        delay(100);
-        if ((_newImage[1] == 0xaa) or (count == 0))
-        {
-            flag = false;
-        }
-        count--;
-    }
     memset(_newImage, 0x00, _pageColourSize * _bufferDepth);
 
     // Initialise the /CS pins
@@ -1001,7 +986,7 @@ void Screen_EPD_EXT3::_setOrientation(uint8_t orientation)
 
 bool Screen_EPD_EXT3::_orientCoordinates(uint16_t & x, uint16_t & y)
 {
-    bool flag = true; // false = success, true = error
+    bool flagError = true; // false = success, true = error
     switch (_orientation)
     {
         case 3: // checked, previously 1
@@ -1009,7 +994,7 @@ bool Screen_EPD_EXT3::_orientCoordinates(uint16_t & x, uint16_t & y)
             if ((x < _screenSizeV) and (y < _screenSizeH))
             {
                 x = _screenSizeV - 1 - x;
-                flag = false;
+                flagError = false;
             }
             break;
 
@@ -1020,7 +1005,7 @@ bool Screen_EPD_EXT3::_orientCoordinates(uint16_t & x, uint16_t & y)
                 x = _screenSizeH - 1 - x;
                 y = _screenSizeV - 1 - y;
                 swap(x, y);
-                flag = false;
+                flagError = false;
             }
             break;
 
@@ -1029,7 +1014,7 @@ bool Screen_EPD_EXT3::_orientCoordinates(uint16_t & x, uint16_t & y)
             if ((x < _screenSizeV) and (y < _screenSizeH))
             {
                 y = _screenSizeH - 1 - y;
-                flag = false;
+                flagError = false;
             }
             break;
 
@@ -1038,12 +1023,12 @@ bool Screen_EPD_EXT3::_orientCoordinates(uint16_t & x, uint16_t & y)
             if ((x < _screenSizeH) and (y < _screenSizeV))
             {
                 swap(x, y);
-                flag = false;
+                flagError = false;
             }
             break;
     }
 
-    return flag;
+    return flagError;
 }
 
 uint32_t Screen_EPD_EXT3::_getZ(uint16_t x1, uint16_t y1)
@@ -1243,6 +1228,9 @@ void Screen_EPD_EXT3::_sendIndexDataSlave(uint8_t index, const uint8_t * data, u
         digitalWrite(_pin.panelCSS, HIGH); // CS slave HIGH
     }
 }
+//
+// === End of Miscellaneous section
+//
 
 //
 // === Temperature section
@@ -1277,6 +1265,7 @@ uint8_t Screen_EPD_EXT3::checkTemperatureMode(uint8_t updateMode)
     // #define FEATURE_OTHER 0x04 ///< With other feature
     // #define FEATURE_WIDE_TEMPERATURE 0x08 ///< With wide operating temperature
     // #define FEATURE_RED 0x10 ///< With red colour
+    // #define FEATURE_RED_YELLOW 0x20 ///< With red and yellow colours
 
     updateMode = UPDATE_GLOBAL;
 
@@ -1310,8 +1299,10 @@ uint8_t Screen_EPD_EXT3::checkTemperatureMode(uint8_t updateMode)
             break;
 
         case FEATURE_RED: // JS series
+        case FEATURE_RED_YELLOW: // QS series
 
-            // Red      JS 	Red colour 	FU: - 	GU: 0 to +40 °C
+            // Red  JS 	Red colour 	FU: - 	GU: 0 to +40 °C
+            // Red  QS 	Red and yellow colours 	FU: - 	GU: 0 to +40 °C
             if ((_temperature < 0) or (_temperature > 40))
             {
                 updateMode = UPDATE_NONE;
@@ -1339,7 +1330,6 @@ uint8_t Screen_EPD_EXT3::flushMode(uint8_t updateMode)
     switch (updateMode)
     {
         case UPDATE_FAST:
-        case UPDATE_PARTIAL:
         case UPDATE_GLOBAL:
 
             _flushGlobal();

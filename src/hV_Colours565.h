@@ -6,8 +6,8 @@
 /// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 11 Jan 2021
-/// @version 507
+/// @date 21 Jun 2023
+/// @version 611
 ///
 /// @copyright (c) Rei Vilo, 2010-2023
 /// @copyright Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
@@ -24,7 +24,7 @@
 ///
 /// @brief Library release number
 ///
-#define hV_COLOURS_RELEASE 507
+#define hV_COLOURS_RELEASE 611
 
 ///
 /// @class hV_Colours565
@@ -69,8 +69,10 @@ class hV_Colours565
     static const uint16_t darkGray = 0b0011100111100111; ///< American-English variant for dark grey
 
     // e-Paper specific colours
-    static const uint16_t darkRed  = 0b0011100000000000; ///<   dark red for BWR e-paper screens
-    static const uint16_t lightRed = 0b1111100011100011; ///<   light red for BWR e-paper screens
+    static const uint16_t darkRed  = 0b0011100000000000; ///< dark red for BWR and BWRY colour screens
+    static const uint16_t lightRed = 0b1111100011100011; ///< light red for BWR and BWRY colour screens
+    static const uint16_t darkYellow  = 0b0011100011100000; ///< dark yellow for BWRY colour screens
+    static const uint16_t lightYellow = 0b1111111111100011; ///< light yellow for BWRY colour screens
 
     /// @}
 };

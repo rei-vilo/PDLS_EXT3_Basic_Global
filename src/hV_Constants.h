@@ -6,8 +6,8 @@
 /// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 22 May 2023
-/// @version 610
+/// @date 21 Jun 2023
+/// @version 611
 ///
 /// @copyright (c) Rei Vilo, 2010-2023
 /// @copyright All rights reserved
@@ -29,7 +29,7 @@
 ///
 /// @brief Release
 ///
-#define hV_CONSTANTS_RELEASE 610
+#define hV_CONSTANTS_RELEASE 611
 
 ///
 /// @name 1- List of supported Pervasive Displays screens
@@ -47,12 +47,17 @@
 #define FEATURE_OTHER 0x04 ///< With other feature
 #define FEATURE_WIDE_TEMPERATURE 0x08 ///< With wide operating temperature
 #define FEATURE_RED 0x10 ///< With red colour
+#define FEATURE_RED_YELLOW 0x20 ///< With red and yellow colours
+#define FEATURE_BW 0x00 ///< Monochrome
+#define FEATURE_BWR 0x10 ///< With red colour
+#define FEATURE_BWRY 0x20 ///< With red and yellow colours
+#define FEATURE_HIGH_DEFINITION 0x40 ///< With high definition
 /// @}
 
 ///
 /// @brief Update mode
 /// @note Numbers are sequential and exclusive
-/// @deprecated Partial update is deprecated. Use fast update instead.
+/// @deprecated Partial update is deprecated. Use fast update instead (6.1.0).
 /// @{
 #define UPDATE_NONE 0x00 ///< No update
 #define UPDATE_GLOBAL 0x01 ///< Global update, default
@@ -80,7 +85,7 @@
 
 ///
 /// @brief Partial update state
-/// @deprecated Use fast update instead.
+/// @deprecated Use fast update instead (6.1.0).
 /// @note Numbers are sequential and exclusive
 /// @{
 #define PARTIAL_OFF 0x00 ///< Non-activated
