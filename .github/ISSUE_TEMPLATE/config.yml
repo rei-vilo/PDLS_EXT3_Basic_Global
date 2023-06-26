@@ -1,0 +1,16 @@
+# Source:
+# https://github.com/arduino/tooling-project-assets/blob/main/issue-templates/template-choosers/general/config.yml
+blank_issues_enabled: false
+contact_links:
+  - name: Wiki
+    url: https://docs.pervasivedisplays.com/
+    about: the Wiki provides a gradual introduction to the e-paper technology and how to use it.
+  - name: User guide
+    url: https://pdls.pervasivedisplays.com/userguide/index.html
+    about: The User guide focuses on how to use the different libraries, with commented examples
+  - name: Reference manual
+    url: https://rei-vilo.github.io/PDLS_EXT3_Basic_Documentation/html/index.html
+    about: The Reference manual lists all the objects and functions, with details for their parameters and returned results.
+  - name: Pervasive Displays
+    url: https://www.pervasivedisplays.com/
+    about: Pervasive Displays official website with EPD screens, extension boards and development kits.

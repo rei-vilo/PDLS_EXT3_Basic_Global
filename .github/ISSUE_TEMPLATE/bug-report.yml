@@ -1,0 +1,98 @@
+name: Bug report
+description: Report a problem with the code or documentation in this repository.
+labels:
+  - "type: imperfection"
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the problem
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: To reproduce
+      description: Provide the specific set of steps we can follow to reproduce the problem.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What would you expect to happen after following those instructions?
+    validations:
+      required: true
+  - type: input
+    id: ide-name-version
+    attributes:
+      label: IDE or SDK name and version
+      description: |
+        Which IDE or SDK are you using? (e.g. Arduino IDE 2.1.0)
+    validations:
+      required: true
+  - type: dropdown
+    id: pdls-variant
+    attributes:
+      label: PDLS variant
+      description: Which variant of PDLS are you using?
+      multiple: true
+      options:
+        - PDLS_EXT3_Basic
+        - PDLS_EXT3_Basic_Fast
+        - PDLS_EXT3_Basic_Touch
+        - PDLS_EXT3_Basic_BWRY
+    validations:
+      required: true
+  - type: input
+    id: pdls-version
+    attributes:
+      label: PDLS version
+      description: |
+        Which version of PDLS are you using? (e.g. 6.1.1)
+    validations:
+      required: true
+  - type: input
+    id: hardware-controller
+    attributes:
+      label: MCU board
+      description: Which MCU board are you using? (e.g. Raspberry Pi Pico RP2040)
+    validations:
+      required: true
+  - type: dropdown
+    id: hardware-extension
+    attributes:
+      label: Extension board
+      description: Which extension board are you using? (e.g. EXT3-1)
+      multiple: true
+      options:
+        - EXT3
+        - EXT3-1
+        - EXT3-1 with EXT3-Touch
+        - Custom
+    validations:
+      required: true
+  - type: input
+    id: hardware-reference
+    attributes:
+      label: EPD panel reference
+      description: Which is the exact reference of the EPD panel you are using? The reference is printed on a sticker. (e.g. CE2271CS094)
+    validations:
+      required: true
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context
+      description: Add any additional information here.
+    validations:
+      required: false
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Issue checklist
+      description: Please double-check that you have done each of the following things before submitting the issue.
+      options:
+        - label: I searched for previous reports in [the issue tracker](https://github.com/rei-vilo/PDLS_EXT3_Basic/issues?q=)
+          required: true
+        - label: My report contains all necessary details
+          required: true

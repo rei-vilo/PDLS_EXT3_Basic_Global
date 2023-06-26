@@ -1,0 +1,66 @@
+name: Feature request
+description: Suggest an enhancement to this project.
+labels:
+  - "type: enhancement"
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the request
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: Describe the current behavior
+      description: |
+        What is the current behavior of PDLS in relation to your request?
+        How can we reproduce that behavior?
+    validations:
+      required: true
+  - type: dropdown
+    id: pdls-variant
+    attributes:
+      label: PDLS variant
+      description: Which variant of PDLS are you using?
+      multiple: true
+      options:
+        - PDLS_EXT3_Basic
+        - PDLS_EXT3_Basic_Fast
+        - PDLS_EXT3_Basic_Touch
+        - PDLS_EXT3_Basic_BWRY
+    validations:
+      required: true
+  - type: input
+    id: pdls-version
+    attributes:
+      label: PDLS version
+      description: |
+        Which version of PDLS are you using? (e.g. 6.1.1)
+    validations:
+      required: true
+  - type: input
+    id: ide-name-version
+    attributes:
+      label: IDE or SDK name and version
+      description: |
+        Which IDE or SDK are you using? (e.g. Arduino IDE 2.1.0)
+    validations:
+      required: true
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context
+      description: Add any additional information here.
+    validations:
+      required: false
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Issue checklist
+      description: Please double-check that you have done each of the following things before submitting the issue.
+      options:
+        - label: I searched for previous requests in [the issue tracker](https://github.com/vilo/PDLS_EXT3_Basic/issues?q=)
+          required: true
+        - label: My request contains all necessary details
+          required: true
