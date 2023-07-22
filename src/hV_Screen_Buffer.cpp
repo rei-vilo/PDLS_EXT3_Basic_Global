@@ -25,11 +25,11 @@
 // Code
 hV_Screen_Buffer::hV_Screen_Buffer()
 {
-    _f_fontSize       = 0;
-    _f_fontNumber     = 0;
-    _f_fontSolid      = true;
-    _penSolid       = false;
-    _f_fontSpaceX     = 1;
+    _f_fontSize = 0;
+    _f_fontNumber = 0;
+    _f_fontSolid = true;
+    _penSolid = false;
+    _f_fontSpaceX = 1;
 }
 
 void hV_Screen_Buffer::begin()

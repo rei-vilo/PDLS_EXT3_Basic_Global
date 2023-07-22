@@ -19,8 +19,8 @@
 /// * 11. Set storage mode, not implemented
 ///
 /// @author Rei Vilo
-/// @date 21 Jun 2023
-/// @version 611
+/// @date 21 Jul 2023
+/// @version 612
 ///
 /// @copyright (c) Rei Vilo, 2010-2023
 /// @copyright All rights reserved
@@ -56,7 +56,7 @@
 ///
 /// @brief Release
 ///
-#define hV_CONFIGURATION_RELEASE 611
+#define hV_CONFIGURATION_RELEASE 612
 
 ///
 /// @name 1- List of supported Pervasive Displays screens
@@ -128,7 +128,7 @@
 #define eScreen_EPD_EXT3_370_Touch (uint32_t)0x03370C ///< reference xTP370PGH0x, legacy name
 
 /// * Monochrome screens with embedded fast update
-/// @note Global and fast update modes 
+/// @note Global and fast update modes
 /// @see https://www.pervasivedisplays.com/products/?_sft_etc_itc=pu
 ///
 #define eScreen_EPD_EXT3_154_0C_Fast (uint32_t)0x01150C ///< reference xE2154PS0Cx
@@ -150,7 +150,7 @@
 #define eScreen_EPD_EXT3_B98_0B_Fast (uint32_t)0x01B90B ///< reference xE2B98PS0Bx, not tested
 
 /// * Monochrome screens with embedded fast update and wide temperature
-/// @note Global and fast update modes 
+/// @note Global and fast update modes
 /// @see https://www.pervasivedisplays.com/products/?_sft_temperature_range=m15c-to-p60c
 ///
 #define eScreen_EPD_EXT3_154_0C_Wide (uint32_t)0x09150C ///< reference xE2154KS0Cx
@@ -207,20 +207,20 @@
 ///
 struct pins_t
 {
-    ///< EXT3 and EXT3-1 pin 1 Black -> +3.3V
-    ///< EXT3 and EXT3-1 pin 2 Brown -> SPI SCK
+    // ///< EXT3 and EXT3-1 pin 1 Black -> +3.3V
+    // ///< EXT3 and EXT3-1 pin 2 Brown -> SPI SCK
     uint8_t panelBusy; ///< EXT3 and EXT3-1 pin 3 Red
     uint8_t panelDC; ///< EXT3 and EXT3-1 pin 4 Orange
     uint8_t panelReset; ///< EXT3 and EXT3-1 pin 5 Yellow
-    ///< EXT3 and EXT3-1 pin 6 Green -> SPI MISO
-    ///< EXT3 and EXT3-1 pin 7 Blue -> SPI MOSI
+    // ///< EXT3 and EXT3-1 pin 6 Green -> SPI MISO
+    // ///< EXT3 and EXT3-1 pin 7 Blue -> SPI MOSI
     uint8_t flashCS; ///< EXT3 and EXT3-1 pin 8 Violet
     uint8_t panelCS; ///< EXT3 and EXT3-1 pin 9 Grey
-    ///< EXT3 and EXT3-1 pin 10 White -> GROUND
+    // ///< EXT3 and EXT3-1 pin 10 White -> GROUND
     uint8_t panelCSS; ///< EXT3 and EXT3-1 pin 12 Grey2
     uint8_t flashCSS; ///< EXT3 pin 20 or EXT3-1 pin 11 Black2
-    ///< EXT3-Touch pin 1 Brown -> I2C SDA
-    ///< EXT3-Touch pin 2 Black -> I2C SCL
+    // ///< EXT3-Touch pin 1 Brown -> I2C SDA
+    // ///< EXT3-Touch pin 2 Black -> I2C SCL
     uint8_t touchInt; ///< EXT3-Touch pin 3 Red
     uint8_t touchReset; ///< EXT3-Touch pin 4 Orange
     uint8_t panelPower; ///< Optional power circuit
@@ -421,8 +421,8 @@ const pins_t boardFeatherM0M4 =
     .panelCS = 9, ///< EXT3 and EXT3-1 pin 9 Grey -> D9 GPIO9
     .panelCSS = NOT_CONNECTED, ///< EXT3 and EXT3-1 pin 12 Grey2
     .flashCSS = NOT_CONNECTED, ///< EXT3 pin 20 or EXT3-1 pin 11 Black2
-    .touchInt = NOT_CONNECTED, ///< EXT3-Touch pin 3 Red -> D5 GPIO5
-    .touchReset = NOT_CONNECTED, ///< EXT3-Touch pin 4 Orange -> D6 GPIO6
+    .touchInt = 5, ///< EXT3-Touch pin 3 Red -> D5 GPIO5
+    .touchReset = 6, ///< EXT3-Touch pin 4 Orange -> D6 GPIO6
     .panelPower = NOT_CONNECTED, ///< Optional power circuit
     .cardCS = NOT_CONNECTED, ///< Separate SD-card board
     .cardDetect = NOT_CONNECTED, ///< Separate SD-card board

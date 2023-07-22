@@ -6,8 +6,8 @@
 /// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 22 May 2023
-/// @version 610
+/// @date 21 Jun 2023
+/// @version 611
 ///
 /// @copyright (c) Rei Vilo, 2010-2023
 /// @copyright Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
@@ -33,7 +33,7 @@
 ///
 /// @brief Library release number
 ///
-#define hV_UTILITIES_RELEASE 610
+#define hV_UTILITIES_RELEASE 611
 
 #ifndef min
 #define min(a, b) ((a) < (b) ? (a) : (b))
@@ -43,7 +43,7 @@
 #endif
 
 ///
-/// @name Orientation Orientation constants
+/// @name Orientation constants
 /// @{
 ///
 #define ORIENTATION_PORTRAIT 6 ///< portrait or vertical, higher than large

@@ -6,8 +6,8 @@
 /// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 24 Nov 2021
-/// @version 523
+/// @date 21 Jul 2023
+/// @version 612
 ///
 /// @copyright (c) Rei Vilo, 2010-2023
 /// @copyright Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
@@ -29,13 +29,14 @@
 #include "Arduino.h"
 #endif // SDK
 
+// Configuration
+#include "hV_Configuration.h"
+
 #ifndef hV_SCREEN_BUFFER_RELEASE
 ///
 /// @brief Library release number
 ///
-#define hV_SCREEN_BUFFER_RELEASE 523
-
-#include "hV_Configuration.h"
+#define hV_SCREEN_BUFFER_RELEASE 612
 
 // Other libraries
 #include "hV_Colours565.h"
