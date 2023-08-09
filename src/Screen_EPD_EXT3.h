@@ -13,8 +13,8 @@
 /// * Temperature: monochrome = 0 to 50 °C, red = 0 to 40 °C
 ///
 /// @author Rei Vilo
-/// @date 21 Jul 2023
-/// @version 612
+/// @date 21 Aug 2023
+/// @version 613
 ///
 /// @copyright (c) Rei Vilo, 2010-2023
 /// @copyright Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
@@ -47,7 +47,7 @@
 ///
 /// @brief Library release number
 ///
-#define SCREEN_EPD_EXT3_RELEASE 612
+#define SCREEN_EPD_EXT3_RELEASE 613
 
 // Other libraries
 #include "SPI.h"

@@ -21,6 +21,7 @@
 // Release 607: Improved screens names consistency
 // Release 608: Added screen report
 // Release 609: Added temperature management
+// Release 613: Improved stability for BWR screens
 //
 
 // Library header
@@ -806,6 +807,14 @@ void Screen_EPD_EXT3::_flushGlobal()
         _sendIndexData(0xe5, data7, 1); // Input Temperature 0°C = 0x00, 22°C = 0x16, 25°C = 0x19
         uint8_t data6[] = {0x02};
         _sendIndexData(0xe0, data6, 1); // Active Temperature
+
+        uint8_t index00_work[2] = {0xcf, 0x8d}; // PSR, all except 4.2"
+        if (_codeSize == 0x42)
+        {
+            index00_work[0] = 0x0f;
+            index00_work[1] = 0x89;
+        }
+        _sendIndexData(0x00, index00_work, 2); // PSR
 
         // Send image data
         _sendIndexData(0x10, blackBuffer, _frameSize); // First frame
