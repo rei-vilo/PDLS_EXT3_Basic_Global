@@ -42,9 +42,9 @@
 ///
 /// @author Rei Vilo
 /// @date 21 Aug 2023
-/// @version 613
+/// @version 6.1.3
 ///
-/// @copyright (c) Rei Vilo, 2010-2023
+/// @copyright &copy; Rei Vilo, 2010-2023
 /// @copyright All rights reserved
 ///
 /// * Basic edition: for hobbyists and for basic usage
@@ -65,32 +65,46 @@
 ///
 /// @page Examples Examples
 ///
-/// Examples are under the examples folder.
+/// Examples are under the examples folders.
 ///
-/// * Common
-///     * Common_Colours
+/// + Common
+///     * Common_Colours.ino
 /// @image html T2_PALET.jpg
-/// @image latex T2_PALET.PDF width=10cm
-///     * Common_Fonts
+/// @image latex T2_PALET.jpg width=8cm
+///     * Common_Fonts.ino
 /// @image html T2_FONTS.jpg
-/// @image latex T2_FONTS.PDF width=10cm
-///     * Common_Orientation
+/// @image latex T2_FONTS.jpg width=8cm
+///     * Common_Orientation.ino
 /// @image html T2_ORIEN.jpg
-/// @image latex T2_ORIEN.PDF width=10cm
-///     * Common_Forms
+/// @image latex T2_ORIEN.jpg width=8cm
+///     * Common_Forms.ino
 /// @image html T2_FORMS.jpg
-/// @image latex T2_FORMS.PDF width=10cm
-///     * Common_Text
+/// @image latex T2_FORMS.jpg width=8cm
+///     * Common_Text.ino
 /// @image html T2_CHARA.jpg
-/// @image latex T2_CHARA.PDF width=10cm
-///     * Common_WhoAmI
+/// @image latex T2_CHARA.jpg width=8cm
+///     * Common_WhoAmI.ino
 /// @image html T2_WHOAMI.jpg
-/// @image latex T2_WHOAMI.PDF width=10cm
-///     * Example_Global_Speed
+/// @image latex T2_WHOAMI.jpg width=8cm
+/// @image latex T2_CHARA.PDF width=10cm
+///
+/// + Fast
+///     * Example_Global_Speed.ino
 /// @image html Global.jpeg
 /// @image latex Global.jpeg width=10cm
-///     * Example_Fast_Speed
+///     * Example_Fast_Speed.ino
 /// @image html Fast.jpeg
 /// @image latex Fast.jpeg width=10cm
+///
+/// + Black-White-Red-Yellow
+///     * BWRY_Colours.ino
+/// @image html BWRY_Colours.png
+/// @image latex BWRY_Colours.png width=10cm
+///     * BWRY_Palette.ino
+/// @image html BWRY_Palette.png
+/// @image latex BWRY_Palette.png width=10cm
+///     * BWRY_Contrasts.ino
+/// @image html BWRY_Contrasts.jpg
+/// @image latex BWRY_Contrasts.jpg width=8cm
 ///
 
