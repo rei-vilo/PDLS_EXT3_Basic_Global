@@ -42,7 +42,7 @@
 ///
 /// @author Rei Vilo
 /// @date 21 Aug 2023
-/// @version 6.1.3
+/// @version 613
 ///
 /// @copyright &copy; Rei Vilo, 2010-2023
 /// @copyright All rights reserved
