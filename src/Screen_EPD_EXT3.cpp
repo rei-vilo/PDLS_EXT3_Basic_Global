@@ -22,6 +22,7 @@
 // Release 608: Added screen report
 // Release 609: Added temperature management
 // Release 613: Improved stability for BWR screens
+// Release 614: Added support for Arduino Nano ESP32 board 
 //
 
 // Library header
@@ -267,6 +268,11 @@ void Screen_EPD_EXT3::begin()
 
     // Board Xiao ESP32-C3 crashes if pins are specified.
     SPI.begin(8, 9, 10); // SCK MISO MOSI
+
+#elif defined(ARDUINO_NANO_ESP32)
+
+    // Board Arduino Nano ESP32 arduino_nano_nora v2.0.11
+    SPI.begin();
 
 #elif defined(ARDUINO_ARCH_ESP32)
 

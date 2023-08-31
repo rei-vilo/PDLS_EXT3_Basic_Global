@@ -41,8 +41,8 @@
 /// Additionally, the **[Wiki](https://docs.pervasivedisplays.com/)** provides a gradual introduction to the e-paper technology and how to use it.
 ///
 /// @author Rei Vilo
-/// @date 21 Aug 2023
-/// @version 613
+/// @date 31 Aug 2023
+/// @version 614
 ///
 /// @copyright &copy; Rei Vilo, 2010-2023
 /// @copyright All rights reserved
@@ -67,7 +67,7 @@
 ///
 /// Examples are under the examples folders.
 ///
-/// + Common
+/// * Common
 ///     * Common_Colours.ino
 /// @image html T2_PALET.jpg
 /// @image latex T2_PALET.jpg width=8cm
@@ -86,23 +86,22 @@
 ///     * Common_WhoAmI.ino
 /// @image html T2_WHOAMI.jpg
 /// @image latex T2_WHOAMI.jpg width=8cm
-/// @image latex T2_CHARA.PDF width=10cm
 ///
 /// + Fast
 ///     * Example_Global_Speed.ino
 /// @image html Global.jpeg
-/// @image latex Global.jpeg width=10cm
+/// @image latex Global.jpeg width=8cm
 ///     * Example_Fast_Speed.ino
 /// @image html Fast.jpeg
-/// @image latex Fast.jpeg width=10cm
+/// @image latex Fast.jpeg width=8cm
 ///
 /// + Black-White-Red-Yellow
 ///     * BWRY_Colours.ino
 /// @image html BWRY_Colours.png
-/// @image latex BWRY_Colours.png width=10cm
+/// @image latex BWRY_Colours.png width=8cm
 ///     * BWRY_Palette.ino
 /// @image html BWRY_Palette.png
-/// @image latex BWRY_Palette.png width=10cm
+/// @image latex BWRY_Palette.png width=8cm
 ///     * BWRY_Contrasts.ino
 /// @image html BWRY_Contrasts.jpg
 /// @image latex BWRY_Contrasts.jpg width=8cm

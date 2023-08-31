@@ -38,7 +38,7 @@ Hardware
 
 Software
 
-* Wiring-Arduino SDK
+* Arduino SDK
 * SPI library
 
 Hardware
@@ -48,8 +48,8 @@ Hardware
 
 ## Licence
 
-Copyright &copy; Rei Vilo, 2010-2023
+**Copyright** &copy; Rei Vilo, 2010-2023
 
-Licence [Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](./LICENCE.md)
+**Licence** [Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](./LICENCE.md)
 
 ![](img/by-sa.svg)
