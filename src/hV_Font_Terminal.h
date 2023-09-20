@@ -26,11 +26,7 @@
 ///
 
 // SDK
-#if defined(ENERGIA) // LaunchPad specific
-#include "Energia.h"
-#else // Arduino general
-#include "Arduino.h"
-#endif // SDK
+#include "hV_HAL_Peripherals.h"
 
 // Configuration
 #include "hV_Configuration.h"
@@ -85,7 +81,7 @@ class hV_Font_Terminal
     ///
     /// @brief Initialisation
     ///
-    void _f_begin();
+    void f_begin();
 
     ///
     /// @brief Select font
@@ -93,7 +89,7 @@ class hV_Font_Terminal
     /// @warning Definition for this method is compulsory.
     /// @note Previously _setFontSize()
     ///
-    void _f_selectFont(uint8_t font);
+    void f_selectFont(uint8_t font);
 
     ///
     /// @brief Use a font
@@ -103,28 +99,28 @@ class hV_Font_Terminal
     /// @note Previously setFontSize()
     /// @n @b More: @ref Fonts
     ///
-    uint8_t _f_addFont(font_s fontName);
+    uint8_t f_addFont(font_s fontName);
 
     ///
     /// @brief Set transparent or opaque text
     /// @param flag default = 1 = opaque = solid, false = transparent
     /// @warning Definition for this method is compulsory.
     ///
-    void _f_setFontSolid(bool flag = true);
+    void f_setFontSolid(bool flag = true);
 
     ///
     /// @brief Set additional pixels between two characters, horizontal axis
     /// @param number of spaces default = 1 pixel
     /// @warning Definition for this method is compulsory.
     ///
-    void _f_setFontSpaceX(uint8_t number = 1);
+    void f_setFontSpaceX(uint8_t number = 1);
 
     ///
     /// @brief Set additional pixels between two characters, vertical axis
     /// @param number of spaces default = 1 pixel
     /// @warning Definition for this method is compulsory.
     ///
-    void _f_setFontSpaceY(uint8_t number = 1);
+    void f_setFontSpaceY(uint8_t number = 1);
 
     ///
     /// @brief Character size, x-axis
@@ -135,7 +131,7 @@ class hV_Font_Terminal
     /// @note Previously fontSizeX()
     /// @n @b More: @ref Fonts
     ///
-    uint16_t _f_characterSizeX(uint8_t character = 0x00);
+    uint16_t f_characterSizeX(uint8_t character = 0x00);
 
     ///
     /// @brief Character size, y-axis
@@ -143,7 +139,7 @@ class hV_Font_Terminal
     /// @note Previously fontSizeY()
     /// @n @b More: @ref Fonts
     ///
-    uint16_t _f_characterSizeY();
+    uint16_t f_characterSizeY();
 
     ///
     /// @brief String size, x-axis
@@ -151,7 +147,7 @@ class hV_Font_Terminal
     /// @return horizontal size of the string for current font, in pixels
     /// @n @b More: @ref Fonts
     ///
-    uint16_t _f_stringSizeX(String text);
+    uint16_t f_stringSizeX(String text);
 
     ///
     /// @brief Number of characters to fit a size, x-axis
@@ -160,7 +156,7 @@ class hV_Font_Terminal
     /// @return number of characters to be displayed inside the pixels
     /// @n @b More: @ref Fonts
     ///
-    uint8_t _f_stringLengthToFitX(String text, uint16_t pixels);
+    uint8_t f_stringLengthToFitX(String text, uint16_t pixels);
 
     ///
     /// @brief Number of fonts
@@ -168,19 +164,19 @@ class hV_Font_Terminal
     /// @note First font is numbered 0, second 1, ...
     /// @n The latest font is numbered fontMax()-1
     ///
-    uint8_t _f_fontMax();
+    uint8_t f_fontMax();
 
     ///
     /// @brief Get selected font details
     /// @return font description
     ///
-    uint8_t _f_getFontKind();
+    uint8_t f_getFontKind();
 
     ///
     /// @brief Get selected font details
     /// @return maximum width in pixels from *width array
     ///
-    uint8_t _f_getFontMaxWidth();
+    uint8_t f_getFontMaxWidth();
 
   protected:
     ///
@@ -189,18 +185,18 @@ class hV_Font_Terminal
     /// @param index column index
     /// @return definition for line of character
     ///
-    uint8_t _f_getCharacter(uint8_t character, uint16_t index);
+    uint8_t f_getCharacter(uint8_t character, uint16_t index);
 
     ///
     /// @name Variables for font management
     /// @{
     ///
-    font_s _f_font; ///< font
-    uint8_t _f_fontNumber; ///< number of fonts available, 0.._fontNumber-1
-    uint8_t _f_fontSize; ///< actual font selected
-    uint8_t _f_fontSpaceX; ///< pixels between two characters, horizontal axis
-    uint8_t _f_fontSpaceY; ///< pixels between two characters, vertical axis
-    bool _f_fontSolid; ///<
+    font_s f_font; ///< font
+    uint8_t f_fontNumber; ///< number of fonts available, 0.._fontNumber-1
+    uint8_t f_fontSize; ///< actual font selected
+    uint8_t f_fontSpaceX; ///< pixels between two characters, horizontal axis
+    uint8_t f_fontSpaceY; ///< pixels between two characters, vertical axis
+    bool f_fontSolid; ///<
 
 };
 /// @endcond

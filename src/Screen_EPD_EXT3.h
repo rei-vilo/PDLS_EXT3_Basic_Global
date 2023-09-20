@@ -13,8 +13,8 @@
 /// * Temperature: monochrome = 0 to 50 °C, red = 0 to 40 °C
 ///
 /// @author Rei Vilo
-/// @date 31 Aug 2023
-/// @version 614
+/// @date 21 Sep 2023
+/// @version 700
 ///
 /// @copyright (c) Rei Vilo, 2010-2023
 /// @copyright Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
@@ -30,31 +30,48 @@
 ///
 
 // SDK
-#if defined(ENERGIA) // LaunchPad specific
-#include "Energia.h"
-#else // Arduino general
-#include "Arduino.h"
-#endif // SDK
+#include "hV_HAL_Peripherals.h"
 
 // Configuration
 #include "hV_Configuration.h"
 
-#if (hV_CONFIGURATION_RELEASE < 611)
-#error Required hV_CONFIGURATION_RELEASE 611
+// Other libraries
+#include "hV_Screen_Buffer.h"
+
+// Board
+#include "hV_Board.h"
+
+// EPD utilities
+#include "hV_Utilities_EPD.h"
+
+#if (hV_CONFIGURATION_RELEASE < 700)
+#error Required hV_CONFIGURATION_RELEASE 700
 #endif // hV_CONFIGURATION_RELEASE
+
+#if (hV_SCREEN_BUFFER_RELEASE < 700)
+#error Required hV_SCREEN_BUFFER_RELEASE 700
+#endif // hV_SCREEN_BUFFER_RELEASE
+
+#if (hV_BOARD_RELEASE < 700)
+#error Required hV_BOARD_RELEASE 700
+#endif // hV_BOARD_RELEASE
 
 #ifndef SCREEN_EPD_EXT3_RELEASE
 ///
 /// @brief Library release number
 ///
-#define SCREEN_EPD_EXT3_RELEASE 614
+#define SCREEN_EPD_EXT3_RELEASE 700
+
+///
+/// @brief Library variant
+///
+#define SCREEN_EPD_EXT3_VARIANT "Basic-Global"
 
 // Other libraries
-#include "SPI.h"
 #include "hV_Screen_Buffer.h"
 
-#if (hV_SCREEN_BUFFER_RELEASE < 612)
-#error Required hV_SCREEN_BUFFER_RELEASE 612
+#if (hV_SCREEN_BUFFER_RELEASE < 700)
+#error Required hV_SCREEN_BUFFER_RELEASE 700
 #endif // hV_SCREEN_BUFFER_RELEASE
 
 // Objects
@@ -69,7 +86,7 @@
 /// @note All commands work on the frame-buffer,
 /// to be displayed on screen with flush()
 ///
-class Screen_EPD_EXT3 final : public hV_Screen_Buffer
+class Screen_EPD_EXT3 final : public hV_Screen_Buffer, public hV_Utilities_EPD
 {
   public:
     ///
@@ -101,12 +118,6 @@ class Screen_EPD_EXT3 final : public hV_Screen_Buffer
     void clear(uint16_t colour = myColours.white);
 
     ///
-    /// @brief Invert screen
-    /// @param flag true to invert, false for normal screen
-    ///
-    void invert(bool flag);
-
-    ///
     /// @brief Update the display, global update
     /// @note Send the frame-buffer to the screen and refresh the screen
     ///
@@ -119,32 +130,6 @@ class Screen_EPD_EXT3 final : public hV_Screen_Buffer
     void regenerate();
 
     ///
-    /// @brief Set temperature in Celsius
-    /// @details Set the temperature for update
-    /// @param temperatureC temperature in °C, default = 25 °C
-    /// @note Refer to data-sheets for authorised operating temperatures
-    ///
-    void setTemperatureC(int8_t temperatureC = 25);
-
-    ///
-    /// @brief Set temperature in Fahrenheit
-    /// @details Set the temperature for update
-    /// @param temperatureF temperature in °F, default = 77 °F = 25 °C
-    /// @note Refer to data-sheets for authorised operating temperatures
-    ///
-    void setTemperatureF(int16_t temperatureF = 77);
-
-    ///
-    /// @brief Check the mode against the temperature
-    ///
-    /// @param updateMode expected update mode
-    /// @return uint8_t recommended mode
-    /// @note If required, defaulting to UPDATE_NONE
-    /// @warning Default temperature is 25 °C, otherwise set by setTemperatureC() or setTemperatureF()
-    ///
-    uint8_t checkTemperatureMode(uint8_t updateMode = UPDATE_GLOBAL);
-
-    ///
     /// @brief Update the display
     /// @details Display next frame-buffer on screen and copy next frame-buffer into old frame-buffer
     /// @param updateMode expected update mode
@@ -153,66 +138,8 @@ class Screen_EPD_EXT3 final : public hV_Screen_Buffer
     ///
     uint8_t flushMode(uint8_t updateMode = UPDATE_GLOBAL);
 
-    ///
-    /// @brief Draw pixel
-    /// @param x1 point coordinate, x-axis
-    /// @param y1 point coordinate, y-axis
-    /// @param colour 16-bit colour
-    ///
-    /// @n @b More: @ref Coordinate, @ref Colour
-    ///
-    void point(uint16_t x1, uint16_t y1, uint16_t colour);
-
-    ///
-    /// @brief Read pixel colour
-    /// @param x1 point coordinate, x-axis
-    /// @param y1 point coordinate, y-axis
-    /// @return 16-bit colour, bits 15-11 red, bits 10-5 green, bits 4-0 blue
-    ///
-    /// @n @b More: @ref Coordinate, @ref Colour
-    ///
-    uint16_t readPixel(uint16_t x1, uint16_t y1);
-
   protected:
     /// @cond
-
-    ///
-    /// @brief General reset
-    /// @param ms1 delay after PNLON_PIN, ms
-    /// @param ms2 delay after RESET_PIN HIGH, ms
-    /// @param ms3 delay after RESET_PIN LOW, ms
-    /// @param ms4 delay after RESET_PIN HIGH, ms
-    /// @param ms5 delay after CS_PIN CSS_PIN HIGH, ms
-    ///
-    void _reset(uint32_t ms1, uint32_t ms2, uint32_t ms3, uint32_t ms4, uint32_t ms5);
-
-    // * Virtual =0 compulsory functions
-    // Screen-specific
-    ///
-    /// @brief Send data through SPI
-    /// @param index register
-    /// @param data data
-    /// @param size number of bytes
-    /// @note Valid for all except large screens
-    ///
-    void _sendIndexData(uint8_t index, const uint8_t * data, uint32_t size);
-
-    ///
-    /// @brief Send data through SPI to first half of large screens
-    /// @param index register
-    /// @param data data
-    /// @param size number of bytes
-    /// @note Valid only for 9.7 and 12.20" screens
-    ///
-    void _sendIndexDataMaster(uint8_t index, const uint8_t * data, uint32_t size);
-
-    /// @brief Send data through SPI to second half of large screens
-    /// @param index register
-    /// @param data data
-    /// @param size number of bytes
-    /// @note Valid only for 9.7 and 12.20" screens
-    ///
-    void _sendIndexDataSlave(uint8_t index, const uint8_t * data, uint32_t size);
 
     // Orientation
     ///
@@ -228,8 +155,6 @@ class Screen_EPD_EXT3 final : public hV_Screen_Buffer
     /// @return false = success, true = error
     ///
     bool _orientCoordinates(uint16_t & x, uint16_t & y); // compulsory
-
-    // Position
 
     // Write and Read
     /// @brief Set point
@@ -248,6 +173,7 @@ class Screen_EPD_EXT3 final : public hV_Screen_Buffer
     ///
     uint16_t _getPoint(uint16_t x1, uint16_t y1);
 
+    // Position
     ///
     /// @brief Convert
     /// @param x1 x-axis coordinate
@@ -257,38 +183,35 @@ class Screen_EPD_EXT3 final : public hV_Screen_Buffer
     uint32_t _getZ(uint16_t x1, uint16_t y1);
 
     ///
-    /// @brief Wait for ready
-    /// @details Wait for panelBusy low
+    /// @brief Convert
+    /// @param x1 x-axis coordinate
+    /// @param y1 y-axis coordinate
+    /// @return bit for _newImage[]
     ///
-    void _waitBusy();
-    void _sendCommand8(uint8_t command);
+    uint16_t _getB(uint16_t x1, uint16_t y1);
 
-    // Energy
-    // No energy
+    //
+    // === Energy section
+    //
+
+    //
+    // === End of Energy section
+    //
 
     // * Other functions specific to the screen
     // * Flush
     void _flushGlobal();
 
-    // Screen independent variables
-    uint8_t * _newImage;
-    bool _invert = false;
-    uint16_t _screenSizeV, _screenSizeH;
-    int8_t _temperature = 25;
+    //
+    // === Touch section
+    //
 
-    // Screen dependent variables
-    pins_t _pin;
-    eScreen_EPD_EXT3_t _eScreen_EPD_EXT3;
-    uint8_t _codeExtra;
-    uint8_t _codeSize;
-    uint8_t _codeType;
-    uint16_t _bufferSizeV, _bufferSizeH, _bufferDepth;
-    uint32_t _pageColourSize, _frameSize;
-
-    // === Touch
-    // No touch
+    //
+    // === End of Touch section
+    //
 
     /// @endcond
 };
 
 #endif // SCREEN_EPD_EXT3_RELEASE
+

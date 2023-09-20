@@ -36,11 +36,7 @@
 ///
 
 // SDK
-#if defined(ENERGIA) // LaunchPad specific
-#include "Energia.h"
-#else // Arduino general
-#include "Arduino.h"
-#endif // SDK
+#include "hV_HAL_Peripherals.h"
 
 // Configuration
 #include "hV_Configuration.h"

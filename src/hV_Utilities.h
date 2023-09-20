@@ -6,8 +6,8 @@
 /// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 21 Jun 2023
-/// @version 611
+/// @date 21 Sep 2023
+/// @version 700
 ///
 /// @copyright (c) Rei Vilo, 2010-2023
 /// @copyright Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
@@ -23,17 +23,13 @@
 ///
 
 // SDK
-#if defined(ENERGIA) // LaunchPad specific
-#include "Energia.h"
-#else // Arduino general
-#include "Arduino.h"
-#endif // SDK
+#include "hV_HAL_Peripherals.h"
 
 #ifndef hV_UTILITIES_RELEASE
 ///
 /// @brief Library release number
 ///
-#define hV_UTILITIES_RELEASE 611
+#define hV_UTILITIES_RELEASE 700
 
 #ifndef min
 #define min(a, b) ((a) < (b) ? (a) : (b))

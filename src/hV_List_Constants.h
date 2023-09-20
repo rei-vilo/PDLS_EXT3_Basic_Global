@@ -1,13 +1,13 @@
 ///
-/// @file hV_Constants.h
-/// @brief Constants for Pervasive Displays Library Suite
+/// @file hV_List_Constants.h
+/// @brief List of constants for Pervasive Displays Library Suite
 ///
 /// @details Project Pervasive Displays Library Suite
 /// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 21 Jun 2023
-/// @version 611
+/// @date 21 Sep 2023
+/// @version 700
 ///
 /// @copyright (c) Rei Vilo, 2010-2023
 /// @copyright All rights reserved
@@ -25,17 +25,12 @@
 // SDK
 #include "stdint.h"
 
-#ifndef hV_CONSTANTS_RELEASE
+#ifndef hV_LIST_CONSTANTS_RELEASE
 ///
 /// @brief Release
 ///
-#define hV_CONSTANTS_RELEASE 611
+#define hV_LIST_CONSTANTS_RELEASE 700
 
-///
-/// @name 1- List of supported Pervasive Displays screens
-/// @
-/// @note Legacy screens are listed in the corresponding screen libraries
-/// @{
 ///
 /// * General parameters
 ///
@@ -57,12 +52,21 @@
 ///
 /// @brief Update mode
 /// @note Numbers are sequential and exclusive
-/// @deprecated Partial update is deprecated. Use fast update instead (6.1.0).
+/// @deprecated Partial update is removed. Use fast update instead (7.0.0). 
 /// @{
 #define UPDATE_NONE 0x00 ///< No update
 #define UPDATE_GLOBAL 0x01 ///< Global update, default
 #define UPDATE_FAST 0x02 ///< Fast update
 #define UPDATE_PARTIAL 0x03 ///< Partial update
+/// @}
+
+///
+/// @brief Screens families
+/// @note Numbers are sequential and exclusive
+/// @{
+#define FAMILY_SMALL 0x01 ///< Small screens
+#define FAMILY_MEDIUM 0x02 ///< Medium-sized screens
+#define FAMILY_LARGE 0x03 ///< Large screens with two controllers
 /// @}
 
 ///
@@ -96,6 +100,7 @@
 ///
 /// @brief Continuity mode state
 /// @note Numbers are sequential and exclusive
+///
 /// @{
 #define CONTINUITY_OFF 0x00 ///< Non-activated
 #define CONTINUITY_ON 0x01 ///< Activated but not initialised
@@ -105,6 +110,7 @@
 ///
 /// @brief Touch events
 /// @note Numbers are sequential and exclusive
+///
 /// @{
 #define TOUCH_EVENT_NONE 0 ///< No touch event
 #define TOUCH_EVENT_PRESS 1 ///< Touch press event
@@ -116,6 +122,7 @@
 ///
 /// @brief Results
 /// @note Numbers are sequential and exclusive
+///
 /// @{
 #define RESULT_SUCCESS 0 ///< Success
 #define RESULT_ERROR 1 ///< Error
@@ -131,5 +138,5 @@
 /// @}
 ///
 
-#endif // hV_CONSTANTS_RELEASE
+#endif // hV_LIST_CONSTANTS_RELEASE
 

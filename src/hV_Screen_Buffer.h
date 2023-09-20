@@ -1,13 +1,13 @@
 ///
 /// @file hV_Screen_Buffer.h
-/// @brief Class Generic LCD with buffer class library
+/// @brief Generic buffered screen class library
 ///
 /// @details Project Pervasive Displays Library Suite
 /// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 21 Jul 2023
-/// @version 612
+/// @date 21 Sep 2023
+/// @version 700
 ///
 /// @copyright (c) Rei Vilo, 2010-2023
 /// @copyright Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
@@ -23,11 +23,7 @@
 ///
 
 // SDK
-#if defined(ENERGIA) // LaunchPad specific
-#include "Energia.h"
-#else // Arduino general
-#include "Arduino.h"
-#endif // SDK
+#include "hV_HAL_Peripherals.h"
 
 // Configuration
 #include "hV_Configuration.h"
@@ -36,7 +32,7 @@
 ///
 /// @brief Library release number
 ///
-#define hV_SCREEN_BUFFER_RELEASE 612
+#define hV_SCREEN_BUFFER_RELEASE 700
 
 // Other libraries
 #include "hV_Colours565.h"
@@ -50,7 +46,8 @@
 #endif // FONT_MODE
 
 ///
-/// @brief Generic class for buffered LCD
+/// @brief Generic buffered screen class
+/// @details This class provides the text and graphic primitives for the buffered screen
 ///
 #warning USE_hV_SCREEN == USE_hV_SCREEN_SELF
 #warning FONT_MODE == USE_FONT_TERMINAL
@@ -110,15 +107,15 @@ class hV_Screen_Buffer : protected hV_Font_Terminal
     uint8_t getOrientation();
 
     ///
-    /// @brief Screen size, x-axis
-    /// @return horizontal size of the screen, in pixels
+    /// @brief Screen size, x-axis of logical screen
+    /// @return x-axis size of the screen, in pixels
     /// @note 240 means 240 pixels and thus 0..239 coordinates (decimal)
     ///
     virtual uint16_t screenSizeX();
 
     ///
-    /// @brief Screen size, y-axis
-    /// @return vertical size of the screen, in pixels
+    /// @brief Screen size, y-axis of logical screen
+    /// @return y-axis size of the screen, in pixels
     /// @note 240 means 240 pixels and thus 0..239 coordinates (decimal)
     ///
     virtual uint16_t screenSizeY();
@@ -397,9 +394,9 @@ class hV_Screen_Buffer : protected hV_Font_Terminal
     uint8_t _getCharacter(uint8_t character, uint8_t index);
 
     // Variables provided by hV_Screen_Virtual
-    bool _penSolid;
-    uint16_t _screenWidth, _screenHeigth, _screenDiagonal;
-    uint8_t _orientation;
+    bool _penSolid, _flagRead, _flagStorage, _flagEnergy;
+    uint16_t _screenSizeH, _screenSizeV, _screenDiagonal, _screenMarginH, _screenMarginV;
+    uint8_t _orientation, _intensity;
     uint16_t _screenColourBits;
     /// @endcond
 };

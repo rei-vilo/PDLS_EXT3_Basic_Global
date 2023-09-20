@@ -29,55 +29,55 @@
 // Code
 // Font functions
 //hV_Font_Terminal::hV_Font_Terminal()
-void hV_Font_Terminal::_f_begin()
+void hV_Font_Terminal::f_begin()
 {
-    _f_fontSize       = 0;
-    _f_fontNumber     = MAX_FONT_SIZE;
-    _f_fontSolid      = true;
-    _f_fontSpaceX     = 1;
+    f_fontSize       = 0;
+    f_fontNumber     = MAX_FONT_SIZE;
+    f_fontSolid      = true;
+    f_fontSpaceX     = 1;
 
     // Take first font
-    _f_selectFont(0);
+    f_selectFont(0);
 }
 
-uint8_t hV_Font_Terminal::_f_addFont(font_s fontName)
+uint8_t hV_Font_Terminal::f_addFont(font_s fontName)
 {
-    return _f_fontNumber;
+    return f_fontNumber;
 }
 
-void hV_Font_Terminal::_f_setFontSolid(bool flag)
+void hV_Font_Terminal::f_setFontSolid(bool flag)
 {
-    _f_fontSolid = flag;
+    f_fontSolid = flag;
 }
 
-void hV_Font_Terminal::_f_selectFont(uint8_t size)
+void hV_Font_Terminal::f_selectFont(uint8_t size)
 {
     if (size < MAX_FONT_SIZE)
     {
-        _f_fontSize = size;
+        f_fontSize = size;
     }
     else
     {
-        _f_fontSize = MAX_FONT_SIZE - 1;
+        f_fontSize = MAX_FONT_SIZE - 1;
     }
 
-    switch (_f_fontSize)
+    switch (f_fontSize)
     {
         case 0:
             // kind, height, maxWidth, first, number
-            _f_font = { 0x40, 8, 6, 32, 224 };
+            f_font = { 0x40, 8, 6, 32, 224 };
             break;
 
         case 1:
-            _f_font = { 0x40, 12, 8, 32, 224 };
+            f_font = { 0x40, 12, 8, 32, 224 };
             break;
 
         case 2:
-            _f_font = { 0x40, 16, 12, 32, 224 };
+            f_font = { 0x40, 16, 12, 32, 224 };
             break;
 
         case 3:
-            _f_font = { 0x40, 24, 16, 32, 224 };
+            f_font = { 0x40, 24, 16, 32, 224 };
             break;
 
         default:
@@ -85,40 +85,40 @@ void hV_Font_Terminal::_f_selectFont(uint8_t size)
     }
 }
 
-uint8_t hV_Font_Terminal::_f_fontMax()
+uint8_t hV_Font_Terminal::f_fontMax()
 {
     return MAX_FONT_SIZE;
 }
 
-void hV_Font_Terminal::_f_setFontSpaceX(uint8_t number)
+void hV_Font_Terminal::f_setFontSpaceX(uint8_t number)
 {
-    _f_fontSpaceX = number;
+    f_fontSpaceX = number;
 }
 
-void hV_Font_Terminal::_f_setFontSpaceY(uint8_t number)
+void hV_Font_Terminal::f_setFontSpaceY(uint8_t number)
 {
-    _f_fontSpaceY = number;
+    f_fontSpaceY = number;
 }
 
-uint8_t hV_Font_Terminal::_f_getCharacter(uint8_t character, uint16_t index)
+uint8_t hV_Font_Terminal::f_getCharacter(uint8_t character, uint16_t index)
 {
 #if (MAX_FONT_SIZE > 0)
-    if (_f_fontSize == 0)
+    if (f_fontSize == 0)
     {
         return Terminal6x8e[character][index];
     }
 #if (MAX_FONT_SIZE > 1)
-    else if (_f_fontSize == 1)
+    else if (f_fontSize == 1)
     {
         return Terminal8x12e[character][index];
     }
 #if (MAX_FONT_SIZE > 2)
-    else if (_f_fontSize == 2)
+    else if (f_fontSize == 2)
     {
         return Terminal12x16e[character][index];
     }
 #if (MAX_FONT_SIZE > 3)
-    else if (_f_fontSize == 3)
+    else if (f_fontSize == 3)
     {
         return Terminal16x24e[character][index];
     }
@@ -132,27 +132,27 @@ uint8_t hV_Font_Terminal::_f_getCharacter(uint8_t character, uint16_t index)
 #endif // end MAX_FONT_SIZE > 0
 }
 
-uint16_t hV_Font_Terminal::_f_characterSizeX(uint8_t character)
+uint16_t hV_Font_Terminal::f_characterSizeX(uint8_t character)
 {
-    return _f_font.maxWidth;
+    return f_font.maxWidth;
 }
 
-uint16_t hV_Font_Terminal::_f_characterSizeY()
+uint16_t hV_Font_Terminal::f_characterSizeY()
 {
-    return _f_font.height;
+    return f_font.height;
 }
 
-uint16_t hV_Font_Terminal::_f_stringSizeX(String text)
+uint16_t hV_Font_Terminal::f_stringSizeX(String text)
 {
-    return (uint16_t) text.length() * _f_font.maxWidth;
+    return (uint16_t) text.length() * f_font.maxWidth;
 }
 
-uint8_t hV_Font_Terminal::_f_stringLengthToFitX(String text, uint16_t pixels)
+uint8_t hV_Font_Terminal::f_stringLengthToFitX(String text, uint16_t pixels)
 {
     uint8_t index = 0;
 
     // Monospaced font
-    index = pixels / _f_font.maxWidth - 1;
+    index = pixels / f_font.maxWidth - 1;
     if (index > text.length())
     {
         index = text.length();
@@ -160,13 +160,13 @@ uint8_t hV_Font_Terminal::_f_stringLengthToFitX(String text, uint16_t pixels)
     return index;
 }
 
-uint8_t hV_Font_Terminal::_f_getFontKind()
+uint8_t hV_Font_Terminal::f_getFontKind()
 {
-    return _f_font.kind; // monospaced
+    return f_font.kind; // monospaced
 }
-uint8_t hV_Font_Terminal::_f_getFontMaxWidth()
+uint8_t hV_Font_Terminal::f_getFontMaxWidth()
 {
-    return _f_font.maxWidth;
+    return f_font.maxWidth;
 }
 
 #endif // USE_FONT_TERMINAL

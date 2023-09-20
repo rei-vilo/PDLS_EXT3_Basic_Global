@@ -12,6 +12,8 @@
 //
 // See hV_Utilities.h for references
 //
+// Release 700: Refactored screen and board functions
+//
 
 // Library header
 #include "hV_Utilities.h"

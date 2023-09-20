@@ -25,16 +25,16 @@
 // Code
 hV_Screen_Buffer::hV_Screen_Buffer()
 {
-    _f_fontSize = 0;
-    _f_fontNumber = 0;
-    _f_fontSolid = true;
+    f_fontSize = 0;
+    f_fontNumber = 0;
+    f_fontSolid = true;
+    f_fontSpaceX = 1;
     _penSolid = false;
-    _f_fontSpaceX = 1;
 }
 
 void hV_Screen_Buffer::begin()
 {
-    _f_begin(); // hV_font_...
+    f_begin(); // hV_font_...
 }
 
 void hV_Screen_Buffer::clear(uint16_t colour)
@@ -99,14 +99,14 @@ uint16_t hV_Screen_Buffer::screenSizeX()
         case 1:
         case 3:
 
-            return _screenHeigth; // _maxX
+            return _screenSizeV; // _maxX
             break;
 
         // case 0:
         // case 2:
         default:
 
-            return _screenWidth; // _maxX
+            return _screenSizeH; // _maxX
             break;
     }
     return 0;
@@ -119,14 +119,14 @@ uint16_t hV_Screen_Buffer::screenSizeY()
         case 1:
         case 3:
 
-            return _screenWidth; // _maxY
+            return _screenSizeH; // _maxY
             break;
 
         // case 0:
         // case 2:
         default:
 
-            return _screenHeigth; // _maxY
+            return _screenSizeV; // _maxY
             break;
     }
     return 0;
@@ -514,39 +514,39 @@ void hV_Screen_Buffer::triangle(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t 
 // Font functions
 void hV_Screen_Buffer::setFontSolid(bool flag)
 {
-    _f_setFontSolid(flag);
+    f_setFontSolid(flag);
 }
 
 uint8_t hV_Screen_Buffer::addFont(font_s fontName)
 {
-    return _f_addFont(fontName);
+    return f_addFont(fontName);
 }
 
 void hV_Screen_Buffer::selectFont(uint8_t font)
 {
-    _f_selectFont(font);
+    f_selectFont(font);
 }
 
 uint8_t hV_Screen_Buffer::getFont()
 {
-    return _f_fontSize;
+    return f_fontSize;
 }
 
 uint8_t hV_Screen_Buffer::fontMax()
 {
-    return _f_fontMax();
+    return f_fontMax();
 }
 
 uint16_t hV_Screen_Buffer::characterSizeX(uint8_t character)
 {
     uint16_t result = 0;
-    if ((_f_font.kind & 0x40) == 0x40) // Monospaced font
+    if ((f_font.kind & 0x40) == 0x40) // Monospaced font
     {
-        result = _f_font.maxWidth + _f_fontSpaceX;
+        result = f_font.maxWidth + f_fontSpaceX;
     }
     else
     {
-        result = _f_characterSizeX(character);
+        result = f_characterSizeX(character);
     }
 
     return result;
@@ -554,32 +554,32 @@ uint16_t hV_Screen_Buffer::characterSizeX(uint8_t character)
 
 uint16_t hV_Screen_Buffer::characterSizeY()
 {
-    return _f_characterSizeY();
+    return f_characterSizeY();
 }
 
 uint16_t hV_Screen_Buffer::stringSizeX(String text)
 {
-    return _f_stringSizeX(text);
+    return f_stringSizeX(text);
 }
 
 uint8_t hV_Screen_Buffer::stringLengthToFitX(String text, uint16_t pixels)
 {
-    return _f_stringLengthToFitX(text, pixels);
+    return f_stringLengthToFitX(text, pixels);
 }
 
 void hV_Screen_Buffer::setFontSpaceX(uint8_t number)
 {
-    _f_setFontSpaceX(number);
+    f_setFontSpaceX(number);
 }
 
 void hV_Screen_Buffer::setFontSpaceY(uint8_t number)
 {
-    _f_setFontSpaceY(number);
+    f_setFontSpaceY(number);
 }
 
 uint8_t hV_Screen_Buffer::_getCharacter(uint8_t character, uint8_t index)
 {
-    return _f_getCharacter(character, index);
+    return f_getCharacter(character, index);
 }
 
 void hV_Screen_Buffer::gText(uint16_t x0, uint16_t y0,
@@ -593,7 +593,7 @@ void hV_Screen_Buffer::gText(uint16_t x0, uint16_t y0,
     uint16_t x, y;
     uint8_t i, j, k;
 #if (MAX_FONT_SIZE > 0)
-    if (_f_fontSize == 0)
+    if (f_fontSize == 0)
     {
         for (k = 0; k < text.length(); k++)
         {
@@ -601,14 +601,14 @@ void hV_Screen_Buffer::gText(uint16_t x0, uint16_t y0,
 
             for (i = 0; i < 6; i++)
             {
-                line = _f_getCharacter(c, i);
+                line = f_getCharacter(c, i);
 
                 for (j = 0; j < 8; j++)
                     if (bitRead(line, j))
                     {
                         point(x0 + 6 * k + i, y0 + j, textColour);
                     }
-                    else if (_f_fontSolid)
+                    else if (f_fontSolid)
                     {
                         point(x0 + 6 * k + i, y0 + j, backColour);
                     }
@@ -616,7 +616,7 @@ void hV_Screen_Buffer::gText(uint16_t x0, uint16_t y0,
         }
     }
 #if (MAX_FONT_SIZE > 1)
-    else if (_f_fontSize == 1)
+    else if (f_fontSize == 1)
     {
         for (k = 0; k < text.length(); k++)
         {
@@ -624,8 +624,8 @@ void hV_Screen_Buffer::gText(uint16_t x0, uint16_t y0,
 
             for (i = 0; i < 8; i++)
             {
-                line = _f_getCharacter(c, 2 * i);
-                line1 = _f_getCharacter(c, 2 * i + 1);
+                line = f_getCharacter(c, 2 * i);
+                line1 = f_getCharacter(c, 2 * i + 1);
 
                 for (j = 0; j < 8; j++)
                 {
@@ -633,7 +633,7 @@ void hV_Screen_Buffer::gText(uint16_t x0, uint16_t y0,
                     {
                         point(x0 + 8 * k + i, y0 + j, textColour);
                     }
-                    else if (_f_fontSolid)
+                    else if (f_fontSolid)
                     {
                         point(x0 + 8 * k + i, y0 + j, backColour);
                     }
@@ -641,7 +641,7 @@ void hV_Screen_Buffer::gText(uint16_t x0, uint16_t y0,
                     {
                         point(x0 + 8 * k + i, y0 + 8 + j, textColour);
                     }
-                    else if ((_f_fontSolid) and (j < 4))
+                    else if ((f_fontSolid) and (j < 4))
                     {
                         point(x0 + 8 * k + i, y0 + 8 + j, backColour);
                     }
@@ -650,7 +650,7 @@ void hV_Screen_Buffer::gText(uint16_t x0, uint16_t y0,
         }
     }
 #if (MAX_FONT_SIZE > 2)
-    else if (_f_fontSize == 2)
+    else if (f_fontSize == 2)
     {
 
         for (k = 0; k < text.length(); k++)
@@ -659,8 +659,8 @@ void hV_Screen_Buffer::gText(uint16_t x0, uint16_t y0,
 
             for (i = 0; i < 12; i++)
             {
-                line = _f_getCharacter(c, 2 * i);
-                line1 = _f_getCharacter(c, 2 * i + 1);
+                line = f_getCharacter(c, 2 * i);
+                line1 = f_getCharacter(c, 2 * i + 1);
 
                 for (j = 0; j < 8; j++)
                 {
@@ -668,7 +668,7 @@ void hV_Screen_Buffer::gText(uint16_t x0, uint16_t y0,
                     {
                         point(x0 + 12 * k + i, y0 + j,    textColour);
                     }
-                    else if (_f_fontSolid)
+                    else if (f_fontSolid)
                     {
                         point(x0 + 12 * k + i, y0 + j,    backColour);
                     }
@@ -676,7 +676,7 @@ void hV_Screen_Buffer::gText(uint16_t x0, uint16_t y0,
                     {
                         point(x0 + 12 * k + i, y0 + 8 + j, textColour);
                     }
-                    else if (_f_fontSolid)
+                    else if (f_fontSolid)
                     {
                         point(x0 + 12 * k + i, y0 + 8 + j, backColour);
                     }
@@ -685,23 +685,23 @@ void hV_Screen_Buffer::gText(uint16_t x0, uint16_t y0,
         }
     }
 #if (MAX_FONT_SIZE > 3)
-    else if (_f_fontSize == 3)
+    else if (f_fontSize == 3)
     {
         for (k = 0; k < text.length(); k++)
         {
             c = text.charAt(k) - ' ';
             for (i = 0; i < 16; i++)
             {
-                line  = _f_getCharacter(c, 3 * i);
-                line1 = _f_getCharacter(c, 3 * i + 1);
-                line2 = _f_getCharacter(c, 3 * i + 2);
+                line  = f_getCharacter(c, 3 * i);
+                line1 = f_getCharacter(c, 3 * i + 1);
+                line2 = f_getCharacter(c, 3 * i + 2);
                 for (j = 0; j < 8; j++)
                 {
                     if (bitRead(line, j))
                     {
                         point(x0 + 16 * k + i, y0 + j,     textColour);
                     }
-                    else if (_f_fontSolid)
+                    else if (f_fontSolid)
                     {
                         point(x0 + 16 * k + i, y0 + j,     backColour);
                     }
@@ -709,7 +709,7 @@ void hV_Screen_Buffer::gText(uint16_t x0, uint16_t y0,
                     {
                         point(x0 + 16 * k + i, y0 + 8 + j,  textColour);
                     }
-                    else if (_f_fontSolid)
+                    else if (f_fontSolid)
                     {
                         point(x0 + 16 * k + i, y0 + 8 + j,  backColour);
                     }
@@ -717,7 +717,7 @@ void hV_Screen_Buffer::gText(uint16_t x0, uint16_t y0,
                     {
                         point(x0 + 16 * k + i, y0 + 16 + j, textColour);
                     }
-                    else if (_f_fontSolid)
+                    else if (f_fontSolid)
                     {
                         point(x0 + 16 * k + i, y0 + 16 + j, backColour);
                     }
@@ -731,3 +731,4 @@ void hV_Screen_Buffer::gText(uint16_t x0, uint16_t y0,
 #endif // end MAX_FONT_SIZE > 0
 }
 #endif // FONT_MODE
+
