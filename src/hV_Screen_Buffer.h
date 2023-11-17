@@ -36,7 +36,9 @@
 
 // Other libraries
 #include "hV_Colours565.h"
-#include "hV_Utilities.h"
+
+// Common utilities
+#include "hV_Utilities_Common.h"
 
 #if (FONT_MODE == USE_FONT_TERMINAL)
 #include "hV_Font_Terminal.h"
@@ -93,6 +95,7 @@ class hV_Screen_Buffer : protected hV_Font_Terminal
     /// * 3 = left rotated
     /// * ORIENTATION_PORTRAIT = 6 = check portrait
     /// * ORIENTATION_LANDSCAPE = 7 = check landscape
+    /// @note Run the Common_Orientation.ino example to identify the options
     ///
     virtual void setOrientation(uint8_t orientation);
 

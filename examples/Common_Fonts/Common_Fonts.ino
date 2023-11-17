@@ -16,18 +16,20 @@
 /// @n
 ///
 
-// SDK
-#if defined(ENERGIA) // LaunchPad specific
-#include "Energia.h"
-#else // Arduino general
-#include "Arduino.h"
-#endif // SDK
+// Screen
+#include "PDLS_EXT3_Basic.h"
 
-// Set parameters
+// SDK
+// #include <Arduino.h>
+#include "hV_HAL_Peripherals.h"
 
 // Include application, user and local libraries
-#include "SPI.h"
-#include "PDLS_EXT3_Basic.h"
+// #include <SPI.h>
+
+// Configuration
+#include "hV_Configuration.h"
+
+// Set parameters
 
 // Define structures and classes
 
@@ -140,10 +142,6 @@ void setup()
 
     Serial.println("=== ");
     Serial.println();
-
-#if defined(ARDUINO_ARCH_PIDUINO)
-    exit(0);
-#endif
 }
 
 // Add loop code

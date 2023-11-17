@@ -40,7 +40,7 @@
 ///
 #define hV_FONT_TERMINAL_RELEASE 507
 
-#include "hV_Utilities.h"
+#include "hV_Utilities_Common.h"
 #include "hV_Font.h"
 
 ///

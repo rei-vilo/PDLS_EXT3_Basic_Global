@@ -23,11 +23,7 @@
 ///
 
 // SDK
-#if defined(ENERGIA) // LaunchPad specific
-#include "Energia.h"
-#else // Arduino general
-#include "Arduino.h"
-#endif // end SDK
+#include <Arduino.h>
 
 #ifndef PDLS_EXT3_BASIC_RELEASE
 ///

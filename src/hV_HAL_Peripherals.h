@@ -34,11 +34,13 @@
 /// * Arduino SDK https://www.arduino.cc/reference/en/
 /// * Energia SDK https://energia.nu/reference/
 ///
-#if defined(ENERGIA) // LaunchPad specific
-#include "Energia.h"
-#else // Arduino general
-#include "Arduino.h"
-#endif // SDK
+#include <Arduino.h>
+
+///
+/// @brief SDK other libraries
+///
+#include <SPI.h>
+#include <Wire.h>
 
 ///
 /// @brief Other libraries
@@ -46,8 +48,5 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <stdarg.h>
-
-#include "SPI.h"
-#include "Wire.h"
 
 #endif // hV_HAL_PERIPHERALS_RELEASE

@@ -16,6 +16,7 @@
 // Release 520: Added use of hV_HAL_Peripherals
 // Release 523: Fixed rounded rectangles
 // Release 526: Improved touch management
+// Release 700: Refactored screen and board functions
 //
 
 // Library header

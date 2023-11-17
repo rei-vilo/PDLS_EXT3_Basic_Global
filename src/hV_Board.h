@@ -34,7 +34,7 @@
 //
 ///
 /// @brief Class for Pervasive Displays EXT3, EXT3-1 and EXT3-Touch boards
-/// @details Functions for EXT3 board
+/// @details Functions for EXT3-1 board
 /// * GPIO
 /// * SPI for LCD and external Flash and SRAM memory
 /// * I2C for touch and haptic feedback
@@ -97,6 +97,15 @@ class hV_Board
     void b_sendIndexData(uint8_t index, const uint8_t * data, uint32_t size);
 
     ///
+    /// @brief Send data through SPI to the two halves of large screens
+    /// @param index register
+    /// @param data data
+    /// @param size number of bytes
+    /// @note Valid only for 9.7 and 12.20" screens
+    ///
+    void b_sendIndexDataBoth(uint8_t index, const uint8_t * data, uint32_t size);
+
+    ///
     /// @brief Send data through SPI to first half of large screens
     /// @param index register
     /// @param data data
@@ -115,9 +124,11 @@ class hV_Board
 
     ///
     /// @brief Wait for ready
-    /// @details Wait for panelBusy low
+    /// @details Wait for panelBusy to reach state
+    /// @note Signal is busy until reaching state
+    /// @param state to reach HIGH = default, LOW
     ///
-    void b_waitBusy();
+    void b_waitBusy(bool state = HIGH);
 
     ///
     /// @brief Send a command
@@ -144,9 +155,9 @@ class hV_Board
     ///
     void b_resume();
 
-    pins_t _pin;
-    uint16_t _delayCS = 50; // ms
-    uint8_t _family;
+    pins_t b_pin;
+    uint16_t b_delayCS = 50; // ms
+    uint8_t b_family;
 
     /// @endcond
 };

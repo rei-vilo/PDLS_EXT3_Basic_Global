@@ -6,8 +6,8 @@
 /// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 21 Jun 2023
-/// @version 611
+/// @date 21 Sep 2023
+/// @version 700
 ///
 /// @copyright (c) Rei Vilo, 2010-2023
 /// @copyright Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
@@ -16,11 +16,14 @@
 // SDK
 #include "hV_HAL_Peripherals.h"
 
+// Configuration
+#include "hV_Configuration.h"
+
 #ifndef hV_COLOURS_RELEASE
 ///
 /// @brief Library release number
 ///
-#define hV_COLOURS_RELEASE 611
+#define hV_COLOURS_RELEASE 700
 
 ///
 /// @class hV_Colours565

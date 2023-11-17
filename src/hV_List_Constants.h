@@ -52,12 +52,12 @@
 ///
 /// @brief Update mode
 /// @note Numbers are sequential and exclusive
-/// @deprecated Partial update is removed. Use fast update instead (7.0.0). 
+/// @deprecated Partial update is removed. Use fast update instead (7.0.0).
 /// @{
 #define UPDATE_NONE 0x00 ///< No update
 #define UPDATE_GLOBAL 0x01 ///< Global update, default
 #define UPDATE_FAST 0x02 ///< Fast update
-#define UPDATE_PARTIAL 0x03 ///< Partial update
+#define UPDATE_PARTIAL 0x03 ///< Partial update, deprecated
 /// @}
 
 ///
@@ -131,6 +131,7 @@
 
 ///
 /// @brief Orientation constants
+/// @note Numbers are sequential and exclusive
 /// @{
 ///
 #define ORIENTATION_PORTRAIT 6 ///< Portrait or vertical, higher than large

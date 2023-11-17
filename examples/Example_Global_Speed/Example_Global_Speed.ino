@@ -19,24 +19,26 @@
 /// Release 604: Global and fast variants
 ///
 
-// SDK
-#if defined(ENERGIA)  // LaunchPad specific
-#include "Energia.h"
-#else  // Arduino general
-#include "Arduino.h"
-#endif  // SDK
+// Screen
+#include "PDLS_EXT3_Basic.h"
+// #include "PDLS_EXT3_Basic_Fast.h"
 
-// Set parameters
+// SDK
+// #include <Arduino.h>
+#include "hV_HAL_Peripherals.h"
 
 // Include application, user and local libraries
-#include "SPI.h"
+// #include <SPI.h>
+
+// Configuration
+#include "hV_Configuration.h"
 
 // Define structures and classes
-#include "PDLS_EXT3_Basic.h"
+
+// Define constants and variables
 // Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_271, boardRaspberryPiPico_RP2040);
 Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_370, boardRaspberryPiPico_RP2040);
 
-// #include "PDLS_EXT3_Basic_Fast.h"
 // Screen_EPD_EXT3_Fast myScreen(eScreen_EPD_EXT3_271_09_Fast, boardRaspberryPiPico_RP2040);
 // Screen_EPD_EXT3_Fast myScreen(eScreen_EPD_EXT3_370_0C_Fast, boardRaspberryPiPico_RP2040);
 
@@ -93,6 +95,7 @@ void performTest()
     // 1
     dy += dz;
     text = formatString("Global update= %i ms", chrono);
+    // text = formatString("Fast update= %i ms", chrono);
     Serial.println(text);
     dx = (x - myScreen.stringSizeX(text)) / 2;
     myScreen.gText(dx, dy, text);
@@ -131,10 +134,6 @@ void setup()
 
     Serial.println("=== ");
     Serial.println();
-
-#if defined(ARDUINO_ARCH_PIDUINO)
-    exit(0);
-#endif
 }
 
 // Add loop code

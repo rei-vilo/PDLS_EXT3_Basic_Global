@@ -1,5 +1,5 @@
 ///
-/// @file hV_Utilities.h
+/// @file hV_Utilities_Common.h
 /// @brief Utilities for highView Library Suite
 ///
 /// @details Project Pervasive Displays Library Suite

@@ -6,6 +6,9 @@
 /// @details Project Pervasive Displays Library Suite
 /// @n Based on highView technology
 ///
+/// @n Content
+/// * 1- List of supported Pervasive Displays screens
+///
 /// @author Rei Vilo
 /// @date 21 Sep 2023
 /// @version 700
@@ -60,7 +63,7 @@
 /// @}
 
 ///
-/// @name Colour black-white-red screens
+/// @name Colour black-white-red Spectra screens
 /// @note Global update mode
 /// @see https://www.pervasivedisplays.com/products/?_sft_etc_itc=itc&_sft_product_colour=black-white-red
 /// @{
@@ -82,7 +85,7 @@
 /// @}
 
 ///
-/// @name Colour black-white-red-yellow screens
+/// @name Colour black-white-red-yellow Spectra 4 screens
 /// @note Global update mode
 /// @see https://www.pervasivedisplays.com/products/?_sft_etc_itc=itc&_sft_product_colour=black-white-red-yellow
 /// @{
@@ -95,7 +98,7 @@
 ///
 /// @name Monochrome touch screens with embedded fast update
 /// @note Global and fast update modes
-/// @deprecated Partial update is removed. Use fast update instead (7.0.0). 
+/// @deprecated Partial update is removed. Use fast update instead (7.0.0).
 /// @see https://www.pervasivedisplays.com/products
 /// @{
 ///
@@ -142,6 +145,7 @@
 #define eScreen_EPD_EXT3_271_09_Wide (uint32_t)0x092709 ///< reference xE2271KS09x
 /// @todo eScreen_EPD_EXT3_287_09_Wide not tested
 #define eScreen_EPD_EXT3_287_09_Wide (uint32_t)0x092809 ///< reference xE2287PS09x, not tested
+#define eScreen_EPD_EXT3_290_0F_Wide (uint32_t)0x09290F ///< reference xE2290KS0Fx
 #define eScreen_EPD_EXT3_370_0C_Wide (uint32_t)0x09370C ///< reference xE2370KS0Cx
 #define eScreen_EPD_EXT3_417_0D_Wide (uint32_t)0x09410D ///< reference xE2417KS0Dx
 /// @todo eScreen_EPD_EXT3_437_0C_Wide not tested
@@ -157,10 +161,10 @@
 
 ///
 /// @name Frame-buffer sizes
-/// @details 
+/// @details
 /// * Black-white-red screens and monochrome screens
 /// @n Frame-buffer size = width * height / 8 * depth, uint32_t
-/// @n Depth = 2 
+/// @n Depth = 2
 /// * Black-white-red_yellow screens
 /// @n Frame-buffer size = width * height / 4 * depth, uint32_t
 /// @n Depth = 1

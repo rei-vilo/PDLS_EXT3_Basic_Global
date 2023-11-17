@@ -5,6 +5,9 @@
 /// @details Project Pervasive Displays Library Suite
 /// @n Based on highView technology
 ///
+/// @n Content
+/// * 2- List of pre-configured boards
+///
 /// @author Rei Vilo
 /// @date 21 Sep 2023
 /// @version 700
@@ -149,7 +152,7 @@ const pins_t boardESP32DevKitC =
 ///
 /// @name Other boards
 /// @{
-    
+
 ///
 /// @brief Texas Instruments LaunchPad MSP430 and MSP432 LaunchPad configuration, tested
 ///
@@ -210,6 +213,7 @@ const pins_t boardCC1352 =
 ///
 /// @brief Raspberry Pi Zero, 2B, 3B, 4B configuration with RasPiArduino, tested
 /// @warning Not recommended
+/// @deprecated Use boardRaspberryPiZeroB_MRAA instead (7.0.0)
 /// @see https://github.com/me-no-dev/RasPiArduino
 ///
 const pins_t boardRaspberryPiZeroB_RasPiArduino =
@@ -231,6 +235,7 @@ const pins_t boardRaspberryPiZeroB_RasPiArduino =
 ///
 /// @brief Raspberry Pi Pico Arduino mbed configuration, tested
 /// @warning Not recommended
+/// @deprecated Use boardRaspberryPiPico_RP2040 instead (7.0.0)
 /// @see https://github.com/arduino/ArduinoCore-mbed
 ///
 const pins_t boardRaspberryPiPico_Arduino =

@@ -1,5 +1,5 @@
 //
-// hV_Utilities.cpp
+// hV_Utilities_Common.cpp
 // Library C++ code
 // ----------------------------------
 //
@@ -10,13 +10,13 @@
 // Copyright (c) Rei Vilo, 2010-2023
 // Licence Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
 //
-// See hV_Utilities.h for references
+// See hV_Utilities_Common.h for references
 //
 // Release 700: Refactored screen and board functions
 //
 
 // Library header
-#include "hV_Utilities.h"
+#include "hV_Utilities_Common.h"
 #include "stdarg.h"
 #include "stdio.h"
 

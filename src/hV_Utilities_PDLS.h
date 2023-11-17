@@ -1,5 +1,5 @@
 ///
-/// @file hV_Utilities_EPD.h
+/// @file hV_Utilities_PDLS.h
 /// @brief Driver for Pervasive Displays EXT3, EXT3-1 and EXT3-Touch boards
 ///
 /// @details Project Pervasive Displays Library Suite
@@ -28,9 +28,13 @@
 #include "hV_Board.h"
 
 // Utilities
-#include "hV_Utilities.h"
+#include "hV_Utilities_Common.h"
 
 // Checks
+#if (hV_HAL_PERIPHERALS_RELEASE < 700)
+#error Required hV_HAL_PERIPHERALS_RELEASE 700
+#endif // hV_HAL_PERIPHERALS_RELEASE
+
 #if (hV_CONFIGURATION_RELEASE < 700)
 #error Required hV_CONFIGURATION_RELEASE 700
 #endif // hV_CONFIGURATION_RELEASE
@@ -39,11 +43,11 @@
 #error Required hV_BOARD_RELEASE 700
 #endif // hV_BOARD_RELEASE
 
-#ifndef hV_UTILITIES_EPD_RELEASE
+#ifndef hV_UTILITIES_PDLS_RELEASE
 ///
 /// @brief Library release number
 ///
-#define hV_UTILITIES_EPD_RELEASE 700
+#define hV_UTILITIES_PDLS_RELEASE 700
 
 // Objects
 //
@@ -51,10 +55,10 @@
 /// @brief Class for Pervasive Displays e-paper displays
 /// @details Shared common functions and variables
 ///
-class hV_Utilities_EPD : public hV_Board
+class hV_Utilities_PDLS : public hV_Board
 {
   public:
-    hV_Utilities_EPD();
+    hV_Utilities_PDLS();
 
     ///
     /// @brief Set temperature in Celsius
@@ -106,24 +110,24 @@ class hV_Utilities_EPD : public hV_Board
     // Screen dependent variables
 #if (SRAM_MODE == USE_INTERNAL_MCU)
 
-    uint8_t * _newImage;
+    uint8_t * u_newImage;
 
 #elif (SRAM_MODE == USE_EXTERNAL_SPI)
 
-    uint32_t _newImage;
+    uint32_t u_newImage;
 
 #endif // SRAM_MODE
 
-    eScreen_EPD_EXT3_t _eScreen_EPD_EXT3;
-    int8_t _temperature = 25;
-    uint8_t _codeExtra;
-    uint8_t _codeSize;
-    uint8_t _codeType;
-    uint16_t _bufferSizeV, _bufferSizeH, _bufferDepth;
-    uint32_t _pageColourSize, _frameSize;
-    bool _invert = false;
+    eScreen_EPD_EXT3_t u_eScreen_EPD_EXT3;
+    int8_t u_temperature = 25;
+    uint8_t u_codeExtra;
+    uint8_t u_codeSize;
+    uint8_t u_codeType;
+    uint16_t u_bufferSizeV, u_bufferSizeH, u_bufferDepth;
+    uint32_t u_pageColourSize, u_frameSize;
+    bool u_invert = false;
 
     /// @endcond
 };
 
-#endif // hV_UTILITIES_EPD_RELEASE
+#endif // hV_UTILITIES_PDLS_RELEASE

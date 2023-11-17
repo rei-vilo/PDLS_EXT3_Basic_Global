@@ -13,6 +13,9 @@
 //
 // See hV_Colours565.h for references
 //
+// Release 611: Added support for red and yellow colour screens
+// Release 700: Refactored screen and board functions
+//
 
 // Library header
 #include "hV_Colours565.h"
