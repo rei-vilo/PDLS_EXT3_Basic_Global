@@ -10,8 +10,8 @@
 /// * 1- List of supported Pervasive Displays screens
 ///
 /// @author Rei Vilo
-/// @date 21 Sep 2023
-/// @version 700
+/// @date 21 Nov 2023
+/// @version 702
 ///
 /// @copyright (c) Rei Vilo, 2010-2023
 /// @copyright All rights reserved
@@ -33,7 +33,7 @@
 ///
 /// @brief Release
 ///
-#define hV_LIST_SCREENS_RELEASE 700
+#define hV_LIST_SCREENS_RELEASE 702
 
 ///
 /// @brief Screen type
@@ -63,7 +63,7 @@
 /// @}
 
 ///
-/// @name Colour black-white-red Spectra screens
+/// @name Colour black-white-red "Spectra" screens
 /// @note Global update mode
 /// @see https://www.pervasivedisplays.com/products/?_sft_etc_itc=itc&_sft_product_colour=black-white-red
 /// @{
@@ -85,7 +85,7 @@
 /// @}
 
 ///
-/// @name Colour black-white-red-yellow Spectra 4 screens
+/// @name Colour black-white-red-yellow "Spectra 4" screens
 /// @note Global update mode
 /// @see https://www.pervasivedisplays.com/products/?_sft_etc_itc=itc&_sft_product_colour=black-white-red-yellow
 /// @{
@@ -93,6 +93,7 @@
 #define eScreen_EPD_EXT3_154_BWRY (uint32_t)0x20150F ///< reference xE2154QS0Fx
 #define eScreen_EPD_EXT3_213_BWRY (uint32_t)0x20210F ///< reference xE2213QS0Fx
 #define eScreen_EPD_EXT3_266_BWRY (uint32_t)0x20260F ///< reference xE2266QS0Fx
+#define eScreen_EPD_EXT3_417_BWRY (uint32_t)0x20410A ///< reference xE2417QS0Ax
 /// @}
 
 ///
@@ -139,7 +140,10 @@
 /// @see https://www.pervasivedisplays.com/products/?_sft_etc_itc=pu+itc&_sft_temperature_range=m15c-to-p60c
 /// @{
 ///
+#define eScreen_EPD_EXT3_150_0J_Wide (uint32_t)0x49154A ///< reference xE2150KS0Jx
+#define eScreen_EPD_EXT3_152_0J_Wide (uint32_t)0x49154A ///< reference xE2152KS0Jx
 #define eScreen_EPD_EXT3_154_0C_Wide (uint32_t)0x09150C ///< reference xE2154KS0Cx
+#define eScreen_EPD_EXT3_206_0E_Wide (uint32_t)0x09200E ///< reference xE2206KS0Ex
 #define eScreen_EPD_EXT3_213_0E_Wide (uint32_t)0x09210E ///< reference xE2213KS0Ex
 #define eScreen_EPD_EXT3_266_0C_Wide (uint32_t)0x09260C ///< reference xE2266KS0Cx
 #define eScreen_EPD_EXT3_271_09_Wide (uint32_t)0x092709 ///< reference xE2271KS09x
@@ -171,13 +175,16 @@
 /// @{
 ///
 #define frameSize_EPD_EXT3_150 (uint32_t)(10000) ///< reference xE2150xS0xx
+#define frameSize_EPD_EXT3_152 (uint32_t)(10000) ///< reference xE2152xS0xx
 #define frameSize_EPD_EXT3_154 (uint32_t)(5776) ///< reference xE2154xS0xx
+#define frameSize_EPD_EXT3_206 (uint32_t)(7936) ///< reference xE2206xS0xx
 #define frameSize_EPD_EXT3_213 (uint32_t)(5512) ///< reference xE2213xS0xx
 #define frameSize_EPD_EXT3_266 (uint32_t)(11248) ///< reference xE2266xS0xx
 #define frameSize_EPD_EXT3_270 (uint32_t)(11616) ///< reference xE2271xS0xx, legacy name
 #define frameSize_EPD_EXT3_271 (uint32_t)(11616) ///< reference xE2271xS0xx
 #define frameSize_EPD_EXT3_287 (uint32_t)(9472) ///< reference xE2287xS0xx
 #define frameSize_EPD_EXT3_290 (uint32_t)(16128) ///< reference xE2290xS0xx
+#define frameSize_EPD_EXT3_350 (uint32_t)(24960) ///< reference xE2350xS0xx
 #define frameSize_EPD_EXT3_370 (uint32_t)(24960) ///< reference xE2370xS0xx
 #define frameSize_EPD_EXT3_417 (uint32_t)(30000) ///< reference xE2417xS0xx
 #define frameSize_EPD_EXT3_437 (uint32_t)(21120) ///< reference xE2437xS0xx

@@ -357,7 +357,7 @@ class hV_Screen_Buffer : protected hV_Font_Terminal
     /// @brief Orient coordinates and check within screen
     /// @param[out] x1 x coordinate
     /// @param[out] y1 y coordinate
-    /// @return false = success, true = error
+    /// @return RESULT_SUCCESS = false = success, RESULT_ERROR = true = error
     ///
     virtual bool _orientCoordinates(uint16_t & x1, uint16_t & y1) = 0; // compulsory
 

@@ -947,7 +947,7 @@ void Screen_EPD_EXT3::_setPoint(uint16_t x1, uint16_t y1, uint16_t colour)
 {
     // Orient and check coordinates are within screen
     // _orientCoordinates() returns false = success, true = error
-    if (_orientCoordinates(x1, y1))
+    if (_orientCoordinates(x1, y1) == RESULT_ERROR)
     {
         return;
     }
@@ -1021,7 +1021,7 @@ void Screen_EPD_EXT3::_setOrientation(uint8_t orientation)
 
 bool Screen_EPD_EXT3::_orientCoordinates(uint16_t & x, uint16_t & y)
 {
-    bool _flagError = true; // false = success, true = error
+    bool _flagResult = RESULT_ERROR; // false = success, true = error
     switch (_orientation)
     {
         case 3: // checked, previously 1
@@ -1029,7 +1029,7 @@ bool Screen_EPD_EXT3::_orientCoordinates(uint16_t & x, uint16_t & y)
             if ((x < _screenSizeV) and (y < _screenSizeH))
             {
                 x = _screenSizeV - 1 - x;
-                _flagError = false;
+                _flagResult = RESULT_SUCCESS;
             }
             break;
 
@@ -1040,7 +1040,7 @@ bool Screen_EPD_EXT3::_orientCoordinates(uint16_t & x, uint16_t & y)
                 x = _screenSizeH - 1 - x;
                 y = _screenSizeV - 1 - y;
                 swap(x, y);
-                _flagError = false;
+                _flagResult = RESULT_SUCCESS;
             }
             break;
 
@@ -1049,7 +1049,7 @@ bool Screen_EPD_EXT3::_orientCoordinates(uint16_t & x, uint16_t & y)
             if ((x < _screenSizeV) and (y < _screenSizeH))
             {
                 y = _screenSizeH - 1 - y;
-                _flagError = false;
+                _flagResult = RESULT_SUCCESS;
             }
             break;
 
@@ -1058,12 +1058,12 @@ bool Screen_EPD_EXT3::_orientCoordinates(uint16_t & x, uint16_t & y)
             if ((x < _screenSizeH) and (y < _screenSizeV))
             {
                 swap(x, y);
-                _flagError = false;
+                _flagResult = RESULT_SUCCESS;
             }
             break;
     }
 
-    return _flagError;
+    return _flagResult;
 }
 
 uint16_t Screen_EPD_EXT3::_getPoint(uint16_t x1, uint16_t y1)
@@ -1113,5 +1113,13 @@ void Screen_EPD_EXT3::regenerate()
 }
 //
 // === End of Class section
+//
+
+//
+// === Touch section
+//
+
+//
+// === End of Touch section
 //
 

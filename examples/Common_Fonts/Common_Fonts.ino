@@ -103,14 +103,6 @@ void displayFonts(bool flag = true)
     myScreen.gText(10, y, "Terminal16x24");
     y += myScreen.characterSizeY();
 
-    // #elif (USE_FONT_MODE == USE_FONT_HEADER)
-    //
-    // #elif (USE_FONT_MODE == USE_FONT_FLASH)
-    //
-    // #else
-    // #error USE_FONT_MODE not defined
-    // #endif
-
     myScreen.flush();
 }
 
@@ -127,16 +119,16 @@ void setup()
     Serial.println("=== " __DATE__ " " __TIME__);
     Serial.println();
 
-    Serial.print("begin... ");
+    Serial.println("begin... ");
     myScreen.begin();
     Serial.println(formatString("%s %ix%i", myScreen.WhoAmI().c_str(), myScreen.screenSizeX(), myScreen.screenSizeY()));
 
-    Serial.print("Fonts... ");
+    Serial.println("Fonts... ");
     myScreen.clear();
     displayFonts();
     wait(8);
 
-    Serial.print("White... ");
+    Serial.println("White... ");
     myScreen.clear();
     myScreen.flush();
 

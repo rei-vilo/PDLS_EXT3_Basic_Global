@@ -13,8 +13,8 @@
 /// * Temperature: monochrome = 0 to 50 °C, red = 0 to 40 °C
 ///
 /// @author Rei Vilo
-/// @date 21 Oct 2023
-/// @version 701
+/// @date 21 Nov 2023
+/// @version 702
 ///
 /// @copyright (c) Rei Vilo, 2010-2023
 /// @copyright Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
@@ -49,8 +49,8 @@
 #error Required hV_HAL_PERIPHERALS_RELEASE 700
 #endif // hV_HAL_PERIPHERALS_RELEASE
 
-#if (hV_CONFIGURATION_RELEASE < 700)
-#error Required hV_CONFIGURATION_RELEASE 700
+#if (hV_CONFIGURATION_RELEASE < 702)
+#error Required hV_CONFIGURATION_RELEASE 702
 #endif // hV_CONFIGURATION_RELEASE
 
 #if (hV_SCREEN_BUFFER_RELEASE < 700)
@@ -65,7 +65,7 @@
 ///
 /// @brief Library release number
 ///
-#define SCREEN_EPD_EXT3_RELEASE 701
+#define SCREEN_EPD_EXT3_RELEASE 702
 
 ///
 /// @brief Library variant
@@ -158,7 +158,7 @@ class Screen_EPD_EXT3 final : public hV_Screen_Buffer, public hV_Utilities_PDLS
     /// @brief Check and orient coordinates, logical coordinates
     /// @param x x-axis coordinate, modified
     /// @param y y-axis coordinate, modified
-    /// @return false = success, true = error
+    /// @return RESULT_SUCCESS = false = success, RESULT_ERROR = true = error
     ///
     bool _orientCoordinates(uint16_t & x, uint16_t & y); // compulsory
 

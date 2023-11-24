@@ -197,7 +197,6 @@ class hV_Font_Terminal
     uint8_t f_fontSpaceX; ///< pixels between two characters, horizontal axis
     uint8_t f_fontSpaceY; ///< pixels between two characters, vertical axis
     bool f_fontSolid; ///<
-
 };
 /// @endcond
 

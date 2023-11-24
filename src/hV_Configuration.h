@@ -19,8 +19,8 @@
 /// * 11. Set storage mode, not implemented
 ///
 /// @author Rei Vilo
-/// @date 21 Oct 2023
-/// @version 701
+/// @date 21 Nov 2023
+/// @version 702
 ///
 /// @copyright (c) Rei Vilo, 2010-2023
 /// @copyright All rights reserved
@@ -41,6 +41,9 @@
 // SDK
 #include "hV_HAL_Peripherals.h"
 
+// List of options
+#include "hV_List_Options.h"
+
 // List of constants
 #include "hV_List_Constants.h"
 
@@ -59,15 +62,15 @@
 #error Required hV_LIST_BOARDS_RELEASE 700
 #endif // hV_LIST_BOARDS_RELEASE
 
-#if (hV_LIST_SCREENS_RELEASE < 700)
-#error Required hV_LIST_SCREENS_RELEASE 700
+#if (hV_LIST_SCREENS_RELEASE < 702)
+#error Required hV_LIST_SCREENS_RELEASE 702
 #endif // hV_LIST_SCREENS_RELEASE
 
 #ifndef hV_CONFIGURATION_RELEASE
 ///
 /// @brief Release
 ///
-#define hV_CONFIGURATION_RELEASE 701
+#define hV_CONFIGURATION_RELEASE 702
 
 ///
 /// @name 1- List of supported Pervasive Displays screens
@@ -80,126 +83,18 @@
 ///
 
 ///
-/// @name 3- Set font mode
-/// @details From header files or from external flash
-/// * Basic edition: Terminal font
-/// * Evaluation edition: DejaVu font as header
-/// * Commercial edition: DejaVu font as either header or external SPI Flash
-/// @note USE_FONT_HEADER requires addFont()
-/// @note Font Manager requires USE_FONT_HEADER
-/// @warning 8- and 16-bit MCUs may limit the size of the fonts. Use 32-bit MCUs for optimal performance.
+/// @name 3- Font mode, internal MCU or external SPI Flash
+/// @name 4- Maximum number of fonts
+/// @name 5- SRAM memory, internal MCU or external SPI
+/// @name 6- Use self or virtual object
+/// @name 7- Touch mode, activated or not
+/// @name 8- Haptic feedback mode, activated or not
+/// @name 9. Set GPIO expander mode, not implemented
+/// @name 10. String object of char array options for string.
+/// @name 11. Set storage mode, serial console by default
 ///
-/// @{
-#define USE_FONT_TERMINAL 1 ///< Use default Terminal fonts
-
-#define FONT_MODE USE_FONT_TERMINAL ///< Selected option
-/// @}
-
+/// @see hV_List_Options.h
 ///
-/// @brief 4- Maximum number of fonts
-/// @details With MCU Flash, based on available memory, check performed at compilation
-/// * USE_FONT_TERMINAL: 1..4
-/// * USE_FONT_HEADER: 1..64
-///
-/// With SPI Flash, based on the fonts previously uploaded
-/// * USE_FONT_FLASH: eg. 64
-///
-#if (FONT_MODE == USE_FONT_TERMINAL)
-#define MAX_FONT_SIZE 4
-#else
-#define MAX_FONT_SIZE 64
-#endif
-
-///
-/// @name 5- Set SRAM memory
-/// @details From internal MCU or external SPI
-/// * Basic edition: MCU internal SRAM
-/// * Commercial edition: MCU internal SRAM
-/// * Evaluation edition: MCU internal or SPI external SRAM
-///
-/// @{
-#define USE_INTERNAL_MCU 1 ///< Use MCU internal
-
-#define SRAM_MODE USE_INTERNAL_MCU ///< Selected option
-/// @}
-
-///
-/// @name 6- Use virtual object
-/// @details From hV_Screen_Virtual.h for extended compability
-/// @note Declare additional variables if USE_hV_SCREEN_SELF
-/// @n Virtual object requires ~1 kB bytes.
-/// * Basic edition: self option
-/// * Evaluation edition: virtual option
-/// * Commercial edition: self and virtual options
-/// @note Recommended: USE_hV_SCREEN_VIRTUAL
-/// @warning Issues with virtual function on arm-none-eabi-g++ 4.9.3: use USE_hV_SCREEN_SELF instead.
-/// @{
-#define USE_hV_SCREEN_SELF 2 ///< Do not use virtual object
-
-#define USE_hV_SCREEN USE_hV_SCREEN_SELF ///< Selected option
-/// @}
-
-///
-/// @name 7- Set touch mode
-/// @details Only two screens are ready for touch
-/// * Basic edition: iTC 2.71 BW and iTC 3.70 BW
-/// * Evaluation edition: iTC 2.71 BW and iTC 3.70 BW
-/// * Commercial edition: iTC 2.71 BW and iTC 3.70 BW
-/// @note Touch uses I2C and polling over interrupt
-/// @{
-#define USE_TOUCH_NONE 0 ///< Do not use touch
-#define USE_TOUCH_YES 1 ///< Use touch
-
-#define TOUCH_MODE USE_TOUCH_NONE ///< Selected option
-/// @}
-
-///
-/// @brief 8- Set haptic feedback mode
-/// * Basic edition: no haptic feedback
-/// * Evaluation edition: ERM or LRA
-/// * Commercial edition: ERM or LRA
-///
-/// @{
-#define USE_HAPTICS_NONE 0 ///< No motor
-
-#define HAPTICS_MODE USE_HAPTICS_NONE ///< Selected option
-/// @}
-
-///
-/// @brief 9- Set GPIO expander mode
-/// * Basic edition: no expander
-/// * Evaluation edition: PCF8574 or PCA9536
-/// * Commercial edition: PCF8574 or PCA9536
-///
-/// @{
-#define USE_EXPANDER_NONE 0 ///< No I2C expander
-
-#define EXPANDER_MODE USE_EXPANDER_NONE ///< Selected option
-/// @}
-
-///
-/// @brief 10- Set string mode
-/// * Basic edition: String object
-/// * Evaluation edition: char array
-/// * Commercial edition: String object or char array
-///
-/// @{
-#define USE_STRING_OBJECT 1
-
-#define STRING_MODE USE_STRING_OBJECT
-/// @}
-
-///
-/// @brief 11- Storage mode
-/// * Basic edition: none
-/// * Evaluation edition: none
-/// * Commercial edition: option
-///
-/// @{
-#define USE_NONE 0 ///< No storage
-
-#define STORAGE_MODE USE_NONE ///< Selected options
-/// @}
 
 #endif // hV_CONFIGURATION_RELEASE
 

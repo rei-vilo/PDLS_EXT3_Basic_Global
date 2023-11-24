@@ -29,6 +29,8 @@
 // Configuration
 #include "hV_Configuration.h"
 
+// Set parameters
+
 // Define structures and classes
 
 // Define variables and constants
@@ -109,7 +111,7 @@ void setup()
     myScreen.begin();
     Serial.println(formatString("%s %ix%i", myScreen.WhoAmI().c_str(), myScreen.screenSizeX(), myScreen.screenSizeY()));
 
-    Serial.print("Palettes... ");
+    Serial.print("Forms... ");
     myScreen.clear();
     displayForms();
     wait(8);

@@ -29,6 +29,8 @@
 // Configuration
 #include "hV_Configuration.h"
 
+// Set parameters
+
 // Define structures and classes
 
 // Define variables and constants
@@ -91,17 +93,16 @@ void setup()
     Serial.println("=== " __DATE__ " " __TIME__);
     Serial.println();
 
-    Serial.print("begin... ");
+    Serial.println("begin... ");
     myScreen.begin();
     Serial.println(formatString("%s %ix%i", myScreen.WhoAmI().c_str(), myScreen.screenSizeX(), myScreen.screenSizeY()));
 
-    Serial.print("Who Am I... ");
-
+    Serial.println("Who Am I... ");
     myScreen.clear();
     displayWhoAmI();
     wait(8);
 
-    Serial.print("White... ");
+    Serial.println("White... ");
     myScreen.clear();
     myScreen.flush();
 

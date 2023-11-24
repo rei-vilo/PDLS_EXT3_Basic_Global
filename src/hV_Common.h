@@ -6,8 +6,8 @@
 /// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 21 Oct 2023
-/// @version 701
+/// @date 21 Nov 2023
+/// @version 702
 ///
 /// @copyright (c) Rei Vilo, 2010-2023
 /// @copyright All rights reserved
@@ -26,7 +26,7 @@
 ///
 /// @brief Library release number
 ///
-#define hV_COMMON_RELEASE 701
+#define hV_COMMON_RELEASE 702
 
 // SDK
 #include "hV_HAL_Peripherals.h"
