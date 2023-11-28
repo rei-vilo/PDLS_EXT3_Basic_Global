@@ -1,5 +1,5 @@
 ///
-/// @file PDLS_EXT3_Basic.h
+/// @file PDLS_EXT3_Basic_Global.h
 /// @brief Driver for Pervasive Displays iTC screens and EXT3 extension board
 ///
 /// @details Project Pervasive Displays Library Suite
