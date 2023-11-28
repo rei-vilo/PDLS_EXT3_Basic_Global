@@ -38,7 +38,7 @@ body:
       description: Which variant of PDLS are you using?
       multiple: true
       options:
-        - PDLS_EXT3_Basic
+        - PDLS_EXT3_Basic_Global
         - PDLS_EXT3_Basic_Fast
         - PDLS_EXT3_Basic_Touch
         - PDLS_EXT3_Basic_BWRY
@@ -92,7 +92,7 @@ body:
       label: Issue checklist
       description: Please double-check that you have done each of the following things before submitting the issue.
       options:
-        - label: I searched for previous reports in [the issue tracker](https://github.com/rei-vilo/PDLS_EXT3_Basic/issues?q=)
+        - label: I searched for previous reports in [the issue tracker](https://github.com/rei-vilo/PDLS_EXT3_Basic_Global/issues?q=)
           required: true
         - label: My report contains all necessary details
           required: true
