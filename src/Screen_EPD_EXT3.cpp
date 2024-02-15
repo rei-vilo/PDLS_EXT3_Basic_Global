@@ -315,7 +315,7 @@ void Screen_EPD_EXT3::begin()
 #elif defined(ARDUINO_ARCH_ESP32)
 
     // Board ESP32-Pico-DevKitM-2 crashes if pins are not specified.
-    SPI.begin(14, 12, 13); // SCK MISO MOSI
+    SPI.begin();
 
 #else
 
