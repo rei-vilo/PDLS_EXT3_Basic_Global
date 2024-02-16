@@ -8,8 +8,9 @@
 //
 // Created by Rei Vilo, 28 Jun 2016
 //
-// Copyright (c) Rei Vilo, 2010-2023
+// Copyright (c) Rei Vilo, 2010-2024
 // Licence Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+// Portions (c) Pervasive Displays, 2010-2024
 //
 // Release 508: Added support for E2969CS0B and E2B98CS0B
 // Release 527: Added support for ESP32 PSRAM
@@ -307,18 +308,14 @@ void Screen_EPD_EXT3::begin()
     // Board Xiao ESP32-C3 crashes if pins are specified.
     SPI.begin(8, 9, 10); // SCK MISO MOSI
 
-#elif defined(ARDUINO_NANO_ESP32)
-
-    // Board Arduino Nano ESP32 arduino_nano_nora v2.0.11
-    SPI.begin();
-
-#elif defined(ARDUINO_ARCH_ESP32)
+#elif defined(ARDUINO_ESP32_PICO)
 
     // Board ESP32-Pico-DevKitM-2 crashes if pins are not specified.
-    SPI.begin();
+    SPI.begin(14, 12, 13); // SCK MISO MOSI
 
-#else
+#else // General case
 
+    // Board Arduino Nano ESP32 arduino_nano_nora v2.0.11
     SPI.begin();
 
 #endif // ARDUINO_ARCH_ESP32
@@ -835,15 +832,15 @@ void Screen_EPD_EXT3::_flushGlobal()
             index00_work[1] = 0x89;
         }
 
-   if (u_codeSize == 0x29)
-    {
-        b_sendCommandData8(0x4d, 0x55);
-        b_sendCommandData8(0xe9, 0x02);
-    }
-    else
-    {
-        b_sendIndexData(0x00, index00_work, 2); // PSR
-    }
+        if (u_codeSize == 0x29)
+        {
+            b_sendCommandData8(0x4d, 0x55);
+            b_sendCommandData8(0xe9, 0x02);
+        }
+        else
+        {
+            b_sendIndexData(0x00, index00_work, 2); // PSR
+        }
 
         // Send image data
         b_sendIndexData(0x10, blackBuffer, u_frameSize); // First frame
