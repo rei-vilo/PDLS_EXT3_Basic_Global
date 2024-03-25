@@ -6,19 +6,29 @@
 /// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 02 Aug 2021
-/// @version 507
+/// @date 21 Mar 2024
+/// @version 801
 ///
-/// @copyright (c) Rei Vilo, 2010-2023
+/// @copyright (c) Rei Vilo, 2010-2024
 /// @copyright All rights reserved
+/// @copyright For exclusive use with Pervasive Displays screens
 ///
 /// * Basic edition: for hobbyists and for basic usage
 /// @n Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+/// @see https://creativecommons.org/licenses/by-sa/4.0/
+///
+/// @n Consider the Evaluation or Commercial editions for professionals or organisations and for commercial usage
 ///
 /// * Evaluation edition: for professionals or organisations, evaluation only, no commercial usage
 /// @n All rights reserved
 ///
 /// * Commercial edition: for professionals or organisations, commercial usage
+/// @n All rights reserved
+///
+/// * Viewer edition: for professionals or organisations
+/// @n All rights reserved
+///
+/// * Documentation
 /// @n All rights reserved
 ///
 /// @warning 8- and 16-bit limitations
@@ -41,26 +51,29 @@
 // Configuration
 #include "hV_Configuration.h"
 
-// The Arduino IDE doesn't allow to select the libraries, hence this condition.
+// The Arduino IDE does not allow to select the libraries, hence this condition.
 #if (FONT_MODE == USE_FONT_TERMINAL)
 
-#ifndef hV_FONT_HEADER_STRUCTURE_RELEASE
+#ifndef hV_FONT_TERMINAL_STRUCTURE_RELEASE
 ///
 /// @brief hV_Font release number
 ///
-#define hV_FONT_HEADER_STRUCTURE_RELEASE 507
+#define hV_FONT_TERMINAL_STRUCTURE_RELEASE 801
 
 ///
 /// @brief Structure for character width
+/// @deprecated uint16_t index (8.0.0)
+/// @warning uint32_t index (8.0.0)
 ///
 struct width_s
 {
     uint16_t pixel; ///< width in pixel
-    uint16_t index; ///< relative address
+    uint32_t index; ///< relative address
 };
 
 ///
 /// @brief Structure for font
+/// @details Fonts read from header file in internal MCU Flash
 /// @note
 /// * Kind of font: see details below
 /// * Height: set during font generation
@@ -71,16 +84,16 @@ struct width_s
 ///
 /// @n Font kind
 /// * 0x4-..0x1- 0b7654
-/// - b7 = 0x8- = high definition, 2 bits per pixel
-/// - b6 = 0x4- = Monospace
-/// - b5 = 0x2- = Sans Serif
-/// - b4 = 0x1- = Serif
+///   - b7 = 0x8- = high definition, 2 bits per pixel
+///   - b6 = 0x4- = Monospace
+///   - b5 = 0x2- = Sans Serif
+///   - b4 = 0x1- = Serif
 /// * 0x-1..0x-f 0b3210
-/// - b3 = 0x-8 = d8 = italic
-/// - b2 = 0x-4 = d4 = bold
-/// - b10 = 0x-0..0x-3 = d0..d3 = variant number
+///   - b3 = 0x-8 = d8 = italic
+///   - b2 = 0x-4 = d4 = bold
+///   - b10 = 0x-0..0x-3 = d0..d3 = variant number
 ///
-/// @bug font_s.table needs to be uint8_t instead of unsigned short
+/// @warning font_s.table needs to be uint8_t instead of unsigned short
 /// @n Otherwise on TM4C129, font_s.table written as uint16_t
 ///
 struct font_s
@@ -94,4 +107,4 @@ struct font_s
 
 #endif // USE_FONT_TERMINAL
 
-#endif // hV_FONT_HEADER_STRUCTURE_RELEASE
+#endif // hV_FONT_TERMINAL_STRUCTURE_RELEASE

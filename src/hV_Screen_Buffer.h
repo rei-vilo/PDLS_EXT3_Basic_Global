@@ -6,20 +6,30 @@
 /// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 21 Sep 2023
-/// @version 700
+/// @date 21 Mar 2024
+/// @version 801
 ///
-/// @copyright (c) Rei Vilo, 2010-2023
-/// @copyright Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
-///
-/// The highView Library Suite is shared under the Creative Commons licence Attribution-ShareAlike 4.0 International (CC BY-SA 4.0).
+/// @copyright (c) Rei Vilo, 2010-2024
+/// @copyright All rights reserved
+/// @copyright For exclusive use with Pervasive Displays screens
 ///
 /// * Basic edition: for hobbyists and for basic usage
 /// @n Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
-///
 /// @see https://creativecommons.org/licenses/by-sa/4.0/
 ///
 /// @n Consider the Evaluation or Commercial editions for professionals or organisations and for commercial usage
+///
+/// * Evaluation edition: for professionals or organisations, evaluation only, no commercial usage
+/// @n All rights reserved
+///
+/// * Commercial edition: for professionals or organisations, commercial usage
+/// @n All rights reserved
+///
+/// * Viewer edition: for professionals or organisations
+/// @n All rights reserved
+///
+/// * Documentation
+/// @n All rights reserved
 ///
 
 // SDK
@@ -32,7 +42,7 @@
 ///
 /// @brief Library release number
 ///
-#define hV_SCREEN_BUFFER_RELEASE 700
+#define hV_SCREEN_BUFFER_RELEASE 801
 
 // Other libraries
 #include "hV_Colours565.h"
@@ -351,7 +361,7 @@ class hV_Screen_Buffer : protected hV_Font_Terminal
     /// @brief Set orientation
     /// @param orientation same as setOrientation()
     ///
-    virtual void _setOrientation(uint8_t orientation) = 0; // compulsory
+    virtual void s_setOrientation(uint8_t orientation) = 0; // compulsory
 
     ///
     /// @brief Orient coordinates and check within screen
@@ -359,7 +369,7 @@ class hV_Screen_Buffer : protected hV_Font_Terminal
     /// @param[out] y1 y coordinate
     /// @return RESULT_SUCCESS = false = success, RESULT_ERROR = true = error
     ///
-    virtual bool _orientCoordinates(uint16_t & x1, uint16_t & y1) = 0; // compulsory
+    virtual bool s_orientCoordinates(uint16_t & x1, uint16_t & y1) = 0; // compulsory
 
     // Position
     ///
@@ -369,7 +379,7 @@ class hV_Screen_Buffer : protected hV_Font_Terminal
     /// @param colour 16-bit colour
     /// @n @b More: @ref Colour, @ref Coordinate
     ///
-    virtual void _setPoint(uint16_t x1, uint16_t y1, uint16_t colour) = 0; // compulsory
+    virtual void s_setPoint(uint16_t x1, uint16_t y1, uint16_t colour) = 0; // compulsory
 
     // Write and Read
 
@@ -385,7 +395,7 @@ class hV_Screen_Buffer : protected hV_Font_Terminal
     /// @param y3 third point coordinate, y-axis
     /// @param colour 16-bit colour
     ///
-    void _triangleArea(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, uint16_t x3, uint16_t y3, uint16_t colour);
+    void s_triangleArea(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, uint16_t x3, uint16_t y3, uint16_t colour);
 
     // required by gText()
     ///
@@ -394,13 +404,15 @@ class hV_Screen_Buffer : protected hV_Font_Terminal
     /// @param index column index
     /// @return definition for line of character
     ///
-    uint8_t _getCharacter(uint8_t character, uint8_t index);
+    uint8_t s_getCharacter(uint8_t character, uint8_t index);
+
+    uint8_t * u_newImage;
 
     // Variables provided by hV_Screen_Virtual
-    bool _penSolid, _flagRead, _flagStorage, _flagEnergy;
-    uint16_t _screenSizeH, _screenSizeV, _screenDiagonal, _screenMarginH, _screenMarginV;
-    uint8_t _orientation, _intensity;
-    uint16_t _screenColourBits;
+    bool v_penSolid, v_flagRead, v_flagStorage, v_flagEnergy;
+    uint16_t v_screenSizeH, v_screenSizeV, v_screenDiagonal, v_screenMarginH, v_screenMarginV;
+    uint8_t v_orientation, v_intensity;
+    uint16_t v_screenColourBits;
     /// @endcond
 };
 

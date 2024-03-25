@@ -7,8 +7,9 @@
 //
 // Created by Rei Vilo, 01 Jun 2013
 //
-// Copyright (c) Rei Vilo, 2010-2023
+// Copyright (c) Rei Vilo, 2010-2024
 // Licence Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+// For exclusive use with Pervasive Displays screens
 //
 // See hV_Utilities_Common.h for references
 //
@@ -36,8 +37,7 @@ String formatString(const char * format, ...)
     memset(&bufferOut, 0x00, sizeof(bufferOut));
     va_list args;
     va_start(args, format);
-    vsprintf(bufferOut, format, args);
-
+    vsnprintf(bufferOut, 127, format, args);
     va_end(args);
     return String(bufferOut);
 }
@@ -200,15 +200,6 @@ String utf2iso(String s)
 
     memset(&bufferOut, 0x00, sizeof(bufferOut));
 
-    // Serial.print("> ");
-    // Serial.print(s);
-    // Serial.print(" : ");
-    // for (uint8_t i=0; i<strlen(bufferIn)+1; i++) {
-    //  Serial.print((uint8_t)bufferIn[i], HEX);
-    //  Serial.print(".");
-    // }
-    // Serial.println();
-
     for (uint8_t i = 0; i < strlen(bufferIn); i++)
     {
         c = (uint8_t)bufferIn[i];
@@ -234,16 +225,6 @@ String utf2iso(String s)
             }
         }
     }
-    //    bufferOut[strlen(bufferOut)+1] = 0;
-
-    //    Serial.print("> ");
-    // Serial.print(s);
-    // Serial.print(" : ");
-    // for (uint8_t i=0; i<strlen(bufferOut)+1; i++) {
-    //  Serial.print((uint8_t)bufferOut[i], HEX);
-    //  Serial.print(".");
-    // }
-    // Serial.println();
 
     return bufferOut;
 }

@@ -8,14 +8,30 @@
 /// * Edition: Advanced
 ///
 /// @author Rei Vilo
-/// @date 21 Aug 2023
-/// @version 700
+/// @date 21 Mar 2024
+/// @version 801
 ///
-/// @copyright (c) Rei Vilo, 2010-2023
+/// @copyright (c) Rei Vilo, 2010-2024
 /// @copyright All rights reserved
+/// @copyright For exclusive use with Pervasive Displays screens
 ///
-/// * Evaluation edition: for professionals or organisations, no commercial usage
+/// * Basic edition: for hobbyists and for basic usage
+/// @n Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+/// @see https://creativecommons.org/licenses/by-sa/4.0/
+///
+/// @n Consider the Evaluation or Commercial editions for professionals or organisations and for commercial usage
+///
+/// * Evaluation edition: for professionals or organisations, evaluation only, no commercial usage
+/// @n All rights reserved
+///
 /// * Commercial edition: for professionals or organisations, commercial usage
+/// @n All rights reserved
+///
+/// * Viewer edition: for professionals or organisations
+/// @n All rights reserved
+///
+/// * Documentation
+/// @n All rights reserved
 ///
 
 // SDK
@@ -31,23 +47,23 @@
 #include "hV_Utilities_Common.h"
 
 // Checks
-#if (hV_HAL_PERIPHERALS_RELEASE < 700)
-#error Required hV_HAL_PERIPHERALS_RELEASE 700
+#if (hV_HAL_PERIPHERALS_RELEASE < 801)
+#error Required hV_HAL_PERIPHERALS_RELEASE 801
 #endif // hV_HAL_PERIPHERALS_RELEASE
 
-#if (hV_CONFIGURATION_RELEASE < 700)
-#error Required hV_CONFIGURATION_RELEASE 700
+#if (hV_CONFIGURATION_RELEASE < 801)
+#error Required hV_CONFIGURATION_RELEASE 801
 #endif // hV_CONFIGURATION_RELEASE
 
-#if (hV_BOARD_RELEASE < 700)
-#error Required hV_BOARD_RELEASE 700
+#if (hV_BOARD_RELEASE < 801)
+#error Required hV_BOARD_RELEASE 801
 #endif // hV_BOARD_RELEASE
 
 #ifndef hV_UTILITIES_PDLS_RELEASE
 ///
 /// @brief Library release number
 ///
-#define hV_UTILITIES_PDLS_RELEASE 700
+#define hV_UTILITIES_PDLS_RELEASE 801
 
 // Objects
 //
@@ -93,6 +109,22 @@ class hV_Utilities_PDLS : public hV_Board
     ///
     void invert(bool flag);
 
+    ///
+    /// @brief Get number of colours
+    ///
+    /// @return uint8_t number of colours
+    /// * 2 = monochrome
+    /// * 3 = black-white-red or black-white-yellow
+    /// * 4 = black-white-red-yellow
+    ///
+    uint8_t screenColours();
+
+    ///
+    /// @brief Screen number
+    /// @return Screen number as string
+    ///
+    virtual String screenNumber();
+
     /// @cond
   protected:
 
@@ -107,25 +139,24 @@ class hV_Utilities_PDLS : public hV_Board
     ///
     void u_WhoAmI(char * answer);
 
+    ///
+    /// @brief Screen number for screenNumber
+    /// @param[out] answer Screen specifications
+    /// @note Format is size-film-driver[-Touch|-Demo]
+    ///
+    void u_screenNumber(char * answer);
+
     // Screen dependent variables
-#if (SRAM_MODE == USE_INTERNAL_MCU)
-
-    uint8_t * u_newImage;
-
-#elif (SRAM_MODE == USE_EXTERNAL_SPI)
-
-    uint32_t u_newImage;
-
-#endif // SRAM_MODE
-
-    eScreen_EPD_EXT3_t u_eScreen_EPD_EXT3;
+    eScreen_EPD_t u_eScreen_EPD;
     int8_t u_temperature = 25;
+    uint16_t u_codeSize;
+    uint8_t u_codeFilm;
+    uint8_t u_codeDriver;
     uint8_t u_codeExtra;
-    uint8_t u_codeSize;
-    uint8_t u_codeType;
     uint16_t u_bufferSizeV, u_bufferSizeH, u_bufferDepth;
     uint32_t u_pageColourSize, u_frameSize;
     bool u_invert = false;
+    bool u_flagOTP = false;
 
     /// @endcond
 };

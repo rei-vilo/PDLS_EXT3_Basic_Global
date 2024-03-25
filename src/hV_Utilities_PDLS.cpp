@@ -8,8 +8,11 @@
 //
 // Created by Rei Vilo, 16 Aug 2023
 //
-// Copyright (c) Rei Vilo, 2010-2023
+// Copyright (c) Rei Vilo, 2010-2024
 // Licence All rights reserved
+//
+// Release 800: Read OTP memory
+// Release 801: Added number of colours
 //
 
 // Library header
@@ -23,43 +26,67 @@ hV_Utilities_PDLS::hV_Utilities_PDLS()
 void hV_Utilities_PDLS::u_begin(pins_t board, uint8_t family, uint16_t delayCS)
 {
     b_begin(board, family, delayCS);
+    u_temperature = 25; // Default = 25 °C
 }
 
 void hV_Utilities_PDLS::u_WhoAmI(char * answer)
 {
     memcpy(answer, 0x00, strlen(answer));
 
-    if (u_codeExtra > 0)
+    switch (u_codeFilm)
     {
-        strcat(answer, "-");
-        if (u_codeExtra & FEATURE_FAST)
-        {
-            strcat(answer, "F");
-        }
-        if (u_codeExtra & FEATURE_TOUCH)
-        {
-            strcat(answer, "T");
-        }
-        if (u_codeExtra & FEATURE_OTHER)
-        {
-            strcat(answer, "b");
-        }
-        if (u_codeExtra & FEATURE_WIDE_TEMPERATURE)
-        {
-            strcat(answer, "W");
-        }
-        if (u_codeExtra & FEATURE_RED)
-        {
-            strcat(answer, "BWR");
-        }
-        if (u_codeExtra & FEATURE_RED_YELLOW)
-        {
-            strcat(answer, "BWRY");
-        }
-        strcat(answer, " ");
+        case FILM_P: // Film P, Fast update
+
+            strcat(answer, "-Fast");
+            break;
+
+        case FILM_K: // Film K, Fast update + Wide temperature
+
+            strcat(answer, "-Wide");
+            break;
+
+        case FILM_J: // Film J, BWR, "Spectra"
+        case FILM_E: // Film E, BWR, deprecated
+        case FILM_F: // Film F, BWR, deprecated
+        case FILM_G: // Film G, BWY, deprecated
+
+            strcat(answer, "-BWR");
+            break;
+
+        case FILM_Q: // Film Q, BWRY, "Spectra 4"
+
+            strcat(answer, "-BWRY");
+            break;
+
+        case FILM_C: ///< Film C, Standard
+
+            strcat(answer, "-BW");
+            break;
+
+        default:
+
+            strcat(answer, "-?");
+            break;
     }
 
-    strcat(answer, "-");
+    switch (u_codeExtra)
+    {
+        case EXTRA_TOUCH:
+
+            strcat(answer, "+Touch");
+            break;
+
+        case EXTRA_DEMO:
+
+            strcat(answer, "+Demo");
+            break;
+
+        default:
+
+            break;
+    }
+
+    strcat(answer, " ");
 
 #if (SRAM_MODE == USE_INTERNAL_MCU)
     strcat(answer, "i");
@@ -83,6 +110,74 @@ void hV_Utilities_PDLS::u_WhoAmI(char * answer)
 void hV_Utilities_PDLS::invert(bool flag)
 {
     u_invert = flag;
+}
+
+uint8_t hV_Utilities_PDLS::screenColours()
+{
+    uint8_t result;
+
+    switch (u_codeFilm)
+    {
+        case FILM_C: // Film C, Standard
+        case FILM_P: // Film P, Fast update
+        case FILM_K: // Film K, Fast update + Wide temperature
+
+            result = 2;
+            break;
+
+        case FILM_J: // Film J, BWR, "Spectra"
+        case FILM_E: // Film E, BWR, deprecated
+        case FILM_F: // Film F, BWR, deprecated
+        case FILM_G: // Film G, BWY, deprecated
+
+            result = 3;
+            break;
+
+        case FILM_Q: // Film Q, BWRY, "Spectra 4"
+
+            result = 4;
+            break;
+
+        default:
+
+            result = 0; // error
+            break;
+    }
+
+    return result;
+}
+
+String hV_Utilities_PDLS::screenNumber()
+{
+    char work[64] = {0};
+    u_screenNumber(work);
+
+    return formatString("Number %s", work);
+}
+
+void hV_Utilities_PDLS::u_screenNumber(char * answer)
+{
+    memcpy(answer, 0x00, strlen(answer));
+
+    // strcpy(answer, u_codeSize);
+    sprintf(answer, "%i-%cS-0%c", u_codeSize, u_codeFilm, u_codeDriver);
+
+    switch (u_codeExtra)
+    {
+        case EXTRA_TOUCH:
+
+            strcat(answer, "-Touch");
+            break;
+
+        case EXTRA_DEMO:
+
+            strcat(answer, "-Demo");
+            break;
+
+        default:
+
+            break;
+    }
 }
 
 //
@@ -113,20 +208,9 @@ void hV_Utilities_PDLS::setTemperatureF(int16_t temperatureF)
 
 uint8_t hV_Utilities_PDLS::checkTemperatureMode(uint8_t updateMode)
 {
-    // #define FEATURE_FAST 0x01 ///< With embedded fast update
-    // #define FEATURE_TOUCH 0x02 ///< With capacitive touch panel
-    // #define FEATURE_OTHER 0x04 ///< With other feature
-    // #define FEATURE_WIDE_TEMPERATURE 0x08 ///< With wide operating temperature
-    // #define FEATURE_RED 0x10 ///< With red colour
-    // #define FEATURE_RED_YELLOW 0x20 ///< With red and yellow colours
-    // #define FEATURE_BW 0x00 ///< Monochrome
-    // #define FEATURE_BWR 0x10 ///< With red colour
-    // #define FEATURE_BWRY 0x20 ///< With red and yellow colours
-    // #define FEATURE_HIGH_DEFINITION 0x40 ///< With high definition
-
-    switch (u_codeExtra & 0x19)
+    switch (u_codeFilm)
     {
-        case FEATURE_FAST: // PS series
+        case FILM_P: // Film P, Fast update
 
             // Fast 	PS 	Embedded fast update 	FU: +15 to +30 °C 	GU: 0 to +50 °C
             if (updateMode == UPDATE_FAST) // Fast update
@@ -145,7 +229,7 @@ uint8_t hV_Utilities_PDLS::checkTemperatureMode(uint8_t updateMode)
             }
             break;
 
-        case (FEATURE_FAST | FEATURE_WIDE_TEMPERATURE): // KS series
+        case FILM_K: // Film K, Fast update + Wide temperature
 
             // Wide 	KS 	Wide temperature and embedded fast update 	FU: 0 to +50 °C 	GU: -15 to +60 °C
             if (updateMode == UPDATE_FAST) // Fast update
@@ -164,7 +248,7 @@ uint8_t hV_Utilities_PDLS::checkTemperatureMode(uint8_t updateMode)
             }
             break;
 
-        case FEATURE_WIDE_TEMPERATURE: // HS series
+        case FILM_H: // HS series
 
             // Freezer 	HS 	Global update below 0 °C 	FU: - 	GU: -25 to +30 °C
             updateMode = UPDATE_GLOBAL;
@@ -174,10 +258,11 @@ uint8_t hV_Utilities_PDLS::checkTemperatureMode(uint8_t updateMode)
             }
             break;
 
-        case FEATURE_BWR: // JS series
-        // case FEATURE_RED: // JS series
-        case FEATURE_BWRY: // QS series
-        // case FEATURE_RED_YELLOW: // QS series
+        case FILM_J: // Film J, BWR, "Spectra"
+        case FILM_E: // Film E, BWR, deprecated
+        case FILM_F: // Film F, BWR, deprecated
+        case FILM_G: // Film G, BWY, deprecated
+        case FILM_Q: // Film Q, BWRY, "Spectra 4"
 
             // BWR  JS 	Red colour 	FU: - 	GU: 0 to +40 °C
             // BWRY  QS 	Red and yellow colours 	FU: - 	GU: 0 to +40 °C
@@ -187,7 +272,7 @@ uint8_t hV_Utilities_PDLS::checkTemperatureMode(uint8_t updateMode)
             }
             break;
 
-        default: // CS series
+        default: // Film C, Standard
 
             // Normal 	CS 	Global update above 0 °C 	FU: - 	GU: 0 to +50 °C
             updateMode = UPDATE_GLOBAL;

@@ -11,6 +11,7 @@
 ///
 /// @copyright (c) Rei Vilo, 2010-2024
 /// @copyright Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+/// @copyright For exclusive use with Pervasive Displays screens
 ///
 /// @see ReadMe.txt for references
 /// @n
@@ -34,19 +35,10 @@
 // Define structures and classes
 
 // Define variables and constants
-// Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_154, boardRaspberryPiPico_RP2040);
-// Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_213, boardRaspberryPiPico_RP2040);
-Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_266, boardRaspberryPiPico_RP2040);
-// Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_271, boardRaspberryPiPico_RP2040);
-// Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_287, boardRaspberryPiPico_RP2040);
-// Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_370, boardRaspberryPiPico_RP2040);
-// Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_417, boardRaspberryPiPico_RP2040);
-// Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_437, boardRaspberryPiPico_RP2040);
-// Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_565, boardRaspberryPiPico_RP2040);
-// Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_581, boardRaspberryPiPico_RP2040);
-// Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_741, boardRaspberryPiPico_RP2040);
-// Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_969, boardRaspberryPiPico_RP2040);
-// Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_B98, boardRaspberryPiPico_RP2040);
+
+// --- Global
+Screen_EPD_EXT3 myScreen(eScreen_EPD_266_CS_0C, boardRaspberryPiPico_RP2040);
+Screen_EPD_EXT3 myScreen(eScreen_EPD_266_JS_0C, boardRaspberryPiPico_RP2040);
 
 // Prototypes
 
@@ -59,10 +51,10 @@ void wait(uint8_t second)
 {
     for (uint8_t i = second; i > 0; i--)
     {
-        Serial.print(formatString(" > %i  \r", i));
+        mySerial.print(formatString(" > %i  \r", i));
         delay(1000);
     }
-    Serial.print("         \r");
+    mySerial.print("         \r");
 }
 
 // Functions
@@ -98,13 +90,14 @@ void displayPersistent()
 ///
 void setup()
 {
-    Serial.begin(115200);
+    // mySerial = Serial by default, otherwise edit hV_HAL_Peripherals.h
+    mySerial.begin(115200);
     delay(500);
 
-    Serial.println();
-    Serial.println("=== " __FILE__);
-    Serial.println("=== " __DATE__ " " __TIME__);
-    Serial.println();
+    mySerial.println();
+    mySerial.println("=== " __FILE__);
+    mySerial.println("=== " __DATE__ " " __TIME__);
+    mySerial.println();
 
     pinMode(LED_BUILTIN, OUTPUT);
     for (uint8_t i = 1; i < 7; i += 1)
@@ -113,11 +106,11 @@ void setup()
         delay(250);
     }
 
-    Serial.println("begin... ");
+    mySerial.println("begin... ");
     myScreen.begin();
-    Serial.println(formatString("%s %ix%i", myScreen.WhoAmI().c_str(), myScreen.screenSizeX(), myScreen.screenSizeY()));
+    mySerial.println(formatString("%s %ix%i", myScreen.WhoAmI().c_str(), myScreen.screenSizeX(), myScreen.screenSizeY()));
 
-    Serial.println("Who Am I... ");
+    mySerial.println("Who Am I... ");
     myScreen.clear();
     displayPersistent();
     wait(2);
@@ -129,8 +122,8 @@ void setup()
     */
 
     digitalWrite(LED_BUILTIN, HIGH);
-    Serial.println("=== ");
-    Serial.println();
+    mySerial.println("=== ");
+    mySerial.println();
 }
 
 // Add loop code

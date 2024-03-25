@@ -8,8 +8,9 @@
 //
 // Created by Rei Vilo, 28 Jun 2016
 //
-// Copyright (c) Rei Vilo, 2010-2023
+// Copyright (c) Rei Vilo, 2010-2024
 // Licence Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+// For exclusive use with Pervasive Displays screens
 //
 // See hV_Screen_Buffer.h for references
 //
@@ -17,6 +18,8 @@
 // Release 523: Fixed rounded rectangles
 // Release 526: Improved touch management
 // Release 700: Refactored screen and board functions
+// Release 703: Improved orientation function
+// Release 801: Improved functions names consistency
 //
 
 // Library header
@@ -30,18 +33,18 @@ hV_Screen_Buffer::hV_Screen_Buffer()
     f_fontNumber = 0;
     f_fontSolid = true;
     f_fontSpaceX = 1;
-    _penSolid = false;
+    v_penSolid = false;
 }
 
 void hV_Screen_Buffer::begin()
 {
-    f_begin(); // hV_font_...
+    f_begin(); // hV_Font_...
 }
 
 void hV_Screen_Buffer::clear(uint16_t colour)
 {
-    uint8_t oldOrientation = _orientation;
-    bool oldPenSolid = _penSolid;
+    uint8_t oldOrientation = v_orientation;
+    bool oldPenSolid = v_penSolid;
     setOrientation(0);
     setPenSolid();
     rectangle(0, 0, screenSizeX() - 1, screenSizeY() - 1, colour);
@@ -58,56 +61,56 @@ void hV_Screen_Buffer::setOrientation(uint8_t orientation)
 {
     switch (orientation)
     {
-        case 6:
+        case ORIENTATION_PORTRAIT:
 
-            _orientation = 0;
-            _setOrientation(_orientation);
+            v_orientation = 0;
+            s_setOrientation(v_orientation);
             if (screenSizeX() > screenSizeY())
             {
-                _orientation = 1;
-                _setOrientation(_orientation);
+                v_orientation += 1;
+                s_setOrientation(v_orientation);
             }
             break;
 
-        case 7:
+        case ORIENTATION_LANDSCAPE:
 
-            _orientation = 0;
-            _setOrientation(_orientation);
+            v_orientation = 2;
+            s_setOrientation(v_orientation);
             if (screenSizeX() < screenSizeY())
             {
-                _orientation = 1;
-                _setOrientation(_orientation);
+                v_orientation += 1;
+                s_setOrientation(v_orientation);
             }
             break;
 
         default:
 
-            _orientation = orientation % 4;
-            _setOrientation(_orientation);
+            v_orientation = orientation % 4;
+            s_setOrientation(v_orientation);
             break;
     }
 }
 
 uint8_t hV_Screen_Buffer::getOrientation()
 {
-    return _orientation;
+    return v_orientation;
 }
 
 uint16_t hV_Screen_Buffer::screenSizeX()
 {
-    switch (_orientation)
+    switch (v_orientation)
     {
         case 1:
         case 3:
 
-            return _screenSizeV; // _maxX
+            return v_screenSizeV; // _maxX
             break;
 
         // case 0:
         // case 2:
         default:
 
-            return _screenSizeH; // _maxX
+            return v_screenSizeH; // _maxX
             break;
     }
     return 0;
@@ -115,19 +118,19 @@ uint16_t hV_Screen_Buffer::screenSizeX()
 
 uint16_t hV_Screen_Buffer::screenSizeY()
 {
-    switch (_orientation)
+    switch (v_orientation)
     {
         case 1:
         case 3:
 
-            return _screenSizeH; // _maxY
+            return v_screenSizeH; // _maxY
             break;
 
         // case 0:
         // case 2:
         default:
 
-            return _screenSizeV; // _maxY
+            return v_screenSizeV; // _maxY
             break;
     }
     return 0;
@@ -135,12 +138,12 @@ uint16_t hV_Screen_Buffer::screenSizeY()
 
 uint16_t hV_Screen_Buffer::screenDiagonal()
 {
-    return _screenDiagonal;
+    return v_screenDiagonal;
 }
 
 uint8_t hV_Screen_Buffer::screenColourBits()
 {
-    return _screenColourBits;
+    return v_screenColourBits;
 }
 
 void hV_Screen_Buffer::circle(uint16_t x0, uint16_t y0, uint16_t radius, uint16_t colour)
@@ -151,7 +154,7 @@ void hV_Screen_Buffer::circle(uint16_t x0, uint16_t y0, uint16_t radius, uint16_
     int16_t x = 0;
     int16_t y = radius;
 
-    if (_penSolid == false)
+    if (v_penSolid == false)
     {
         point(x0, y0 + radius, colour);
         point(x0, y0 - radius, colour);
@@ -216,7 +219,7 @@ void hV_Screen_Buffer::line(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, 
 {
     if ((x1 == x2) and (y1 == y2))
     {
-        _setPoint(x1, y1, colour);
+        s_setPoint(x1, y1, colour);
     }
     else if (x1 == x2)
     {
@@ -226,7 +229,7 @@ void hV_Screen_Buffer::line(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, 
         }
         for (uint16_t y = y1; y <= y2; y++)
         {
-            _setPoint(x1, y, colour);
+            s_setPoint(x1, y, colour);
         }
     }
     else if (y1 == y2)
@@ -237,7 +240,7 @@ void hV_Screen_Buffer::line(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, 
         }
         for (uint16_t x = x1; x <= x2; x++)
         {
-            _setPoint(x, y1, colour);
+            s_setPoint(x, y1, colour);
         }
     }
     else
@@ -278,11 +281,11 @@ void hV_Screen_Buffer::line(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, 
         {
             if (flag)
             {
-                _setPoint(wy1, wx1, colour);
+                s_setPoint(wy1, wx1, colour);
             }
             else
             {
-                _setPoint(wx1, wy1, colour);
+                s_setPoint(wx1, wy1, colour);
             }
 
             err -= dy;
@@ -297,17 +300,17 @@ void hV_Screen_Buffer::line(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, 
 
 void hV_Screen_Buffer::setPenSolid(bool flag)
 {
-    _penSolid = flag;
+    v_penSolid = flag;
 }
 
 void hV_Screen_Buffer::point(uint16_t x1, uint16_t y1, uint16_t colour)
 {
-    _setPoint(x1, y1, colour);
+    s_setPoint(x1, y1, colour);
 }
 
 void hV_Screen_Buffer::rectangle(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, uint16_t colour)
 {
-    if (_penSolid == false)
+    if (v_penSolid == false)
     {
         line(x1, y1, x1, y2, colour);
         line(x1, y1, x2, y1, colour);
@@ -328,7 +331,7 @@ void hV_Screen_Buffer::rectangle(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t
         {
             for (uint16_t y = y1; y <= y2; y++)
             {
-                _setPoint(x, y, colour);
+                s_setPoint(x, y, colour);
             }
         }
     }
@@ -339,7 +342,7 @@ void hV_Screen_Buffer::dRectangle(uint16_t x0, uint16_t y0, uint16_t dx, uint16_
     rectangle(x0, y0, x0 + dx - 1, y0 + dy - 1, colour);
 }
 
-void hV_Screen_Buffer::_triangleArea(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, uint16_t x3, uint16_t y3, uint16_t colour)
+void hV_Screen_Buffer::s_triangleArea(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, uint16_t x3, uint16_t y3, uint16_t colour)
 {
     int16_t wx1 = (int16_t)x1;
     int16_t wy1 = (int16_t)y1;
@@ -453,7 +456,7 @@ void hV_Screen_Buffer::triangle(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t 
     {
         line(x1, y1, x2, y2, colour);
     }
-    else if (_penSolid)
+    else if (v_penSolid)
     {
         bool b = true;
 
@@ -478,25 +481,28 @@ void hV_Screen_Buffer::triangle(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t 
 
         if (y2 == y3)
         {
-            _triangleArea(x1, y1, x2, y2, x3, y3, colour);
+            s_triangleArea(x1, y1, x2, y2, x3, y3, colour);
         }
         else if (y1 == y2)
         {
-            _triangleArea(x3, y3, x1, y1, x2, y2, colour);
+            s_triangleArea(x3, y3, x1, y1, x2, y2, colour);
         }
         else
         {
             uint16_t x4 = (uint16_t)((int32_t)x1 + (y2 - y1) * (x3 - x1) / (y3 - y1));
             uint16_t y4 = y2;
 
-            _triangleArea(x1, y1, x2, y2, x4, y4, colour);
+            s_triangleArea(x1, y1, x2, y2, x4, y4, colour);
+
 #if defined(ESP8266)
             delay(1);
 #else
             delayMicroseconds(1000); // delay(1);
 #endif // ESP8266
+
             delayMicroseconds(1000); // delay(1);
-            _triangleArea(x3, y3, x2, y2, x4, y4, colour);
+            s_triangleArea(x3, y3, x2, y2, x4, y4, colour);
+
 #if defined(ESP8266)
             delay(1);
 #else
@@ -512,7 +518,9 @@ void hV_Screen_Buffer::triangle(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t 
     }
 }
 
-// Font functions
+//
+// === Font section
+//
 void hV_Screen_Buffer::setFontSolid(bool flag)
 {
     f_setFontSolid(flag);
@@ -578,7 +586,7 @@ void hV_Screen_Buffer::setFontSpaceY(uint8_t number)
     f_setFontSpaceY(number);
 }
 
-uint8_t hV_Screen_Buffer::_getCharacter(uint8_t character, uint8_t index)
+uint8_t hV_Screen_Buffer::s_getCharacter(uint8_t character, uint8_t index)
 {
     return f_getCharacter(character, index);
 }
@@ -667,11 +675,11 @@ void hV_Screen_Buffer::gText(uint16_t x0, uint16_t y0,
                 {
                     if (bitRead(line, j))
                     {
-                        point(x0 + 12 * k + i, y0 + j,    textColour);
+                        point(x0 + 12 * k + i, y0 + j, textColour);
                     }
                     else if (f_fontSolid)
                     {
-                        point(x0 + 12 * k + i, y0 + j,    backColour);
+                        point(x0 + 12 * k + i, y0 + j, backColour);
                     }
                     if (bitRead(line1, j))
                     {
@@ -693,26 +701,26 @@ void hV_Screen_Buffer::gText(uint16_t x0, uint16_t y0,
             c = text.charAt(k) - ' ';
             for (i = 0; i < 16; i++)
             {
-                line  = f_getCharacter(c, 3 * i);
+                line = f_getCharacter(c, 3 * i);
                 line1 = f_getCharacter(c, 3 * i + 1);
                 line2 = f_getCharacter(c, 3 * i + 2);
                 for (j = 0; j < 8; j++)
                 {
                     if (bitRead(line, j))
                     {
-                        point(x0 + 16 * k + i, y0 + j,     textColour);
+                        point(x0 + 16 * k + i, y0 + j, textColour);
                     }
                     else if (f_fontSolid)
                     {
-                        point(x0 + 16 * k + i, y0 + j,     backColour);
+                        point(x0 + 16 * k + i, y0 + j, backColour);
                     }
                     if (bitRead(line1, j))
                     {
-                        point(x0 + 16 * k + i, y0 + 8 + j,  textColour);
+                        point(x0 + 16 * k + i, y0 + 8 + j, textColour);
                     }
                     else if (f_fontSolid)
                     {
-                        point(x0 + 16 * k + i, y0 + 8 + j,  backColour);
+                        point(x0 + 16 * k + i, y0 + 8 + j, backColour);
                     }
                     if (bitRead(line2, j))
                     {
@@ -732,4 +740,7 @@ void hV_Screen_Buffer::gText(uint16_t x0, uint16_t y0,
 #endif // end MAX_FONT_SIZE > 0
 }
 #endif // FONT_MODE
+//
+// === End of Font section
+//
 

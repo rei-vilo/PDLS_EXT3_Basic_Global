@@ -6,19 +6,29 @@
 /// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 02 Aug 2021
-/// @version 507
+/// @date 21 Mar 2024
+/// @version 801
 ///
-/// @copyright (c) Rei Vilo, 2010-2023
+/// @copyright (c) Rei Vilo, 2010-2024
 /// @copyright All rights reserved
+/// @copyright For exclusive use with Pervasive Displays screens
 ///
 /// * Basic edition: for hobbyists and for basic usage
 /// @n Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+/// @see https://creativecommons.org/licenses/by-sa/4.0/
+///
+/// @n Consider the Evaluation or Commercial editions for professionals or organisations and for commercial usage
 ///
 /// * Evaluation edition: for professionals or organisations, evaluation only, no commercial usage
 /// @n All rights reserved
 ///
 /// * Commercial edition: for professionals or organisations, commercial usage
+/// @n All rights reserved
+///
+/// * Viewer edition: for professionals or organisations
+/// @n All rights reserved
+///
+/// * Documentation
 /// @n All rights reserved
 ///
 /// @see Font generated with MikroElektronika GLCD Font Creator 1.2.0.0 and edited manually
@@ -31,21 +41,21 @@
 // Configuration
 #include "hV_Configuration.h"
 
-// The Arduino IDE doesn't allow to select the libraries, hence this condition.
+// The Arduino IDE does not allow to select the libraries, hence this condition.
 #if (FONT_MODE == USE_FONT_TERMINAL)
 
 #ifndef hV_FONT_TERMINAL_RELEASE
 ///
 /// @brief Release
 ///
-#define hV_FONT_TERMINAL_RELEASE 507
+#define hV_FONT_TERMINAL_RELEASE 801
 
 #include "hV_Utilities_Common.h"
 #include "hV_Font.h"
 
 ///
 /// @brief Biggest font size
-/// @details Based on the MCU, by default=0
+/// @details Based on the MCU, by default = 0
 ///
 #if (MAX_FONT_SIZE > 0)
 #include "Terminal6x8e.h"
@@ -124,7 +134,7 @@ class hV_Font_Terminal
 
     ///
     /// @brief Character size, x-axis
-    /// @param character character to evaluate, default=0=font general size
+    /// @param character character to evaluate, default = 0 = font general size
     /// @return horizontal size of character for current font, in pixels
     /// @note With setSpaceX included
     /// @note In variable font, each character has a specific size. The general size is indicative.
@@ -197,6 +207,7 @@ class hV_Font_Terminal
     uint8_t f_fontSpaceX; ///< pixels between two characters, horizontal axis
     uint8_t f_fontSpaceY; ///< pixels between two characters, vertical axis
     bool f_fontSolid; ///<
+    /// @}
 };
 /// @endcond
 

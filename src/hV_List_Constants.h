@@ -6,19 +6,29 @@
 /// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 21 Sep 2023
-/// @version 700
+/// @date 21 Mar 2024
+/// @version 801
 ///
-/// @copyright (c) Rei Vilo, 2010-2023
+/// @copyright (c) Rei Vilo, 2010-2024
 /// @copyright All rights reserved
+/// @copyright For exclusive use with Pervasive Displays screens
 ///
 /// * Basic edition: for hobbyists and for basic usage
 /// @n Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+/// @see https://creativecommons.org/licenses/by-sa/4.0/
+///
+/// @n Consider the Evaluation or Commercial editions for professionals or organisations and for commercial usage
 ///
 /// * Evaluation edition: for professionals or organisations, evaluation only, no commercial usage
 /// @n All rights reserved
 ///
 /// * Commercial edition: for professionals or organisations, commercial usage
+/// @n All rights reserved
+///
+/// * Viewer edition: for professionals or organisations
+/// @n All rights reserved
+///
+/// * Documentation
 /// @n All rights reserved
 ///
 
@@ -29,7 +39,7 @@
 ///
 /// @brief Release
 ///
-#define hV_LIST_CONSTANTS_RELEASE 700
+#define hV_LIST_CONSTANTS_RELEASE 801
 
 ///
 /// * General parameters
@@ -73,8 +83,8 @@
 /// @brief Large screens sub-panels selection
 /// @note Numbers are sequential and exclusive
 /// @{
-#define PANEL_CS_MAIN 0x01 ///< Large screens sub-panels: first panel only
-#define PANEL_CS_SECOND 0x02 ///< Large screens sub-panels: second panel only
+#define PANEL_CS_MASTER 0x01 ///< Large screens sub-panels: first panel only
+#define PANEL_CS_SLAVE 0x02 ///< Large screens sub-panels: second panel only
 #define PANEL_CS_BOTH 0x03 ///< Large screens sub-panels: both panels
 /// @}
 
