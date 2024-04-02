@@ -141,7 +141,6 @@ void displayPalette(bool flag = true)
 ///
 void setup()
 {
-    // Start
     // mySerial = Serial by default, otherwise edit hV_HAL_Peripherals.h
     mySerial.begin(115200);
     delay(500);
@@ -150,6 +149,7 @@ void setup()
     mySerial.println("=== " __DATE__ " " __TIME__);
     mySerial.println();
 
+    // Start
     mySerial.println("begin... ");
     myScreen.begin();
     mySerial.println(formatString("%s %ix%i", myScreen.WhoAmI().c_str(), myScreen.screenSizeX(), myScreen.screenSizeY()));
