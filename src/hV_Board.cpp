@@ -8,8 +8,11 @@
 //
 // Created by Rei Vilo, 16 Aug 2023
 //
-// Copyright (c) Rei Vilo, 2010-2023
+// Copyright (c) Rei Vilo, 2010-2024
 // Licence All rights reserved
+//
+// Release 700: Initial release
+// Release 801: Improved double-panel screen management
 //
 
 // Library header
@@ -56,12 +59,99 @@ void hV_Board::b_suspend()
 
 void hV_Board::b_resume()
 {
-    // Not implemented
+    // Optional power circuit
+    if (b_pin.panelPower != NOT_CONNECTED) // generic
+    {
+        pinMode(b_pin.panelPower, OUTPUT);
+        digitalWrite(b_pin.panelPower, HIGH);
+    }
+
+    // Configure GPIOs
+    pinMode(b_pin.panelBusy, INPUT);
+
+    pinMode(b_pin.panelDC, OUTPUT);
+    digitalWrite(b_pin.panelDC, HIGH);
+
+    pinMode(b_pin.panelReset, OUTPUT);
+    digitalWrite(b_pin.panelReset, HIGH);
+
+    pinMode(b_pin.panelCS, OUTPUT);
+    digitalWrite(b_pin.panelCS, HIGH); // CS# = 1
+
+    if (b_pin.panelCSS != NOT_CONNECTED) // generic
+    {
+        pinMode(b_pin.panelCSS, OUTPUT);
+        digitalWrite(b_pin.panelCSS, HIGH);
+    }
+
+    // External SPI memory
+    if (b_pin.flashCS != NOT_CONNECTED) // generic
+    {
+        pinMode(b_pin.flashCS, OUTPUT);
+        digitalWrite(b_pin.flashCS, HIGH);
+    }
+    if (b_pin.flashCSS != NOT_CONNECTED) // generic
+    {
+        pinMode(b_pin.flashCSS, OUTPUT);
+        digitalWrite(b_pin.flashCSS, HIGH);
+    }
+
+    // External SD card
+    if (b_pin.cardCS != NOT_CONNECTED) // generic
+    {
+        pinMode(b_pin.cardCS, OUTPUT);
+        digitalWrite(b_pin.cardCS, HIGH);
+    }
+    if (b_pin.cardDetect != NOT_CONNECTED) // generic
+    {
+        pinMode(b_pin.cardCS, INPUT);
+    }
 }
 
 void hV_Board::b_sendIndexFixed(uint8_t index, uint8_t data, uint32_t size)
 {
-    // Not implemented
+    digitalWrite(b_pin.panelDC, LOW); // DC Low = Command
+    digitalWrite(b_pin.panelCS, LOW); // CS High = Select Master
+
+    delayMicroseconds(b_delayCS);
+    SPI.transfer(index);
+    delayMicroseconds(b_delayCS); 
+
+    digitalWrite(b_pin.panelDC, HIGH); // DC High = Data
+
+    delayMicroseconds(b_delayCS);
+    for (uint32_t i = 0; i < size; i++)
+    {
+        SPI.transfer(data); // b_sendIndexFixed
+    }
+    delayMicroseconds(b_delayCS);
+
+    digitalWrite(b_pin.panelCS, HIGH); // CS High = Unselect
+}
+
+void hV_Board::b_sendIndexFixedSelect(uint8_t index, uint8_t data, uint32_t size, uint8_t select)
+{
+    digitalWrite(b_pin.panelDC, LOW); // DC Low = Command
+    b_select(select); // Select half of large screen
+
+    delayMicroseconds(b_delayCS); // Longer delay for large screens
+    SPI.transfer(index);
+    delayMicroseconds(b_delayCS); // Longer delay for large screens
+
+    digitalWrite(b_pin.panelDC, HIGH); // DC High = Data
+
+    delayMicroseconds(b_delayCS); // Longer delay for large screens
+    for (uint32_t i = 0; i < size; i++)
+    {
+        SPI.transfer(data); // b_sendIndexFixed
+    }
+    delayMicroseconds(b_delayCS); // Longer delay for large screens
+
+    digitalWrite(b_pin.panelCS, HIGH); // CS High = Unselect Master
+    if (b_pin.panelCSS != NOT_CONNECTED)
+    {
+        digitalWrite(b_pin.panelCSS, HIGH); // CSS High = Unselect Slave
+    }
 }
 
 void hV_Board::b_sendIndexData(uint8_t index, const uint8_t * data, uint32_t size)
@@ -104,6 +194,7 @@ void hV_Board::b_sendIndexData(uint8_t index, const uint8_t * data, uint32_t siz
         SPI.transfer(data[i]);
     }
     delayMicroseconds(b_delayCS);
+    digitalWrite(b_pin.panelCS, HIGH); // CS High
     if (b_family == FAMILY_LARGE)
     {
         if (b_pin.panelCSS != NOT_CONNECTED)
@@ -112,26 +203,20 @@ void hV_Board::b_sendIndexData(uint8_t index, const uint8_t * data, uint32_t siz
             digitalWrite(b_pin.panelCSS, HIGH);
         }
     }
-    digitalWrite(b_pin.panelCS, HIGH); // CS High
+    delayMicroseconds(b_delayCS);
 }
 
 // Software SPI Master protocol setup
-void hV_Board::b_sendIndexDataBoth(uint8_t index, const uint8_t * data, uint32_t size)
+void hV_Board::b_sendIndexDataSelect(uint8_t index, const uint8_t * data, uint32_t size, uint8_t select)
 {
     digitalWrite(b_pin.panelDC, LOW); // DC Low = Command
-    digitalWrite(b_pin.panelCS, LOW); // CS Low = Select
-    if (b_pin.panelCSS != NOT_CONNECTED)
-    {
-        digitalWrite(b_pin.panelCSS, LOW); // CS Low = Select
-    }
+    b_select(select); // Select half of large screen
 
     delayMicroseconds(b_delayCS); // Longer delay for large screens
     SPI.transfer(index);
     delayMicroseconds(b_delayCS); // Longer delay for large screens
 
-    // digitalWrite(b_pin.panelCS, HIGH); // CS High = Unselect
     digitalWrite(b_pin.panelDC, HIGH); // DC High = Data
-    // digitalWrite(b_pin.panelCS, LOW); // CS Low = Select
 
     delayMicroseconds(b_delayCS); // Longer delay for large screens
     for (uint32_t i = 0; i < size; i++)
@@ -140,73 +225,66 @@ void hV_Board::b_sendIndexDataBoth(uint8_t index, const uint8_t * data, uint32_t
     }
     delayMicroseconds(b_delayCS); // Longer delay for large screens
 
-    digitalWrite(b_pin.panelCS, HIGH); // CS High = Unselect
+    digitalWrite(b_pin.panelCS, HIGH); // CS high = Unselect Master
     if (b_pin.panelCSS != NOT_CONNECTED)
     {
-        digitalWrite(b_pin.panelCSS, HIGH); //  CS High = Unselect
+        digitalWrite(b_pin.panelCSS, HIGH); // CSS High = Unselect Slave
     }
 }
 
-void hV_Board::b_sendIndexDataMaster(uint8_t index, const uint8_t * data, uint32_t size)
+void hV_Board::b_select(uint8_t select)
 {
+    switch (select)
+    {
+        case PANEL_CS_MASTER:
+
+            digitalWrite(b_pin.panelCS, LOW); // CS Low = Select Master
+            if (b_pin.panelCSS != NOT_CONNECTED)
+            {
+                digitalWrite(b_pin.panelCSS, HIGH); // CSS High = Unselect Slave
+            }
+            break;
+
+        case PANEL_CS_SLAVE:
+
+            digitalWrite(b_pin.panelCS, HIGH); // CS high = Unselect Master
+            if (b_pin.panelCSS != NOT_CONNECTED)
+            {
+                digitalWrite(b_pin.panelCSS, LOW); // CSS Low = Select Slave
+            }
+            break;
+
+        default:
+
+            digitalWrite(b_pin.panelCS, LOW); // CS Low = Select Master
+            if (b_pin.panelCSS != NOT_CONNECTED)
+            {
+                digitalWrite(b_pin.panelCSS, LOW); // CSS Low = Select Slave
+            }
+            break;
+    }
+
     if (b_pin.panelCSS != NOT_CONNECTED)
     {
-        digitalWrite(b_pin.panelCSS, HIGH); // CS slave HIGH
+        delayMicroseconds(450); // 450 + 50 = 500
     }
-    digitalWrite(b_pin.panelDC, LOW); // DC Low = Command
-    digitalWrite(b_pin.panelCS, LOW); // CS Low = Select
-    delayMicroseconds(500);
-    SPI.transfer(index);
-    delayMicroseconds(500);
-    digitalWrite(b_pin.panelCS, HIGH); // CS High = Unselect
-    digitalWrite(b_pin.panelDC, HIGH); // DC High = Data
-    digitalWrite(b_pin.panelCS, LOW); // CS Low = Select
-    delayMicroseconds(500);
-
-    for (uint32_t i = 0; i < size; i++)
-    {
-        SPI.transfer(data[i]);
-    }
-    delayMicroseconds(500);
-    digitalWrite(b_pin.panelCS, HIGH); // CS High= Unselect
+    delayMicroseconds(b_delayCS); // Longer delay for large screens
 }
 
-// Software SPI Slave protocol setup
-void hV_Board::b_sendIndexDataSlave(uint8_t index, const uint8_t * data, uint32_t size)
+void hV_Board::b_sendCommandDataSelect8(uint8_t command, uint8_t data, uint8_t select)
 {
-    digitalWrite(b_pin.panelCS, HIGH); // CS Master High
-    digitalWrite(b_pin.panelDC, LOW); // DC Low= Command
+    digitalWrite(b_pin.panelDC, LOW); // LOW = command
+    b_select(select); // Select half of large screen
+
+    SPI.transfer(command);
+
+    digitalWrite(b_pin.panelDC, HIGH); // HIGH = data
+    SPI.transfer(data);
+
+    digitalWrite(b_pin.panelCS, HIGH);
     if (b_pin.panelCSS != NOT_CONNECTED)
     {
-        digitalWrite(b_pin.panelCSS, LOW); // CS slave LOW
-    }
-
-    delayMicroseconds(500);
-    SPI.transfer(index);
-    delayMicroseconds(500);
-
-    if (b_pin.panelCSS != NOT_CONNECTED)
-    {
-        digitalWrite(b_pin.panelCSS, HIGH); // CS slave HIGH
-    }
-
-    digitalWrite(b_pin.panelDC, HIGH); // DC High = Data
-
-    if (b_pin.panelCSS != NOT_CONNECTED)
-    {
-        digitalWrite(b_pin.panelCSS, LOW); // CS slave LOW
-    }
-
-    delayMicroseconds(500);
-
-    for (uint32_t i = 0; i < size; i++)
-    {
-        SPI.transfer(data[i]);
-    }
-    delayMicroseconds(500);
-    if (b_pin.panelCSS != NOT_CONNECTED)
-    {
-        digitalWrite(b_pin.panelCSS, HIGH); // CS slave HIGH
+        digitalWrite(b_pin.panelCSS, HIGH);
     }
 }
 

@@ -8,8 +8,9 @@
 //
 // Created by Rei Vilo, 31 Dec 2013
 //
-// Copyright (c) Rei Vilo, 2010-2023
+// Copyright (c) Rei Vilo, 2010-2024
 // Licence Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+// For exclusive use with Pervasive Displays screens
 //
 // See hV_Colours565.h for references
 //

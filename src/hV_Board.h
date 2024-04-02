@@ -8,14 +8,30 @@
 /// * Edition: Advanced
 ///
 /// @author Rei Vilo
-/// @date 21 Aug 2023
-/// @version 700
+/// @date 21 Mar 2024
+/// @version 801
 ///
-/// @copyright (c) Rei Vilo, 2010-2023
+/// @copyright (c) Rei Vilo, 2010-2024
 /// @copyright All rights reserved
+/// @copyright For exclusive use with Pervasive Displays screens
 ///
-/// * Evaluation edition: for professionals or organisations, no commercial usage
+/// * Basic edition: for hobbyists and for basic usage
+/// @n Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+/// @see https://creativecommons.org/licenses/by-sa/4.0/
+///
+/// @n Consider the Evaluation or Commercial editions for professionals or organisations and for commercial usage
+///
+/// * Evaluation edition: for professionals or organisations, evaluation only, no commercial usage
+/// @n All rights reserved
+///
 /// * Commercial edition: for professionals or organisations, commercial usage
+/// @n All rights reserved
+///
+/// * Viewer edition: for professionals or organisations
+/// @n All rights reserved
+///
+/// * Documentation
+/// @n All rights reserved
 ///
 
 // SDK
@@ -28,7 +44,7 @@
 ///
 /// @brief Library release number
 ///
-#define hV_BOARD_RELEASE 700
+#define hV_BOARD_RELEASE 801
 
 // Objects
 //
@@ -88,6 +104,16 @@ class hV_Board
     void b_sendIndexFixed(uint8_t index, uint8_t data, uint32_t len);
 
     ///
+    /// @brief Send fixed value through SPI
+    /// @param index register
+    /// @param data data, one byte covers 8 pixels
+    /// @param len number of bytes
+    /// @param select default = PANEL_CS_BOTH, otherwise PANEL_CS_MASTER or PANEL_CS_SLAVE
+    /// @note Valid only for 9.7 and 12.20" screens
+    ///
+    void b_sendIndexFixedSelect(uint8_t index, uint8_t data, uint32_t len, uint8_t select = PANEL_CS_BOTH);
+
+    ///
     /// @brief Send data through SPI
     /// @param index register
     /// @param data data
@@ -97,34 +123,18 @@ class hV_Board
     void b_sendIndexData(uint8_t index, const uint8_t * data, uint32_t size);
 
     ///
-    /// @brief Send data through SPI to the two halves of large screens
+    /// @brief Send data through SPI to selected half of large screen
     /// @param index register
     /// @param data data
     /// @param size number of bytes
+    /// @param select default = PANEL_CS_BOTH, otherwise PANEL_CS_MASTER or PANEL_CS_SLAVE
     /// @note Valid only for 9.7 and 12.20" screens
     ///
-    void b_sendIndexDataBoth(uint8_t index, const uint8_t * data, uint32_t size);
-
-    ///
-    /// @brief Send data through SPI to first half of large screens
-    /// @param index register
-    /// @param data data
-    /// @param size number of bytes
-    /// @note Valid only for 9.7 and 12.20" screens
-    ///
-    void b_sendIndexDataMaster(uint8_t index, const uint8_t * data, uint32_t size);
-
-    /// @brief Send data through SPI to second half of large screens
-    /// @param index register
-    /// @param data data
-    /// @param size number of bytes
-    /// @note Valid only for 9.7 and 12.20" screens
-    ///
-    void b_sendIndexDataSlave(uint8_t index, const uint8_t * data, uint32_t size);
+    void b_sendIndexDataSelect(uint8_t index, const uint8_t * data, uint32_t size, uint8_t select = PANEL_CS_BOTH);
 
     ///
     /// @brief Wait for ready
-    /// @details Wait for panelBusy to reach state
+    /// @details Wait for panelBusy signal to reach state
     /// @note Signal is busy until reaching state
     /// @param state to reach HIGH = default, LOW
     ///
@@ -133,7 +143,7 @@ class hV_Board
     ///
     /// @brief Send a command
     /// @param command command
-    /// @note If needed, set panelCS HIGH manually after
+    /// @note panelDC is kept high, to be changed manually after
     ///
     void b_sendCommand8(uint8_t command);
 
@@ -144,6 +154,21 @@ class hV_Board
     /// @note panelDC is kept high, to be changed manually after
     ///
     void b_sendCommandData8(uint8_t command, uint8_t data);
+
+    ///
+    /// @brief Send a command and one byte of data to selected half of large screen
+    /// @param command command
+    /// @param data uint8_t data
+    /// @param select default = PANEL_CS_BOTH, otherwise PANEL_CS_MASTER or PANEL_CS_SLAVE
+    /// @note panelDC is kept high, to be changed manually after
+    ///
+    void b_sendCommandDataSelect8(uint8_t command, uint8_t data, uint8_t select = PANEL_CS_BOTH);
+
+    /// @brief Select one half of large screens
+    /// @param select default = PANEL_CS_BOTH, otherwise PANEL_CS_MASTER or PANEL_CS_SLAVE
+    /// @note Valid only for 9.69 and 11.98" screens
+    ///
+    void b_select(uint8_t select = PANEL_CS_BOTH);
 
     ///
     /// @brief Suspend

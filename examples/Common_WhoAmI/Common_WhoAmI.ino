@@ -6,11 +6,12 @@
 /// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 20 Mar 2023
-/// @version 607
+/// @date 21 Mar 2024
+/// @version 801
 ///
-/// @copyright (c) Rei Vilo, 2010-2023
+/// @copyright (c) Rei Vilo, 2010-2024
 /// @copyright Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+/// @copyright For exclusive use with Pervasive Displays screens
 ///
 /// @see ReadMe.txt for references
 /// @n
@@ -30,23 +31,15 @@
 #include "hV_Configuration.h"
 
 // Set parameters
+#define DISPLAY_WHOAMI 1
 
 // Define structures and classes
 
 // Define variables and constants
-// Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_154, boardRaspberryPiPico_RP2040);
-// Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_213, boardRaspberryPiPico_RP2040);
-// Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_266, boardRaspberryPiPico_RP2040);
-// Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_271, boardRaspberryPiPico_RP2040);
-// Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_287, boardRaspberryPiPico_RP2040);
-Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_370, boardRaspberryPiPico_RP2040);
-// Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_417, boardRaspberryPiPico_RP2040);
-// Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_437, boardRaspberryPiPico_RP2040);
-// Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_565, boardRaspberryPiPico_RP2040);
-// Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_581, boardRaspberryPiPico_RP2040);
-// Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_741, boardRaspberryPiPico_RP2040);
-// Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_969, boardRaspberryPiPico_RP2040);
-// Screen_EPD_EXT3 myScreen(eScreen_EPD_EXT3_B98, boardRaspberryPiPico_RP2040);
+
+// --- Global
+Screen_EPD_EXT3 myScreen(eScreen_EPD_266_CS_0C, boardRaspberryPiPico_RP2040);
+Screen_EPD_EXT3 myScreen(eScreen_EPD_266_JS_0C, boardRaspberryPiPico_RP2040);
 
 // Prototypes
 
@@ -59,13 +52,16 @@ void wait(uint8_t second)
 {
     for (uint8_t i = second; i > 0; i--)
     {
-        Serial.print(formatString(" > %i  \r", i));
+        mySerial.print(formatString(" > %i  \r", i));
         delay(1000);
     }
-    Serial.print("         \r");
+    mySerial.print("         \r");
 }
 
 // Functions
+
+#if (DISPLAY_WHOAMI == 1)
+
 ///
 /// @brief Who am i? test screen
 ///
@@ -74,11 +70,45 @@ void wait(uint8_t second)
 ///
 void displayWhoAmI()
 {
-    myScreen.setOrientation(7);
-    myScreen.selectFont(Font_Terminal8x12);
-    myScreen.gText(4, 4, myScreen.WhoAmI());
+    myScreen.setOrientation(ORIENTATION_LANDSCAPE);
+    myScreen.selectFont(Font_Terminal12x16);
+
+    uint16_t x = 4;
+    uint16_t y = 4;
+    uint16_t dy = myScreen.characterSizeY();
+    myScreen.gText(x, y, myScreen.WhoAmI());
+    y += dy;
+    myScreen.gText(x, y, formatString("Size %i x %i", myScreen.screenSizeX(), myScreen.screenSizeY()));
+    y += dy;
+    myScreen.gText(x, y, myScreen.screenNumber());
+    y += dy;
+    myScreen.gText(x, y, formatString("PDLS %s v%i.%i.%i", SCREEN_EPD_EXT3_VARIANT, SCREEN_EPD_EXT3_RELEASE / 100, (SCREEN_EPD_EXT3_RELEASE / 10) % 10, SCREEN_EPD_EXT3_RELEASE % 10));
+    y += dy;
+    myScreen.setPenSolid(true);
+    myScreen.dRectangle(x + dy * 0, y, dy - 1, dy - 1, myColours.black);
+    myScreen.setPenSolid(false);
+    myScreen.dRectangle(x + dy * 1, y, dy - 1, dy - 1, myColours.black);
+    myScreen.setPenSolid(true);
+
+    uint8_t number = myScreen.screenColours();
+
+    if (number >= 3)
+    {
+        myScreen.dRectangle(x + dy * 2, y, dy - 1, dy - 1, myColours.red);
+
+#if defined(WITH_COLOURS_BWRY)
+        if (number == 4)
+        {
+            myScreen.dRectangle(x + dy * 3, y, dy - 1, dy - 1, myColours.yellow);
+        }
+#endif // WITH_COLOURS_BWRY
+    }
+
     myScreen.flush();
 }
+
+#endif // DISPLAY_WHOAMI
+
 
 // Add setup code
 ///
@@ -86,28 +116,34 @@ void displayWhoAmI()
 ///
 void setup()
 {
-    Serial.begin(115200);
+    // mySerial = Serial by default, otherwise edit hV_HAL_Peripherals.h
+    mySerial.begin(115200);
     delay(500);
-    Serial.println();
-    Serial.println("=== " __FILE__);
-    Serial.println("=== " __DATE__ " " __TIME__);
-    Serial.println();
+    mySerial.println();
+    mySerial.println("=== " __FILE__);
+    mySerial.println("=== " __DATE__ " " __TIME__);
+    mySerial.println();
 
-    Serial.println("begin... ");
+    // Start
+    mySerial.println("begin... ");
     myScreen.begin();
-    Serial.println(formatString("%s %ix%i", myScreen.WhoAmI().c_str(), myScreen.screenSizeX(), myScreen.screenSizeY()));
+    mySerial.println(formatString("%s %ix%i", myScreen.WhoAmI().c_str(), myScreen.screenSizeX(), myScreen.screenSizeY()));
 
-    Serial.println("Who Am I... ");
+#if (DISPLAY_WHOAMI == 1)
+
+    mySerial.println("Who Am I... ");
     myScreen.clear();
     displayWhoAmI();
     wait(8);
 
-    Serial.println("White... ");
+#endif // DISPLAY_WHOAMI
+
+    mySerial.println("White... ");
     myScreen.clear();
     myScreen.flush();
 
-    Serial.println("=== ");
-    Serial.println();
+    mySerial.println("=== ");
+    mySerial.println();
 }
 
 // Add loop code
