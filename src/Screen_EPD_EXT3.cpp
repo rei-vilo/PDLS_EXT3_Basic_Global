@@ -994,6 +994,7 @@ Screen_EPD_EXT3::Screen_EPD_EXT3(eScreen_EPD_t eScreen_EPD_EXT3, pins_t board)
     u_eScreen_EPD = eScreen_EPD_EXT3;
     b_pin = board;
     u_newImage = 0; // nullptr
+    COG_initialData[0] = 0;
 }
 
 void Screen_EPD_EXT3::begin()
