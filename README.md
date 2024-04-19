@@ -9,7 +9,8 @@ The Pervasive Displays Library Suite is specifically designed for the [Pervasive
 The **PDLS_EXT3_Basic_Global** provides a high-level interface to drive the e-paper screens with global update:
 
 + [EPD Extension Kit Gen 3 (EXT3 or EXT3-1)](https://www.pervasivedisplays.com/product/epd-extension-kit-gen-3-EXT3/); 
-+ iTC [monochrome](https://www.pervasivedisplays.com/products/?_sft_product_colour=black-white) and [colour (black-white-red)](https://www.pervasivedisplays.com/products/?_sft_product_colour=black-white-red) screens; and
++ iTC [monochrome screens](https://www.pervasivedisplays.com/products/?_sft_product_colour=black-white) (film `CS`);
++ iTC [colour (black-white-red) screens](https://www.pervasivedisplays.com/products/?_sft_product_colour=black-white-red) (film `JS`); and
 + the [EPD Pico Kit (EPDK)](https://www.pervasivedisplays.com/product/epd-pico-kit-epdk/), which includes a Raspberry Pi Pico RP2040, an EXT3-1 extension board and a 2.66" monochrome panel.
 
 Please refer to [PDLS_EXT3_Basic_Global](https://github.com/rei-vilo/PDLS_EXT3_Basic_Global/issues) for reporting issues and contributing pull requests.
