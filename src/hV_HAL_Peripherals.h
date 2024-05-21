@@ -83,6 +83,13 @@ void hV_HAL_SPI_begin(uint32_t speed = 8000000);
 /// @note hV_HAL_SPI3_begin() sets the pins for 3-wire SPI.
 /// @{
 
+#if defined(ENERGIA)
+
+#define SCK 7
+#define MOSI 15
+
+#endif // ENERGIA
+
 ///
 /// @brief Configure 3-wire SPI
 /// @note Select default SCK as clock and MOSI as data (SDIO)
