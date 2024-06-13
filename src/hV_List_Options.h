@@ -15,10 +15,11 @@
 /// * 9. Set GPIO expander mode, not implemented
 /// * 10. String object for basic edition
 /// * 11. Set storage mode, not implemented
+/// * 12. Set debug options
 ///
 /// @author Rei Vilo
-/// @date 21 Mar 2024
-/// @version 801
+/// @date 21 May 2024
+/// @version 803
 ///
 /// @copyright (c) Rei Vilo, 2010-2024
 /// @copyright All rights reserved
@@ -47,7 +48,7 @@
 ///
 /// @brief Release
 ///
-#define hV_LIST_OPTIONS_RELEASE 801
+#define hV_LIST_OPTIONS_RELEASE 803
 
 ///
 /// @name 1- List of supported Pervasive Displays screens
@@ -182,4 +183,11 @@
 /// @}
 
 #endif // hV_LIST_OPTIONS_RELEASE
+
+///
+/// @brief 12- Debug options
+/// * Basic edition: none
+/// * Evaluation edition: all
+/// * Commercial edition: option
+///
 

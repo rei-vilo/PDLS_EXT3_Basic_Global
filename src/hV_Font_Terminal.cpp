@@ -19,21 +19,27 @@
 // * Commercial edition: for professionals or organisations, commercial usage
 // All rights reserved
 //
+// Release 803: Added types for string and frame-buffer
+//
 
-#include "hV_Font_Terminal.h"
+// Configuration
+#include "hV_Configuration.h"
 
 // The Arduino IDE does not allow to select the libraries, hence this condition.
 #if (FONT_MODE == USE_FONT_TERMINAL)
 
+// Font structure
+#include "hV_Font_Terminal.h"
+
 // Code
 // Font functions
-//hV_Font_Terminal::hV_Font_Terminal()
+// hV_Font_Terminal::hV_Font_Terminal()
 void hV_Font_Terminal::f_begin()
 {
-    f_fontSize       = 0;
-    f_fontNumber     = MAX_FONT_SIZE;
-    f_fontSolid      = true;
-    f_fontSpaceX     = 1;
+    f_fontSize = 0;
+    f_fontNumber = MAX_FONT_SIZE;
+    f_fontSolid = true;
+    f_fontSpaceX = 1;
 
     // Take first font
     f_selectFont(0);
@@ -141,21 +147,33 @@ uint16_t hV_Font_Terminal::f_characterSizeY()
     return f_font.height;
 }
 
-uint16_t hV_Font_Terminal::f_stringSizeX(String text)
+uint16_t hV_Font_Terminal::f_stringSizeX(STRING_CONST_TYPE text)
 {
-    return (uint16_t) text.length() * f_font.maxWidth;
+    uint16_t textWidth = 0;
+    uint8_t textLength = 0;
+
+    textLength = text.length();
+
+    textWidth = (f_font.maxWidth + f_fontSpaceX) * textLength;
+
+    return textWidth;
 }
 
-uint8_t hV_Font_Terminal::f_stringLengthToFitX(String text, uint16_t pixels)
+uint8_t hV_Font_Terminal::f_stringLengthToFitX(STRING_CONST_TYPE text, uint16_t pixels)
 {
     uint8_t index = 0;
+    uint16_t textWidth = 0;
+    uint8_t textLength = 0;
+
+    textLength = text.length();
 
     // Monospaced font
     index = pixels / f_font.maxWidth - 1;
-    if (index > text.length())
+    if (index > textLength)
     {
-        index = text.length();
+        index = textLength;
     }
+
     return index;
 }
 

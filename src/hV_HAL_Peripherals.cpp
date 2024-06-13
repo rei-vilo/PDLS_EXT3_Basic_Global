@@ -21,9 +21,15 @@
 //
 // Release 800: Added 3-wire SPI
 // Release 801: Added SPI configuration
+// Release 803: Improved stability
+//
 
+// Library header
 #include "hV_HAL_Peripherals.h"
 
+//
+// === General section
+//
 #if defined(ENERGIA)
 ///
 /// @brief Proxy for SPISettings
@@ -63,6 +69,9 @@ void hV_HAL_begin()
 {
     // Empty
 }
+//
+// === End of General section
+//
 
 //
 // === SPI section
@@ -99,6 +108,11 @@ void hV_HAL_SPI_begin(uint32_t speed)
     SPI.beginTransaction(_settingScreen);
 
 #endif // ENERGIA
+}
+
+void hV_HAL_SPI_end()
+{
+    SPI.end();
 }
 //
 // === End of SPI section

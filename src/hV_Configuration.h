@@ -19,8 +19,8 @@
 /// * 11. Set storage mode, not implemented
 ///
 /// @author Rei Vilo
-/// @date 21 Mar 2024
-/// @version 801
+/// @date 21 May 2024
+/// @version 803
 ///
 /// @copyright (c) Rei Vilo, 2010-2024
 /// @copyright All rights reserved
@@ -65,8 +65,8 @@
 #error Required hV_LIST_CONSTANTS_RELEASE 801
 #endif // hV_LIST_CONSTANTS_RELEASE
 
-#if (hV_LIST_OPTIONS_RELEASE < 801)
-#error Required hV_LIST_OPTIONS_RELEASE 801
+#if (hV_LIST_OPTIONS_RELEASE < 803)
+#error Required hV_LIST_OPTIONS_RELEASE 803
 #endif // hV_LIST_OPTIONS_RELEASE
 
 #if (hV_LIST_BOARDS_RELEASE < 801)
@@ -81,7 +81,7 @@
 ///
 /// @brief Release
 ///
-#define hV_CONFIGURATION_RELEASE 801
+#define hV_CONFIGURATION_RELEASE 803
 
 ///
 /// @name 1- List of supported Pervasive Displays screens
@@ -106,6 +106,19 @@
 ///
 /// @see hV_List_Options.h
 ///
+
+///
+/// @brief Type for framebuffer
+/// @details Based on SRAM_MODE selection
+///
+#define FRAMEBUFFER_TYPE uint8_t *
+
+///
+/// @brief Type for string
+/// @details Based on STRING_MODE selection
+///
+#define STRING_TYPE String
+#define STRING_CONST_TYPE String
 
 #endif // hV_CONFIGURATION_RELEASE
 

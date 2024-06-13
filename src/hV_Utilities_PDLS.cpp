@@ -6,13 +6,14 @@
 // Project Pervasive Displays Library Suite
 // Based on highView technology
 //
-// Created by Rei Vilo, 16 Aug 2023
+// Created by Rei Vilo, 21 Mar 2024
 //
 // Copyright (c) Rei Vilo, 2010-2024
 // Licence All rights reserved
 //
 // Release 800: Read OTP memory
 // Release 801: Added number of colours
+// Release 803: Added types for string and frame-buffer
 //
 
 // Library header
@@ -45,12 +46,21 @@ void hV_Utilities_PDLS::u_WhoAmI(char * answer)
             strcat(answer, "-Wide");
             break;
 
+        case FILM_H: // Film H, Freezer
+
+            strcat(answer, "-Freezer");
+            break;
+
         case FILM_J: // Film J, BWR, "Spectra"
         case FILM_E: // Film E, BWR, deprecated
         case FILM_F: // Film F, BWR, deprecated
-        case FILM_G: // Film G, BWY, deprecated
 
             strcat(answer, "-BWR");
+            break;
+
+        case FILM_G: // Film G, BWY, deprecated
+
+            strcat(answer, "-BWY");
             break;
 
         case FILM_Q: // Film Q, BWRY, "Spectra 4"
@@ -140,19 +150,11 @@ uint8_t hV_Utilities_PDLS::screenColours()
 
         default:
 
-            result = 0; // error
+            result = 0; // Error
             break;
     }
 
     return result;
-}
-
-String hV_Utilities_PDLS::screenNumber()
-{
-    char work[64] = {0};
-    u_screenNumber(work);
-
-    return formatString("Number %s", work);
 }
 
 void hV_Utilities_PDLS::u_screenNumber(char * answer)
@@ -178,6 +180,14 @@ void hV_Utilities_PDLS::u_screenNumber(char * answer)
 
             break;
     }
+}
+
+STRING_TYPE hV_Utilities_PDLS::screenNumber()
+{
+    char work[64] = {0};
+    u_screenNumber(work);
+
+    return formatString("Number %s", work);
 }
 
 //
@@ -286,3 +296,47 @@ uint8_t hV_Utilities_PDLS::checkTemperatureMode(uint8_t updateMode)
     return updateMode;
 }
 
+void hV_Utilities_PDLS::debugVariant(uint8_t contextFilm)
+{
+    mySerial.println();
+
+    switch (contextFilm)
+    {
+        case FILM_P: // BW, fast update
+        case FILM_K: // BW, fast update and wide temperature
+
+            mySerial.println(formatString("hV * Screen %i-%cS-0%c with no fast update", u_codeSize, u_codeFilm, u_codeDriver));
+            break;
+
+        case FILM_Q: // BWRY
+
+            mySerial.println(formatString("hV * Screen %i-%cS-0%c is not black-white-red-yellow", u_codeSize, u_codeFilm, u_codeDriver));
+            break;
+
+        default:
+
+            mySerial.println(formatString("hV * Screen %i-%cS-0%c is not supported", u_codeSize, u_codeFilm, u_codeDriver));
+            break;
+    } // u_codeFilm
+
+    switch (u_codeFilm)
+    {
+        case FILM_P: // BW, fast update
+        case FILM_K: // BW, fast update and wide temperature
+
+            mySerial.println(formatString("hV * Use PDLS_EXT3_%s_%s instead", "Basic", "Fast"));
+            break;
+
+        case FILM_Q: // BWRY
+
+            mySerial.println(formatString("hV * Use PDLS_EXT3_%s_%s instead", "Basic", "BWRY"));
+            break;
+
+        default:
+
+            mySerial.println(formatString("hV * Use PDLS_EXT3_%s_%s instead", "Basic", "Global"));
+            break;
+    } // u_codeFilm
+
+    while (0x01);
+}

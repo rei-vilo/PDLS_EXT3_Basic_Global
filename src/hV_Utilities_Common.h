@@ -6,8 +6,8 @@
 /// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 21 Mar 2024
-/// @version 801
+/// @date 21 May 2024
+/// @version 803
 ///
 /// @copyright (c) Rei Vilo, 2010-2024
 /// @copyright All rights reserved
@@ -35,11 +35,14 @@
 // SDK
 #include "hV_HAL_Peripherals.h"
 
+// Configuration
+#include "hV_Configuration.h"
+
 #ifndef hV_UTILITIES_RELEASE
 ///
 /// @brief Library release number
 ///
-#define hV_UTILITIES_RELEASE 801
+#define hV_UTILITIES_RELEASE 803
 
 #ifndef min
 #define min(a, b) ((a) < (b) ? (a) : (b))
@@ -85,31 +88,6 @@ int32_t cos32x100(int32_t degreesX100);
 ///
 int32_t sin32x100(int32_t degreesX100);
 
-/*
-///
-/// @brief Convert polar to rectangle coordinates
-/// @param[in] centerX circle center, x coordinate
-/// @param[in] centerY circle center, y coordinate
-/// @param[in] angle angle, degrees 0..360°
-/// @param[in] radius radius, pixels
-/// @param[out] rectangularX x rectangular coordinate
-/// @param[out] rectangularY y rectangular coordinate
-/// @note This function uses floats.
-///
-void convertPolar2Rectangle(uint16_t centerX, uint16_t centerY, uint16_t angle, uint16_t radius, uint16_t & rectangularX, uint16_t & rectangularY);
-
-/// @brief Convert rectangle to polar coordinates
-/// @param[in] centerX circle center, x coordinate
-/// @param[in] centerY circle center, y coordinate
-/// @param[in] rectangularX x rectangular coordinate
-/// @param[in] rectangularY y rectangular coordinate
-/// @param[out] angle angle in degrees 0..360°
-/// @param[out] radius radius in pixels
-/// @note This function uses floats.
-///
-void convertRectangle2Polar(uint16_t centerX, uint16_t centerY, uint16_t rectangularX, uint16_t rectangularY, uint16_t & angle, uint16_t & radius);
-*/
-
 ///
 /// @brief UTF-8 to ISO-8859-1 Converter
 /// @param s UTF-8 string, input
@@ -119,7 +97,7 @@ void convertRectangle2Polar(uint16_t centerX, uint16_t centerY, uint16_t rectang
 /// (Mountain View, CA: The Unicode Consortium, 2012. ISBN 978-1-936213-07-8)
 /// http://www.unicode.org/versions/Unicode6.2.0/
 ///
-String utf2iso(String s);
+STRING_TYPE utf2iso(STRING_TYPE s);
 
 ///
 /// @brief Format string
@@ -129,7 +107,7 @@ String utf2iso(String s);
 /// @return string with values formatted
 /// @see http://www.cplusplus.com/reference/cstdio/printf/?kw=printf for codes
 ///
-String formatString(const char * format, ...);
+STRING_TYPE formatString(const char * format, ...);
 
 ///
 /// @brief Remove leading and ending characters
@@ -137,7 +115,7 @@ String formatString(const char * format, ...);
 /// @return trimmed text
 /// @note Removed characters are LF CR TAB SPACE '
 ///
-String trimString(String text);
+STRING_TYPE trimString(STRING_TYPE text);
 
 /// @}
 

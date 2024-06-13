@@ -3,7 +3,8 @@
 // Library C++ code
 // ----------------------------------
 //
-// Project highView Library Suite
+// Project Pervasive Displays Library Suite
+// Based on highView technology
 //
 // Created by Rei Vilo, 01 Jun 2013
 //
@@ -14,6 +15,7 @@
 // See hV_Utilities_Common.h for references
 //
 // Release 700: Refactored screen and board functions
+// Release 803: Added types for string and frame-buffer
 //
 
 // Library header
@@ -32,17 +34,19 @@ char bufferOut[128];
 
 // Code
 // Utilities
-String formatString(const char * format, ...)
+
+STRING_TYPE formatString(const char * format, ...)
 {
     memset(&bufferOut, 0x00, sizeof(bufferOut));
     va_list args;
     va_start(args, format);
     vsnprintf(bufferOut, 127, format, args);
     va_end(args);
+
     return String(bufferOut);
 }
 
-String trimString(String text)
+STRING_TYPE trimString(STRING_TYPE text)
 {
     String work = "";
     bool flag = true;
@@ -153,45 +157,7 @@ int32_t sin32x100(int32_t degreesX100)
     return cos32x100(degreesX100 + 27000);
 }
 
-void convertPolar2Rectangle(uint16_t centerX, uint16_t centerY, uint16_t angle, uint16_t radius, uint16_t & rectangularX, uint16_t & rectangularY)
-{
-    rectangularX = (uint16_t)(centerX + radius * sin32x100(angle * 100) / 100);
-    rectangularY = (uint16_t)(centerY - radius * cos32x100(angle * 100) / 100);
-}
-
-void convertRectangle2Polar(uint16_t centerX, uint16_t centerY, uint16_t rectangularX, uint16_t rectangularY, uint16_t & angle, uint16_t & radius)
-{
-    float fX = (float)rectangularX - centerX;
-    float fY = (float)rectangularY - centerY;
-    float fZ = sqrt(fX * fX + fY * fY);
-    fX /= fZ;
-    fY /= fZ;
-
-    if ((fY == 0) and (fX > 0))
-    {
-        angle = 90;
-    }
-    else if ((fY == 0) and (fX < 0))
-    {
-        angle = 270;
-    }
-    else
-    {
-        float fAngle = -atan(fX / fY);
-        fAngle *= 360 / 2 / PI;
-
-        if (fY > 0)
-        {
-            fAngle += 180;
-        }
-        if ((fX < 0) and (fY < 0))
-        {
-            fAngle += 360;
-        }
-        angle = (uint16_t)fAngle;
-    }
-}
-String utf2iso(String s)
+STRING_TYPE utf2iso(STRING_TYPE s)
 {
     uint8_t c;
 

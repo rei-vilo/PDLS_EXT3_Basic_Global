@@ -7,6 +7,10 @@
 ///
 /// @n Content
 /// * 2- List of pre-configured boards
+///     * 2.1 Recommended boards
+///     * 2.2 Other boards
+///     * 2.3 Deprecated boards
+///
 ///
 /// @author Rei Vilo
 /// @date 21 Mar 2024
@@ -42,7 +46,7 @@
 ///
 /// @brief Release
 ///
-#define hV_LIST_BOARDS_RELEASE 801
+#define hV_LIST_BOARDS_RELEASE 803
 
 ///
 /// @brief Not connected pin
@@ -76,8 +80,29 @@ struct pins_t
 };
 
 ///
-/// @name Recommended boards
+/// @name 2.1 Recommended boards
 /// @{
+
+///
+/// @brief Arduino Nano Matter with Silicon Labs MGM240P, tested
+/// @note Numbers refer to pins
+/// @note Recommended board
+///
+const pins_t boardArduinoNanoMatter =
+{
+    .panelBusy = 10, ///< EXT3 and EXT3-1 pin 3 Red -> D10
+    .panelDC = 9, ///< EXT3 and EXT3-1 pin 4 Orange -> D9
+    .panelReset = 8, ///< EXT3 and EXT3-1 pin 5 Yellow -> D8
+    .flashCS = 7, ///< EXT3 and EXT3-1 pin 8 Violet -> D7
+    .panelCS = 6, ///< EXT3 and EXT3-1 pin 9 Grey -> D6
+    .panelCSS = NOT_CONNECTED, ///< EXT3 and EXT3-1 pin 12 Grey2
+    .flashCSS = NOT_CONNECTED, ///< EXT3 pin 20 or EXT3-1 pin 11 Black2
+    .touchInt = NOT_CONNECTED, ///< EXT3-Touch pin 3 Red
+    .touchReset = NOT_CONNECTED, ///< EXT3-Touch pin 4 Orange
+    .panelPower = 2, ///< Optional power circuit -> D2
+    .cardCS = NOT_CONNECTED, ///< Separate SD-card board
+    .cardDetect = NOT_CONNECTED, ///< Separate SD-card board
+};
 
 ///
 /// @brief Raspberry Pi Pico and Pico W with default RP2040 configuration, tested
@@ -87,13 +112,9 @@ struct pins_t
 ///
 const pins_t boardRaspberryPiPico_RP2040 =
 {
-    ///< EXT3 and EXT3-1 pin 1 Black -> +3.3V
-    ///< EXT3 and EXT3-1 pin 2 Brown -> SPI SCK GP18
     .panelBusy = 13, ///< EXT3 and EXT3-1 pin 3 Red -> GP13
     .panelDC = 12, ///< EXT3 and EXT3-1 pin 4 Orange -> GP12
     .panelReset = 11, ///< EXT3 and EXT3-1 pin 5 Yellow -> GP11
-    ///< EXT3 and EXT3-1 pin 6 Green -> SPI MISO or NC GP16
-    ///< EXT3 and EXT3-1 pin 7 Blue -> SPI MOSI or SDIO GP19
     .flashCS = 10, ///< EXT3 and EXT3-1 pin 8 Violet -> GP10
     .panelCS = 17, ///< EXT3 and EXT3-1 pin 9 Grey -> GP17
     .panelCSS = 14, ///< EXT3 and EXT3-1 pin 12 Grey2 -> GP14
@@ -133,20 +154,13 @@ const pins_t boardFeatherNRF52840 =
 ///
 const pins_t boardESP32DevKitC =
 {
-    ///< EXT3 and EXT3-1 pin 1 Black -> +3.3V
-    ///< EXT3 and EXT3-1 pin 2 Brown -> SPI SCK GPIO14
     .panelBusy = 27, ///< EXT3 and EXT3-1 pin 3 Red -> GPIO27
     .panelDC = 26, ///< EXT3 and EXT3-1 pin 4 Orange -> GPIO26
     .panelReset = 25, ///< EXT3 and EXT3-1 pin 5 Yellow -> GPIO25
-    ///< EXT3 and EXT3-1 pin 6 Green -> SPI MISO GPIO12
-    ///< EXT3 and EXT3-1 pin 7 Blue -> SPI MOSI GPIO13
     .flashCS = 33, ///< EXT3 and EXT3-1 pin 8 Violet -> GPIO33
     .panelCS = 32, ///< EXT3 and EXT3-1 pin 9 Grey -> GPIO32
     .panelCSS = 4, ///< EXT3 and EXT3-1 pin 12 Grey2 -> GPIO4
     .flashCSS = 0, ///< EXT3 pin 20 or EXT3-1 pin 11 Black2 -> GPIO0
-    ///< EXT3 and EXT3-1 pin 10 White -> GROUND
-    ///< EXT3-Touch pin 1 Brown -> I2C SDA GPIO21
-    ///< EXT3-Touch pin 2 Black -> I2C SCL GPIO22
     .touchInt = NOT_CONNECTED, ///< EXT3-Touch pin 3 Red -> GPIO10
     .touchReset = NOT_CONNECTED, ///< EXT3-Touch pin 4 Orange -> GPIO9
     .panelPower = NOT_CONNECTED, ///< Optional power circuit
@@ -157,87 +171,8 @@ const pins_t boardESP32DevKitC =
 /// @}
 
 ///
-/// @name Other boards
+/// @name 2.2 Other boards
 /// @{
-
-///
-/// @brief Texas Instruments LaunchPad MSP430 and MSP432 LaunchPad configuration, tested
-///
-const pins_t boardLaunchPad =
-{
-    .panelBusy = 11, ///< EXT3 and EXT3-1 pin 3 Red -> 11
-    .panelDC = 12, ///< EXT3 and EXT3-1 pin 4 Orange -> 12
-    .panelReset = 13, ///< EXT3 and EXT3-1 pin 5 Yellow -> 13
-    .flashCS = 18, ///< EXT3 and EXT3-1 pin 8 Violet -> 18
-    .panelCS = 19, ///< EXT3 and EXT3-1 pin 9 Grey -> 19
-    .panelCSS = 39, ///< EXT3 and EXT3-1 pin 12 Grey2 -> 39
-    .flashCSS = 38, ///< EXT3 pin 20 or EXT3-1 pin 11 Black2 -> 38
-    .touchInt = NOT_CONNECTED, ///< EXT3-Touch pin 3 Red -> 8
-    .touchReset = NOT_CONNECTED, ///< EXT3-Touch pin 4 Orange -> 6
-    .panelPower = NOT_CONNECTED, ///< Optional power circuit -> 2
-    .cardCS = NOT_CONNECTED, ///< Separate SD-card board -> 5
-    .cardDetect = NOT_CONNECTED, ///< Separate SD-card board
-};
-
-///
-/// @brief Texas Instruments LaunchPad MSP430FR5994 LaunchPad with SD-card configuration, tested
-///
-const pins_t boardMSP430FR5994 =
-{
-    .panelBusy = 11, ///< EXT3 and EXT3-1 pin 3 Red
-    .panelDC = 12, ///< EXT3 and EXT3-1 pin 4 Orange
-    .panelReset = 13, ///< EXT3 and EXT3-1 pin 5 Yellow
-    .flashCS = 18, ///< EXT3 and EXT3-1 pin 8 Violet
-    .panelCS = 19, ///< EXT3 and EXT3-1 pin 9 Grey
-    .panelCSS = 39, ///< EXT3 and EXT3-1 pin 12 Grey2
-    .flashCSS = 38, ///< EXT3 pin 20 or EXT3-1 pin 11 Black2
-    .touchInt = NOT_CONNECTED, ///< EXT3-Touch pin 3 Red
-    .touchReset = NOT_CONNECTED, ///< EXT3-Touch pin 4 Orange
-    .panelPower = NOT_CONNECTED, ///< Optional power circuit
-    .cardCS = 47, ///< Included SD-card
-    .cardDetect = 51 ///< Included SD-card
-};
-
-///
-/// @brief Texas Instruments LaunchPad CC1352 configuration, tested
-///
-const pins_t boardCC1352 =
-{
-    .panelBusy = 5, ///< EXT3 and EXT3-1 pin 3 Red
-    .panelDC = 6, ///< EXT3 and EXT3-1 pin 4 Orange
-    .panelReset = 19, ///< EXT3 and EXT3-1 pin 5 Yellow
-    .flashCS = 24, ///< EXT3 and EXT3-1 pin 8 Violet
-    .panelCS = 26, ///< EXT3 and EXT3-1 pin 9 Grey
-    .panelCSS = 37, ///< EXT3 and EXT3-1 pin 12 Grey2 -> 37
-    .flashCSS = 27, ///< EXT3 pin 20 or EXT3-1 pin 11 Black2 -> 27
-    .touchInt = NOT_CONNECTED, ///< EXT3-Touch pin 3 Red
-    .touchReset = NOT_CONNECTED, ///< EXT3-Touch pin 4 Orange
-    .panelPower = NOT_CONNECTED, ///< Optional power circuit
-    .cardCS = NOT_CONNECTED, ///< Separate SD-card board
-    .cardDetect = NOT_CONNECTED, ///< Separate SD-card board
-};
-
-///
-/// @brief Raspberry Pi Zero, 2B, 3B, 4B configuration with RasPiArduino, tested
-/// @warning Not recommended
-/// @deprecated Use boardRaspberryPiZeroB_MRAA instead (7.0.0)
-/// @see https://github.com/me-no-dev/RasPiArduino
-///
-const pins_t boardRaspberryPiZeroB_RasPiArduino =
-{
-    .panelBusy = 7, ///< EXT3 and EXT3-1 pin 3 Red -> GPIO7 pin 26
-    .panelDC = 8, ///< EXT3 and EXT3-1 pin 4 Orange -> GPIO8 pin 24
-    .panelReset = 25, ///< EXT3 and EXT3-1 pin 5 Yellow -> GPIO25 pin 22
-    .flashCS = 22, ///< EXT3 and EXT3-1 pin 8 Violet -> GPIO22 pin 15
-    .panelCS = 27, ///< EXT3 and EXT3-1 pin 9 Grey -> GPIO27 pin 13
-    .panelCSS = 23, ///< EXT3 and EXT3-1 pin 12 Grey2 -> GPIO23 pin 16
-    .flashCSS = 24, ///< EXT3 pin 20 or EXT3-1 pin 11 Black2 -> GPIO24 pin 18
-    .touchInt = NOT_CONNECTED, ///< EXT3-Touch pin 3 Red
-    .touchReset = NOT_CONNECTED, ///< EXT3-Touch pin 4 Orange
-    .panelPower = NOT_CONNECTED, ///< Optional power circuit
-    .cardCS = NOT_CONNECTED, ///< Separate SD-card board
-    .cardDetect = NOT_CONNECTED, ///< Separate SD-card board
-};
 
 ///
 /// @brief Raspberry Pi Pico Arduino Mbed-OS configuration, not recommended, tested
@@ -351,11 +286,6 @@ const pins_t boardParticlePhoton =
 };
 
 ///
-/// @brief RedBear Duo configuration, tested
-///
-const pins_t boardRedBearDuo = boardParticlePhoton;
-
-///
 /// @brief Espressif ESP32-Pico-v4
 /// @note Numbers refer to GPIOs not pins
 /// @warning Specific SPI port with SCK=14 MISO=12 MOSI=13
@@ -432,11 +362,28 @@ const pins_t boardSiLabsBG24Explorer =
     .panelCS = 0x11, ///< EXT3 and EXT3-1 pin 9 Grey -> PB01
     .panelCSS = NOT_CONNECTED, ///< EXT3 and EXT3-1 pin 12 Grey2 -> P.0.
     .flashCSS = NOT_CONNECTED, ///< EXT3 pin 20 or EXT3-1 pin 11 Black2 -> P.0.
-    ///< EXT3 and EXT3-1 pin 10 White -> GROUND
-    // .i2cSDA = 0x15, ///< EXT3-Touch pin 1 Brown -> I2C SDA PB05
-    // .i2cSCL = 0x14, ///< EXT3-Touch pin 2 Black -> I2C SCL PB04
     .touchInt = NOT_CONNECTED, ///< EXT3-Touch pin 3 Red -> PD05
     .touchReset = NOT_CONNECTED, ///< EXT3-Touch pin 4 Orange -> PD04
+    .panelPower = NOT_CONNECTED, ///< Optional power circuit
+    .cardCS = NOT_CONNECTED, ///< Separate SD-card board
+    .cardDetect = NOT_CONNECTED, ///< Separate SD-card board
+};
+
+///
+/// @brief STMicroelectronics Nucleo32 L431KC, tested
+/// @warning D7/D8 shared with OSC32_IN/OSC32_OUT
+///
+const pins_t boardNucleo32L431KC =
+{
+    .panelBusy = 4, ///< EXT3 and EXT3-1 pin 3 Red
+    .panelDC = 5, ///< EXT3 and EXT3-1 pin 4 Orange
+    .panelReset = 6, ///< EXT3 and EXT3-1 pin 5 Yellow
+    .flashCS = 9, ///< EXT3 and EXT3-1 pin 8 Violet
+    .panelCS = 10, ///< EXT3 and EXT3-1 pin 9 Grey
+    .panelCSS = NOT_CONNECTED, ///< EXT3 and EXT3-1 pin 12 Grey2
+    .flashCSS = NOT_CONNECTED, ///< EXT3 pin 20 or EXT3-1 pin 11 Black2
+    .touchInt = NOT_CONNECTED, ///< EXT3-Touch pin 3 Red
+    .touchReset = NOT_CONNECTED, ///< EXT3-Touch pin 4 Orange
     .panelPower = NOT_CONNECTED, ///< Optional power circuit
     .cardCS = NOT_CONNECTED, ///< Separate SD-card board
     .cardDetect = NOT_CONNECTED, ///< Separate SD-card board
@@ -454,6 +401,70 @@ const pins_t boardTeensy3x =
     .panelCS = 18, ///< EXT3 and EXT3-1 pin 9 Grey
     .panelCSS = NOT_CONNECTED, ///< EXT3 and EXT3-1 pin 12 Grey2
     .flashCSS = NOT_CONNECTED, ///< EXT3 and EXT3-1 pin 20 Black2
+    .touchInt = NOT_CONNECTED, ///< EXT3-Touch pin 3 Red
+    .touchReset = NOT_CONNECTED, ///< EXT3-Touch pin 4 Orange
+    .panelPower = NOT_CONNECTED, ///< Optional power circuit
+    .cardCS = NOT_CONNECTED, ///< Separate SD-card board
+    .cardDetect = NOT_CONNECTED, ///< Separate SD-card board
+};
+
+/// @}
+
+///
+/// @name 2.3 Deprecated boards
+/// @{
+
+///
+/// @brief Texas Instruments LaunchPad MSP430 and MSP432 configuration, tested
+/// @deprecated Texas Instruments LaunchPad boards are deprecated (8.0.3)
+///
+const pins_t boardLaunchPad =
+{
+    .panelBusy = 11, ///< EXT3 and EXT3-1 pin 3 Red -> 11
+    .panelDC = 12, ///< EXT3 and EXT3-1 pin 4 Orange -> 12
+    .panelReset = 13, ///< EXT3 and EXT3-1 pin 5 Yellow -> 13
+    .flashCS = 18, ///< EXT3 and EXT3-1 pin 8 Violet -> 18
+    .panelCS = 19, ///< EXT3 and EXT3-1 pin 9 Grey -> 19
+    .panelCSS = 39, ///< EXT3 and EXT3-1 pin 12 Grey2 -> 39
+    .flashCSS = 38, ///< EXT3 pin 20 or EXT3-1 pin 11 Black2 -> 38
+    .touchInt = NOT_CONNECTED, ///< EXT3-Touch pin 3 Red -> 8
+    .touchReset = NOT_CONNECTED, ///< EXT3-Touch pin 4 Orange -> 6
+    .panelPower = NOT_CONNECTED, ///< Optional power circuit -> 2
+    .cardCS = NOT_CONNECTED, ///< Separate SD-card board -> 5
+    .cardDetect = NOT_CONNECTED, ///< Separate SD-card board
+};
+
+///
+/// @brief Texas Instruments LaunchPad MSP430FR5994 LaunchPad with SD-card configuration, tested
+///
+const pins_t boardMSP430FR5994 =
+{
+    .panelBusy = 11, ///< EXT3 and EXT3-1 pin 3 Red
+    .panelDC = 12, ///< EXT3 and EXT3-1 pin 4 Orange
+    .panelReset = 13, ///< EXT3 and EXT3-1 pin 5 Yellow
+    .flashCS = 18, ///< EXT3 and EXT3-1 pin 8 Violet
+    .panelCS = 19, ///< EXT3 and EXT3-1 pin 9 Grey
+    .panelCSS = 39, ///< EXT3 and EXT3-1 pin 12 Grey2
+    .flashCSS = 38, ///< EXT3 pin 20 or EXT3-1 pin 11 Black2
+    .touchInt = NOT_CONNECTED, ///< EXT3-Touch pin 3 Red
+    .touchReset = NOT_CONNECTED, ///< EXT3-Touch pin 4 Orange
+    .panelPower = NOT_CONNECTED, ///< Optional power circuit
+    .cardCS = 47, ///< Included SD-card
+    .cardDetect = 51 ///< Included SD-card
+};
+
+///
+/// @brief Texas Instruments LaunchPad CC1352 configuration, tested
+///
+const pins_t boardCC1352 =
+{
+    .panelBusy = 5, ///< EXT3 and EXT3-1 pin 3 Red
+    .panelDC = 6, ///< EXT3 and EXT3-1 pin 4 Orange
+    .panelReset = 19, ///< EXT3 and EXT3-1 pin 5 Yellow
+    .flashCS = 24, ///< EXT3 and EXT3-1 pin 8 Violet
+    .panelCS = 26, ///< EXT3 and EXT3-1 pin 9 Grey
+    .panelCSS = 37, ///< EXT3 and EXT3-1 pin 12 Grey2 -> 37
+    .flashCSS = 27, ///< EXT3 pin 20 or EXT3-1 pin 11 Black2 -> 27
     .touchInt = NOT_CONNECTED, ///< EXT3-Touch pin 3 Red
     .touchReset = NOT_CONNECTED, ///< EXT3-Touch pin 4 Orange
     .panelPower = NOT_CONNECTED, ///< Optional power circuit

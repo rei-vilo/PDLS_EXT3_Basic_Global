@@ -6,8 +6,8 @@
 /// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 21 Mar 2024
-/// @version 801
+/// @date 21 May 2024
+/// @version 803
 ///
 /// @copyright (c) Rei Vilo, 2010-2024
 /// @copyright All rights reserved
@@ -36,7 +36,7 @@
 ///
 /// @brief Release
 ///
-#define hV_HAL_PERIPHERALS_RELEASE 801
+#define hV_HAL_PERIPHERALS_RELEASE 803
 
 ///
 /// @brief SDK library
@@ -76,6 +76,11 @@ void hV_HAL_begin();
 void hV_HAL_SPI_begin(uint32_t speed = 8000000);
 
 ///
+/// @brief End SPI
+///
+void hV_HAL_SPI_end();
+
+///
 /// @name 3-wire SPI bus
 /// @warning
 /// * Arduino does not support 3-wire SPI, bit-bang simulation
@@ -88,7 +93,7 @@ void hV_HAL_SPI_begin(uint32_t speed = 8000000);
 #define SCK 7
 #define MOSI 15
 
-#endif // ENERGIA
+#endif // ENERGIA 
 
 ///
 /// @brief Configure 3-wire SPI
@@ -100,6 +105,7 @@ void hV_HAL_SPI3_begin();
 /// @brief Set the 3-wire SPI pins
 /// @param pinClock clock, default = SCK
 /// @param pinData combined data, default = MOSI
+/// @note For manual configuration only
 ///
 void hV_HAL_SPI3_define(uint8_t pinClock = SCK, uint8_t pinData = MOSI);
 
@@ -118,6 +124,8 @@ uint8_t hV_HAL_SPI3_read();
 /// @warning /CS to be managed externally.
 ///
 void hV_HAL_SPI3_write(uint8_t value);
+
+/// @}
 
 ///
 /// @name Wire bus

@@ -6,8 +6,8 @@
 /// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 21 Mar 2024
-/// @version 801
+/// @date 21 May 2024
+/// @version 803
 ///
 /// @copyright (c) Rei Vilo, 2010-2024
 /// @copyright All rights reserved
@@ -40,6 +40,14 @@
 
 // Configuration
 #include "hV_Configuration.h"
+
+// Utilities
+#include "hV_Utilities_Common.h"
+
+// Checks
+#if (hV_CONFIGURATION_RELEASE < 803)
+#error Required hV_CONFIGURATION_RELEASE 803
+#endif // hV_CONFIGURATION_RELEASE
 
 // The Arduino IDE does not allow to select the libraries, hence this condition.
 #if (FONT_MODE == USE_FONT_TERMINAL)
@@ -87,6 +95,13 @@ enum fontNumber_e
 ///
 class hV_Font_Terminal
 {
+    // public:
+    // ///
+    // /// @brief Constructor
+    // ///
+    // hV_Font_Terminal();
+
+    /// @cond
   protected:
     ///
     /// @brief Initialisation
@@ -157,7 +172,7 @@ class hV_Font_Terminal
     /// @return horizontal size of the string for current font, in pixels
     /// @n @b More: @ref Fonts
     ///
-    uint16_t f_stringSizeX(String text);
+    uint16_t f_stringSizeX(STRING_CONST_TYPE text);
 
     ///
     /// @brief Number of characters to fit a size, x-axis
@@ -166,7 +181,7 @@ class hV_Font_Terminal
     /// @return number of characters to be displayed inside the pixels
     /// @n @b More: @ref Fonts
     ///
-    uint8_t f_stringLengthToFitX(String text, uint16_t pixels);
+    uint8_t f_stringLengthToFitX(STRING_CONST_TYPE text, uint16_t pixels);
 
     ///
     /// @brief Number of fonts
@@ -188,7 +203,6 @@ class hV_Font_Terminal
     ///
     uint8_t f_getFontMaxWidth();
 
-  protected:
     ///
     /// @brief Get definition for line of character
     /// @param character character 32~255
@@ -206,7 +220,7 @@ class hV_Font_Terminal
     uint8_t f_fontSize; ///< actual font selected
     uint8_t f_fontSpaceX; ///< pixels between two characters, horizontal axis
     uint8_t f_fontSpaceY; ///< pixels between two characters, vertical axis
-    bool f_fontSolid; ///<
+    bool f_fontSolid; ///< opaque print
     /// @}
 };
 /// @endcond
@@ -214,3 +228,4 @@ class hV_Font_Terminal
 #endif // USE_FONT_TERMINAL
 
 #endif // hV_FONT_TERMINAL_RELEASE
+

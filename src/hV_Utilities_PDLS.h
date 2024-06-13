@@ -8,8 +8,8 @@
 /// * Edition: Advanced
 ///
 /// @author Rei Vilo
-/// @date 21 Mar 2024
-/// @version 801
+/// @date 21 May 2024
+/// @version 803
 ///
 /// @copyright (c) Rei Vilo, 2010-2024
 /// @copyright All rights reserved
@@ -51,8 +51,8 @@
 #error Required hV_HAL_PERIPHERALS_RELEASE 801
 #endif // hV_HAL_PERIPHERALS_RELEASE
 
-#if (hV_CONFIGURATION_RELEASE < 801)
-#error Required hV_CONFIGURATION_RELEASE 801
+#if (hV_CONFIGURATION_RELEASE < 803)
+#error Required hV_CONFIGURATION_RELEASE 803
 #endif // hV_CONFIGURATION_RELEASE
 
 #if (hV_BOARD_RELEASE < 801)
@@ -63,7 +63,7 @@
 ///
 /// @brief Library release number
 ///
-#define hV_UTILITIES_PDLS_RELEASE 801
+#define hV_UTILITIES_PDLS_RELEASE 803
 
 // Objects
 //
@@ -123,7 +123,14 @@ class hV_Utilities_PDLS : public hV_Board
     /// @brief Screen number
     /// @return Screen number as string
     ///
-    virtual String screenNumber();
+    virtual STRING_TYPE screenNumber();
+
+    ///
+    /// @brief Recommend variant for film
+    /// @param uint8_t Context film
+    /// @note exit() called after
+    ///
+    void debugVariant(uint8_t contextFilm);
 
     /// @cond
   protected:
@@ -154,7 +161,7 @@ class hV_Utilities_PDLS : public hV_Board
     uint8_t u_codeDriver;
     uint8_t u_codeExtra;
     uint16_t u_bufferSizeV, u_bufferSizeH, u_bufferDepth;
-    uint32_t u_pageColourSize, u_frameSize;
+    uint32_t u_pageColourSize;
     bool u_invert = false;
     bool u_flagOTP = false;
 

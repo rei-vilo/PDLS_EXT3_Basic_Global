@@ -164,12 +164,6 @@ class hV_Board
     ///
     void b_sendCommandDataSelect8(uint8_t command, uint8_t data, uint8_t select = PANEL_CS_BOTH);
 
-    /// @brief Select one half of large screens
-    /// @param select default = PANEL_CS_BOTH, otherwise PANEL_CS_MASTER or PANEL_CS_SLAVE
-    /// @note Valid only for 9.69 and 11.98" screens
-    ///
-    void b_select(uint8_t select = PANEL_CS_BOTH);
-
     ///
     /// @brief Suspend
     ///
@@ -183,6 +177,13 @@ class hV_Board
     pins_t b_pin;
     uint16_t b_delayCS = 50; // ms
     uint8_t b_family;
+
+  private:
+    /// @brief Select one half of large screens
+    /// @param select default = PANEL_CS_BOTH, otherwise PANEL_CS_MASTER or PANEL_CS_SLAVE
+    /// @note Valid only for 9.69 and 11.98" screens
+    ///
+    void b_select(uint8_t select = PANEL_CS_BOTH);
 
     /// @endcond
 };

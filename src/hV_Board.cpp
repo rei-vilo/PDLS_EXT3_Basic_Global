@@ -32,14 +32,14 @@ void hV_Board::b_begin(pins_t board, uint8_t family, uint16_t delayCS)
 
 void hV_Board::b_reset(uint32_t ms1, uint32_t ms2, uint32_t ms3, uint32_t ms4, uint32_t ms5)
 {
-    delay(ms1); // delay 5ms
-    digitalWrite(b_pin.panelReset, HIGH); // RES# = 1
-    delay(ms2); // delay 5ms
-    digitalWrite(b_pin.panelReset, LOW);
+    delay(ms1); // Wait for power stabilisation
+    digitalWrite(b_pin.panelReset, HIGH); // RESET = HIGH
+    delay(ms2);
+    digitalWrite(b_pin.panelReset, LOW); // RESET = LOW
     delay(ms3);
-    digitalWrite(b_pin.panelReset, HIGH);
+    digitalWrite(b_pin.panelReset, HIGH); // RESET = HIGH
     delay(ms4);
-    digitalWrite(b_pin.panelCS, HIGH); // CS# = 1
+    digitalWrite(b_pin.panelCS, HIGH); // CS = HIGH, unselect
     delay(ms5);
 }
 
@@ -54,7 +54,11 @@ void hV_Board::b_waitBusy(bool state)
 
 void hV_Board::b_suspend()
 {
-    // Not implemented
+    // Optional power circuit
+    if (b_pin.panelPower != NOT_CONNECTED) // generic
+    {
+        digitalWrite(b_pin.panelPower, LOW);
+    }
 }
 
 void hV_Board::b_resume()
@@ -115,7 +119,7 @@ void hV_Board::b_sendIndexFixed(uint8_t index, uint8_t data, uint32_t size)
 
     delayMicroseconds(b_delayCS);
     SPI.transfer(index);
-    delayMicroseconds(b_delayCS); 
+    delayMicroseconds(b_delayCS);
 
     digitalWrite(b_pin.panelDC, HIGH); // DC High = Data
 

@@ -135,7 +135,7 @@
 // #define eScreen_EPD_EXT3_581_0B_Fast eScreen_EPD_581_PS_0B ///< reference xE2581PS0Bx, not tested
 // /// @todo eScreen_EPD_EXT3_741_0B_Fast not tested
 // #define eScreen_EPD_EXT3_741_0B_Fast eScreen_EPD_741_PS_0B ///< reference xE2741PS0Bx, not tested
-// /// @todo eScreen_EPD_EXT3_969_0B_Fast not tested
+/// @todo eScreen_EPD_EXT3_969_0B_Fast not tested
 // #define eScreen_EPD_EXT3_969_0B_Fast eScreen_EPD_969_PS_0B ///< reference xE2969PS0Bx, not tested
 // /// @todo eScreen_EPD_EXT3_B98_0B_Fast not tested
 // #define eScreen_EPD_EXT3_B98_0B_Fast eScreen_EPD_B98_PS_0B ///< reference xE2B98PS0Bx, not tested

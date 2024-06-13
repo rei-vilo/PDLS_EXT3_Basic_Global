@@ -406,7 +406,7 @@ class hV_Screen_Buffer : protected hV_Font_Terminal
     ///
     uint8_t s_getCharacter(uint8_t character, uint8_t index);
 
-    uint8_t * u_newImage;
+    uint8_t * s_newImage;
 
     // Variables provided by hV_Screen_Virtual
     bool v_penSolid, v_flagRead, v_flagStorage, v_flagEnergy;
