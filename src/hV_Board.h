@@ -8,8 +8,8 @@
 /// * Edition: Advanced
 ///
 /// @author Rei Vilo
-/// @date 21 Mar 2024
-/// @version 801
+/// @date 21 Jul 2024
+/// @version 804
 ///
 /// @copyright (c) Rei Vilo, 2010-2024
 /// @copyright All rights reserved
@@ -44,7 +44,7 @@
 ///
 /// @brief Library release number
 ///
-#define hV_BOARD_RELEASE 801
+#define hV_BOARD_RELEASE 804
 
 // Objects
 //
@@ -165,18 +165,21 @@ class hV_Board
     void b_sendCommandDataSelect8(uint8_t command, uint8_t data, uint8_t select = PANEL_CS_BOTH);
 
     ///
-    /// @brief Suspend
+    /// @brief Suspend GPIOs
+    /// @details Turn off and set low all GPIOs
     ///
     void b_suspend();
 
     ///
-    /// @brief Resume
+    /// @brief Resume GPIOs
+    /// @details Turn on and configure all GPIOs
     ///
     void b_resume();
 
     pins_t b_pin;
     uint16_t b_delayCS = 50; // ms
     uint8_t b_family;
+    uint8_t b_fsmPowerScreen = FSM_OFF;
 
   private:
     /// @brief Select one half of large screens

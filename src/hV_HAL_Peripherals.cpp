@@ -22,6 +22,7 @@
 // Release 800: Added 3-wire SPI
 // Release 801: Added SPI configuration
 // Release 803: Improved stability
+// Release 804: Improved power management
 //
 
 // Library header
@@ -74,46 +75,79 @@ void hV_HAL_begin()
 //
 
 //
+// === GPIO section
+//
+
+//
+// === End of GPIO section
+//
+
+//
+// === Time section
+//
+
+//
+// === End of Time section
+//
+
+//
 // === SPI section
 //
+bool flagSPI = false; // Some SPI implementations require unique initialisation
+
 void hV_HAL_SPI_begin(uint32_t speed)
 {
-    _settingScreen = {speed, MSBFIRST, SPI_MODE0};
+    if (flagSPI != true)
+    {
+        _settingScreen = {speed, MSBFIRST, SPI_MODE0};
 
 #if defined(ENERGIA)
 
-    SPI.begin();
-    SPI.setBitOrder(_settingScreen.bitOrder);
-    SPI.setDataMode(_settingScreen.dataMode);
-    SPI.setClockDivider(SPI_CLOCK_MAX / min(SPI_CLOCK_MAX, _settingScreen.clock));
+        SPI.begin();
+        SPI.setBitOrder(_settingScreen.bitOrder);
+        SPI.setDataMode(_settingScreen.dataMode);
+        SPI.setClockDivider(SPI_CLOCK_MAX / min(SPI_CLOCK_MAX, _settingScreen.clock));
 
 #else
 
 #if defined(ARDUINO_XIAO_ESP32C3)
 
-    // Board Xiao ESP32-C3 crashes if pins are specified.
-    SPI.begin(8, 9, 10); // SCK MISO MOSI
+        // Board Xiao ESP32-C3 crashes if pins are specified.
+        SPI.begin(8, 9, 10); // SCK MISO MOSI
 
 #elif defined(ARDUINO_ESP32_PICO)
 
-    // Board ESP32-Pico-DevKitM-2 crashes if pins are not specified.
-    SPI.begin(14, 12, 13); // SCK MISO MOSI
+        // Board ESP32-Pico-DevKitM-2 crashes if pins are not specified.
+        SPI.begin(14, 12, 13); // SCK MISO MOSI
 
 #else // General case
 
-    SPI.begin();
+        SPI.begin();
 
 #endif // SPI specifics
 
-    SPI.beginTransaction(_settingScreen);
+        SPI.beginTransaction(_settingScreen);
 
 #endif // ENERGIA
+
+        flagSPI = true;
+    }
 }
 
 void hV_HAL_SPI_end()
 {
-    SPI.end();
+    if (flagSPI != false)
+    {
+        SPI.end();
+        flagSPI = false;
+    }
 }
+
+uint8_t hV_HAL_SPI_transfer(uint8_t data)
+{
+    return SPI.transfer(data);
+}
+
 //
 // === End of SPI section
 //
@@ -121,28 +155,38 @@ void hV_HAL_SPI_end()
 //
 // === Wire section
 //
+bool flagWire = false; // Some Wire implementations require unique initialisation
+
 void hV_HAL_Wire_begin()
 {
-    Wire.begin();
+    if (flagWire == false)
+    {
+        Wire.begin();
 
 #if defined(ENERGIA)
 
 #if defined(ENERGIA_ARCH_MSP430ELF)
 
-    Wire.setClock(100000UL); // 100 kHz for MSP430
+        Wire.setClock(100000UL); // 100 kHz for MSP430
 
 #endif // ENERGIA_ARCH_MSP430ELF
 
 #else // ARDUINO
 
-    Wire.setClock(400000L); // 400 kHz
+        Wire.setClock(400000L); // 400 kHz
 
 #endif // ENERGIA ARDUINO
+        flagWire = true;
+    }
 }
 
 void hV_HAL_Wire_end()
 {
-    Wire.end();
+    if (flagWire == true)
+    {
+        Wire.end();
+        flagWire = true;
+    }
 }
 
 void hV_HAL_Wire_transfer(uint8_t address, uint8_t * dataWrite, size_t sizeWrite, uint8_t * dataRead, size_t sizeRead)

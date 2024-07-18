@@ -296,6 +296,18 @@ uint8_t hV_Utilities_PDLS::checkTemperatureMode(uint8_t updateMode)
     return updateMode;
 }
 
+void hV_Utilities_PDLS::setPowerProfile(uint8_t mode, uint8_t scope)
+{
+    u_suspendMode = mode;
+    u_suspendScope = scope;
+
+    if (b_pin.panelPower == NOT_CONNECTED)
+    {
+        u_suspendMode = MODE_MANUAL;
+        u_suspendScope = SCOPE_NONE;
+    }
+}
+
 void hV_Utilities_PDLS::debugVariant(uint8_t contextFilm)
 {
     mySerial.println();

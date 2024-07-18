@@ -6,8 +6,8 @@
 /// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 21 May 2024
-/// @version 803
+/// @date 21 Jul 2024
+/// @version 804
 ///
 /// @copyright (c) Rei Vilo, 2010-2024
 /// @copyright All rights reserved
@@ -36,7 +36,7 @@
 ///
 /// @brief Release
 ///
-#define hV_HAL_PERIPHERALS_RELEASE 803
+#define hV_HAL_PERIPHERALS_RELEASE 804
 
 ///
 /// @brief SDK library
@@ -72,13 +72,23 @@ void hV_HAL_begin();
 /// @note Other parameters are
 /// * Bit order: MSBFIRST
 /// * Data mode: SPI_MODE0
+/// @note With check for unique initialisation
 ///
 void hV_HAL_SPI_begin(uint32_t speed = 8000000);
 
 ///
 /// @brief End SPI
+/// @note With check for unique deinitialisation
 ///
 void hV_HAL_SPI_end();
+
+///
+/// @brief Combined write and read of a single byte
+/// @param data byte
+/// @return read byte
+/// @warning No check for previous initialisation
+///
+uint8_t hV_HAL_SPI_transfer(uint8_t data);
 
 ///
 /// @name 3-wire SPI bus
@@ -135,11 +145,13 @@ void hV_HAL_SPI3_write(uint8_t value);
 ///
 /// @brief Configure and start Wire bus
 /// @note Master mode only
+/// @note With check for unique initialisation
 ///
 void hV_HAL_Wire_begin();
 
 ///
 /// @brief End Wire bus
+/// @note With check for unique deinitialisation
 ///
 void hV_HAL_Wire_end();
 
@@ -152,6 +164,7 @@ void hV_HAL_Wire_end();
 /// @param[out] dataRead buffer to read
 /// @param[in] sizeRead number of bytes
 /// @note If sizeRead = 0, no read performed
+/// @warning No check for previous initialisation
 ///
 void hV_HAL_Wire_transfer(uint8_t address, uint8_t * dataWrite, size_t sizeWrite, uint8_t * dataRead = 0, size_t sizeRead = 0);
 

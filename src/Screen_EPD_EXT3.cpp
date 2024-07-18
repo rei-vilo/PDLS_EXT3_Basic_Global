@@ -31,6 +31,7 @@
 // Release 802: Added references to application notes
 // Release 802: Refactored CoG functions
 // Release 803: Added types for string and frame-buffer
+// Release 804: Improved power management
 //
 
 // Library header
@@ -133,7 +134,7 @@ void Screen_EPD_EXT3::COG_LargeCJ_getDataOTP()
 
             mySerial.println();
             mySerial.println(formatString("hV * OTP failed for screen %i-%cS-0%c", u_codeSize, u_codeFilm, u_codeDriver));
-            while(0x01);
+            while (0x01);
             break;
     }
 
@@ -164,7 +165,7 @@ void Screen_EPD_EXT3::COG_LargeCJ_getDataOTP()
         else
         {
             mySerial.println(formatString("hV * OTP check failed - First 0x%02x, expected 0x%02x", COG_data[0], 0xa5));
-            while(0x01);
+            while (0x01);
         }
     }
 
@@ -191,7 +192,7 @@ void Screen_EPD_EXT3::COG_LargeCJ_sendImageData()
 {
     // 9.69 and 11.98 combine two half-screens, hence two frames with adjusted (u_pageColourSize >> 1) size
     uint32_t u_subPageColourSize = (u_pageColourSize >> 1);
-    
+
     FRAMEBUFFER_TYPE blackBuffer = s_newImage;
     FRAMEBUFFER_TYPE redBuffer = s_newImage + u_pageColourSize;
 
@@ -637,7 +638,7 @@ void Screen_EPD_EXT3::COG_MediumCJ_getDataOTP()
 
             mySerial.println();
             mySerial.println(formatString("hV * OTP failed for screen %i-%cS-0%c", u_codeSize, u_codeFilm, u_codeDriver));
-            while(0x01);
+            while (0x01);
             break;
     }
 
@@ -669,7 +670,7 @@ void Screen_EPD_EXT3::COG_MediumCJ_getDataOTP()
         {
             mySerial.println();
             mySerial.println(formatString("hV * OTP check failed - First 0x%02x, expected 0x%02x", COG_data[0], 0xa5));
-            while(0x01);
+            while (0x01);
         }
     }
 
@@ -1023,7 +1024,7 @@ void Screen_EPD_EXT3::COG_SmallCJ_getDataOTP()
             COG_data[1] = 0x8d;
             break;
     }
-    
+
     u_flagOTP = true;
 }
 
@@ -1137,13 +1138,27 @@ void Screen_EPD_EXT3::begin()
             break;
     }
 
+    //
+    // === Touch section
+    //
+
+    //
+    // === End of touch section
+    //
+
+    //
+    // === Large screen section
+    //
     // Check panelCSS for large screens
     if (((u_codeSize == SIZE_969) or (u_codeSize == SIZE_1198)) and (b_pin.panelCSS == NOT_CONNECTED))
     {
         mySerial.println();
-        mySerial.println(formatString("hV * Required pin panelCSS is NOT_CONNECTED"));
-        while(0x01);
+        mySerial.println("hV * Required pin panelCSS is NOT_CONNECTED");
+        while (0x01);
     }
+    //
+    // === End of Large screen section
+    //
 
     // Configure board
     switch (u_codeSize)
@@ -1300,6 +1315,10 @@ void Screen_EPD_EXT3::begin()
 
     memset(s_newImage, 0x00, u_pageColourSize * u_bufferDepth);
 
+    setTemperatureC(25); // 25 Celsius = 77 Fahrenheit
+    b_fsmPowerScreen = FSM_OFF;
+    setPowerProfile(MODE_AUTO, SCOPE_GPIO_ONLY);
+
     // Turn SPI on, initialise GPIOs and set GPIO levels
     // Reset panel and get tables
     resume();
@@ -1319,10 +1338,13 @@ void Screen_EPD_EXT3::begin()
     v_penSolid = false;
     u_invert = false;
 
-    setTemperatureC(25); // 25 Celsius = 77 Fahrenheit
+    //
+    // === Touch section
+    //
 
-    // Turn SPI off and pull GPIOs low
-    suspend();
+    //
+    // === End of Touch section
+    //
 }
 
 STRING_TYPE Screen_EPD_EXT3::WhoAmI()
@@ -1333,32 +1355,44 @@ STRING_TYPE Screen_EPD_EXT3::WhoAmI()
     return formatString("iTC %i.%02i\"%s", v_screenDiagonal / 100, v_screenDiagonal % 100, work);
 }
 
-void Screen_EPD_EXT3::suspend()
+void Screen_EPD_EXT3::suspend(uint8_t suspendScope)
 {
-    // Suspend GPIO
-    b_suspend();
-
-    // Suspend SPI
-    hV_HAL_SPI_end();
+    if (((suspendScope & FSM_GPIO_MASK) == FSM_GPIO_MASK) and (b_pin.panelPower != NOT_CONNECTED))
+    {
+        if ((b_fsmPowerScreen & FSM_GPIO_MASK) == FSM_GPIO_MASK)
+        {
+            b_suspend();
+        }
+    }
 }
 
 void Screen_EPD_EXT3::resume()
 {
-    // Resume GPIO
-    b_resume();
-
-    // Check type and get tables
-    if (u_flagOTP == false)
+    // Target   FSM_ON
+    // Source   FSM_OFF
+    //          FSM_SLEEP
+    if (b_fsmPowerScreen != FSM_ON)
     {
-        hV_HAL_SPI3_begin(); // Define 3-wire SPI pins
-        s_getDataOTP(); // 3-wire SPI read OTP memory
+        if ((b_fsmPowerScreen & FSM_GPIO_MASK) != FSM_GPIO_MASK)
+        {
+            b_resume(); // GPIO
+
+            s_reset(); // Reset
+
+            b_fsmPowerScreen |= FSM_GPIO_MASK;
+        }
+
+        // Check type and get tables
+        if (u_flagOTP == false)
+        {
+            s_getDataOTP(); // 3-wire SPI read OTP memory
+
+            s_reset(); // Reset
+        }
+
+        // Start SPI
+        hV_HAL_SPI_begin(16000000); // Fast 16 MHz, with unicity check
     }
-
-    // Reset
-    s_reset();
-
-    // Start SPI
-    hV_HAL_SPI_begin(); // Standard 8 MHz
 }
 
 uint8_t Screen_EPD_EXT3::flushMode(uint8_t updateMode)
@@ -1410,6 +1444,11 @@ void Screen_EPD_EXT3::s_reset()
 
 void Screen_EPD_EXT3::s_getDataOTP()
 {
+    hV_HAL_SPI_end(); // With unicity check
+
+    hV_HAL_SPI3_begin(); // Define 3-wire SPI pins
+
+    // Get data OTP
     uint16_t _readBytes = 0;
     switch (b_family)
     {
@@ -1436,8 +1475,11 @@ void Screen_EPD_EXT3::s_getDataOTP()
 
 void Screen_EPD_EXT3::s_flush(uint8_t updateMode)
 {
-    // Turn SPI on, initialise GPIOs and set GPIO levels
-    resume();
+    // Resume
+    if (b_fsmPowerScreen != FSM_ON)
+    {
+        resume();
+    }
 
     // Three groups:
     // + small: up to 4.37 included
@@ -1636,7 +1678,7 @@ void Screen_EPD_EXT3::s_setOrientation(uint8_t orientation)
 
 bool Screen_EPD_EXT3::s_orientCoordinates(uint16_t & x, uint16_t & y)
 {
-    bool _flagResult = RESULT_ERROR; // false = success, true = error
+    bool _flagResult = RESULT_ERROR;
     switch (v_orientation)
     {
         case 3: // checked, previously 1

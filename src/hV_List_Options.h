@@ -18,8 +18,8 @@
 /// * 12. Set debug options
 ///
 /// @author Rei Vilo
-/// @date 21 May 2024
-/// @version 803
+/// @date 21 Jul 2024
+/// @version 804
 ///
 /// @copyright (c) Rei Vilo, 2010-2024
 /// @copyright All rights reserved
@@ -66,6 +66,8 @@
 /// * Basic edition: Terminal font
 /// * Evaluation edition: DejaVu font as header
 /// * Commercial edition: DejaVu font as either header or external SPI Flash
+/// * Viewer edition: DejaVu font as header
+///
 /// @note USE_FONT_HEADER requires addFont()
 /// @note Font Manager requires USE_FONT_HEADER
 /// @warning 8- and 16-bit MCUs may limit the size of the fonts. Use 32-bit MCUs for optimal performance.
@@ -97,6 +99,7 @@
 /// * Basic edition: MCU internal SRAM
 /// * Commercial edition: MCU internal SRAM
 /// * Evaluation edition: MCU internal or SPI external SRAM
+/// * Viewer edition: MCU internal SRAM
 ///
 /// @{
 #define USE_INTERNAL_MCU 1 ///< Use MCU internal
@@ -112,6 +115,8 @@
 /// * Basic edition: self option
 /// * Evaluation edition: virtual option
 /// * Commercial edition: self and virtual options
+/// * Viewer edition: virtual option
+///
 /// @note Recommended: USE_hV_SCREEN_VIRTUAL
 /// @warning Issues with virtual function on arm-none-eabi-g++ 4.9.3: use USE_hV_SCREEN_SELF instead.
 /// @{
@@ -126,6 +131,8 @@
 /// * Basic edition: iTC 2.71 BW and iTC 3.70 BW
 /// * Evaluation edition: iTC 2.71 BW and iTC 3.70 BW
 /// * Commercial edition: iTC 2.71 BW and iTC 3.70 BW
+/// * Viewer edition: iTC 2.71 BW and iTC 3.70 BW
+///
 /// @note Touch uses I2C and polling over interrupt
 /// @{
 #define USE_TOUCH_NONE 0 ///< Do not use touch
@@ -139,6 +146,7 @@
 /// * Basic edition: no haptic feedback
 /// * Evaluation edition: ERM or LRA
 /// * Commercial edition: ERM or LRA
+/// * Viewer edition: no haptic feedback
 ///
 /// @{
 #define USE_HAPTICS_NONE 0 ///< No motor
@@ -151,6 +159,7 @@
 /// * Basic edition: no expander
 /// * Evaluation edition: PCF8574 or PCA9536
 /// * Commercial edition: PCF8574 or PCA9536
+/// * Viewer edition: no expander
 ///
 /// @{
 #define USE_EXPANDER_NONE 0 ///< No I2C expander
@@ -163,6 +172,7 @@
 /// * Basic edition: String object
 /// * Evaluation edition: char array
 /// * Commercial edition: String object or char array
+/// * Viewer edition: char array
 ///
 /// @{
 #define USE_STRING_OBJECT 1
@@ -175,6 +185,7 @@
 /// * Basic edition: none
 /// * Evaluation edition: none
 /// * Commercial edition: option
+/// * Viewer edition: option
 ///
 /// @{
 #define USE_NONE 0 ///< No storage
@@ -189,5 +200,6 @@
 /// * Basic edition: none
 /// * Evaluation edition: all
 /// * Commercial edition: option
+/// * Viewer edition: option
 ///
 

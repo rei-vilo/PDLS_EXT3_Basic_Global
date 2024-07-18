@@ -8,8 +8,8 @@
 /// * Edition: Advanced
 ///
 /// @author Rei Vilo
-/// @date 21 May 2024
-/// @version 803
+/// @date 21 Jul 2024
+/// @version 804
 ///
 /// @copyright (c) Rei Vilo, 2010-2024
 /// @copyright All rights reserved
@@ -63,7 +63,7 @@
 ///
 /// @brief Library release number
 ///
-#define hV_UTILITIES_PDLS_RELEASE 803
+#define hV_UTILITIES_PDLS_RELEASE 804
 
 // Objects
 //
@@ -101,6 +101,13 @@ class hV_Utilities_PDLS : public hV_Board
     /// @warning Default temperature is 25 °C, otherwise set by setTemperatureC() or setTemperatureF()
     ///
     uint8_t checkTemperatureMode(uint8_t updateMode);
+
+    /// @brief Set the power profile
+    /// @param mode default = MODE_AUTO, otherwise MODE_MANUAL
+    /// @param scope default = SCOPE_GPIO_ONLY, otherwise SCOPE_NONE
+    /// @note If panelPower is NOT_CONNECTED, (MODE_AUTO, SCOPE_GPIO_ONLY) defaults to (MODE_MANUAL, SCOPE_NONE)
+    ///
+    void setPowerProfile(uint8_t mode = MODE_AUTO, uint8_t scope = SCOPE_GPIO_ONLY);
 
     ///
     /// @brief Invert screen
@@ -164,6 +171,8 @@ class hV_Utilities_PDLS : public hV_Board
     uint32_t u_pageColourSize;
     bool u_invert = false;
     bool u_flagOTP = false;
+    uint8_t u_suspendMode = MODE_AUTO;
+    uint8_t u_suspendScope = SCOPE_GPIO_ONLY;
 
     /// @endcond
 };

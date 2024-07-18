@@ -6,8 +6,8 @@
 /// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 21 Mar 2024
-/// @version 801
+/// @date 21 Jul 2024
+/// @version 804
 ///
 /// @copyright (c) Rei Vilo, 2010-2024
 /// @copyright All rights reserved
@@ -89,12 +89,30 @@
 /// @}
 
 ///
-/// @brief Power state
+/// @brief Scopes for power profile
 /// @note Numbers are sequential and exclusive
 /// @{
-#define FSM_POWER_UNKNOWN 0x00 ///< Unknown
-#define FSM_POWER_ON 0x01 ///< On
-#define FSM_POWER_SLEEP 0x02 ///< Off or sleep
+#define SCOPE_NONE 0x00 ///< Nothing suspended
+#define SCOPE_GPIO_ONLY 0x01 ///< GPIO only and if panelPower defined
+/// @}
+
+///
+/// @brief Modes for power profile
+/// @note Numbers are sequential and exclusive
+/// @{
+#define MODE_AUTO 0x00 ///< Managed by the screen library
+#define MODE_MANUAL 0x01 ///< Managed by the application code
+/// @}
+
+///
+/// @brief Power and GPIO state
+/// @note Numbers are sequential and exclusive, except MASK
+/// @{
+#define FSM_OFF 0x00 ///< Bus off, GPIO off or undefined
+#define FSM_ON 0x11 ///< Bus on, GPIO on or defined
+#define FSM_SLEEP 0x10 ///< Bus on, GPIO and Power off or undefined
+#define FSM_GPIO_MASK 0x01 ///< Mask for GPIO on or defined
+#define FSM_BUS_MASK 0x10 ///< Mask for bus on
 /// @}
 
 ///

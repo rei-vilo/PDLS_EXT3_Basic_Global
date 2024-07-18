@@ -17,6 +17,7 @@
 /// * 9. Set GPIO expander mode, not implemented
 /// * 10. String object for basic edition
 /// * 11. Set storage mode, not implemented
+/// * 12. Set debug options
 ///
 /// @author Rei Vilo
 /// @date 21 May 2024
@@ -103,6 +104,7 @@
 /// @name 9. Set GPIO expander mode, not implemented
 /// @name 10. String object of char array options for string.
 /// @name 11. Set storage mode, serial console by default
+/// @name 12. Set debug options
 ///
 /// @see hV_List_Options.h
 ///
