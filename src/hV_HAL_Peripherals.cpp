@@ -237,7 +237,7 @@ void hV_HAL_SPI3_begin()
 #if defined(ARDUINO_XIAO_ESP32C3)
 
     // Board Xiao ESP32-C3 crashes if pins are not specified.
-    hV_HAL_SPI3_define(8, 9) // SCK SDA
+    hV_HAL_SPI3_define(8, 9); // SCK SDA
 
 #elif defined(ARDUINO_ESP32_PICO)
 
