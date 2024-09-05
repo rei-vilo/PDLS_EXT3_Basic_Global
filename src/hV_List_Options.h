@@ -18,8 +18,8 @@
 /// * 12. Set debug options
 ///
 /// @author Rei Vilo
-/// @date 21 Jul 2024
-/// @version 804
+/// @date 21 Aug 2024
+/// @version 805
 ///
 /// @copyright (c) Rei Vilo, 2010-2024
 /// @copyright All rights reserved
@@ -48,7 +48,7 @@
 ///
 /// @brief Release
 ///
-#define hV_LIST_OPTIONS_RELEASE 803
+#define hV_LIST_OPTIONS_RELEASE 805
 
 ///
 /// @name 1- List of supported Pervasive Displays screens
@@ -142,7 +142,7 @@
 /// @}
 
 ///
-/// @brief 8- Set haptic feedback mode
+/// @name 8- Set haptic feedback mode
 /// * Basic edition: no haptic feedback
 /// * Evaluation edition: ERM or LRA
 /// * Commercial edition: ERM or LRA
@@ -155,7 +155,7 @@
 /// @}
 
 ///
-/// @brief 9- Set GPIO expander mode
+/// @name 9- Set GPIO expander mode
 /// * Basic edition: no expander
 /// * Evaluation edition: PCF8574 or PCA9536
 /// * Commercial edition: PCF8574 or PCA9536
@@ -168,7 +168,7 @@
 /// @}
 
 ///
-/// @brief 10- Set string mode
+/// @name 10- Set string mode
 /// * Basic edition: String object
 /// * Evaluation edition: char array
 /// * Commercial edition: String object or char array
@@ -181,7 +181,7 @@
 /// @}
 
 ///
-/// @brief 11- Storage mode
+/// @name 11- Storage mode
 /// * Basic edition: none
 /// * Evaluation edition: none
 /// * Commercial edition: option
@@ -193,13 +193,13 @@
 #define STORAGE_MODE USE_NONE ///< Selected options
 /// @}
 
-#endif // hV_LIST_OPTIONS_RELEASE
-
 ///
-/// @brief 12- Debug options
+/// @name 12- Debug options
 /// * Basic edition: none
 /// * Evaluation edition: all
 /// * Commercial edition: option
 /// * Viewer edition: option
 ///
+
+#endif // hV_LIST_OPTIONS_RELEASE
 

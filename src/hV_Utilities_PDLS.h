@@ -8,8 +8,8 @@
 /// * Edition: Advanced
 ///
 /// @author Rei Vilo
-/// @date 21 Jul 2024
-/// @version 804
+/// @date 21 Aug 2024
+/// @version 805
 ///
 /// @copyright (c) Rei Vilo, 2010-2024
 /// @copyright All rights reserved
@@ -63,7 +63,7 @@
 ///
 /// @brief Library release number
 ///
-#define hV_UTILITIES_PDLS_RELEASE 804
+#define hV_UTILITIES_PDLS_RELEASE 805
 
 // Objects
 //
@@ -103,11 +103,11 @@ class hV_Utilities_PDLS : public hV_Board
     uint8_t checkTemperatureMode(uint8_t updateMode);
 
     /// @brief Set the power profile
-    /// @param mode default = MODE_AUTO, otherwise MODE_MANUAL
-    /// @param scope default = SCOPE_GPIO_ONLY, otherwise SCOPE_NONE
-    /// @note If panelPower is NOT_CONNECTED, (MODE_AUTO, SCOPE_GPIO_ONLY) defaults to (MODE_MANUAL, SCOPE_NONE)
+    /// @param mode default = POWER_MODE_AUTO, otherwise POWER_MODE_MANUAL
+    /// @param scope default = POWER_SCOPE_GPIO_ONLY, otherwise POWER_SCOPE_NONE
+    /// @note If panelPower is NOT_CONNECTED, (POWER_MODE_AUTO, POWER_SCOPE_GPIO_ONLY) defaults to (POWER_MODE_MANUAL, POWER_SCOPE_NONE)
     ///
-    void setPowerProfile(uint8_t mode = MODE_AUTO, uint8_t scope = SCOPE_GPIO_ONLY);
+    void setPowerProfile(uint8_t mode = POWER_MODE_AUTO, uint8_t scope = POWER_SCOPE_GPIO_ONLY);
 
     ///
     /// @brief Invert screen
@@ -171,8 +171,8 @@ class hV_Utilities_PDLS : public hV_Board
     uint32_t u_pageColourSize;
     bool u_invert = false;
     bool u_flagOTP = false;
-    uint8_t u_suspendMode = MODE_AUTO;
-    uint8_t u_suspendScope = SCOPE_GPIO_ONLY;
+    uint8_t u_suspendMode = POWER_MODE_AUTO;
+    uint8_t u_suspendScope = POWER_SCOPE_GPIO_ONLY;
 
     /// @endcond
 };

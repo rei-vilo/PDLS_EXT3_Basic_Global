@@ -20,6 +20,7 @@
 // Release 700: Refactored screen and board functions
 // Release 703: Improved orientation function
 // Release 801: Improved functions names consistency
+// Release 805: Added large variant for gText
 //
 
 // Library header
@@ -595,8 +596,9 @@ void hV_Screen_Buffer::gText(uint16_t x0, uint16_t y0,
                              String text,
                              uint16_t textColour,
                              uint16_t backColour)
-#if (FONT_MODE == USE_FONT_TERMINAL)
 {
+#if (FONT_MODE == USE_FONT_TERMINAL)
+
     uint8_t c;
     uint8_t line, line1, line2, line3;
     uint16_t x, y;
@@ -738,8 +740,182 @@ void hV_Screen_Buffer::gText(uint16_t x0, uint16_t y0,
 #endif // end MAX_FONT_SIZE > 2
 #endif // end MAX_FONT_SIZE > 1
 #endif // end MAX_FONT_SIZE > 0
-}
 #endif // FONT_MODE
+}
+
+void hV_Screen_Buffer::gTextLarge(uint16_t x0, uint16_t y0,
+                                  String text,
+                                  uint16_t textColour,
+                                  uint16_t backColour)
+{
+#if (FONT_MODE == USE_FONT_TERMINAL)
+
+    uint8_t c;
+    uint8_t line, line1, line2, line3;
+    uint16_t x, y;
+    uint8_t i, j, k;
+
+    uint8_t ix = 2;
+    uint8_t iy = 2;
+
+    bool oldPenSolid = v_penSolid;
+    setPenSolid(true);
+
+#if (MAX_FONT_SIZE > 0)
+    if (f_fontSize == 0)
+    {
+        for (k = 0; k < text.length(); k++)
+        {
+            x = x0 + 6 * k * ix;
+            y = y0;
+            c = text.charAt(k) - ' ';
+
+            for (i = 0; i < 6; i++)
+            {
+                line = f_getCharacter(c, i);
+
+                for (j = 0; j < 8; j++)
+                {
+                    if (bitRead(line, j))
+                    {
+                        dRectangle(x + i * ix, y + j * iy, ix, iy, textColour);
+                    }
+                    else if (f_fontSolid)
+                    {
+                        dRectangle(x + i * ix, y + j * iy, ix, iy, backColour);
+                    }
+                }
+            }
+        }
+    }
+
+#if (MAX_FONT_SIZE > 1)
+    else if (f_fontSize == 1)
+    {
+        for (k = 0; k < text.length(); k++)
+        {
+            x = x0 + 8 * k * ix;
+            y = y0;
+            c = text.charAt(k) - ' ';
+
+            for (i = 0; i < 8; i++)
+            {
+                line = f_getCharacter(c, 2 * i);
+                line1 = f_getCharacter(c, 2 * i + 1);
+
+                for (j = 0; j < 8; j++)
+                {
+                    if (bitRead(line, j))
+                    {
+                        dRectangle(x + i * ix, y0 + j * iy, ix, iy, textColour);
+                    }
+                    else if (f_fontSolid)
+                    {
+                        dRectangle(x + i * ix, y0 + j * iy, ix, iy, backColour);
+                    }
+                    if (bitRead(line1, j))
+                    {
+                        dRectangle(x + i * ix, y0 + (8 + j) * iy, ix, iy, textColour);
+                    }
+                    else if ((f_fontSolid) and (j < 4))
+                    {
+                        dRectangle(x + i * ix, y0 + (8 + j) * iy, ix, iy, backColour);
+                    }
+                }
+            }
+        }
+    }
+
+#if (MAX_FONT_SIZE > 2)
+    else if (f_fontSize == 2)
+    {
+
+        for (k = 0; k < text.length(); k++)
+        {
+            x = x0 + 12 * k * ix;
+            y = y0;
+            c = text.charAt(k) - ' ';
+
+            for (i = 0; i < 12; i++)
+            {
+                line = f_getCharacter(c, 2 * i);
+                line1 = f_getCharacter(c, 2 * i + 1);
+
+                for (j = 0; j < 8; j++)
+                {
+                    if (bitRead(line, j))
+                    {
+                        dRectangle(x + i * ix, y0 + j * iy, ix, iy, textColour);
+                    }
+                    else if (f_fontSolid)
+                    {
+                        dRectangle(x + i * ix, y0 + j * iy, ix, iy, backColour);
+                    }
+                    if (bitRead(line1, j))
+                    {
+                        dRectangle(x + i * ix, y0 + (8 + j) * iy, ix, iy, textColour);
+                    }
+                    else if (f_fontSolid)
+                    {
+                        dRectangle(x + i * ix, y0 + (8 + j) * iy, ix, iy, backColour);
+                    }
+                }
+            }
+        }
+    }
+#if (MAX_FONT_SIZE > 3)
+    else if (f_fontSize == 3)
+    {
+        for (k = 0; k < text.length(); k++)
+        {
+            x = x0 + 16 * k * ix;
+            y = y0;
+            c = text.charAt(k) - ' ';
+
+            for (i = 0; i < 16; i++)
+            {
+                line = f_getCharacter(c, 3 * i);
+                line1 = f_getCharacter(c, 3 * i + 1);
+                line2 = f_getCharacter(c, 3 * i + 2);
+                for (j = 0; j < 8; j++)
+                {
+                    if (bitRead(line, j))
+                    {
+                        dRectangle(x + i * ix, y0 + j * iy, ix, iy, textColour);
+                    }
+                    else if (f_fontSolid)
+                    {
+                        dRectangle(x + i * ix, y0 + j * iy, ix, iy, backColour);
+                    }
+                    if (bitRead(line1, j))
+                    {
+                        dRectangle(x + i * ix, y0 + (8 + j) * iy, ix, iy, textColour);
+                    }
+                    else if (f_fontSolid)
+                    {
+                        dRectangle(x + i * ix, y0 + (8 + j) * iy, ix, iy, backColour);
+                    }
+                    if (bitRead(line2, j))
+                    {
+                        dRectangle(x + i * ix, y0 + (16 + j) * iy, ix, iy, textColour);
+                    }
+                    else if (f_fontSolid)
+                    {
+                        dRectangle(x + i * ix, y0 + (16 + j) * iy, ix, iy, backColour);
+                    }
+                }
+            }
+        }
+    }
+#endif // end MAX_FONT_SIZE > 3
+#endif // end MAX_FONT_SIZE > 2
+#endif // end MAX_FONT_SIZE > 1
+#endif // end MAX_FONT_SIZE > 0
+
+    setPenSolid(oldPenSolid);
+
+#endif // FONT_MODE
+}
 //
 // === End of Font section
 //

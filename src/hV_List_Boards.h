@@ -11,10 +11,9 @@
 ///     * 2.2 Other boards
 ///     * 2.3 Deprecated boards
 ///
-///
 /// @author Rei Vilo
-/// @date 21 Mar 2024
-/// @version 801
+/// @date 21 Aug 2024
+/// @version 805
 ///
 /// @copyright (c) Rei Vilo, 2010-2024
 /// @copyright All rights reserved
@@ -42,11 +41,14 @@
 // SDK
 #include "stdint.h"
 
+// Options
+#include "hV_List_Options.h"
+
 #ifndef hV_LIST_BOARDS_RELEASE
 ///
 /// @brief Release
 ///
-#define hV_LIST_BOARDS_RELEASE 803
+#define hV_LIST_BOARDS_RELEASE 805
 
 ///
 /// @brief Not connected pin
@@ -54,8 +56,11 @@
 #define NOT_CONNECTED (uint8_t)0xff
 
 ///
-/// @brief Board configuration structure
-///
+/// @brief EXT3 board configuration structure
+/// @note 
+/// * Pins 1 to 10 are common to all EXT boards
+/// * Other pins are specific to each EXT board, optional or external
+///  
 struct pins_t
 {
     // ///< EXT3 and EXT3-1 pin 1 Black -> +3.3V
@@ -83,26 +88,6 @@ struct pins_t
 /// @name 2.1 Recommended boards
 /// @{
 
-///
-/// @brief Arduino Nano Matter with Silicon Labs MGM240P, tested
-/// @note Numbers refer to pins
-/// @note Recommended board
-///
-const pins_t boardArduinoNanoMatter =
-{
-    .panelBusy = 10, ///< EXT3 and EXT3-1 pin 3 Red -> D10
-    .panelDC = 9, ///< EXT3 and EXT3-1 pin 4 Orange -> D9
-    .panelReset = 8, ///< EXT3 and EXT3-1 pin 5 Yellow -> D8
-    .flashCS = 7, ///< EXT3 and EXT3-1 pin 8 Violet -> D7
-    .panelCS = 6, ///< EXT3 and EXT3-1 pin 9 Grey -> D6
-    .panelCSS = NOT_CONNECTED, ///< EXT3 and EXT3-1 pin 12 Grey2
-    .flashCSS = NOT_CONNECTED, ///< EXT3 pin 20 or EXT3-1 pin 11 Black2
-    .touchInt = NOT_CONNECTED, ///< EXT3-Touch pin 3 Red
-    .touchReset = NOT_CONNECTED, ///< EXT3-Touch pin 4 Orange
-    .panelPower = 2, ///< Optional power circuit -> D2
-    .cardCS = NOT_CONNECTED, ///< Separate SD-card board
-    .cardDetect = NOT_CONNECTED, ///< Separate SD-card board
-};
 
 ///
 /// @brief Raspberry Pi Pico and Pico W with default RP2040 configuration, tested
@@ -436,6 +421,7 @@ const pins_t boardLaunchPad =
 
 ///
 /// @brief Texas Instruments LaunchPad MSP430FR5994 LaunchPad with SD-card configuration, tested
+/// @deprecated Texas Instruments LaunchPad boards are deprecated (8.0.3)
 ///
 const pins_t boardMSP430FR5994 =
 {
@@ -455,6 +441,7 @@ const pins_t boardMSP430FR5994 =
 
 ///
 /// @brief Texas Instruments LaunchPad CC1352 configuration, tested
+/// @deprecated Texas Instruments LaunchPad boards are deprecated (8.0.3)
 ///
 const pins_t boardCC1352 =
 {

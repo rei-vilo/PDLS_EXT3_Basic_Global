@@ -6,8 +6,8 @@
 /// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 21 Mar 2024
-/// @version 801
+/// @date 21 Aug 2024
+/// @version 805
 ///
 /// @copyright (c) Rei Vilo, 2010-2024
 /// @copyright All rights reserved
@@ -42,7 +42,7 @@
 ///
 /// @brief Library release number
 ///
-#define hV_SCREEN_BUFFER_RELEASE 801
+#define hV_SCREEN_BUFFER_RELEASE 805
 
 // Other libraries
 #include "hV_Colours565.h"
@@ -350,7 +350,31 @@ class hV_Screen_Buffer : protected hV_Font_Terminal
                        String text,
                        uint16_t textColour = myColours.black,
                        uint16_t backColour = myColours.white);
+
+    ///
+    /// @brief Draw ASCII Text (pixel coordinates) with selection of size
+    /// @param x0 point coordinate, x-axis
+    /// @param y0 point coordinate, y-axis
+    /// @param text text string
+    /// @param textColour 16-bit colour, default = white
+    /// @param backColour 16-bit colour, default = black
+    /// @note Previously gText() with ix and iy
+    ///
+    /// @n @b More: @ref Colour, @ref Fonts, @ref Coordinate
+    ///
+    virtual void gTextLarge(uint16_t x0, uint16_t y0,
+                            String text,
+                            uint16_t textColour = myColours.black,
+                            uint16_t backColour = myColours.white);
     /// @}
+
+    //
+    // === Touch section
+    //
+
+    //
+    // === End of Touch section
+    //
 
   protected:
     /// @cond

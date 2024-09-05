@@ -6,8 +6,8 @@
 /// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 21 Jul 2024
-/// @version 804
+/// @date 21 Aug 2024
+/// @version 805
 ///
 /// @copyright (c) Rei Vilo, 2010-2024
 /// @copyright All rights reserved
@@ -39,12 +39,12 @@
 ///
 /// @brief Release
 ///
-#define hV_LIST_CONSTANTS_RELEASE 801
+#define hV_LIST_CONSTANTS_RELEASE 805
 
 ///
 /// * General parameters
 ///
-/// @brief Specific features
+/// @name Specific features
 /// @note Numbers are bit-based and or-combinable
 /// @{
 #define FEATURE_FAST 0x01 ///< With embedded fast update
@@ -60,7 +60,7 @@
 /// @}
 
 ///
-/// @brief Update mode
+/// @name Update mode
 /// @note Numbers are sequential and exclusive
 /// @deprecated Partial update is removed. Use fast update instead (7.0.0).
 /// @{
@@ -71,7 +71,7 @@
 /// @}
 
 ///
-/// @brief Screens families
+/// @name Screens families
 /// @note Numbers are sequential and exclusive
 /// @{
 #define FAMILY_SMALL 0x01 ///< Small screens
@@ -80,7 +80,7 @@
 /// @}
 
 ///
-/// @brief Large screens sub-panels selection
+/// @name Large screens sub-panels selection
 /// @note Numbers are sequential and exclusive
 /// @{
 #define PANEL_CS_MASTER 0x01 ///< Large screens sub-panels: first panel only
@@ -89,23 +89,24 @@
 /// @}
 
 ///
-/// @brief Scopes for power profile
+/// @name Scopes for power profile
 /// @note Numbers are sequential and exclusive
 /// @{
-#define SCOPE_NONE 0x00 ///< Nothing suspended
-#define SCOPE_GPIO_ONLY 0x01 ///< GPIO only and if panelPower defined
+#define POWER_SCOPE_NONE 0x00 ///< Nothing suspended
+#define POWER_SCOPE_GPIO_ONLY 0x01 ///< GPIO only and if panelPower defined
+#define POWER_SCOPE_BUS_GPIO 0x11 ///< Both bus and GPIO suspended
 /// @}
 
 ///
-/// @brief Modes for power profile
+/// @name Modes for power profile
 /// @note Numbers are sequential and exclusive
 /// @{
-#define MODE_AUTO 0x00 ///< Managed by the screen library
-#define MODE_MANUAL 0x01 ///< Managed by the application code
+#define POWER_MODE_AUTO 0x00 ///< Managed by the screen library
+#define POWER_MODE_MANUAL 0x01 ///< Managed by the application code
 /// @}
 
 ///
-/// @brief Power and GPIO state
+/// @name Power and GPIO state
 /// @note Numbers are sequential and exclusive, except MASK
 /// @{
 #define FSM_OFF 0x00 ///< Bus off, GPIO off or undefined
@@ -116,7 +117,7 @@
 /// @}
 
 ///
-/// @brief Partial update state
+/// @name Partial update state
 /// @deprecated Use fast update instead (6.1.0).
 /// @note Numbers are sequential and exclusive
 /// @{
@@ -126,7 +127,7 @@
 /// @}
 
 ///
-/// @brief Continuity mode state
+/// @name Continuity mode state
 /// @note Numbers are sequential and exclusive
 ///
 /// @{
@@ -136,7 +137,7 @@
 /// @}
 
 ///
-/// @brief Touch events
+/// @name Touch events
 /// @note Numbers are sequential and exclusive
 ///
 /// @{
@@ -148,7 +149,7 @@
 ///
 
 ///
-/// @brief Results
+/// @name Results
 /// @note Numbers are sequential and exclusive
 ///
 /// @{
@@ -158,7 +159,7 @@
 ///
 
 ///
-/// @brief Orientation constants
+/// @name Orientation constants
 /// @note Numbers are sequential and exclusive
 /// @{
 ///

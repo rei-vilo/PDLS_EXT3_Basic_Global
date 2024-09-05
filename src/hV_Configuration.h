@@ -20,8 +20,8 @@
 /// * 12. Set debug options
 ///
 /// @author Rei Vilo
-/// @date 21 May 2024
-/// @version 803
+/// @date 21 Aug 2024
+/// @version 805
 ///
 /// @copyright (c) Rei Vilo, 2010-2024
 /// @copyright All rights reserved
@@ -82,7 +82,7 @@
 ///
 /// @brief Release
 ///
-#define hV_CONFIGURATION_RELEASE 803
+#define hV_CONFIGURATION_RELEASE 805
 
 ///
 /// @name 1- List of supported Pervasive Displays screens
@@ -110,7 +110,7 @@
 ///
 
 ///
-/// @brief Type for framebuffer
+/// @brief Type for frame-buffer
 /// @details Based on SRAM_MODE selection
 ///
 #define FRAMEBUFFER_TYPE uint8_t *

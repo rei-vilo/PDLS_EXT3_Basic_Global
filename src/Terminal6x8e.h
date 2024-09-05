@@ -50,12 +50,12 @@
 ///
 /// @copyright Font generated manually
 ///
-//#if defined(ENERGIA)
+// #if defined(ENERGIA)
 // unsigned char replaced by uint8_t
 static const uint8_t Terminal6x8e[224][6] =
-    //#elif defined(ARDUINO) || defined(MPIDE) || defined(WIRING)
-    //static prog_uchar Terminal6x8e[224][6] PROGMEM =
-    //#endif
+    // #elif defined(ARDUINO) || defined(MPIDE) || defined(WIRING)
+    // static prog_uchar Terminal6x8e[224][6] PROGMEM =
+    // #endif
 {
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
     0x00, 0x00, 0x06, 0x5F, 0x06, 0x00,

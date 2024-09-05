@@ -14,6 +14,8 @@
 // Release 800: Read OTP memory
 // Release 801: Added number of colours
 // Release 803: Added types for string and frame-buffer
+// Release 804: Improved power management
+// Release 805: Improved stability
 //
 
 // Library header
@@ -187,7 +189,7 @@ STRING_TYPE hV_Utilities_PDLS::screenNumber()
     char work[64] = {0};
     u_screenNumber(work);
 
-    return formatString("Number %s", work);
+    return formatString("%s", work);
 }
 
 //
@@ -303,8 +305,8 @@ void hV_Utilities_PDLS::setPowerProfile(uint8_t mode, uint8_t scope)
 
     if (b_pin.panelPower == NOT_CONNECTED)
     {
-        u_suspendMode = MODE_MANUAL;
-        u_suspendScope = SCOPE_NONE;
+        u_suspendMode = POWER_MODE_MANUAL;
+        u_suspendScope = POWER_SCOPE_NONE;
     }
 }
 

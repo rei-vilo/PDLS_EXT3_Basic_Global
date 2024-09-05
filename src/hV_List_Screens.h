@@ -10,8 +10,8 @@
 /// * 1- List of supported Pervasive Displays screens
 ///
 /// @author Rei Vilo
-/// @date 21 May 2024
-/// @version 803
+/// @date 21 Aug 2024
+/// @version 805
 ///
 /// @copyright (c) Rei Vilo, 2010-2024
 /// @copyright All rights reserved
@@ -43,7 +43,7 @@
 ///
 /// @brief Release
 ///
-#define hV_LIST_SCREENS_RELEASE 803
+#define hV_LIST_SCREENS_RELEASE 805
 
 /// @deprecated Screen name format (8.0.0)
 /// * Name format eScreen_EPD_EXT3_<size>_<driver>_<suffix> is deprecated (8.0.0).
@@ -217,6 +217,7 @@
 #define eScreen_EPD_287_JS_09 SCREEN(SIZE_287, FILM_J, DRIVER_9) ///< reference xE2287JS09x
 #define eScreen_EPD_290_JS_0F SCREEN(SIZE_290, FILM_J, DRIVER_F) ///< reference xE2290JS0Fx
 #define eScreen_EPD_370_JS_0C SCREEN(SIZE_370, FILM_J, DRIVER_C) ///< reference xE2370JS0Cx
+#define eScreen_EPD_417_JS_0D SCREEN(SIZE_417, FILM_J, DRIVER_D) ///< reference xE2417JS0Dx
 #define eScreen_EPD_437_JS_08 SCREEN(SIZE_437, FILM_J, DRIVER_8) ///< reference xE2437JS08x
 #define eScreen_EPD_565_JS_08 SCREEN(SIZE_565, FILM_J, DRIVER_8) ///< reference xE2565JS08x
 #define eScreen_EPD_581_JS_0B SCREEN(SIZE_581, FILM_J, DRIVER_B) ///< reference xE2581JS0Bx

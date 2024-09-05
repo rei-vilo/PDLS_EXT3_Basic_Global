@@ -23,12 +23,14 @@
 /// * **PDLS_EXT3_Basic_Touch** for [monochrome screens with capacitive touch](https://www.pervasivedisplays.com/product/2-71-e-ink-display-aurora-mb-v231/); and
 /// * **PDLS_EXT3_Basic_BWRY** for [black-white-red-yellow screens](https://www.pervasivedisplays.com/product/).
 ///
-/// The screens are connected to the [EPD Extension Kit Gen 3 (EXT3 or EXT3-1)](https://www.pervasivedisplays.com/product/epd-extension-kit-gen-3-EXT3/) and [Touch Expansion Board for EXT3 (EXT3-Touch)](https://www.pervasivedisplays.com/product/touch-expansion-board-ext3-touch/).
+/// The screens are connected to the boards:
+///
+/// + [EPD Extension Kit Gen 3 (EXT3 or EXT3-1)](https://www.pervasivedisplays.com/product/epd-extension-kit-gen-3-EXT3/) and [Touch Expansion Board for EXT3 (EXT3-Touch)](https://www.pervasivedisplays.com/product/touch-expansion-board-ext3-touch/);
 ///
 /// Two introductory kits are also available:
 ///
-/// + The [EPD Pico Kit (EPDK)](https://www.pervasivedisplays.com/product/epd-pico-kit-epdk/) includes a Raspberry Pi Pico RP2040, an EXT3-1 extension board and a 2.66&quot; monochrome panel; and
-/// + The [EPD Pico Kit Touch (EPDK-271-Touch)](https://www.pervasivedisplays.com/product/touch-expansion-board-ext3-touch/#tab-3) includes a Raspberry Pi Pico RP2040, an EXT3-1 and EXT3-Touch boards and a 2.71&quot;-Touch monochrome panel with embedded fast update.
+/// + [EPD Pico Kit (EPDK-266)](https://www.pervasivedisplays.com/product/epd-pico-kit-epdk/), which includes a Raspberry Pi Pico RP2040, an EXT3-1 extension board and a 2.66&quot; monochrome panel; and
+/// + [EPD Pico Kit Touch (EPDK-271-Touch)](https://www.pervasivedisplays.com/product/touch-expansion-board-ext3-touch/#tab-3), which includes a Raspberry Pi Pico RP2040, an EXT3-1 and EXT3-Touch boards and a 2.71&quot;-Touch monochrome panel with embedded fast update.
 ///
 /// @b Documentation
 ///
@@ -41,16 +43,17 @@
 /// Additionally, the **[Wiki](https://docs.pervasivedisplays.com/)** provides a gradual introduction to the e-paper technology and how to use it.
 ///
 /// @author Rei Vilo
-/// @date 21 Jul 2024
-/// @version 804
+/// @date 21 Aug 2024
+/// @version 805
 ///
 /// @copyright (c) Rei Vilo, 2010-2024
 /// @copyright All rights reserved
 /// @copyright For exclusive use with Pervasive Displays screens
+/// @copyright Portions (c) Pervasive Displays, 2010-2024
 ///
 /// * Basic edition: for hobbyists and for basic usage
 /// @n Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
-/// @see https://creativecommons.org/licenses/by-sa/4.0/
+/// ([summary](https://creativecommons.org/licenses/by-sa/4.0/deed.en) and [legal code](https://creativecommons.org/licenses/by-sa/4.0/legalcode.en)) 
 ///
 /// @n Consider the Evaluation or Commercial editions for professionals or organisations and for commercial usage
 ///

@@ -23,6 +23,7 @@
 // Release 801: Added SPI configuration
 // Release 803: Improved stability
 // Release 804: Improved power management
+// Release 805: Improved stability
 //
 
 // Library header

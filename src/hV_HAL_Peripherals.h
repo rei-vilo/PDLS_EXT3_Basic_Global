@@ -6,8 +6,8 @@
 /// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 21 Jul 2024
-/// @version 804
+/// @date 21 Aug 2024
+/// @version 805
 ///
 /// @copyright (c) Rei Vilo, 2010-2024
 /// @copyright All rights reserved
@@ -36,7 +36,7 @@
 ///
 /// @brief Release
 ///
-#define hV_HAL_PERIPHERALS_RELEASE 804
+#define hV_HAL_PERIPHERALS_RELEASE 805
 
 ///
 /// @brief SDK library
@@ -116,6 +116,8 @@ void hV_HAL_SPI3_begin();
 /// @param pinClock clock, default = SCK
 /// @param pinData combined data, default = MOSI
 /// @note For manual configuration only
+/// @warning SCK and MOSI provided by Arduino SDK
+/// * Some boards require manual configuration
 ///
 void hV_HAL_SPI3_define(uint8_t pinClock = SCK, uint8_t pinData = MOSI);
 
