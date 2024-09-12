@@ -10,41 +10,41 @@ The Pervasive Displays Library Suite is specifically designed for the [Pervasive
 
 The **PDLS_EXT3_Basic_Global** supports the screens
 
-+ iTC [monochrome](https://www.pervasivedisplays.com/products/?_sft_product_colour=black-white) (film `CS`);
-+ iTC [colour (black-white-red)](https://www.pervasivedisplays.com/products/?_sft_product_colour=black-white-red) (film `JS`); 
+* iTC [monochrome](https://www.pervasivedisplays.com/products/?_sft_product_colour=black-white) (film `CS`);
+* iTC [colour (black-white-red)](https://www.pervasivedisplays.com/products/?_sft_product_colour=black-white-red) (film `JS`); 
 
 the boards
 
-+ [EPD Extension Kit Gen 3 (EXT3 or EXT3-1)](https://www.pervasivedisplays.com/product/epd-extension-kit-gen-3-EXT3/); 
+* [EPD Extension Kit Gen 3 (EXT3 or EXT3-1)](https://www.pervasivedisplays.com/product/epd-extension-kit-gen-3-EXT3/); 
 
 the kits
 
-+ [EPD Pico Kit (EPDK)](https://www.pervasivedisplays.com/product/epd-pico-kit-epdk/), which includes a Raspberry Pi Pico RP2040, an EXT3-1 extension board and a 2.66" monochrome panel.
+* [EPD Pico Kit (EPDK)](https://www.pervasivedisplays.com/product/epd-pico-kit-epdk/), which includes a Raspberry Pi Pico RP2040, an EXT3-1 extension board and a 2.66" monochrome panel.
 
 ## Features
 
 The Pervasive Displays Library Suite provides a high-level interface to drive the e-paper screens.
 
-+ Global update
-+ Graphics routines
-+ Text routines
-+ Four extended fonts with double-sized variants
+* Global update
+* Graphics routines
+* Text routines
+* Four extended fonts with double-sized variants
 
 ## Documentation
 
-+ [Wiki](https://docs.pervasivedisplays.com/) 
-+ [User guide](https://pdls.pervasivedisplays.com/userguide/index.html) with commented examples
-+ [Reference manual](https://rei-vilo.github.io/PDLS_EXT3_Basic_Documentation/index.html) 
+* [Wiki](https://docs.pervasivedisplays.com/) 
+* [User guide](https://pdls.pervasivedisplays.com/userguide/index.html) with commented examples
+* [Reference manual](https://rei-vilo.github.io/PDLS_EXT3_Basic_Documentation/index.html) 
 
 ## Support
 
-+ Please refer to [PDLS_EXT3_Basic_Global](https://github.com/rei-vilo/PDLS_EXT3_Basic_Global/issues) for reporting issues and contributing pull requests.
+* Please refer to [PDLS_EXT3_Basic_Global](https://github.com/rei-vilo/PDLS_EXT3_Basic_Global/issues) for reporting issues and contributing pull requests.
 
 ## Installation
 
 Software
 
-+ [Installing Additional Arduino Libraries](https://www.arduino.cc/en/guide/libraries)
+* [Installing Additional Arduino Libraries](https://www.arduino.cc/en/guide/libraries)
 
     + Using the Library Manager
     + Importing a `.zip` Library
@@ -63,8 +63,8 @@ Software
 Hardware
 
 * Pervasive Displays EPD Extension Kit Gen 3 (EXT3 or EXT3-1)
-+ Pervasive Displays iTC monochrome screens (film `CS`)
-+ Pervasive Displays iTC colour (black-white-red) screens (film `JS`) 
+* Pervasive Displays iTC monochrome screens (film `CS`)
+* Pervasive Displays iTC colour (black-white-red) screens (film `JS`) 
 
 ## Licence
 
