@@ -78,7 +78,13 @@ void hV_HAL_begin()
 //
 // === GPIO section
 //
-
+void waitFor(uint8_t pin, uint8_t state)
+{
+    while (digitalRead(pin) != state)
+    {
+        delay(32); // non-blocking
+    }
+}
 //
 // === End of GPIO section
 //

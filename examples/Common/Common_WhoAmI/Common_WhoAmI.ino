@@ -1,5 +1,5 @@
 ///
-/// @file Common_Text.ino
+/// @file Common_WhoAmI.ino
 /// @brief Example of features for basic edition
 ///
 /// @details Project Pervasive Displays Library Suite
@@ -31,15 +31,13 @@
 #include "hV_Configuration.h"
 
 // Set parameters
+#define DISPLAY_WHOAMI 1
 
 // Define structures and classes
 
 // Define variables and constants
-
-// --- Global
 Screen_EPD_EXT3 myScreen(eScreen_EPD_266_CS_0C, boardRaspberryPiPico_RP2040);
 // Screen_EPD_EXT3 myScreen(eScreen_EPD_266_JS_0C, boardRaspberryPiPico_RP2040);
-
 
 // Prototypes
 
@@ -59,56 +57,55 @@ void wait(uint8_t second)
 }
 
 // Functions
+
+#if (DISPLAY_WHOAMI == 1)
+
 ///
-/// @brief Characters test screen
-/// @param flag true = default = perform flush, otherwise no
+/// @brief Who am i? test screen
 ///
-/// @image html T2_CHARA.jpg
-/// @image latex T2_CHARA.PDF width=10cm
+/// @image html T2_WHOAMI.jpg
+/// @image latex T2_WHOAMI.PDF width=10cm
 ///
-void displayCharacters(bool flag = true)
+void displayWhoAmI()
 {
-    myScreen.setOrientation(7);
-    uint16_t x = myScreen.screenSizeX(); // 17
-    uint16_t y = myScreen.screenSizeY(); // 14
+    myScreen.setOrientation(ORIENTATION_LANDSCAPE);
+    myScreen.selectFont(Font_Terminal12x16);
 
-    // #if (USE_FONT_MODE == USE_FONT_TERMINAL)
-    myScreen.selectFont(Font_Terminal8x12);
-    // #elif (USE_FONT_MODE == USE_FONT_HEADER)
-    //
-    // #elif (USE_FONT_MODE == USE_FONT_FLASH)
-    //
-    // #else
-    // #error USE_FONT_MODE not defined
-    // #endif
+    uint16_t x = 4;
+    uint16_t y = 4;
+    uint16_t dy = myScreen.characterSizeY();
+    myScreen.gText(x, y, myScreen.WhoAmI());
+    y += dy;
+    myScreen.gText(x, y, formatString("Size %i x %i", myScreen.screenSizeX(), myScreen.screenSizeY()));
+    y += dy;
+    myScreen.gText(x, y, myScreen.screenNumber());
+    y += dy;
+    myScreen.gText(x, y, formatString("PDLS %s v%i.%i.%i", SCREEN_EPD_EXT3_VARIANT, SCREEN_EPD_EXT3_RELEASE / 100, (SCREEN_EPD_EXT3_RELEASE / 10) % 10, SCREEN_EPD_EXT3_RELEASE % 10));
+    y += dy;
+    myScreen.setPenSolid(true);
+    myScreen.dRectangle(x + dy * 0, y, dy - 1, dy - 1, myColours.black);
+    myScreen.setPenSolid(false);
+    myScreen.dRectangle(x + dy * 1, y, dy - 1, dy - 1, myColours.black);
+    myScreen.setPenSolid(true);
 
-    uint8_t k;
-    String text;
-    uint16_t dx;
+    uint8_t number = myScreen.screenColours();
 
-    for (uint8_t i = 1; i < 17; i++)
+    if (number >= 3)
     {
-        myScreen.gText(i * x / 17, 0, formatString(".%x", (i - 1)), myColours.red);
-    }
-    for (uint8_t j = 2; j < 16; j++)
-    {
-        myScreen.gText(0, (j - 1)*y / 15, formatString("%x.", (j)), myColours.red);
-    }
+        myScreen.dRectangle(x + dy * 2, y, dy - 1, dy - 1, myColours.red);
 
-    for (uint16_t i = 1; i < 17; i++)
-    {
-        for (uint8_t j = 2; j < 16; j++)
+#if defined(WITH_COLOURS_BWRY)
+        if (number == 4)
         {
-            k = (i - 1) + j * 16;
-
-            text = (String)char(k);
-            dx = i * x / 17 + (x / 17 - myScreen.stringSizeX(text)) / 2;
-            myScreen.gText(dx, (j - 1)*y / 15, text, myColours.black);
+            myScreen.dRectangle(x + dy * 3, y, dy - 1, dy - 1, myColours.yellow);
         }
+#endif // WITH_COLOURS_BWRY
     }
 
     myScreen.flush();
 }
+
+#endif // DISPLAY_WHOAMI
 
 // Add setup code
 ///
@@ -129,10 +126,14 @@ void setup()
     myScreen.begin();
     mySerial.println(formatString("%s %ix%i", myScreen.WhoAmI().c_str(), myScreen.screenSizeX(), myScreen.screenSizeY()));
 
-    mySerial.println("Characters... ");
+#if (DISPLAY_WHOAMI == 1)
+
+    mySerial.println("Who Am I... ");
     myScreen.clear();
-    displayCharacters();
+    displayWhoAmI();
     wait(8);
+
+#endif // DISPLAY_WHOAMI
 
     mySerial.println("White... ");
     myScreen.clear();

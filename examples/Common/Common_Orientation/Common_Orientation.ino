@@ -1,13 +1,13 @@
 ///
-/// @file Common_Persistent.ino
+/// @file Common_Orientation.ino
 /// @brief Example of features for basic edition
 ///
 /// @details Project Pervasive Displays Library Suite
 /// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 21 Jan 2023
-/// @version 704
+/// @date 21 Mar 2024
+/// @version 801
 ///
 /// @copyright (c) Rei Vilo, 2010-2024
 /// @copyright Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
@@ -35,8 +35,6 @@
 // Define structures and classes
 
 // Define variables and constants
-
-// --- Global
 Screen_EPD_EXT3 myScreen(eScreen_EPD_266_CS_0C, boardRaspberryPiPico_RP2040);
 // Screen_EPD_EXT3 myScreen(eScreen_EPD_266_JS_0C, boardRaspberryPiPico_RP2040);
 
@@ -59,27 +57,21 @@ void wait(uint8_t second)
 
 // Functions
 ///
-/// @brief Who am i? test screen
+/// @brief Orientation test screen
+/// @param flag true = default = perform flush, otherwise no
 ///
-void displayPersistent()
+/// @image html T2_ORIEN.jpg
+/// @image latex T2_ORIEN.PDF width=10cm
+///
+void displayOrientation(bool flag = true)
 {
-    myScreen.setOrientation(ORIENTATION_LANDSCAPE);
     myScreen.selectFont(Font_Terminal8x12);
-    uint16_t dy = myScreen.characterSizeY();
-    uint16_t y = 4;
 
-    myScreen.gText(4, y, myScreen.WhoAmI());
-    y += dy;
-
-    myScreen.gText(4, y, formatString("%i x %i", myScreen.screenSizeX(), myScreen.screenSizeY()));
-    y += dy;
-
-    myScreen.gText(4, y, formatString("PDLS %s v%i.%i.%i", SCREEN_EPD_EXT3_VARIANT, SCREEN_EPD_EXT3_RELEASE / 100, (SCREEN_EPD_EXT3_RELEASE / 10) % 10, SCREEN_EPD_EXT3_RELEASE % 10));
-    y += dy;
-    y += dy;
-
-    myScreen.selectFont(Font_Terminal6x8);
-    myScreen.gText(4, y, "Unplug when the LED is on");
+    for (uint8_t i = 0; i < 4; i++)
+    {
+        myScreen.setOrientation(i);
+        myScreen.gText(10, 10, formatString("> Orientation %i", i));
+    }
 
     myScreen.flush();
 }
@@ -93,35 +85,25 @@ void setup()
     // mySerial = Serial by default, otherwise edit hV_HAL_Peripherals.h
     mySerial.begin(115200);
     delay(500);
-
     mySerial.println();
     mySerial.println("=== " __FILE__);
     mySerial.println("=== " __DATE__ " " __TIME__);
     mySerial.println();
 
-    pinMode(LED_BUILTIN, OUTPUT);
-    for (uint8_t i = 1; i < 7; i += 1)
-    {
-        digitalWrite(LED_BUILTIN, i % 2);
-        delay(250);
-    }
-
+    // Start
     mySerial.println("begin... ");
     myScreen.begin();
     mySerial.println(formatString("%s %ix%i", myScreen.WhoAmI().c_str(), myScreen.screenSizeX(), myScreen.screenSizeY()));
 
-    mySerial.println("Who Am I... ");
+    mySerial.println("Orientation... ");
     myScreen.clear();
-    displayPersistent();
-    wait(2);
+    displayOrientation();
+    wait(8);
 
-    /*
-      // To clear the screen
-      myScreen.clear();
-      myScreen.flush();
-    */
+    mySerial.println("White... ");
+    myScreen.clear();
+    myScreen.flush();
 
-    digitalWrite(LED_BUILTIN, HIGH);
     mySerial.println("=== ");
     mySerial.println();
 }

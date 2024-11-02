@@ -6,8 +6,8 @@
 /// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 21 May 2024
-/// @version 803
+/// @date 21 Sep 2024
+/// @version 806
 ///
 /// @copyright (c) Rei Vilo, 2010-2024
 /// @copyright All rights reserved
@@ -42,7 +42,7 @@
 ///
 /// @brief Library release number
 ///
-#define hV_UTILITIES_RELEASE 803
+#define hV_UTILITIES_RELEASE 806
 
 #ifndef min
 #define min(a, b) ((a) < (b) ? (a) : (b))

@@ -6,8 +6,8 @@
 /// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 21 Aug 2024
-/// @version 805
+/// @date 21 Oct 2024
+/// @version 806
 ///
 /// @copyright (c) Rei Vilo, 2010-2024
 /// @copyright All rights reserved
@@ -36,7 +36,7 @@
 ///
 /// @brief Release
 ///
-#define hV_HAL_PERIPHERALS_RELEASE 805
+#define hV_HAL_PERIPHERALS_RELEASE 806
 
 ///
 /// @brief SDK library
@@ -65,6 +65,13 @@
 /// @brief General initialisation
 ///
 void hV_HAL_begin();
+
+///
+/// @brief Wait for
+/// @param pin pin number
+/// @param state state to reach, default = HIGH
+///
+void waitFor(uint8_t pin, uint8_t state = HIGH);
 
 ///
 /// @brief Configure and start SPI

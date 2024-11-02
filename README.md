@@ -6,7 +6,7 @@
 
 The Pervasive Displays Library Suite is specifically designed for the [Pervasive Displays](https://www.pervasivedisplays.com) e-paper screens, extension boards and evaluation kits.
 
-![](https://pdls.pervasivedisplays.com/userguide/img/Logo_PDI_text_320.png)
+<center>![](https://pdls.pervasivedisplays.com/userguide/img/Logo_PDI_text_320.png)</center>
 
 The **PDLS_EXT3_Basic_Global** supports the screens
 
@@ -65,7 +65,7 @@ Hardware
 
 * Pervasive Displays EPD Extension Kit Gen 3 (EXT3 or EXT3.1)
 * Pervasive Displays iTC monochrome screens (film `C`)
-* Pervasive Displays iTC colour (black-white-red) screens (film `J`) 
+* Pervasive Displays iTC colour (black-white-red) screens (film `J`)
 
 ## Licence
 
@@ -78,3 +78,4 @@ For exclusive use with Pervasive Displays screens
 ![](img/by-sa.svg)
 
 **Portions** &copy; Pervasive Displays, 2010-2024
+

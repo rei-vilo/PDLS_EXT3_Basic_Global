@@ -13,7 +13,7 @@
 // For exclusive use with Pervasive Displays screens
 // Portions (c) Pervasive Displays, 2010-2024
 //
-// Release 508: Added support for E2969CS0B and E2B98CS0B
+// Release 508: Added support for 969_CS_0B and B98_CS_0B
 // Release 527: Added support for ESP32 PSRAM
 // Release 541: Improved support for ESP32
 // Release 550: Tested Xiao ESP32-C3 with SPI exception
@@ -33,6 +33,7 @@
 // Release 803: Added types for string and frame-buffer
 // Release 804: Improved power management
 // Release 805: Improved stability
+// Release 806: New library for Wide temperature only
 //
 
 // Library header
@@ -1281,7 +1282,8 @@ void Screen_EPD_EXT3::begin()
     v_screenDiagonal = u_codeSize;
 
     // Report
-    mySerial.println(formatString("hV = Screen %s %ix%i", WhoAmI().c_str(), screenSizeX(), screenSizeY()));
+    mySerial.println(formatString("hV = Screen %s", WhoAmI().c_str()));
+    mySerial.println(formatString("hV = Size %ix%i", screenSizeX(), screenSizeY()));
     mySerial.println(formatString("hV = Number %i-%cS-0%c", u_codeSize, u_codeFilm, u_codeDriver));
     mySerial.println(formatString("hV = PDLS %s v%i.%i.%i", SCREEN_EPD_EXT3_VARIANT, SCREEN_EPD_EXT3_RELEASE / 100, (SCREEN_EPD_EXT3_RELEASE / 10) % 10, SCREEN_EPD_EXT3_RELEASE % 10));
     mySerial.println();
@@ -1318,7 +1320,10 @@ void Screen_EPD_EXT3::begin()
 
     setTemperatureC(25); // 25 Celsius = 77 Fahrenheit
     b_fsmPowerScreen = FSM_OFF;
-    setPowerProfile(POWER_MODE_AUTO, POWER_SCOPE_GPIO_ONLY);
+    if (b_pin.panelPower != NOT_CONNECTED)
+    {
+        setPowerProfile(POWER_MODE_AUTO, POWER_SCOPE_GPIO_ONLY);
+    }
 
     // Turn SPI on, initialise GPIOs and set GPIO levels
     // Reset panel and get tables
@@ -1391,8 +1396,9 @@ void Screen_EPD_EXT3::resume()
             s_reset(); // Reset
         }
 
-        // Start SPI
-        hV_HAL_SPI_begin(16000000); // Fast 16 MHz, with unicity check
+        // Start SPI, with unicity check
+        hV_HAL_SPI_begin(); // Standard 8 MHz
+        // hV_HAL_SPI_begin(16000000); // Fast 16 MHz, with unicity check
     }
 }
 
@@ -1450,7 +1456,6 @@ void Screen_EPD_EXT3::s_getDataOTP()
     hV_HAL_SPI3_begin(); // Define 3-wire SPI pins
 
     // Get data OTP
-    uint16_t _readBytes = 0;
     switch (b_family)
     {
         case FAMILY_LARGE:
@@ -1499,7 +1504,6 @@ void Screen_EPD_EXT3::s_flush(uint8_t updateMode)
             break;
 
         case FAMILY_MEDIUM:
-
 
             COG_MediumCJ_initial(); // Initialise
             COG_MediumCJ_sendImageData(); // Send image data

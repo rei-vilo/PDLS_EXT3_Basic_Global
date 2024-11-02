@@ -16,6 +16,7 @@
 // Release 803: Added types for string and frame-buffer
 // Release 804: Improved power management
 // Release 805: Improved stability
+// Release 806: New library for Wide temperature only
 //
 
 // Library header
@@ -38,12 +39,12 @@ void hV_Utilities_PDLS::u_WhoAmI(char * answer)
 
     switch (u_codeFilm)
     {
-        case FILM_P: // Film P, Fast update
+        case FILM_P: // Film P, Embedded fast update
 
             strcat(answer, "-Fast");
             break;
 
-        case FILM_K: // Film K, Fast update + Wide temperature
+        case FILM_K: // Film K, Wide temperature and embedded fast update
 
             strcat(answer, "-Wide");
             break;
@@ -131,8 +132,8 @@ uint8_t hV_Utilities_PDLS::screenColours()
     switch (u_codeFilm)
     {
         case FILM_C: // Film C, Standard
-        case FILM_P: // Film P, Fast update
-        case FILM_K: // Film K, Fast update + Wide temperature
+        case FILM_P: // Film P, Embedded fast update
+        case FILM_K: // Film K, Wide temperature and embedded fast update
 
             result = 2;
             break;
@@ -222,7 +223,7 @@ uint8_t hV_Utilities_PDLS::checkTemperatureMode(uint8_t updateMode)
 {
     switch (u_codeFilm)
     {
-        case FILM_P: // Film P, Fast update
+        case FILM_P: // Film P, Embedded fast update
 
             // Fast 	PS 	Embedded fast update 	FU: +15 to +30 °C 	GU: 0 to +50 °C
             if (updateMode == UPDATE_FAST) // Fast update
@@ -241,7 +242,7 @@ uint8_t hV_Utilities_PDLS::checkTemperatureMode(uint8_t updateMode)
             }
             break;
 
-        case FILM_K: // Film K, Fast update + Wide temperature
+        case FILM_K: // Film K, Wide temperature and embedded fast update
 
             // Wide 	KS 	Wide temperature and embedded fast update 	FU: 0 to +50 °C 	GU: -15 to +60 °C
             if (updateMode == UPDATE_FAST) // Fast update
@@ -316,10 +317,14 @@ void hV_Utilities_PDLS::debugVariant(uint8_t contextFilm)
 
     switch (contextFilm)
     {
-        case FILM_P: // BW, fast update
-        case FILM_K: // BW, fast update and wide temperature
+        case FILM_P: // BW, Embedded fast update
 
             mySerial.println(formatString("hV * Screen %i-%cS-0%c with no fast update", u_codeSize, u_codeFilm, u_codeDriver));
+            break;
+
+        case FILM_K: // BW, wide temperature and embedded fast update
+
+            mySerial.println(formatString("hV * Screen %i-%cS-0%c with no wide temperature and embedded fast update", u_codeSize, u_codeFilm, u_codeDriver));
             break;
 
         case FILM_Q: // BWRY
@@ -335,10 +340,14 @@ void hV_Utilities_PDLS::debugVariant(uint8_t contextFilm)
 
     switch (u_codeFilm)
     {
-        case FILM_P: // BW, fast update
-        case FILM_K: // BW, fast update and wide temperature
+        case FILM_P: // BW, Embedded fast update
 
             mySerial.println(formatString("hV * Use PDLS_EXT3_%s_%s instead", "Basic", "Fast"));
+            break;
+
+        case FILM_K: // BW, wide temperature and embedded fast update
+
+            mySerial.println(formatString("hV * Use PDLS_EXT3_%s_%s instead", "Basic", "Wide"));
             break;
 
         case FILM_Q: // BWRY
@@ -352,5 +361,6 @@ void hV_Utilities_PDLS::debugVariant(uint8_t contextFilm)
             break;
     } // u_codeFilm
 
+    mySerial.println();
     while (0x01);
 }

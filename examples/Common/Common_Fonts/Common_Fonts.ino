@@ -1,6 +1,6 @@
 ///
-/// @file Example_Global_Speed.ino
-/// @brief Protocol for speed test
+/// @file Common_Fonts.ino
+/// @brief Example of features for basic edition
 ///
 /// @details Project Pervasive Displays Library Suite
 /// @n Based on highView technology
@@ -13,17 +13,12 @@
 /// @copyright Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
 /// @copyright For exclusive use with Pervasive Displays screens
 ///
-/// @see ReadMe.md for references
+/// @see ReadMe.txt for references
 /// @n
-///
-/// Release 542: First release
-/// Release 604: Global and fast variants
-/// Release 702: Added xE2150KS0Jx and xE2152KS0Jx
 ///
 
 // Screen
 #include "PDLS_EXT3_Basic_Global.h"
-// #include "PDLS_EXT3_Basic_Fast.h"
 
 // SDK
 // #include <Arduino.h>
@@ -39,9 +34,9 @@
 
 // Define structures and classes
 
-// Define constants and variables
-Screen_EPD_EXT3 myScreen(eScreen_EPD_271_CS_09, boardRaspberryPiPico_RP2040);
-// Screen_EPD_EXT3_Fast myScreen(eScreen_EPD_271_PS_09, boardRaspberryPiPico_RP2040);
+// Define variables and constants
+Screen_EPD_EXT3 myScreen(eScreen_EPD_266_CS_0C, boardRaspberryPiPico_RP2040);
+// Screen_EPD_EXT3 myScreen(eScreen_EPD_266_JS_0C, boardRaspberryPiPico_RP2040);
 
 // Prototypes
 
@@ -62,44 +57,41 @@ void wait(uint8_t second)
 
 // Functions
 ///
-/// @brief Perform the speed test
+/// @brief Fonts test screen
+/// @param flag true = default = perform flush, otherwise no
 ///
-void performTest()
+/// @image html T2_FONTS..jpg
+/// @image latex T2_FONTS.PDF width=10cm
+///
+void displayFonts(bool flag = true)
 {
-    uint32_t chrono;
+    uint16_t y = 10;
+    myScreen.setOrientation(7);
 
-    myScreen.clear();
-    myScreen.setOrientation(ORIENTATION_LANDSCAPE);
-
-    uint16_t x = myScreen.screenSizeX();
-    uint16_t y = myScreen.screenSizeY();
-    uint16_t dx = 0;
-    uint16_t dy = 0;
-    uint16_t dz = y / 2;
-    String text = "";
-
+    // #if (USE_FONT_MODE == USE_FONT_TERMINAL)
     myScreen.selectFont(Font_Terminal12x16);
 
-    // 0
-    dy = (dz - myScreen.characterSizeY()) / 2;
-    text = myScreen.WhoAmI() + " - " + String(SCREEN_EPD_EXT3_RELEASE);
-    mySerial.println(text);
-    dx = (x - myScreen.stringSizeX(text)) / 2;
-    myScreen.gText(dx, dy, text);
-    myScreen.dRectangle(0, dz * 0, x, dz, myColours.black);
+    myScreen.gText(10, y, myScreen.WhoAmI(), myColours.red);
+    y += myScreen.characterSizeY();
+    myScreen.gText(10, y, formatString("%i x %i", myScreen.screenSizeX(), myScreen.screenSizeY()), myColours.red);
+    y += myScreen.characterSizeY();
+    y += myScreen.characterSizeY();
 
-    chrono = millis();
-    myScreen.flush();
-    chrono = millis() - chrono;
+    myScreen.selectFont(Font_Terminal6x8);
+    myScreen.gText(10, y, "Terminal6x8");
+    y += myScreen.characterSizeY();
 
-    // 1
-    dy += dz;
-    text = formatString("Global update= %i ms", chrono);
-    // text = formatString("Fast update= %i ms", chrono);
-    mySerial.println(text);
-    dx = (x - myScreen.stringSizeX(text)) / 2;
-    myScreen.gText(dx, dy, text);
-    myScreen.dRectangle(0, dz * 1, x, dz, myColours.black);
+    myScreen.selectFont(Font_Terminal8x12);
+    myScreen.gText(10, y, "Terminal8x12");
+    y += myScreen.characterSizeY();
+
+    myScreen.selectFont(Font_Terminal12x16);
+    myScreen.gText(10, y, "Terminal12x16");
+    y += myScreen.characterSizeY();
+
+    myScreen.selectFont(Font_Terminal16x24);
+    myScreen.gText(10, y, "Terminal16x24");
+    y += myScreen.characterSizeY();
 
     myScreen.flush();
 }
@@ -118,13 +110,14 @@ void setup()
     mySerial.println("=== " __DATE__ " " __TIME__);
     mySerial.println();
 
+    // Start
     mySerial.println("begin... ");
     myScreen.begin();
     mySerial.println(formatString("%s %ix%i", myScreen.WhoAmI().c_str(), myScreen.screenSizeX(), myScreen.screenSizeY()));
 
-    mySerial.println("Speed... ");
+    mySerial.println("Fonts... ");
     myScreen.clear();
-    performTest();
+    displayFonts();
     wait(8);
 
     mySerial.println("White... ");
