@@ -141,7 +141,7 @@
 // #define eScreen_EPD_EXT3_B98_0B_Fast eScreen_EPD_B98_PS_0B ///< reference xE2B98PS0Bx, not tested
 /// @}
 
-/// @name Monochrome screens with embedded fast update and wide temperature
+/// @name Monochrome screens with wide temperature and embedded fast update
 /// @note Global and fast update modes
 /// @see https://www.pervasivedisplays.com/products/?_sft_etc_itc=pu+itc&_sft_temperature_range=m15c-to-p60c
 /// @{

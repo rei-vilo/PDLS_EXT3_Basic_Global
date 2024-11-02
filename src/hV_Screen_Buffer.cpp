@@ -20,7 +20,7 @@
 // Release 700: Refactored screen and board functions
 // Release 703: Improved orientation function
 // Release 801: Improved functions names consistency
-// Release 805: Added large variant for gText
+// Release 805: Added large variant for gText()
 //
 
 // Library header

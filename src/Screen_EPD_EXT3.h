@@ -1,6 +1,6 @@
 ///
 /// @file Screen_EPD_EXT3.h
-/// @brief Driver for Pervasive Displays iTC monochrome and colour screens with EXT3-1 board
+/// @brief Driver for Pervasive Displays iTC monochrome and colour screens with EXT3.1 board
 ///
 /// @details Project Pervasive Displays Library Suite
 /// @n Based on highView technology
@@ -12,8 +12,8 @@
 /// * Feature: none
 ///
 /// @author Rei Vilo
-/// @date 21 Aug 2024
-/// @version 805
+/// @date 21 Sep 2024
+/// @version 806
 ///
 /// @copyright (c) Rei Vilo, 2010-2024
 /// @copyright All rights reserved
@@ -75,7 +75,7 @@
 ///
 /// @brief Library release number
 ///
-#define SCREEN_EPD_EXT3_RELEASE 805
+#define SCREEN_EPD_EXT3_RELEASE 806
 
 ///
 /// @brief Library variant

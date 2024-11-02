@@ -437,6 +437,15 @@ class hV_Screen_Buffer : protected hV_Font_Terminal
     uint16_t v_screenSizeH, v_screenSizeV, v_screenDiagonal, v_screenMarginH, v_screenMarginV;
     uint8_t v_orientation, v_intensity;
     uint16_t v_screenColourBits;
+
+    //
+    // === Touch section
+    //
+
+    //
+    // === End of Touch section
+    //
+
     /// @endcond
 };
 

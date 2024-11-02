@@ -32,6 +32,11 @@ void hV_Board::b_begin(pins_t board, uint8_t family, uint16_t delayCS)
     b_fsmPowerScreen = FSM_OFF;
 }
 
+void hV_Board::setPanelPowerPin(uint8_t panelPowerPin)
+{
+    b_pin.panelPower = panelPowerPin;
+}
+
 void hV_Board::b_reset(uint32_t ms1, uint32_t ms2, uint32_t ms3, uint32_t ms4, uint32_t ms5)
 {
     delay(ms1); // Wait for power stabilisation

@@ -1,4 +1,4 @@
-# Pervasive Displays Library Suite - Basic Edition - Global update
+# Pervasive Displays Library Suite - Basic edition - Global update
 
 [![Release](https://img.shields.io/github/v/release/rei-vilo/PDLS_EXT3_Basic_Global)](https://github.com/rei-vilo/PDLS_EXT3_Basic_Global/releases) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/77ecc9fa99834e299505f5f2a7c83e53)](https://app.codacy.com/gh/rei-vilo/PDLS_EXT3_Basic_Global/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=rei-vilo/PDLS_EXT3_Basic_Global&amp;utm_campaign=Badge_Grade) ![Arduino lint](https://github.com/rei-vilo/PDLS_EXT3_Basic_Global/actions/workflows/main.yml/badge.svg) [![GitHub issues](https://img.shields.io/github/issues/rei-vilo/PDLS_EXT3_Basic_Global)](https://github.com/rei-vilo/PDLS_EXT3_Basic_Global/issues)
 
@@ -15,11 +15,11 @@ The **PDLS_EXT3_Basic_Global** supports the screens
 
 the boards
 
-* [EPD Extension Kit Gen 3 (EXT3 or EXT3-1)](https://www.pervasivedisplays.com/product/epd-extension-kit-gen-3-EXT3/); 
+* [EPD Extension Kit Gen 3 (EXT3 or EXT3.1)](https://www.pervasivedisplays.com/product/epd-extension-kit-gen-3-EXT3/); 
 
 the kits
 
-* [EPD Pico Kit (EPDK)](https://www.pervasivedisplays.com/product/epd-pico-kit-epdk/), which includes a Raspberry Pi Pico RP2040, an EXT3-1 extension board and a 2.66" monochrome panel.
+* [EPD Pico Kit (EPDK)](https://www.pervasivedisplays.com/product/epd-pico-kit-epdk/), which includes a Raspberry Pi Pico RP2040, an EXT3.1 extension board and a 2.66" monochrome panel.
 
 ## Features
 
@@ -44,6 +44,7 @@ The Pervasive Displays Library Suite provides a high-level interface to drive th
 
 Software
 
+* [Arduino IDE](https://www.arduino.cc/en/software) or [Arduino CLI](https://arduino.github.io/arduino-cli/)
 * [Installing Additional Arduino Libraries](https://www.arduino.cc/en/guide/libraries)
 
     + Using the Library Manager
@@ -62,9 +63,9 @@ Software
 
 Hardware
 
-* Pervasive Displays EPD Extension Kit Gen 3 (EXT3 or EXT3-1)
-* Pervasive Displays iTC monochrome screens (film `CS`)
-* Pervasive Displays iTC colour (black-white-red) screens (film `JS`) 
+* Pervasive Displays EPD Extension Kit Gen 3 (EXT3 or EXT3.1)
+* Pervasive Displays iTC monochrome screens (film `C`)
+* Pervasive Displays iTC colour (black-white-red) screens (film `J`) 
 
 ## Licence
 

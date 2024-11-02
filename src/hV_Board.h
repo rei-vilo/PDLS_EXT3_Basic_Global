@@ -1,6 +1,6 @@
 ///
 /// @file hV_Board.h
-/// @brief Driver for Pervasive Displays EXT3, EXT3-1 and EXT3-Touch boards
+/// @brief Driver for Pervasive Displays EXT3, EXT3.1 and EXT3-Touch boards
 ///
 /// @details Project Pervasive Displays Library Suite
 /// @n Based on highView technology
@@ -8,8 +8,8 @@
 /// * Edition: Advanced
 ///
 /// @author Rei Vilo
-/// @date 21 Aug 2024
-/// @version 805
+/// @date 21 Sep 2024
+/// @version 806
 ///
 /// @copyright (c) Rei Vilo, 2010-2024
 /// @copyright All rights reserved
@@ -44,13 +44,13 @@
 ///
 /// @brief Library release number
 ///
-#define hV_BOARD_RELEASE 805
+#define hV_BOARD_RELEASE 806
 
 // Objects
 //
 ///
-/// @brief Class for Pervasive Displays EXT3, EXT3-1 and EXT3-Touch boards
-/// @details Functions for EXT3-1 board
+/// @brief Class for Pervasive Displays EXT3, EXT3.1 and EXT3-Touch boards
+/// @details Functions for EXT3.1 board
 /// * GPIO
 /// * SPI for LCD and external Flash and SRAM memory
 /// * I2C for touch and haptic feedback
@@ -62,6 +62,13 @@ class hV_Board
     /// @brief Constructor
     ///
     hV_Board();
+
+    ///
+    /// @brief Set panelPower pin
+    /// @param panelPowerPin panelPower pin
+    /// @warning setPanelPowerPin() should be called before begin()
+    ///
+    void setPanelPowerPin(uint8_t panelPowerPin = NOT_CONNECTED);
 
     ///
     /// @brief Get the pins of the board
