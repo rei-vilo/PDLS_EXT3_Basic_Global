@@ -6,7 +6,7 @@
 
 The Pervasive Displays Library Suite is specifically designed for the [Pervasive Displays](https://www.pervasivedisplays.com) e-paper screens, extension boards and evaluation kits.
 
-<center>![](https://pdls.pervasivedisplays.com/userguide/img/Logo_PDI_text_320.png)</center>
+![](https://pdls.pervasivedisplays.com/userguide/img/Logo_PDI_text_320.png)
 
 The **PDLS_EXT3_Basic_Global** supports the screens
 
