@@ -18,7 +18,7 @@
 ///
 /// The basic edition includes different variants and supports
 ///
-/// * **PDLS_EXT3_Basic_Global** for [monochrome screens](https://www.pervasivedisplays.com/products-e-ink-display/?_sft_product_colour=black-white) (film `C`) and [colour (black-white-red)](https://www.pervasivedisplays.com/products-e-ink-display/?_sft_product_colour=black-white-red) (film `J`),
+/// * **PDLS_EXT3_Basic_Global** for [monochrome screens](https://www.pervasivedisplays.com/products-e-ink-display/?_sft_product_colour=black-white) (film `C`) and [colour black-white-red](https://www.pervasivedisplays.com/products-e-ink-display/?_sft_product_colour=black-white-red) (film `J`),
 /// * **PDLS_EXT3_Basic_Fast** for [monochrome screens with embedded fast update](https://www.pervasivedisplays.com/products-e-ink-display/?_sft_etc_itc=pu) (film `P`),
 /// * **PDLS_EXT3_Basic_Wide** for [monochrome screens with wide temperature and embedded fast update](https://www.pervasivedisplays.com/products-e-ink-display/?_sft_etc_itc=pu&_sft_temperature_range=m15c-to-p60c) (film `K`),
 /// * **PDLS_EXT3_Basic_Touch** for [monochrome screens with capacitive touch](https://www.pervasivedisplays.com/products-e-ink-display/?_sft_etc_itc=tp),
@@ -26,13 +26,13 @@
 ///
 /// the boards
 ///
-/// * [EPD Extension Kit Gen 3 (EXT3 or EXT3-1)](https://www.pervasivedisplays.com/product/epd-extension-kit-gen-3-EXT3/),
+/// * [EPD Extension Kit Gen 3 (EXT3 or EXT3.1)](https://www.pervasivedisplays.com/product/epd-extension-kit-gen-3-EXT3/),
 /// * [Touch Expansion Board for EXT3 (EXT3-Touch)](https://www.pervasivedisplays.com/product/touch-expansion-board-ext3-touch/);
 ///
 /// the kits
 ///
-/// * [EPD Pico Kit (EPDK-266)](https://www.pervasivedisplays.com/product/epd-pico-kit-epdk/), which includes a Raspberry Pi Pico RP2040, an EXT3-1 extension board and a 2.66&quot; monochrome panel,
-/// * [EPD Pico Kit Touch (EPDK-271-Touch)](https://www.pervasivedisplays.com/product/touch-expansion-board-ext3-touch/#tab-3), which includes a Raspberry Pi Pico RP2040, an EXT3-1 and EXT3-Touch boards and a 2.71&quot;-Touch monochrome panel with embedded fast update.
+/// * [EPD Pico Kit (EPDK-266)](https://www.pervasivedisplays.com/product/epd-pico-kit-epdk/), which includes a Raspberry Pi Pico RP2040, an EXT3.1 extension board and a 2.66&quot; monochrome panel,
+/// * [EPD Pico Kit Touch (EPDK-271-Touch)](https://www.pervasivedisplays.com/product/touch-expansion-board-ext3-touch/#tab-3), which includes a Raspberry Pi Pico RP2040, an EXT3.1 and EXT3-Touch boards and a 2.71&quot;-Touch monochrome panel with embedded fast update.
 ///
 /// @b Documentation
 ///
@@ -45,13 +45,13 @@
 /// Additionally, the **[Wiki](https://docs.pervasivedisplays.com/)** provides a gradual introduction to the e-paper technology and how to use it.
 ///
 /// @author Rei Vilo
-/// @date 21 Oct 2024
-/// @version 807
+/// @date 12 Nov 2024
+/// @version 808
 ///
-/// @copyright (c) Rei Vilo, 2010-2024
+/// @copyright &copy; Rei Vilo, 2010-2024
 /// @copyright All rights reserved
 /// @copyright For exclusive use with Pervasive Displays screens
-/// @copyright Portions (c) Pervasive Displays, 2010-2024
+/// @copyright Portions &copy; Pervasive Displays, 2010-2024
 ///
 /// * Basic edition: for hobbyists and for basic usage
 /// @n Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)

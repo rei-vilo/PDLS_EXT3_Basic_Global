@@ -84,7 +84,7 @@ void Screen_EPD_EXT3::COG_LargeCJ_getDataOTP()
     COG_LargeCJ_reset();
     if (b_family == FAMILY_LARGE)
     {
-        digitalWrite(b_pin.panelCSS, HIGH);    // Unselect slave panel
+        digitalWrite(b_pin.panelCSS, HIGH); // Unselect slave panel
     }
 
     // Read OTP
@@ -1184,6 +1184,14 @@ void Screen_EPD_EXT3::begin()
             b_begin(b_pin, FAMILY_SMALL, 0);
             break;
     }
+
+    //
+    // === Touch section
+    //
+
+    //
+    // === End of touch section
+    //
 
     // Sizes
     switch (u_codeSize)

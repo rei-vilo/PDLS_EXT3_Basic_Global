@@ -8,8 +8,8 @@
 /// * Edition: Advanced
 ///
 /// @author Rei Vilo
-/// @date 21 Sep 2024
-/// @version 806
+/// @date 21 Oct 2024
+/// @version 807
 ///
 /// @copyright (c) Rei Vilo, 2010-2024
 /// @copyright All rights reserved
@@ -63,7 +63,7 @@
 ///
 /// @brief Library release number
 ///
-#define hV_UTILITIES_PDLS_RELEASE 806
+#define hV_UTILITIES_PDLS_RELEASE 807
 
 // Objects
 //

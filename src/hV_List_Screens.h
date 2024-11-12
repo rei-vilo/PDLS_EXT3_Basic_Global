@@ -11,7 +11,7 @@
 ///
 /// @author Rei Vilo
 /// @date 21 Aug 2024
-/// @version 805
+/// @version 807
 ///
 /// @copyright (c) Rei Vilo, 2010-2024
 /// @copyright All rights reserved
@@ -43,7 +43,7 @@
 ///
 /// @brief Release
 ///
-#define hV_LIST_SCREENS_RELEASE 805
+#define hV_LIST_SCREENS_RELEASE 807
 
 /// @deprecated Screen name format (8.0.0)
 /// * Name format eScreen_EPD_EXT3_<size>_<driver>_<suffix> is deprecated (8.0.0).
@@ -298,8 +298,7 @@
 /// @todo eScreen_EPD_437_KS_0C not tested
 #define eScreen_EPD_437_KS_0C SCREEN(SIZE_437, FILM_K, DRIVER_C) ///< reference xE2437KS0Cx, not tested
 #define eScreen_EPD_581_KS_06 SCREEN(SIZE_581, FILM_K, DRIVER_6) ///< reference xE2581KS06x
-// /// @todo eScreen_EPD_741_KS_0B not tested
-// #define eScreen_EPD_741_KS_0B SCREEN(SIZE_741, FILM_K, DRIVER_B) ///< reference xE2741KS0Bx, not tested
+#define eScreen_EPD_741_KS_06 SCREEN(SIZE_741, FILM_K, DRIVER_6) ///< reference xE2741KS06x
 // /// @todo eScreen_EPD_969_KS_0B not tested
 // #define eScreen_EPD_969_KS_0B SCREEN(SIZE_969, FILM_K, DRIVER_B) ///< reference xE2969KS0Bx, not tested
 // /// @todo eScreen_EPD_B98_KS_0B not tested

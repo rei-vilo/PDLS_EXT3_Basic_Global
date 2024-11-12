@@ -10,8 +10,8 @@ The Pervasive Displays Library Suite is specifically designed for the [Pervasive
 
 The **PDLS_EXT3_Basic_Global** supports the screens
 
-* iTC [monochrome](https://www.pervasivedisplays.com/products/?_sft_product_colour=black-white) (film `CS`);
-* iTC [colour (black-white-red)](https://www.pervasivedisplays.com/products/?_sft_product_colour=black-white-red) (film `JS`); 
+* iTC [monochrome](https://www.pervasivedisplays.com/products/?_sft_product_colour=black-white) (film `C`);
+* iTC [colour (black-white-red)](https://www.pervasivedisplays.com/products/?_sft_product_colour=black-white-red) (film `J`); 
 
 the boards
 
