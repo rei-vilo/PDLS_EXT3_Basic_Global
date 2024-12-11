@@ -12,8 +12,8 @@
 /// * Feature: none
 ///
 /// @author Rei Vilo
-/// @date 21 Oct 2024
-/// @version 807
+/// @date 21 Nov 2024
+/// @version 810
 ///
 /// @copyright (c) Rei Vilo, 2010-2024
 /// @copyright All rights reserved
@@ -55,27 +55,27 @@
 #include "hV_Utilities_PDLS.h"
 
 // Checks
-#if (hV_HAL_PERIPHERALS_RELEASE < 801)
-#error Required hV_HAL_PERIPHERALS_RELEASE 801
+#if (hV_HAL_PERIPHERALS_RELEASE < 810)
+#error Required hV_HAL_PERIPHERALS_RELEASE 810
 #endif // hV_HAL_PERIPHERALS_RELEASE
 
-#if (hV_CONFIGURATION_RELEASE < 803)
-#error Required hV_CONFIGURATION_RELEASE 803
+#if (hV_CONFIGURATION_RELEASE < 810)
+#error Required hV_CONFIGURATION_RELEASE 810
 #endif // hV_CONFIGURATION_RELEASE
 
-#if (hV_SCREEN_BUFFER_RELEASE < 805)
-#error Required hV_SCREEN_BUFFER_RELEASE 805
+#if (hV_SCREEN_BUFFER_RELEASE < 810)
+#error Required hV_SCREEN_BUFFER_RELEASE 810
 #endif // hV_SCREEN_BUFFER_RELEASE
 
-#if (hV_BOARD_RELEASE < 801)
-#error Required hV_BOARD_RELEASE 801
+#if (hV_BOARD_RELEASE < 810)
+#error Required hV_BOARD_RELEASE 810
 #endif // hV_BOARD_RELEASE
 
 #ifndef SCREEN_EPD_EXT3_RELEASE
 ///
 /// @brief Library release number
 ///
-#define SCREEN_EPD_EXT3_RELEASE 807
+#define SCREEN_EPD_EXT3_RELEASE 810
 
 ///
 /// @brief Library variant

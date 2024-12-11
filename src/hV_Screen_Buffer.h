@@ -6,8 +6,8 @@
 /// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 21 Aug 2024
-/// @version 805
+/// @date 21 Nov 2024
+/// @version 810
 ///
 /// @copyright (c) Rei Vilo, 2010-2024
 /// @copyright All rights reserved
@@ -42,7 +42,7 @@
 ///
 /// @brief Library release number
 ///
-#define hV_SCREEN_BUFFER_RELEASE 805
+#define hV_SCREEN_BUFFER_RELEASE 810
 
 // Other libraries
 #include "hV_Colours565.h"

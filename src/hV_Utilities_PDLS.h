@@ -1,6 +1,6 @@
 ///
 /// @file hV_Utilities_PDLS.h
-/// @brief Driver for Pervasive Displays EXT3, EXT3.1 and EXT3-Touch boards
+/// @brief Driver for Pervasive Displays EXT3, EXT3.1, EXT3-Touch and EXT4 boards
 ///
 /// @details Project Pervasive Displays Library Suite
 /// @n Based on highView technology
@@ -8,8 +8,8 @@
 /// * Edition: Advanced
 ///
 /// @author Rei Vilo
-/// @date 21 Oct 2024
-/// @version 807
+/// @date 21 Nov 2024
+/// @version 810
 ///
 /// @copyright (c) Rei Vilo, 2010-2024
 /// @copyright All rights reserved
@@ -47,23 +47,23 @@
 #include "hV_Utilities_Common.h"
 
 // Checks
-#if (hV_HAL_PERIPHERALS_RELEASE < 801)
-#error Required hV_HAL_PERIPHERALS_RELEASE 801
+#if (hV_HAL_PERIPHERALS_RELEASE < 810)
+#error Required hV_HAL_PERIPHERALS_RELEASE 810
 #endif // hV_HAL_PERIPHERALS_RELEASE
 
-#if (hV_CONFIGURATION_RELEASE < 803)
-#error Required hV_CONFIGURATION_RELEASE 803
+#if (hV_CONFIGURATION_RELEASE < 810)
+#error Required hV_CONFIGURATION_RELEASE 810
 #endif // hV_CONFIGURATION_RELEASE
 
-#if (hV_BOARD_RELEASE < 801)
-#error Required hV_BOARD_RELEASE 801
+#if (hV_BOARD_RELEASE < 810)
+#error Required hV_BOARD_RELEASE 810
 #endif // hV_BOARD_RELEASE
 
 #ifndef hV_UTILITIES_PDLS_RELEASE
 ///
 /// @brief Library release number
 ///
-#define hV_UTILITIES_PDLS_RELEASE 807
+#define hV_UTILITIES_PDLS_RELEASE 810
 
 // Objects
 //

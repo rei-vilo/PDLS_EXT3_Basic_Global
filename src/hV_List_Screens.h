@@ -10,8 +10,8 @@
 /// * 1- List of supported Pervasive Displays screens
 ///
 /// @author Rei Vilo
-/// @date 21 Aug 2024
-/// @version 807
+/// @date 21 Nov 2024
+/// @version 810
 ///
 /// @copyright (c) Rei Vilo, 2010-2024
 /// @copyright All rights reserved
@@ -43,7 +43,7 @@
 ///
 /// @brief Release
 ///
-#define hV_LIST_SCREENS_RELEASE 807
+#define hV_LIST_SCREENS_RELEASE 810
 
 /// @deprecated Screen name format (8.0.0)
 /// * Name format eScreen_EPD_EXT3_<size>_<driver>_<suffix> is deprecated (8.0.0).

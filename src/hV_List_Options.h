@@ -16,10 +16,11 @@
 /// * 10. String object for basic edition
 /// * 11. Set storage mode, not implemented
 /// * 12. Set debug options, not implemented
+/// * 13. Select EXT board
 ///
 /// @author Rei Vilo
-/// @date 21 Aug 2024
-/// @version 805
+/// @date 21 Nov 2024
+/// @version 810
 ///
 /// @copyright (c) Rei Vilo, 2010-2024
 /// @copyright All rights reserved
@@ -48,7 +49,7 @@
 ///
 /// @brief Release
 ///
-#define hV_LIST_OPTIONS_RELEASE 805
+#define hV_LIST_OPTIONS_RELEASE 810
 
 ///
 /// @name 1- List of supported Pervasive Displays screens
@@ -200,6 +201,20 @@
 /// * Commercial edition: option
 /// * Viewer edition: option
 ///
+
+///
+/// @name 13- EXT boards
+/// * Basic edition: EXT3 and EXT4
+/// * Evaluation edition: EXT3
+/// * Commercial edition: EXT3
+/// * Viewer edition: EXT3
+///
+/// @{
+#define BOARD_EXT3 3 ///< EXT3 and EXT3.1 boards
+#define BOARD_EXT4 4 ///< EXT4 board
+
+#define USE_EXT_BOARD BOARD_EXT3 ///< Selected board
+/// @}
 
 #endif // hV_LIST_OPTIONS_RELEASE
 

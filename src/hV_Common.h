@@ -6,8 +6,8 @@
 /// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 21 May 2024
-/// @version 803
+/// @date 21 Nov 2024
+/// @version 810
 ///
 /// @copyright (c) Rei Vilo, 2010-2024
 /// @copyright All rights reserved
@@ -36,7 +36,7 @@
 ///
 /// @brief Library release number
 ///
-#define hV_COMMON_RELEASE 803
+#define hV_COMMON_RELEASE 810
 
 // SDK
 #include "hV_HAL_Peripherals.h"
@@ -47,7 +47,7 @@
 #include "hV_List_Options.h"
 #include "hV_List_Boards.h"
 #include "hV_List_Screens.h"
-#include "hV_List_Screens_Legacy.h"
+// #include "hV_List_Screens_Legacy.h"
 
 #include "hV_Documentation.h"
 

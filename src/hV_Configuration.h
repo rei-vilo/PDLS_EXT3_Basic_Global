@@ -20,8 +20,8 @@
 /// * 12. Set debug options, not implemented
 ///
 /// @author Rei Vilo
-/// @date 21 Aug 2024
-/// @version 805
+/// @date 21 Nov 2024
+/// @version 810
 ///
 /// @copyright (c) Rei Vilo, 2010-2024
 /// @copyright All rights reserved
@@ -62,27 +62,27 @@
 #include "hV_List_Screens.h"
 
 // Checks
-#if (hV_LIST_CONSTANTS_RELEASE < 801)
-#error Required hV_LIST_CONSTANTS_RELEASE 801
+#if (hV_LIST_CONSTANTS_RELEASE < 810)
+#error Required hV_LIST_CONSTANTS_RELEASE 810
 #endif // hV_LIST_CONSTANTS_RELEASE
 
-#if (hV_LIST_OPTIONS_RELEASE < 803)
-#error Required hV_LIST_OPTIONS_RELEASE 803
+#if (hV_LIST_OPTIONS_RELEASE < 810)
+#error Required hV_LIST_OPTIONS_RELEASE 810
 #endif // hV_LIST_OPTIONS_RELEASE
 
-#if (hV_LIST_BOARDS_RELEASE < 801)
-#error Required hV_LIST_BOARDS_RELEASE 801
+#if (hV_LIST_BOARDS_RELEASE < 810)
+#error Required hV_LIST_BOARDS_RELEASE 810
 #endif // hV_LIST_BOARDS_RELEASE
 
-#if (hV_LIST_SCREENS_RELEASE < 801)
-#error Required hV_LIST_SCREENS_RELEASE 801
+#if (hV_LIST_SCREENS_RELEASE < 810)
+#error Required hV_LIST_SCREENS_RELEASE 810
 #endif // hV_LIST_SCREENS_RELEASE
 
 #ifndef hV_CONFIGURATION_RELEASE
 ///
 /// @brief Release
 ///
-#define hV_CONFIGURATION_RELEASE 805
+#define hV_CONFIGURATION_RELEASE 810
 
 ///
 /// @name 1- List of supported Pervasive Displays screens
@@ -104,7 +104,7 @@
 /// @name 9. Set GPIO expander mode, not implemented
 /// @name 10. String object of char array options for string.
 /// @name 11. Set storage mode, serial console by default
-/// @name 12. Set debug options
+/// @name 12. Set debug options, not implemented
 ///
 /// @see hV_List_Options.h
 ///

@@ -14,6 +14,7 @@
 // Release 700: Initial release
 // Release 801: Improved double-panel screen management
 // Release 804: Improved power management
+// Release 810: Added support for EXT4
 //
 
 // Library header
@@ -127,6 +128,40 @@ void hV_Board::b_resume()
         {
             pinMode(b_pin.cardCS, INPUT);
         }
+
+#if (USE_EXT_BOARD == BOARD_EXT4) // EXT4 GPIOs
+
+        if (b_pin.button != NOT_CONNECTED) // generic
+        {
+            pinMode(b_pin.button, INPUT_PULLUP);
+        }
+
+        if (b_pin.ledData != NOT_CONNECTED) // generic
+        {
+            pinMode(b_pin.ledData, OUTPUT);
+        }
+
+        if (b_pin.nfcFD != NOT_CONNECTED) // generic
+        {
+            pinMode(b_pin.nfcFD, INPUT);
+        }
+
+        if (b_pin.imuInt1 != NOT_CONNECTED) // generic
+        {
+            pinMode(b_pin.imuInt1, INPUT);
+        }
+
+        if (b_pin.imuInt2 != NOT_CONNECTED) // generic
+        {
+            pinMode(b_pin.imuInt2, INPUT);
+        }
+
+        if (b_pin.weatherInt != NOT_CONNECTED) // generic
+        {
+            pinMode(b_pin.weatherInt, INPUT);
+        }
+
+#endif // USE_EXT_BOARD
 
         b_fsmPowerScreen |= FSM_GPIO_MASK;
     }

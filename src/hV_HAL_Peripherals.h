@@ -6,8 +6,8 @@
 /// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 21 Oct 2024
-/// @version 806
+/// @date 21 Nov 2024
+/// @version 810
 ///
 /// @copyright (c) Rei Vilo, 2010-2024
 /// @copyright All rights reserved
@@ -36,7 +36,7 @@
 ///
 /// @brief Release
 ///
-#define hV_HAL_PERIPHERALS_RELEASE 806
+#define hV_HAL_PERIPHERALS_RELEASE 810
 
 ///
 /// @brief SDK library
@@ -176,6 +176,58 @@ void hV_HAL_Wire_end();
 /// @warning No check for previous initialisation
 ///
 void hV_HAL_Wire_transfer(uint8_t address, uint8_t * dataWrite, size_t sizeWrite, uint8_t * dataRead = 0, size_t sizeRead = 0);
+
+/// @}
+
+///
+/// @name Miscellaneous
+/// @details Patches for implementations on some platforms
+///
+/// @{
+
+///
+///
+/// @brief Minimum of two numbers
+///
+/// @param a first number
+/// @param b second number
+/// @return minimum of a and b
+///
+/// @note Macro more robust than bugged implementation on some platforms
+///
+#define hV_HAL_min(a, b) ((a) < (b) ? (a) : (b))
+
+///
+/// @brief Maximum of two numbers
+///
+/// @param a first number
+/// @param b second number
+/// @return maximum of a and b
+///
+/// @note Macro more robust than bugged implementation on some platforms
+///
+#define hV_HAL_max(a, b) ((a) > (b) ? (a) : (b))
+
+///
+/// @brief Swap numbers
+/// @param[out] x first number
+/// @param[out] y second number
+///
+/// @note Macro more robust than template for some platforms
+///
+/// @code
+/// template <typename T> T
+/// hV_HAL_swap(T &x, T &y)
+/// {
+///     T w = x;
+///     x = y;
+///     y = w;
+/// }
+/// @endcode
+///
+/// @note `__typeof__` recommended over `typeof`
+///
+#define hV_HAL_swap(x, y) do { __typeof__(x) WORK = x; x = y; y = WORK; } while (0)
 
 /// @}
 

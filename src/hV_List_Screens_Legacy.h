@@ -10,8 +10,8 @@
 /// * 1- List of supported Pervasive Displays screens
 ///
 /// @author Rei Vilo
-/// @date 21 Mar 2024
-/// @version 801
+/// @date 21 Nov 2024
+/// @version 810
 ///
 /// @copyright (c) Rei Vilo, 2010-2024
 /// @copyright All rights reserved
@@ -43,7 +43,7 @@
 ///
 /// @brief Release
 ///
-#define hV_LIST_SCREENS_LEGACY_RELEASE 801
+#define hV_LIST_SCREENS_LEGACY_RELEASE 810
 
 // Current list
 #include "hV_List_Screens.h"

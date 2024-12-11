@@ -6,8 +6,8 @@
 /// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 21 Sep 2024
-/// @version 806
+/// @date 21 Nov 2024
+/// @version 810
 ///
 /// @copyright (c) Rei Vilo, 2010-2024
 /// @copyright All rights reserved
@@ -42,14 +42,15 @@
 ///
 /// @brief Library release number
 ///
-#define hV_UTILITIES_RELEASE 806
+#define hV_UTILITIES_RELEASE 810
 
-#ifndef min
-#define min(a, b) ((a) < (b) ? (a) : (b))
-#endif
-#ifndef max
-#define max(a, b) ((a) > (b) ? (a) : (b))
-#endif
+// Moved to hV_HAL_Peripherals
+// #ifndef min
+// #define min(a, b) ((a) < (b) ? (a) : (b))
+// #endif
+// #ifndef max
+// #define max(a, b) ((a) > (b) ? (a) : (b))
+// #endif
 
 ///
 /// @name Orientation constants
@@ -159,26 +160,27 @@ void setMinMax(uint16_t value, uint16_t & valueMin, uint16_t & valueMax);
 uint32_t roundUp(uint32_t value, uint16_t modulo);
 
 // Utilities
-///
-/// @brief Swap number, int16_t
-/// @param a first number
-/// @param b second number
-///
-void swap(int16_t & a, int16_t & b);
-
-///
-/// @brief Swap number, uint16_t
-/// @param a first number
-/// @param b second number
-///
-void swap(uint16_t & a, uint16_t & b);
-
-///
-/// @brief Swap number, uint8_t
-/// @param a first number
-/// @param b second number
-///
-void swap(uint8_t & a, uint8_t & b);
+// Moved to hV_HAL_Peripherals
+// ///
+// /// @brief Swap number, int16_t
+// /// @param a first number
+// /// @param b second number
+// ///
+// void swap(int16_t & a, int16_t & b);
+//
+// ///
+// /// @brief Swap number, uint16_t
+// /// @param a first number
+// /// @param b second number
+// ///
+// void swap(uint16_t & a, uint16_t & b);
+//
+// ///
+// /// @brief Swap number, uint8_t
+// /// @param a first number
+// /// @param b second number
+// ///
+// void swap(uint8_t & a, uint8_t & b);
 
 /// @}
 

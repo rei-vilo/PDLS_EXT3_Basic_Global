@@ -24,6 +24,7 @@
 // Release 803: Improved stability
 // Release 804: Improved power management
 // Release 805: Improved stability
+// Release 810: Added patches for some platforms
 //
 
 // Library header

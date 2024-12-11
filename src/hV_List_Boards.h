@@ -12,8 +12,8 @@
 ///     * 2.3 Deprecated boards
 ///
 /// @author Rei Vilo
-/// @date 21 Sep 2024
-/// @version 806
+/// @date 21 Nov 2024
+/// @version 810
 ///
 /// @copyright (c) Rei Vilo, 2010-2024
 /// @copyright All rights reserved
@@ -48,12 +48,14 @@
 ///
 /// @brief Release
 ///
-#define hV_LIST_BOARDS_RELEASE 806
+#define hV_LIST_BOARDS_RELEASE 810
 
 ///
 /// @brief Not connected pin
 ///
 #define NOT_CONNECTED (uint8_t)0xff
+
+#if (USE_EXT_BOARD == BOARD_EXT3)
 
 ///
 /// @brief EXT3 board configuration structure
@@ -480,6 +482,219 @@ const pins_t boardCC1352 =
 };
 
 /// @}
+
+#elif (USE_EXT_BOARD == BOARD_EXT4)
+
+///
+/// @brief EXT4 board configuration structure
+/// @note
+/// * Pins 1 to 10 are common to all EXT boards
+/// * Pins 11 to 20 are specific to EXT4 board
+/// * Other pins are optional or external
+/// @warning Only valid with EXT4 board
+///
+struct pins_t
+{
+    // Shared
+    // Common
+    // ///< EXT3/EXT3.1/EXT4 pin 1 Black -> +3.3V
+    // ///< EXT3/EXT3.1/EXT4 pin 2 Brown -> SPI SCK
+    uint8_t panelBusy; ///< EXT3/EXT3.1/EXT4 pin 3 Red
+    uint8_t panelDC; ///< EXT3/EXT3.1/EXT4 pin 4 Orange
+    uint8_t panelReset; ///< EXT3/EXT3.1/EXT4 pin 5 Yellow
+    // ///< EXT3/EXT3.1/EXT4 pin 6 Green -> SPI MISO
+    // ///< EXT3/EXT3.1/EXT4 pin 7 Blue -> SPI MOSI
+    uint8_t flashCS; ///< EXT3/EXT3.1/EXT4 pin 8 Violet
+    uint8_t panelCS; ///< EXT3/EXT3.1/EXT4 pin 9 Grey
+    // ///< EXT3/EXT3.1/EXT4 pin 10 White -> GROUND
+    // End of Common
+
+    // EXT3, EXT3.1 and EXT3-Touch, EXT4 specific
+    uint8_t panelCSS; ///< EXT4 not available
+    uint8_t flashCSS; ///< EXT4 pin 16 Yellow
+    // ///< EXT4 pin 14 Blue -> I2C SDA
+    // ///< EXT4 pin 15 Green -> I2C SCL
+    uint8_t touchInt; ///< EXT4 not available
+    uint8_t touchReset; ///< EXT4 not available
+    uint8_t panelPower; ///< EXT4 pin 11 White
+    // End of EXT3, EXT3.1 and EXT3-Touch specific
+
+    // SD-card
+    uint8_t cardCS; ///< Separate SD-card board
+    uint8_t cardDetect; ///< Separate SD-card board
+    // End of SD-card
+    // End of Shared
+
+    // EXT4 specific
+    uint8_t button; ///< EXT4 pin 12 Grey
+    uint8_t ledData; ///< EXT4 pin 13 Violet WS2813C
+    // ///< EXT4 pin 14 Blue -> I2C SDA
+    // ///< EXT4 pin 15 Green -> I2C SCL
+    // ///< EXT4 pin 16 Yellow, see above
+    uint8_t nfcFD; ///< EXT4 pin 17 Orange NFC NT3H2111_2211 !Field detect, I2C address = 0x55
+    uint8_t imuInt1; ///< EXT4 pin 18 Red LIS2DH12 !INT2, I2C address = 0x19
+    uint8_t imuInt2; ///< EXT4 pin 19 Brown LIS2DH12 !INT1, I2C address = 0x19
+    uint8_t weatherInt; ///< EXT4 pin 20 Black HDC2080 !INT, I2C address = 0x40
+    // End of EXT4 specific
+};
+
+///
+/// @name 2.1 Recommended boards
+/// @{
+
+///
+/// @brief Arduino Nano Matter with Silicon Labs MGM240P, tested
+/// @details Variant of boardArduinoNanoMatter with panelPower, button and LED for EXT4
+/// @note Numbers refer to pins
+/// @note Recommended board
+///
+const pins_t boardArduinoNanoMatter =
+{
+    .panelBusy = 10, ///< EXT3 and EXT3.1 pin 3 Red -> D10
+    .panelDC = 9, ///< EXT3 and EXT3.1 pin 4 Orange -> D9
+    .panelReset = 8, ///< EXT3 and EXT3.1 pin 5 Yellow -> D8
+    .flashCS = 7, ///< EXT3 and EXT3.1 pin 8 Violet -> D7
+    .panelCS = 6, ///< EXT3 and EXT3.1 pin 9 Grey -> D6
+
+    .panelCSS = NOT_CONNECTED, ///< EXT4 not available
+    .flashCSS = 5, ///< EXT3 pin 20 or EXT3.1 pin 11 Black2 -> D5
+    .touchInt = NOT_CONNECTED, ///< EXT3-Touch pin 3 Red
+    .touchReset = NOT_CONNECTED, ///< EXT3-Touch pin 4 Orange
+    .panelPower = 2, ///< EXT4 pin 20 White -> D2
+    .cardCS = NOT_CONNECTED, ///< Separate SD-card board
+    .cardDetect = NOT_CONNECTED, ///< Separate SD-card board
+
+    // EXT4 specific
+    .button = 3, // EXT4 pin 12 Grey -> D3
+    .ledData = 4, // EXT4 pin 13 Violet WS2813C -> D4
+    // ///< EXT4 pin 14 Blue -> I2C SDA
+    // ///< EXT4 pin 15 Green -> I2C SCL
+    // ///< EXT4 pin 16 Yellow, see above
+    .nfcFD = 17, // EXT4 pin 17 Orange NFC NT3H2111_2211 !Field detect, I2C address = 0x55 -> A3
+    .imuInt1 = 16, // EXT4 pin 18 Red LIS2DH12 !INT1, I2C address = 0x19 -> A2
+    .imuInt2 = 15, // EXT4 pin 19 Brown LIS2DH12 !INT2, I2C address = 0x19 -> A1
+    .weatherInt = 14, // EXT4 pin 20 Black HDC2080 !INT, I2C address = 0x40 -> A0
+    // End of EXT4 specific
+};
+
+///
+/// @brief Silicon Labs EFR32xG24 Explorer Kit (xG24-EK2703A) configuration, tested
+/// @details Variant of boardSiLabsBG24Explorer with panelPower, button and LED for EXT4
+/// @note Numbers refer to pins
+/// @note Recommended board
+///
+const pins_t boardSiLabsBG24Explorer =
+{
+    .panelBusy = 4, ///< EXT3 and EXT3.1 pin 3 Red -> PC03 D4 4
+    .panelDC = 5, ///< EXT3 and EXT3.1 pin 4 Orange -> PC06 D5 5
+    .panelReset = 6, ///< EXT3 and EXT3.1 pin 5 Yellow -> PB00 D6 6
+    .flashCS = NOT_CONNECTED, ///< EXT3 and EXT3.1 pin 8 Violet
+    .panelCS = 13, ///< EXT3 and EXT3.1 pin 9 Grey -> PB03 A6 13
+    .panelCSS = NOT_CONNECTED, ///< EXT4 not available
+    .flashCSS = NOT_CONNECTED, ///< EXT3 pin 20 or EXT3.1 pin 11 Black2
+    .touchInt = NOT_CONNECTED, ///< EXT4 not available
+    .touchReset = NOT_CONNECTED, ///< EXT4 not available
+    .panelPower = 14, ///< EXT4 pin 20 White -> PB04 A7 14
+    .cardCS = NOT_CONNECTED, ///< Separate SD-card board
+    .cardDetect = NOT_CONNECTED, ///< Separate SD-card board
+
+    // EXT4 specific
+    .button = 11, // EXT4 pin 12 Grey -> PB01 A4 11
+    .ledData = 12, // EXT4 pin 13 Violet WS2813C -> PB02 A5 12
+    // ///< EXT4 pin 14 Blue -> I2C SDA
+    // ///< EXT4 pin 15 Green -> I2C SCL
+    // ///< EXT4 pin 16 Yellow, see above
+    .nfcFD = NOT_CONNECTED, // EXT4 pin 17 Orange NFC NT3H2111_2211 !Field detect, I2C address = 0x55
+    .imuInt1 = NOT_CONNECTED, // EXT4 pin 18 Red LIS2DH12 !INT1, I2C address = 0x19
+    .imuInt2 = NOT_CONNECTED, // EXT4 pin 19 Brown LIS2DH12 !INT2, I2C address = 0x19
+    .weatherInt = NOT_CONNECTED // EXT4 pin 20 Black HDC2080 !INT, I2C address = 0x40
+    // End of EXT4 specific
+};
+
+///
+/// @brief Raspberry Pi Pico and Pico W with default RP2040 configuration, tested
+/// @details Variant of boardRaspberryPiPico_RP2040 with panelPower, button and LED for EXT4
+/// @note Numbers refer to GPIOs, not pins
+/// @see https://github.com/earlephilhower/arduino-pico
+/// @note Recommended board
+///
+const pins_t boardRaspberryPiPico_RP2040 =
+{
+    .panelBusy = 13, ///< EXT3 and EXT3.1 pin 3 Red -> GP13
+    .panelDC = 12, ///< EXT3 and EXT3.1 pin 4 Orange -> GP12
+    .panelReset = 11, ///< EXT3 and EXT3.1 pin 5 Yellow -> GP11
+    .flashCS = 10, ///< EXT3 and EXT3.1 pin 8 Violet -> GP10
+
+    .panelCS = 17, ///< EXT4 pin 9 Grey -> GP17
+    .panelCSS = NOT_CONNECTED, ///< EXT4 not available
+    .flashCSS = 6, ///< EXT4 pin 20 Black2 -> GP6
+    .touchInt = NOT_CONNECTED, ///< EXT4 not available
+    .touchReset = NOT_CONNECTED, ///< EXT4 not available
+    .panelPower = 14, ///< EXT4 pin 20 White -> GP14
+    .cardCS = NOT_CONNECTED, ///< Separate SD-card board
+    .cardDetect = NOT_CONNECTED, ///< Separate SD-card board
+
+    // EXT4 specific
+    .button = 15, // EXT4 pin 12 Grey -> GP15
+    .ledData = 2, // EXT4 pin 13 Violet WS2813C -> GP2
+    // ///< EXT4 pin 14 Blue -> I2C SDA
+    // ///< EXT4 pin 15 Green -> I2C SCL
+    // ///< EXT4 pin 16 Yellow, see above
+    .nfcFD = 7, // EXT4 pin 17 Orange NFC NT3H2111_2211 !Field detect, I2C address = 0x55 -> GP7
+    .imuInt1 = 8, // EXT4 pin 18 Red LIS2DH12 !INT2, I2C address = 0x19 -> GP8
+    .imuInt2 = 9, // EXT4 pin 19 Brown LIS2DH12 !INT1, I2C address = 0x19 -> GP9
+    .weatherInt = 3 // EXT4 pin 20 Black HDC2080 !INT, I2C address = 0x40 -> GP3
+    // End of EXT4 specific
+};
+
+/// @}
+
+///
+/// @name 2.2 Other boards
+/// @{
+
+///
+/// @brief Silicon Labs BGM220-EK4314A and BG22-EK4108A Explorer Kit configuration, tested
+/// @details Variant of boardSiLabsBGM220Explorer with panelPower, button and LED for EXT4
+/// @note Numbers refer to pins
+///
+const pins_t boardSiLabsBGM220Explorer =
+{
+    .panelBusy = 4, ///< EXT3 and EXT3.1 pin 3 Red -> PC00 D4 4
+    .panelDC = 5, ///< EXT3 and EXT3.1 pin 4 Orange -> PC08 D5 5
+    .panelReset = 6, ///< EXT3 and EXT3.1 pin 5 Yellow -> PB00 D6 6
+    .flashCS = NOT_CONNECTED, ///< EXT3 and EXT3.1 pin 8 Violet
+    .panelCS = 13, ///< EXT3 and EXT3.1 pin 9 Grey -> PB01 A6 13
+    .panelCSS = NOT_CONNECTED, ///< EXT4 not available
+    .flashCSS = NOT_CONNECTED, ///< EXT3 pin 20 or EXT3.1 pin 11 Black2
+    .touchInt = NOT_CONNECTED, ///< EXT3-Touch pin 3 Red
+    .touchReset = NOT_CONNECTED, ///< EXT3-Touch pin 4 Orange
+    .panelPower = 14, ///< EXT4 pin 20 White -> PA00 A7 14
+    .cardCS = NOT_CONNECTED, ///< Separate SD-card board
+    .cardDetect = NOT_CONNECTED, ///< Separate SD-card board
+
+    // EXT4 specific
+    .button = 11, // EXT4 pin 12 Grey -> PD04 A4 11
+    .ledData = 12, // EXT4 pin 13 Violet WS2813C -> PD05 A5 12
+    // ///< EXT4 pin 14 Blue -> I2C SDA
+    // ///< EXT4 pin 15 Green -> I2C SCL
+    // ///< EXT4 pin 16 Yellow, see above
+    .nfcFD = NOT_CONNECTED, // EXT4 pin 17 Orange NFC NT3H2111_2211 !Field detect, I2C address = 0x55
+    .imuInt1 = NOT_CONNECTED, // EXT4 pin 18 Red LIS2DH12 !INT1, I2C address = 0x19
+    .imuInt2 = NOT_CONNECTED, // EXT4 pin 19 Brown LIS2DH12 !INT2, I2C address = 0x19
+    .weatherInt = NOT_CONNECTED // EXT4 pin 20 Black HDC2080 !INT, I2C address = 0x40
+    // End of EXT4 specific
+};
+
+/// @}
+
+///
+/// @name 2.3 Deprecated boards
+/// @{
+
+/// @}
+
+#endif // USE_EXT_BOARD
 
 #endif // hV_LIST_BOARDS_RELEASE
 

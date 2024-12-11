@@ -6,8 +6,8 @@
 /// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 21 Aug 2024
-/// @version 805
+/// @date 21 Nov 2024
+/// @version 810
 ///
 /// @copyright (c) Rei Vilo, 2010-2024
 /// @copyright All rights reserved
@@ -39,7 +39,7 @@
 ///
 /// @brief Release
 ///
-#define hV_LIST_CONSTANTS_RELEASE 805
+#define hV_LIST_CONSTANTS_RELEASE 810
 
 ///
 /// * General parameters

@@ -226,7 +226,7 @@ void hV_Screen_Buffer::line(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, 
     {
         if (y1 > y2)
         {
-            swap(y1, y2);
+            hV_HAL_swap(y1, y2);
         }
         for (uint16_t y = y1; y <= y2; y++)
         {
@@ -237,7 +237,7 @@ void hV_Screen_Buffer::line(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, 
     {
         if (x1 > x2)
         {
-            swap(x1, x2);
+            hV_HAL_swap(x1, x2);
         }
         for (uint16_t x = x1; x <= x2; x++)
         {
@@ -254,14 +254,14 @@ void hV_Screen_Buffer::line(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, 
         bool flag = abs(wy2 - wy1) > abs(wx2 - wx1);
         if (flag)
         {
-            swap(wx1, wy1);
-            swap(wx2, wy2);
+            hV_HAL_swap(wx1, wy1);
+            hV_HAL_swap(wx2, wy2);
         }
 
         if (wx1 > wx2)
         {
-            swap(wx1, wx2);
-            swap(wy1, wy2);
+            hV_HAL_swap(wx1, wx2);
+            hV_HAL_swap(wy1, wy2);
         }
 
         int16_t dx = wx2 - wx1;
@@ -322,11 +322,11 @@ void hV_Screen_Buffer::rectangle(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t
     {
         if (x1 > x2)
         {
-            swap(x1, x2);
+            hV_HAL_swap(x1, x2);
         }
         if (y1 > y2)
         {
-            swap(y1, y2);
+            hV_HAL_swap(y1, y2);
         }
         for (uint16_t x = x1; x <= x2; x++)
         {
@@ -373,13 +373,13 @@ void hV_Screen_Buffer::s_triangleArea(uint16_t x1, uint16_t y1, uint16_t x2, uin
 
     if (dy1 > dx1)
     {
-        swap(dx1, dy1); // swap values
+        hV_HAL_swap(dx1, dy1); // swap values
         changed1 = true;
     }
 
     if (dy2 > dx2)
     {
-        swap(dx2, dy2); // swap values
+        hV_HAL_swap(dx2, dy2); // swap values
         changed2 = true;
     }
 
@@ -468,14 +468,14 @@ void hV_Screen_Buffer::triangle(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t 
             b = false;
             if ((b == false) and (y1 > y2))
             {
-                swap(x1, x2);
-                swap(y1, y2);
+                hV_HAL_swap(x1, x2);
+                hV_HAL_swap(y1, y2);
                 b = true;
             }
             if ((b == false) and (y2 > y3))
             {
-                swap(x3, x2);
-                swap(y3, y2);
+                hV_HAL_swap(x3, x2);
+                hV_HAL_swap(y3, y2);
                 b = true;
             }
         }
@@ -603,7 +603,9 @@ void hV_Screen_Buffer::gText(uint16_t x0, uint16_t y0,
     uint8_t line, line1, line2, line3;
     uint16_t x, y;
     uint8_t i, j, k;
+
 #if (MAX_FONT_SIZE > 0)
+
     if (f_fontSize == 0)
     {
         for (k = 0; k < text.length(); k++)
@@ -615,6 +617,7 @@ void hV_Screen_Buffer::gText(uint16_t x0, uint16_t y0,
                 line = f_getCharacter(c, i);
 
                 for (j = 0; j < 8; j++)
+                {
                     if (bitRead(line, j))
                     {
                         point(x0 + 6 * k + i, y0 + j, textColour);
@@ -623,10 +626,13 @@ void hV_Screen_Buffer::gText(uint16_t x0, uint16_t y0,
                     {
                         point(x0 + 6 * k + i, y0 + j, backColour);
                     }
+                }
             }
         }
     }
+
 #if (MAX_FONT_SIZE > 1)
+
     else if (f_fontSize == 1)
     {
         for (k = 0; k < text.length(); k++)
@@ -660,7 +666,9 @@ void hV_Screen_Buffer::gText(uint16_t x0, uint16_t y0,
             }
         }
     }
+
 #if (MAX_FONT_SIZE > 2)
+
     else if (f_fontSize == 2)
     {
 
@@ -696,6 +704,7 @@ void hV_Screen_Buffer::gText(uint16_t x0, uint16_t y0,
         }
     }
 #if (MAX_FONT_SIZE > 3)
+
     else if (f_fontSize == 3)
     {
         for (k = 0; k < text.length(); k++)
@@ -762,6 +771,7 @@ void hV_Screen_Buffer::gTextLarge(uint16_t x0, uint16_t y0,
     setPenSolid(true);
 
 #if (MAX_FONT_SIZE > 0)
+
     if (f_fontSize == 0)
     {
         for (k = 0; k < text.length(); k++)
@@ -790,6 +800,7 @@ void hV_Screen_Buffer::gTextLarge(uint16_t x0, uint16_t y0,
     }
 
 #if (MAX_FONT_SIZE > 1)
+
     else if (f_fontSize == 1)
     {
         for (k = 0; k < text.length(); k++)
@@ -827,6 +838,7 @@ void hV_Screen_Buffer::gTextLarge(uint16_t x0, uint16_t y0,
     }
 
 #if (MAX_FONT_SIZE > 2)
+
     else if (f_fontSize == 2)
     {
 
@@ -863,7 +875,9 @@ void hV_Screen_Buffer::gTextLarge(uint16_t x0, uint16_t y0,
             }
         }
     }
+
 #if (MAX_FONT_SIZE > 3)
+
     else if (f_fontSize == 3)
     {
         for (k = 0; k < text.length(); k++)

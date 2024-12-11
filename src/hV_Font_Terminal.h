@@ -6,8 +6,8 @@
 /// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 21 May 2024
-/// @version 803
+/// @date 21 Nov 2024
+/// @version 810
 ///
 /// @copyright (c) Rei Vilo, 2010-2024
 /// @copyright All rights reserved
@@ -45,8 +45,8 @@
 #include "hV_Utilities_Common.h"
 
 // Checks
-#if (hV_CONFIGURATION_RELEASE < 803)
-#error Required hV_CONFIGURATION_RELEASE 803
+#if (hV_CONFIGURATION_RELEASE < 810)
+#error Required hV_CONFIGURATION_RELEASE 810
 #endif // hV_CONFIGURATION_RELEASE
 
 // The Arduino IDE does not allow to select the libraries, hence this condition.
@@ -56,7 +56,7 @@
 ///
 /// @brief Release
 ///
-#define hV_FONT_TERMINAL_RELEASE 801
+#define hV_FONT_TERMINAL_RELEASE 810
 
 #include "hV_Utilities_Common.h"
 #include "hV_Font.h"

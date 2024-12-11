@@ -17,6 +17,7 @@
 // Release 804: Improved power management
 // Release 805: Improved stability
 // Release 806: New library for Wide temperature only
+// Release 810: Added support for EXT4 and EPDK-Matter
 //
 
 // Library header

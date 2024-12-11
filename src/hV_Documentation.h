@@ -22,17 +22,20 @@
 /// * **PDLS_EXT3_Basic_Fast** for [monochrome screens with embedded fast update](https://www.pervasivedisplays.com/products-e-ink-display/?_sft_etc_itc=pu) (film `P`),
 /// * **PDLS_EXT3_Basic_Wide** for [monochrome screens with wide temperature and embedded fast update](https://www.pervasivedisplays.com/products-e-ink-display/?_sft_etc_itc=pu&_sft_temperature_range=m15c-to-p60c) (film `K`),
 /// * **PDLS_EXT3_Basic_Touch** for [monochrome screens with capacitive touch](https://www.pervasivedisplays.com/products-e-ink-display/?_sft_etc_itc=tp),
-/// * **PDLS_EXT3_Basic_BWRY** for [black-white-red-yellow screens](https://www.pervasivedisplays.com/products-e-ink-display/?_sft_product_colour=black-white-red-yellow) (film `Q`);
+/// * **PDLS_EXT3_Basic_BWRY** for [black-white-red-yellow screens](https://www.pervasivedisplays.com/products-e-ink-display/?_sft_product_colour=black-white-red-yellow) (film `Q`),
+/// * **PDLS_EXT4_Basic_Matter** for the [E-Paper Development Kit for Matter (EPDK-Matter)](https://www.pervasivedisplays.com);
 ///
 /// the boards
 ///
-/// * [EPD Extension Kit Gen 3 (EXT3 or EXT3.1)](https://www.pervasivedisplays.com/product/epd-extension-kit-gen-3-EXT3/),
-/// * [Touch Expansion Board for EXT3 (EXT3-Touch)](https://www.pervasivedisplays.com/product/touch-expansion-board-ext3-touch/);
+/// * [EPD Extension Kit Gen 3 (EXT3 or EXT3-1)](https://www.pervasivedisplays.com/product/epd-extension-kit-gen-3-EXT3/),
+/// * [Touch Expansion Board for EXT3 (EXT3-Touch)](https://www.pervasivedisplays.com/product/touch-expansion-board-ext3-touch/),
+/// * [EPD Extension Kit Gen 4 (EXT4)](https://www.pervasivedisplays.com/product/epd-extension-kit-gen-4-EXT4/);
 ///
 /// the kits
 ///
 /// * [EPD Pico Kit (EPDK-266)](https://www.pervasivedisplays.com/product/epd-pico-kit-epdk/), which includes a Raspberry Pi Pico RP2040, an EXT3.1 extension board and a 2.66&quot; monochrome panel,
-/// * [EPD Pico Kit Touch (EPDK-271-Touch)](https://www.pervasivedisplays.com/product/touch-expansion-board-ext3-touch/#tab-3), which includes a Raspberry Pi Pico RP2040, an EXT3.1 and EXT3-Touch boards and a 2.71&quot;-Touch monochrome panel with embedded fast update.
+/// * [EPD Pico Kit Touch (EPDK-271-Touch)](https://www.pervasivedisplays.com/product/touch-expansion-board-ext3-touch/#tab-3), which includes a an EXT3.1 extension board, an EXT3-Touch expansion board, and a 2.71&quot;-Touch monochrome panel with embedded fast update,
+/// * [E-Paper Development Kit for Matter (EPDK-Matter)](https://www.pervasivedisplays.com/product/epdk-matter/), which bundles an Arduino Nano Matter, an EXT4 board and a 2.90&quot; high-definition monochrome panel with wide temperature and embedded fast update.
 ///
 /// @b Documentation
 ///
@@ -45,8 +48,8 @@
 /// Additionally, the **[Wiki](https://docs.pervasivedisplays.com/)** provides a gradual introduction to the e-paper technology and how to use it.
 ///
 /// @author Rei Vilo
-/// @date 12 Nov 2024
-/// @version 808
+/// @date 21 Nov 2024
+/// @version 810
 ///
 /// @copyright &copy; Rei Vilo, 2010-2024
 /// @copyright All rights reserved
@@ -100,12 +103,11 @@
 /// @image latex T2_WHOAMI.jpg width=8cm
 ///
 /// * Fast update
-///     * Common_Speed.ino
-/// @image html Global.jpeg
-/// @image latex Global.jpeg width=8cm
+///     * Fast_Line.ino
+///     * Fast_Orientation.ino
 ///     * Fast_Speed.ino
-/// @image html Fast.jpeg
-/// @image latex Fast.jpeg width=8cm
+/// @image html Fast.png
+/// @image latex Fast.png width=8cm
 ///
 /// * Black-White-Red-Yellow
 ///     * BWRY_Colours.ino
