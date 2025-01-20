@@ -6,10 +6,10 @@
 /// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 21 Nov 2024
-/// @version 810
+/// @date 21 Jan 2025
+/// @version 812
 ///
-/// @copyright (c) Rei Vilo, 2010-2024
+/// @copyright (c) Rei Vilo, 2010-2025
 /// @copyright All rights reserved
 /// @copyright For exclusive use with Pervasive Displays screens
 ///
@@ -41,7 +41,7 @@
 ///
 /// @brief Release
 ///
-#define TERMINAL8E_FONT_RELEASE 810
+#define TERMINAL8E_FONT_RELEASE 812
 
 ///
 /// @brief Font Terminal8x12e

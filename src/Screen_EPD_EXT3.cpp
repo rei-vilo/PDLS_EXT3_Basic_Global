@@ -8,10 +8,10 @@
 //
 // Created by Rei Vilo, 28 Jun 2016
 //
-// Copyright (c) Rei Vilo, 2010-2024
+// Copyright (c) Rei Vilo, 2010-2025
 // Licence Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
 // For exclusive use with Pervasive Displays screens
-// Portions (c) Pervasive Displays, 2010-2024
+// Portions (c) Pervasive Displays, 2010-2025
 //
 // Release 508: Added support for 969_CS_0B and B98_CS_0B
 // Release 527: Added support for ESP32 PSRAM

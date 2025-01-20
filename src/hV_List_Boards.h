@@ -12,10 +12,10 @@
 ///     * 2.3 Deprecated boards
 ///
 /// @author Rei Vilo
-/// @date 21 Nov 2024
-/// @version 810
+/// @date 21 Jan 2025
+/// @version 812
 ///
-/// @copyright (c) Rei Vilo, 2010-2024
+/// @copyright (c) Rei Vilo, 2010-2025
 /// @copyright All rights reserved
 /// @copyright For exclusive use with Pervasive Displays screens
 ///
@@ -48,7 +48,7 @@
 ///
 /// @brief Release
 ///
-#define hV_LIST_BOARDS_RELEASE 810
+#define hV_LIST_BOARDS_RELEASE 812
 
 ///
 /// @brief Not connected pin

@@ -6,10 +6,10 @@
 /// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 21 Nov 2024
-/// @version 810
+/// @date 21 Jan 2025
+/// @version 812
 ///
-/// @copyright (c) Rei Vilo, 2010-2024
+/// @copyright (c) Rei Vilo, 2010-2025
 /// @copyright All rights reserved
 /// @copyright For exclusive use with Pervasive Displays screens
 ///
@@ -45,8 +45,8 @@
 #include "hV_Utilities_Common.h"
 
 // Checks
-#if (hV_CONFIGURATION_RELEASE < 810)
-#error Required hV_CONFIGURATION_RELEASE 810
+#if (hV_CONFIGURATION_RELEASE < 812)
+#error Required hV_CONFIGURATION_RELEASE 812
 #endif // hV_CONFIGURATION_RELEASE
 
 // The Arduino IDE does not allow to select the libraries, hence this condition.
@@ -56,7 +56,7 @@
 ///
 /// @brief Release
 ///
-#define hV_FONT_TERMINAL_RELEASE 810
+#define hV_FONT_TERMINAL_RELEASE 812
 
 #include "hV_Utilities_Common.h"
 #include "hV_Font.h"

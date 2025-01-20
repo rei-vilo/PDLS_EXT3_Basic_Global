@@ -6,12 +6,21 @@
 /// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 21 Nov 2024
-/// @version 810
+/// @date 21 Jan 2025
+/// @version 812
 ///
-/// @copyright (c) Rei Vilo, 2010-2024
-/// @copyright Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+/// @copyright (c) Rei Vilo, 2010-2025
+/// @copyright All rights reserved
 /// @copyright For exclusive use with Pervasive Displays screens
+///
+/// * Basic edition: for hobbyists and for basic usage
+/// @n Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+///
+/// * Evaluation edition: for professionals or organisations, no commercial usage
+/// @n All rights reserved
+///
+/// * Commercial edition: for professionals or organisations, commercial usage
+/// @n All rights reserved
 ///
 /// @see ReadMe.txt for references
 /// @n
@@ -91,18 +100,17 @@ void setup()
     mySerial.println();
 
     // Start
-    mySerial.println("begin... ");
+    mySerial.println("begin");
     myScreen.begin();
     mySerial.println(formatString("%s %ix%i", myScreen.WhoAmI().c_str(), myScreen.screenSizeX(), myScreen.screenSizeY()));
 
-    mySerial.println("Orientation... ");
+    mySerial.println("Orientation");
     myScreen.clear();
     displayOrientation();
     wait(8);
 
-    mySerial.println("White... ");
-    myScreen.clear();
-    myScreen.flush();
+    mySerial.println("Regenerate");
+    myScreen.regenerate();
 
     mySerial.println("=== ");
     mySerial.println();

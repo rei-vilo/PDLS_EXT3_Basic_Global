@@ -14,6 +14,18 @@
 ///
 /// It provides a high-level interface to drive the e-paper screens with global and fast update, supports capacitive touch and haptic feed-back.
 ///
+/// @warning The following libraries are legacy and remain available. 
+/// * `PDLS_EXT3_Basic_Global`
+/// * `PDLS_EXT3_Basic_Fast`, and 
+/// * `PDLS_EXT4_Basic_Matter`.
+/// 
+/// @deprecated The following libraries and deprecated and replaced by `PDLS_Basic` with a driver (9.0.0).
+/// * `PDLS_EXT4_Basic_BWRY` replaced by `PDLS_Basic` with driver `Pervasive_BWRY_Small`, 
+/// * `PDLS_EXT4_Basic_Wide` replaced by `PDLS_Basic` with drivers `Pervasive_Wide_Small` or `Pervasive_Wide_Medium`, and
+/// * `PDLS_EXT4_Basic_Touch` replaced by `PDLS_Basic` with driver `Pervasive_Touch_Small`.
+/// 
+/// @note The technical note [Migrate from release 8 to release 9](https://pdls.pervasivedisplays.com/userguide/Volume5/Chapter1/Part6/Section22/) provides more information. 
+///
 /// @b Variants
 ///
 /// The basic edition includes different variants and supports
@@ -48,13 +60,13 @@
 /// Additionally, the **[Wiki](https://docs.pervasivedisplays.com/)** provides a gradual introduction to the e-paper technology and how to use it.
 ///
 /// @author Rei Vilo
-/// @date 21 Nov 2024
-/// @version 810
+/// @date 21 Jan 2025
+/// @version 812
 ///
-/// @copyright &copy; Rei Vilo, 2010-2024
+/// @copyright &copy; Rei Vilo, 2010-2025
 /// @copyright All rights reserved
 /// @copyright For exclusive use with Pervasive Displays screens
-/// @copyright Portions &copy; Pervasive Displays, 2010-2024
+/// @copyright Portions &copy; Pervasive Displays, 2010-2025
 ///
 /// * Basic edition: for hobbyists and for basic usage
 /// @n Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)

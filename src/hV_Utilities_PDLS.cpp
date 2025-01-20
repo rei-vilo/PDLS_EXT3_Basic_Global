@@ -8,7 +8,7 @@
 //
 // Created by Rei Vilo, 21 Mar 2024
 //
-// Copyright (c) Rei Vilo, 2010-2024
+// Copyright (c) Rei Vilo, 2010-2025
 // Licence All rights reserved
 //
 // Release 800: Read OTP memory

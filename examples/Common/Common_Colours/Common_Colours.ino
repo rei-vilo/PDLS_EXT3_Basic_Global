@@ -6,10 +6,10 @@
 /// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 21 Nov 2024
-/// @version 810
+/// @date 21 Jan 2025
+/// @version 812
 ///
-/// @copyright (c) Rei Vilo, 2010-2024
+/// @copyright (c) Rei Vilo, 2010-2025
 /// @copyright Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
 /// @copyright For exclusive use with Pervasive Displays screens
 ///
@@ -65,10 +65,10 @@ void wait(uint8_t second)
 ///
 void displayPalette(bool flag = true)
 {
-    myScreen.setOrientation(7);
+    myScreen.setOrientation(ORIENTATION_LANDSCAPE);
 
     uint16_t x0, y0, dx, dy, maxSize, colour;
-    maxSize = min((myScreen.screenSizeX() * 10 / 50), (myScreen.screenSizeY() * 10 / 35));
+    maxSize = hV_HAL_min((myScreen.screenSizeX() * 10 / 50), (myScreen.screenSizeY() * 10 / 35));
     dx = (myScreen.screenSizeX() - maxSize * 50 / 10) / 2;
     dy = (myScreen.screenSizeY() - maxSize * 35 / 10) / 2;
 
@@ -148,18 +148,17 @@ void setup()
     mySerial.println();
 
     // Start
-    mySerial.println("begin... ");
+    mySerial.println("begin");
     myScreen.begin();
     mySerial.println(formatString("%s %ix%i", myScreen.WhoAmI().c_str(), myScreen.screenSizeX(), myScreen.screenSizeY()));
 
-    mySerial.println("Colours... ");
+    mySerial.println("Colours");
     myScreen.clear();
     displayPalette();
     wait(8);
 
-    mySerial.println("White... ");
-    myScreen.clear();
-    myScreen.flush();
+    mySerial.println("Regenerate");
+    myScreen.regenerate();
 
     mySerial.println("=== ");
     mySerial.println();

@@ -6,10 +6,10 @@
 /// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 21 Nov 2024
-/// @version 810
+/// @date 21 Jan 2025
+/// @version 812
 ///
-/// @copyright (c) Rei Vilo, 2010-2024
+/// @copyright (c) Rei Vilo, 2010-2025
 /// @copyright All rights reserved
 /// @copyright For exclusive use with Pervasive Displays screens
 ///
@@ -42,7 +42,7 @@
 ///
 /// @brief Library release number
 ///
-#define hV_UTILITIES_RELEASE 810
+#define hV_UTILITIES_RELEASE 812
 
 // Moved to hV_HAL_Peripherals
 // #ifndef min

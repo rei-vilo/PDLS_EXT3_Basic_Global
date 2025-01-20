@@ -6,12 +6,21 @@
 /// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 21 Nov 2024
-/// @version 810
+/// @date 21 Jan 2025
+/// @version 812
 ///
-/// @copyright (c) Rei Vilo, 2010-2024
-/// @copyright Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+/// @copyright (c) Rei Vilo, 2010-2025
+/// @copyright All rights reserved
 /// @copyright For exclusive use with Pervasive Displays screens
+///
+/// * Basic edition: for hobbyists and for basic usage
+/// @n Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+///
+/// * Evaluation edition: for professionals or organisations, no commercial usage
+/// @n All rights reserved
+///
+/// * Commercial edition: for professionals or organisations, commercial usage
+/// @n All rights reserved
 ///
 /// @see ReadMe.txt for references
 /// @n
@@ -69,7 +78,7 @@ void displayForms(bool flag = true)
 
     uint16_t x = myScreen.screenSizeX();
     uint16_t y = myScreen.screenSizeY();
-    uint16_t z = min(x, y);
+    uint16_t z = hV_HAL_min(x, y);
 
     myScreen.setPenSolid(false);
     myScreen.dRectangle(0, 0, x, y, myColours.black);
@@ -99,18 +108,17 @@ void setup()
     mySerial.println();
 
     // Start
-    mySerial.print("begin... ");
+    mySerial.print("begin");
     myScreen.begin();
     mySerial.println(formatString("%s %ix%i", myScreen.WhoAmI().c_str(), myScreen.screenSizeX(), myScreen.screenSizeY()));
 
-    mySerial.print("Forms... ");
+    mySerial.print("Forms");
     myScreen.clear();
     displayForms();
     wait(8);
 
-    mySerial.print("White... ");
-    myScreen.clear();
-    myScreen.flush();
+    mySerial.print("Regenerate");
+    myScreen.regenerate();
 
     mySerial.println("=== ");
     mySerial.println();

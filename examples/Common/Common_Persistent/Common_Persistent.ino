@@ -6,12 +6,21 @@
 /// @n Based on highView technology
 ///
 /// @author Rei Vilo
-/// @date 21 Jan 2023
-/// @version 704
+/// @date 21 Oct 2023
+/// @version 810
 ///
-/// @copyright (c) Rei Vilo, 2010-2024
+/// @copyright (c) Rei Vilo, 2010-2025
 /// @copyright Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
 /// @copyright For exclusive use with Pervasive Displays screens
+///
+/// * Basic edition: for hobbyists and for basic usage
+/// @n Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+///
+/// * Evaluation edition: for professionals or organisations, no commercial usage
+/// @n All rights reserved
+///
+/// * Commercial edition: for professionals or organisations, commercial usage
+/// @n All rights reserved
 ///
 /// @see ReadMe.txt for references
 /// @n
@@ -31,6 +40,7 @@
 #include "hV_Configuration.h"
 
 // Set parameters
+#define DISPLAY_PERSISTENT 1
 
 // Define structures and classes
 
@@ -56,6 +66,9 @@ void wait(uint8_t second)
 }
 
 // Functions
+
+#if (DISPLAY_PERSISTENT == 1)
+
 ///
 /// @brief Who am i? test screen
 ///
@@ -82,6 +95,8 @@ void displayPersistent()
     myScreen.flush();
 }
 
+#endif // DISPLAY_PERSISTENT
+
 // Add setup code
 ///
 /// @brief Setup
@@ -104,11 +119,13 @@ void setup()
         delay(250);
     }
 
-    mySerial.println("begin... ");
+    mySerial.println("begin");
     myScreen.begin();
     mySerial.println(formatString("%s %ix%i", myScreen.WhoAmI().c_str(), myScreen.screenSizeX(), myScreen.screenSizeY()));
 
-    mySerial.println("Who Am I... ");
+#if (DISPLAY_PERSISTENT == 1)
+
+    mySerial.println("DISPLAY_PERSISTENT");
     myScreen.clear();
     displayPersistent();
     wait(2);
@@ -118,6 +135,8 @@ void setup()
       myScreen.clear();
       myScreen.flush();
     */
+
+#endif // DISPLAY_PERSISTENT
 
     digitalWrite(LED_BUILTIN, HIGH);
     mySerial.println("=== ");
