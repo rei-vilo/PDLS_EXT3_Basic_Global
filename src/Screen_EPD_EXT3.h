@@ -12,8 +12,8 @@
 /// * Feature: none
 ///
 /// @author Rei Vilo
-/// @date 21 Jan 2025
-/// @version 812
+/// @date 21 Feb 2025
+/// @version 820
 ///
 /// @copyright (c) Rei Vilo, 2010-2025
 /// @copyright All rights reserved
@@ -75,7 +75,7 @@
 ///
 /// @brief Library release number
 ///
-#define SCREEN_EPD_EXT3_RELEASE 812
+#define SCREEN_EPD_EXT3_RELEASE 820
 
 ///
 /// @brief Library variant

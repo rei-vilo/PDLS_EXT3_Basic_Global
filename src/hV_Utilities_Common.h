@@ -44,14 +44,6 @@
 ///
 #define hV_UTILITIES_RELEASE 812
 
-// Moved to hV_HAL_Peripherals
-// #ifndef min
-// #define min(a, b) ((a) < (b) ? (a) : (b))
-// #endif
-// #ifndef max
-// #define max(a, b) ((a) > (b) ? (a) : (b))
-// #endif
-
 ///
 /// @name Orientation constants
 /// @{
@@ -158,29 +150,6 @@ void setMinMax(uint16_t value, uint16_t & valueMin, uint16_t & valueMax);
 /// * roundUp(9, 8) = 2;
 ///
 uint32_t roundUp(uint32_t value, uint16_t modulo);
-
-// Utilities
-// Moved to hV_HAL_Peripherals
-// ///
-// /// @brief Swap number, int16_t
-// /// @param a first number
-// /// @param b second number
-// ///
-// void swap(int16_t & a, int16_t & b);
-//
-// ///
-// /// @brief Swap number, uint16_t
-// /// @param a first number
-// /// @param b second number
-// ///
-// void swap(uint16_t & a, uint16_t & b);
-//
-// ///
-// /// @brief Swap number, uint8_t
-// /// @param a first number
-// /// @param b second number
-// ///
-// void swap(uint8_t & a, uint8_t & b);
 
 /// @}
 

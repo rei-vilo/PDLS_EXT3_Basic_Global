@@ -131,13 +131,10 @@
 #define eScreen_EPD_EXT3_370_0C_Fast eScreen_EPD_370_PS_0C ///< reference xE2370PS0Cx
 #define eScreen_EPD_EXT3_417_0D_Fast eScreen_EPD_417_PS_0D ///< reference xE2417PS0Dx
 #define eScreen_EPD_EXT3_437_0C_Fast eScreen_EPD_437_PS_0C ///< reference xE2437PS0Cx
-// /// @todo eScreen_EPD_EXT3_581_0B_Fast not tested
 // #define eScreen_EPD_EXT3_581_0B_Fast eScreen_EPD_581_PS_0B ///< reference xE2581PS0Bx, not tested
-// /// @todo eScreen_EPD_EXT3_741_0B_Fast not tested
 // #define eScreen_EPD_EXT3_741_0B_Fast eScreen_EPD_741_PS_0B ///< reference xE2741PS0Bx, not tested
 /// @todo eScreen_EPD_EXT3_969_0B_Fast not tested
 // #define eScreen_EPD_EXT3_969_0B_Fast eScreen_EPD_969_PS_0B ///< reference xE2969PS0Bx, not tested
-// /// @todo eScreen_EPD_EXT3_B98_0B_Fast not tested
 // #define eScreen_EPD_EXT3_B98_0B_Fast eScreen_EPD_B98_PS_0B ///< reference xE2B98PS0Bx, not tested
 /// @}
 
@@ -153,19 +150,14 @@
 #define eScreen_EPD_EXT3_213_0E_Wide eScreen_EPD_213_KS_0E ///< reference xE2213KS0Ex
 #define eScreen_EPD_EXT3_266_0C_Wide eScreen_EPD_266_KS_0C ///< reference xE2266KS0Cx
 #define eScreen_EPD_EXT3_271_09_Wide eScreen_EPD_271_KS_09 ///< reference xE2271KS09x
-// /// @todo eScreen_EPD_EXT3_287_09_Wide not tested
 // #define eScreen_EPD_EXT3_287_09_Wide eScreen_EPD_287_KS_09 ///< reference xE2287PS09x, not tested
 #define eScreen_EPD_EXT3_290_0F_Wide eScreen_EPD_290_KS_0F ///< reference xE2290KS0Fx
 #define eScreen_EPD_EXT3_370_0C_Wide eScreen_EPD_370_KS_0C ///< reference xE2370KS0Cx
 #define eScreen_EPD_EXT3_417_0D_Wide eScreen_EPD_417_KS_0D ///< reference xE2417KS0Dx
-// /// @todo eScreen_EPD_EXT3_437_0C_Wide not tested
 // #define eScreen_EPD_EXT3_437_0C_Wide eScreen_EPD_437_KS_0C ///< reference xE2437KS0Cx, not tested
 // #define eScreen_EPD_EXT3_581_06_Wide eScreen_EPD_581_KS_0B ///< reference xE2581KS0Bx
-// /// @todo eScreen_EPD_EXT3_741_0B_Wide not tested
 // #define eScreen_EPD_EXT3_741_0B_Wide eScreen_EPD_741_KS_0B ///< reference xE2741KS0Bx, not tested
-// /// @todo eScreen_EPD_EXT3_969_0B_Wide not tested
 // #define eScreen_EPD_EXT3_969_0B_Wide eScreen_EPD_969_KS_0B ///< reference xE2969KS0Bx, not tested
-// /// @todo eScreen_EPD_EXT3_B98_0B_Wide not tested
 // #define eScreen_EPD_EXT3_B98_0B_Wide eScreen_EPD_B98_KS_0B ///< reference xE2B98KS0Bx, not tested
 /// @}
 

@@ -262,18 +262,13 @@
 #define eScreen_EPD_266_PS_0C SCREEN(SIZE_266, FILM_P, DRIVER_C) ///< reference xE2266PS0Cx
 #define eScreen_EPD_271_PS_09 SCREEN(SIZE_271, FILM_P, DRIVER_9) ///< reference xE2271PS09x
 #define eScreen_EPD_287_PS_09 SCREEN(SIZE_287, FILM_P, DRIVER_9) ///< reference xE2287PS09x
-/// @todo eScreen_EPD_343_PS_0B not tested
-#define eScreen_EPD_343_PS_0B SCREEN(SIZE_343, FILM_P, DRIVER_B) ///< reference xE2343PS0Bx
 #define eScreen_EPD_370_PS_0C SCREEN(SIZE_370, FILM_P, DRIVER_C) ///< reference xE2370PS0Cx
 #define eScreen_EPD_417_PS_0D SCREEN(SIZE_417, FILM_P, DRIVER_D) ///< reference xE2417PS0Dx
 #define eScreen_EPD_437_PS_0C SCREEN(SIZE_437, FILM_P, DRIVER_C) ///< reference xE2437PS0Cx
 /// @todo eScreen_EPD_581_PS_0B not tested
 #define eScreen_EPD_581_PS_0B SCREEN(SIZE_581, FILM_P, DRIVER_B) ///< reference xE2581PS0Bx, not tested
-// /// @todo eScreen_EPD_741_PS_0B not tested
 // #define eScreen_EPD_741_PS_0B SCREEN(SIZE_741, FILM_P, DRIVER_B) ///< reference xE2741PS0Bx, not tested
-// /// @todo eScreen_EPD_969_PS_0B not tested
 // #define eScreen_EPD_969_PS_0B SCREEN(SIZE_969, FILM_P, DRIVER_B) ///< reference xE2969PS0Bx, not tested
-// /// @todo eScreen_EPD_B98_PS_0B not tested
 // #define eScreen_EPD_B98_PS_0B SCREEN(SIZE_B98, FILM_P, DRIVER_B) ///< reference xE2B98PS0Bx, not tested
 /// @}
 
@@ -291,17 +286,11 @@
 #define eScreen_EPD_271_KS_09 SCREEN(SIZE_271, FILM_K, DRIVER_9) ///< reference xE2271KS09x
 #define eScreen_EPD_271_KS_0C SCREEN(SIZE_271, FILM_K, DRIVER_C) ///< reference xE2271KS0Cx
 #define eScreen_EPD_290_KS_0F SCREEN(SIZE_290, FILM_K, DRIVER_F) ///< reference xE2290KS0Fx
-/// @todo eScreen_EPD_350_KS_0C not tested
-#define eScreen_EPD_350_KS_0C SCREEN(SIZE_350, FILM_K, DRIVER_C) ///< reference xE2350KS0Cx)
 #define eScreen_EPD_370_KS_0C SCREEN(SIZE_370, FILM_K, DRIVER_C) ///< reference xE2370KS0Cx
 #define eScreen_EPD_417_KS_0D SCREEN(SIZE_417, FILM_K, DRIVER_D) ///< reference xE2417KS0Dx
-/// @todo eScreen_EPD_437_KS_0C not tested
-#define eScreen_EPD_437_KS_0C SCREEN(SIZE_437, FILM_K, DRIVER_C) ///< reference xE2437KS0Cx, not tested
 #define eScreen_EPD_581_KS_06 SCREEN(SIZE_581, FILM_K, DRIVER_6) ///< reference xE2581KS06x
 #define eScreen_EPD_741_KS_06 SCREEN(SIZE_741, FILM_K, DRIVER_6) ///< reference xE2741KS06x
-// /// @todo eScreen_EPD_969_KS_0B not tested
 // #define eScreen_EPD_969_KS_0B SCREEN(SIZE_969, FILM_K, DRIVER_B) ///< reference xE2969KS0Bx, not tested
-// /// @todo eScreen_EPD_B98_KS_0B not tested
 // #define eScreen_EPD_B98_KS_0B SCREEN(SIZE_B98, FILM_K, DRIVER_B) ///< reference xE2B98KS0Bx, not tested
 /// @}
 
