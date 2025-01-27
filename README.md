@@ -2,7 +2,7 @@
 
 [![Release](https://img.shields.io/github/v/release/rei-vilo/PDLS_EXT3_Basic_Global)](https://github.com/rei-vilo/PDLS_EXT3_Basic_Global/releases) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/77ecc9fa99834e299505f5f2a7c83e53)](https://app.codacy.com/gh/rei-vilo/PDLS_EXT3_Basic_Global/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=rei-vilo/PDLS_EXT3_Basic_Global&amp;utm_campaign=Badge_Grade) ![Arduino lint](https://github.com/rei-vilo/PDLS_EXT3_Basic_Global/actions/workflows/main.yml/badge.svg) [![GitHub issues](https://img.shields.io/github/issues/rei-vilo/PDLS_EXT3_Basic_Global)](https://github.com/rei-vilo/PDLS_EXT3_Basic_Global/issues)
 
-[![](https://img.shields.io/badge/-Wiki-blue)](https://docs.pervasivedisplays.com/) [![](https://img.shields.io/badge/-User_Guide-blue)](https://pdls.pervasivedisplays.com/userguide/index.html) [![](https://img.shields.io/badge/-Reference_manual-blue)](https://pdls.pervasivedisplays.com/reference/html/index.html)
+[![](https://img.shields.io/badge/-Technical_Wiki-blue)](https://docs.pervasivedisplays.com/) [![](https://img.shields.io/badge/-User_Guide-blue)](https://pdls.pervasivedisplays.com/userguide/index.html) [![](https://img.shields.io/badge/-Reference_Manual-blue)](https://pdls.pervasivedisplays.com/reference/html/index.html)
 
 The Pervasive Displays Library Suite is specifically designed for the [Pervasive Displays](https://www.pervasivedisplays.com) e-paper screens, extension boards and evaluation kits.
 
@@ -77,7 +77,7 @@ Hardware
 
 **Copyright** &copy; Rei Vilo, 2010-2025
 
-For exclusive use with Pervasive Displays screens
+*For exclusive use with Pervasive Displays screens*
 
 **Licence** [Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](./LICENCE.md)
 
