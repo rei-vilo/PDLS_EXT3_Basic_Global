@@ -8,8 +8,7 @@ The Pervasive Displays Library Suite is specifically designed for the [Pervasive
 
 ![](https://pdls.pervasivedisplays.com/userguide/img/Logo_PDI_text_320.png)
 
-> [!WARNING]  
-> The library **PDLS_EXT3_Basic_Global** turns legacy. 
+> ### The library **PDLS_EXT3_Basic_Global** turns legacy. 
 >
 > As a replacement of monochrome screens (film `C`), use the screens with wide temperature and embedded fast update (film `K`). 
 >
